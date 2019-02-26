@@ -1,28 +1,44 @@
 <template>
-  <div id="app">
-    <img width="25%" src="./assets/logo.png">
-    <HelloWorld/>
+  <div class="cards-container">
+    <p>Yes: {{ yes }} No: {{ no }}</p>
+    <Card
+      v-for="(card, i) in cards"
+      :card="card"
+      :index="i"
+      :key="card.name"
+      @choice="onChoice"
+    />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
+import Card from "@/components/Card.vue";
+
+import { initCards } from "@/game.js";
 
 export default {
-  name: "App",
-  components: {
-    HelloWorld
+  name: "Alpha",
+  components: { Card },
+  data() {
+    return {
+      cards: initCards(),
+      yes: 0,
+      no: 0
+    };
+  },
+
+  methods: {
+    onChoice(choice) {
+      this.cards.shift();
+      choice ? this.yes++ : this.no++;
+    }
   }
 };
 </script>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="postcss" scoped>
+.cards-container {
+  position: relative;
+  width: 100%;
 }
 </style>
