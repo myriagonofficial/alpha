@@ -1,8 +1,12 @@
 <template>
   <div class="card">
     <div class="card-image">
-      <span class="card-image-yes" ref="textYes">{{ card.yes || "yes" }}</span>
-      <span class="card-image-no" ref="textNo">{{ card.no || "no" }}</span>
+      <span class="card-image-left" ref="textYes">{{
+        card.leftLabel || "Left"
+      }}</span>
+      <span class="card-image-right" ref="textNo">{{
+        card.rightLabel || "Right"
+      }}</span>
       <img :src="'assets/cards/' + card.image" />
       <div
         class="card-frame"
@@ -219,7 +223,7 @@ img {
 .card-info {
   z-index: 3;
   position: absolute;
-  bottom: 240px;
+  bottom: 220px;
   left: 80px;
   right: 80px;
   padding: 0.5em;

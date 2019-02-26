@@ -16,23 +16,38 @@
 import Card from "@/components/Card.vue";
 import Jauges from "@/components/Jauges.vue";
 
-import { initCards } from "@/game.js";
+import { initGame, state } from "@/game.js";
 
 export default {
   name: "Alpha",
   components: { Card, Jauges },
   data() {
     return {
-      cards: initCards(),
       yes: 0,
       no: 0
     };
   },
 
+  created() {
+    initGame();
+  },
+
+  computed: {
+    cards() {
+      return state.cards;
+    }
+  },
+
   methods: {
     onChoice(choice) {
-      this.cards.shift();
-      choice ? this.yes++ : this.no++;
+      let card = this.cards.shift();
+      if (choice) {
+        this.yes++;
+        card.leftEffects.forEach(effect => effect());
+      } else {
+        this.no++;
+        card.rightEffects.forEach(effect => effect());
+      }
     }
   }
 };

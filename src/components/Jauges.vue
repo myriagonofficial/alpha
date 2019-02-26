@@ -8,15 +8,12 @@
 </template>
 
 <script>
+import { state } from "@/game.js";
 export default {
   name: "Jauges",
   data() {
     return {
-      jauges: [
-        { name: "Végétal", icon: "tree.png", level: 50 },
-        { name: "Minéral", icon: "stone.png", level: 25 },
-        { name: "Animal", icon: "animal.png", level: 90 }
-      ]
+      jauges: state.jauges
     };
   },
   methods: {
@@ -29,7 +26,6 @@ export default {
 
 <style>
 .jauges {
-  background: black;
   padding: 0.5em;
   display: flex;
   justify-content: center;
@@ -52,5 +48,6 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
+  transition: all 400ms ease-in-out;
 }
 </style>
