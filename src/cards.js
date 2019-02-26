@@ -3,7 +3,9 @@ export const cards = [
     name: "Carotte",
     image: "carrot.png",
     frame: "wood",
-    description: "Ceci est une carotte"
+    description: "Ceci est une carotte",
+    yes: "prout",
+    no: "fuck"
   },
   {
     name: "Oeuf",

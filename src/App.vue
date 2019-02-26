@@ -1,5 +1,6 @@
 <template>
   <div class="cards-container">
+    <Jauges />
     <p>Yes: {{ yes }} No: {{ no }}</p>
     <Card
       v-for="(card, i) in cards"
@@ -13,12 +14,13 @@
 
 <script>
 import Card from "@/components/Card.vue";
+import Jauges from "@/components/Jauges.vue";
 
 import { initCards } from "@/game.js";
 
 export default {
   name: "Alpha",
-  components: { Card },
+  components: { Card, Jauges },
   data() {
     return {
       cards: initCards(),
@@ -36,9 +38,15 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
+<style lang="postcss">
 .cards-container {
   position: relative;
   width: 100%;
+}
+
+body {
+  font-family: "Laila", serif;
+  color: white;
+  background: black;
 }
 </style>

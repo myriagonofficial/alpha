@@ -1,14 +1,20 @@
 <template>
   <div class="card">
-    <div
-      class="card-image"
-      :style="{ backgroundImage: 'url(assets/frames/' + card.frame + '/png)' }"
-    >
-      <span class="card-image-yes" ref="textYes">Yes</span>
-      <span class="card-image-no" ref="textNo">No</span>
+    <div class="card-image">
+      <span class="card-image-yes" ref="textYes">{{ card.yes || "yes" }}</span>
+      <span class="card-image-no" ref="textNo">{{ card.no || "no" }}</span>
       <img :src="'assets/cards/' + card.image" />
+      <div
+        class="card-frame"
+        :style="{
+          backgroundImage: 'url(./assets/frames/' + card.frame + '.png)'
+        }"
+      />
     </div>
-    <div class="card-info clearfix">{{ card.description || "" }}</div>
+    <div class="card-info clearfix">
+      <div class="card-name">{{ card.name }}</div>
+      <div class="card-description">{{ card.description }}</div>
+    </div>
   </div>
 </template>
 
@@ -61,9 +67,6 @@ export default {
         translate: { x, y }
       } = this.transform;
       const style = `translate3d(${x}px, ${y}px, 0) rotate(${angle}deg)`;
-
-      this.$el.style.webkitTransform = style;
-      this.$el.style.mozTransform = style;
       this.$el.style.transform = style;
       this.active = false;
     },
@@ -162,9 +165,10 @@ img {
   position: absolute;
   left: 0;
   right: 0;
-  top: 50px;
+  top: 120px;
   margin: 0 auto;
   width: 512px;
+  height: 720px;
   border: 1px solid #d3d3d3;
   border-radius: 40px;
 }
@@ -174,6 +178,17 @@ img {
 .card-image {
   position: relative;
 }
+
+.card-frame {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100% 100%;
+}
+
 .card-image-yes,
 .card-image-no {
   z-index: 99;
@@ -202,17 +217,27 @@ img {
   transform: rotate(30deg);
 }
 .card-info {
-  opacity: 0.5;
+  z-index: 3;
   position: absolute;
-  bottom: 0;
+  bottom: 240px;
+  left: 80px;
+  right: 80px;
+  padding: 0.5em;
+  color: black;
+}
+.card-info .card-name {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.card-info .card-description {
+  font-size: 1.5em;
+  text-align: center;
+  position: absolute;
+  top: 100px;
   left: 0;
   right: 0;
-  background-color: black;
-  color: white;
-  padding: 1.4em;
-  font-size: 1.4em;
-}
-.card-info .info-name {
-  font-weight: bold;
+  height: 160px;
 }
 </style>
