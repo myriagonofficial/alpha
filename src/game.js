@@ -1,8 +1,12 @@
 import { cards } from "./cards";
 
 export const initGame = () => {
+  let pool = cards.slice();
+  let card = pool.shift();
+
   Object.assign(state, {
-    cards: cards.slice(),
+    pool,
+    card,
     jauges: [
       { name: "Végétal", icon: "tree.png", level: 50 },
       { name: "Minéral", icon: "stone.png", level: 50 },

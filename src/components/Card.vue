@@ -1,23 +1,33 @@
 <template>
   <div class="card">
-    <div class="card-image">
-      <span class="card-image-left" ref="textYes">{{
-        card.leftLabel || "Left"
-      }}</span>
-      <span class="card-image-right" ref="textNo">{{
-        card.rightLabel || "Right"
-      }}</span>
-      <img :src="'assets/cards/' + card.image" />
+    <div class="card-face card-face-back">
       <div
         class="card-frame"
         :style="{
-          backgroundImage: 'url(./assets/frames/' + card.frame + '.png)'
+          backgroundImage: 'url(./assets/frames/back_' + card.frame + '.png)'
         }"
       />
     </div>
-    <div class="card-info clearfix">
-      <div class="card-name">{{ card.name }}</div>
-      <div class="card-description">{{ card.description }}</div>
+    <div class="card-face card-face-front">
+      <div class="card-image">
+        <span class="card-image-left" ref="textYes">{{
+          card.leftLabel || "Left"
+        }}</span>
+        <span class="card-image-right" ref="textNo">{{
+          card.rightLabel || "Right"
+        }}</span>
+        <img :src="'assets/cards/' + card.image" />
+        <div
+          class="card-frame"
+          :style="{
+            backgroundImage: 'url(./assets/frames/' + card.frame + '.png)'
+          }"
+        />
+      </div>
+      <div class="card-info clearfix">
+        <div class="card-name">{{ card.name }}</div>
+        <div class="card-description">{{ card.description }}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -29,15 +39,13 @@ export default {
   name: "Card",
 
   props: {
-    card: Object,
-    index: Number
+    card: Object
   },
 
   data() {
     return {
       active: false, // the active variable is used to render each frame of the animation
-      transform: null,
-      offsetTop: 0
+      transform: null
     };
   },
 
@@ -52,13 +60,13 @@ export default {
     },
 
     resetElement() {
-      this.$el.className = "card animate";
+      this.$el.classList.add("animate");
       this.$refs.textYes.style.opacity = 0;
       this.$refs.textNo.style.opacity = 0;
       this.transform = {
         translate: {
           x: 0,
-          y: this.offsetTop
+          y: 0
         },
         angle: 0
       };
@@ -79,7 +87,7 @@ export default {
       if (ev.isFinal) {
         if (this.$refs.textYes.style.opacity == 1) {
           //offscreen
-          this.$el.className = "card animate";
+          this.$el.classList.add("animate");
           this.transform.translate = {
             x: ev.deltaX * 3,
             y: ev.deltaY * 3
@@ -90,7 +98,7 @@ export default {
           }, 500);
         } else if (this.$refs.textNo.style.opacity == 1) {
           //offscreen
-          this.$el.className = "card animate";
+          this.$el.classList.add("animate");
           this.transform.translate = {
             x: ev.deltaX * 3,
             y: ev.deltaY * 3
@@ -108,7 +116,7 @@ export default {
     onPanMove(ev) {
       const MAX_ANGLE = 25;
 
-      this.$el.className = "card";
+      this.$el.classList.remove("animate");
       this.transform.translate = {
         x: ev.deltaX,
         y: ev.deltaY
@@ -135,8 +143,12 @@ export default {
 
   mounted() {
     // set the stack order and the cascade effect
-    this.$el.style.zIndex = 99 - this.index;
-    this.offsetTop = Math.min(Math.max(this.index * 5, 0), 15);
+    this.$el.style.zIndex = 100;
+
+    this.$el.classList.add("flipping", "is-flipped");
+    setTimeout(() => {
+      this.$el.classList.remove("flipping");
+    }, 500);
 
     let mc = new Hammer.Manager(this.$el);
     mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
@@ -173,14 +185,39 @@ img {
   margin: 0 auto;
   width: 512px;
   height: 720px;
-  border: 1px solid #d3d3d3;
-  border-radius: 40px;
+  position: relative;
+  cursor: grab;
+  transform-style: preserve-3d;
+  transform-origin: center left;
 }
 .card.animate {
   transition: all 0.3s;
 }
 .card-image {
   position: relative;
+}
+
+.card.is-flipped {
+  transform: translateX(100%) rotateY(-180deg);
+}
+.card.flipping {
+  transition: transform 0.5s;
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card-face-front {
+  background: red;
+}
+
+.card-face-back {
+  background: blue;
+  transform: rotateY(180deg);
 }
 
 .card-frame {
