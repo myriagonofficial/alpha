@@ -1,5 +1,7 @@
 import { cards } from "./cards";
 
+export const state = {};
+
 export const initGame = () => {
   let pool = cards.slice();
   let card = pool.shift();
@@ -15,4 +17,16 @@ export const initGame = () => {
   });
 };
 
-export const state = {};
+export const onChoice = choice => {
+  if (choice) {
+    state.card.yesEffects.forEach(effect => effect());
+  } else {
+    state.card.noEffects.forEach(effect => effect());
+  }
+  state.card = null;
+  setTimeout(() => nextCard(), 0)
+}
+
+export const nextCard = () => {
+  state.card = state.pool.shift();
+}

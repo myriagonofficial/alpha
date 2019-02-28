@@ -1,5 +1,8 @@
 <template>
-  <div id="app"><Jauges /> <CardsScene /></div>
+  <div id="app">
+    <Jauges/>
+    <CardsScene/>
+  </div>
 </template>
 
 <script>

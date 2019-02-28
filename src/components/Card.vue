@@ -1,22 +1,13 @@
 <template>
   <div class="card">
     <div class="card-face card-face-back">
-      <div
-        class="card-frame"
-        :style="{
-          backgroundImage: 'url(./assets/frames/back_' + card.frame + '.png)'
-        }"
-      />
+      <img class="card-frame" :src="'assets/frames/back_' + card.frame + '.png'">
     </div>
     <div class="card-face card-face-front">
       <div class="card-image">
-        <span class="card-image-left" ref="textYes">{{
-          card.leftLabel || "Left"
-        }}</span>
-        <span class="card-image-right" ref="textNo">{{
-          card.rightLabel || "Right"
-        }}</span>
-        <img :src="'assets/cards/' + card.image" />
+        <span class="card-image-yes" ref="textYes">{{ card.yesLabel || "Yes" }}</span>
+        <span class="card-image-no" ref="textNo">{{ card.noLabel || "No" }}</span>
+        <img :src="'assets/cards/' + card.image">
         <div
           class="card-frame"
           :style="{
@@ -146,23 +137,46 @@ export default {
     this.$el.style.zIndex = 100;
 
     this.$el.classList.add("flipping", "is-flipped");
+    requestAnimationFrame(() => {
+      this.$el.classList.remove("is-flipped");
+    });
     setTimeout(() => {
       this.$el.classList.remove("flipping");
-    }, 500);
+      let mc = new Hammer.Manager(this.$el);
+      mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
 
-    let mc = new Hammer.Manager(this.$el);
-    mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
+      this.resetElement();
 
-    this.resetElement();
-
-    mc.on("hammer.input", this.onHammerInput);
-
-    mc.on("panstart panmove", this.onPanMove);
+      mc.on("hammer.input", this.onHammerInput);
+      mc.on("panstart panmove", this.onPanMove);
+    }, 1000);
   }
 };
 </script>
 
 <style lang="postcss" scoped>
+.card {
+  transform-style: preserve-3d;
+  transform-origin: center left;
+  margin: 140px auto 0 auto;
+  cursor: grab;
+}
+
+.card.is-flipped {
+  transform: translateX(100%) rotateY(-180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card-face-back {
+  transform: rotateY(180deg);
+}
+
 img {
   pointer-events: none;
   width: 100%;
@@ -176,48 +190,19 @@ img {
   color: #d3d3d3;
 }
 
-.card {
-  overflow: hidden;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 120px;
-  margin: 0 auto;
-  width: 512px;
-  height: 720px;
-  position: relative;
-  cursor: grab;
-  transform-style: preserve-3d;
-  transform-origin: center left;
-}
 .card.animate {
   transition: all 0.3s;
 }
 .card-image {
   position: relative;
-}
-
-.card.is-flipped {
-  transform: translateX(100%) rotateY(-180deg);
-}
-.card.flipping {
-  transition: transform 0.5s;
-}
-
-.card-face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
   backface-visibility: hidden;
 }
 
-.card-face-front {
-  background: red;
+.card.is-flipped {
+  transform: translateX(100%) rotateY(-180deg) translateY(15px) scale(0.98);
 }
-
-.card-face-back {
-  background: blue;
-  transform: rotateY(180deg);
+.card.flipping {
+  transition: transform 1s;
 }
 
 .card-frame {
@@ -228,6 +213,11 @@ img {
   right: 0;
   bottom: 0;
   background-size: 100% 100%;
+}
+
+.card-face-front .card-frame,
+.card-face-front .card-info {
+  backface-visibility: hidden;
 }
 
 .card-image-yes,
@@ -260,7 +250,7 @@ img {
 .card-info {
   z-index: 3;
   position: absolute;
-  bottom: 220px;
+  bottom: 235px;
   left: 80px;
   right: 80px;
   padding: 0.5em;

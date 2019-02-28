@@ -1,8 +1,8 @@
 <template>
   <div class="jauges">
-    <div class="jauge" v-for="jauge in jauges">
-      <img :src="'assets/icons/' + jauge.icon" />
-      <div class="level" :style="{ height: getLevelHeight(jauge) }" />
+    <div class="jauge" v-for="jauge in jauges" :key="jauge.name">
+      <img :src="'assets/icons/' + jauge.icon">
+      <div class="level" :style="{ height: getLevelHeight(jauge) }"/>
     </div>
   </div>
 </template>
