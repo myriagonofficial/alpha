@@ -1,62 +1,34 @@
 <template>
-  <div class="cards-container">
-    <Jauges />
-    <p>Yes: {{ yes }} No: {{ no }}</p>
-    <Card
-      v-for="(card, i) in cards"
-      :card="card"
-      :index="i"
-      :key="card.name"
-      @choice="onChoice"
-    />
-  </div>
+  <div id="app"><Jauges /> <CardsScene /></div>
 </template>
 
 <script>
-import Card from "@/components/Card.vue";
+import CardsScene from "@/components/CardsScene.vue";
 import Jauges from "@/components/Jauges.vue";
 
 import { initGame, state } from "@/game.js";
 
 export default {
   name: "Alpha",
-  components: { Card, Jauges },
+  components: { CardsScene, Jauges },
   data() {
-    return {
-      yes: 0,
-      no: 0
-    };
+    return {};
   },
 
   created() {
     initGame();
-  },
-
-  computed: {
-    cards() {
-      return state.cards;
-    }
-  },
-
-  methods: {
-    onChoice(choice) {
-      let card = this.cards.shift();
-      if (choice) {
-        this.yes++;
-        card.leftEffects.forEach(effect => effect());
-      } else {
-        this.no++;
-        card.rightEffects.forEach(effect => effect());
-      }
-    }
   }
 };
 </script>
 
 <style lang="postcss">
-.cards-container {
-  position: relative;
-  width: 100%;
+.cards-scene {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
 }
 
 body {
