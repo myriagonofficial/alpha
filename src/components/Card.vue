@@ -108,9 +108,11 @@ export default {
       const MAX_ANGLE = 25;
 
       this.$el.classList.remove("animate");
+      let deltaY = Math.sign(ev.deltaY) * Math.min(150, Math.abs(ev.deltaY));
+
       this.transform.translate = {
         x: ev.deltaX,
-        y: ev.deltaY
+        y: deltaY
       };
 
       // change opacity of the YES / NO text and angle of card
@@ -156,7 +158,7 @@ export default {
 <style lang="postcss" scoped>
 .card {
   transform-style: preserve-3d;
-  transform-origin: center left;
+  transform-origin: center;
   cursor: grab;
 }
 
@@ -206,6 +208,7 @@ img {
 }
 .card.flipping {
   transition: transform 1s;
+  transform-origin: center left;
 }
 
 .card-frame {
