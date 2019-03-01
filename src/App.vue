@@ -9,7 +9,7 @@
 import CardsScene from "@/components/CardsScene.vue";
 import Jauges from "@/components/Jauges.vue";
 
-import { initGame, state } from "@/game.js";
+import { initGame } from "@/game.js";
 
 export default {
   name: "Alpha",
@@ -20,23 +20,33 @@ export default {
 
   created() {
     initGame();
+  },
+
+  mounted() {
+    this.resizeScene();
+    this.resizeListener = window.addEventListener("resize", this.resizeScene);
+  },
+
+  destroyed() {
+    window.removeEventListener(this.resizeListener);
+  },
+
+  methods: {
+    resizeScene() {
+      let scale = Math.min(window.innerWidth / 640, window.innerHeight / 1024);
+      this.$el.style.transform = `scale(${scale})`;
+    }
   }
 };
 </script>
 
 <style lang="postcss">
-.cards-scene {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  overflow: hidden;
-}
-
 body {
   font-family: "Laila", serif;
   color: white;
   background: black;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 </style>

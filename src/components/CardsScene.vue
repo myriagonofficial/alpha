@@ -31,22 +31,29 @@ export default {
 
 <style lang="postcss">
 .cards-scene {
-  perspective: 1200px;
+  perspective: 1600px;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  width: 512px;
+  transform: translateX(-50%);
 }
 
 .card {
   position: relative;
   width: 512px;
-  height: 716px;
+  height: 720px;
 }
 
 .pool {
   position: absolute;
   width: 512px;
   height: 720px;
-  top: 140px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .pool img {

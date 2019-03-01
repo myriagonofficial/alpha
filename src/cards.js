@@ -6,8 +6,8 @@ export const cards = [
     image: "carrot.jpg",
     frame: "wood",
     description: "Ceci est une carotte ",
-    yesLabel: "prout",
-    noLabel: "fuck",
+    yesLabel: "gauche",
+    noLabel: "droite",
     yesEffects: [changeJauge("Animal", +10), changeJauge("Végétal", -20)],
     noEffects: [changeJauge("Animal", -10), changeJauge("Végétal", +15)]
   },

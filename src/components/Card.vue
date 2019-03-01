@@ -157,7 +157,6 @@ export default {
 .card {
   transform-style: preserve-3d;
   transform-origin: center left;
-  margin: 140px auto 0 auto;
   cursor: grab;
 }
 
