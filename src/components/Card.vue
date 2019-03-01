@@ -1,9 +1,9 @@
 <template>
-  <div class="card">
-    <div class="card-face card-face-back">
-      <img class="card-frame" :src="'assets/frames/back_' + card.frame + '.png'">
+  <div class="card is-flipped flipping">
+    <div class="card-face card-face-back" ref="back">
+      <img class="card-frame" :src="'assets/frames/back_' + card.frame + '.png'" @load="flip">
     </div>
-    <div class="card-face card-face-front">
+    <div class="card-face card-face-front hidden" ref="front">
       <div class="card-image">
         <span class="card-image-yes" ref="textYes">{{ card.yesLabel || "Yes" }}</span>
         <span class="card-image-no" ref="textNo">{{ card.noLabel || "No" }}</span>
@@ -129,27 +129,26 @@ export default {
       }
 
       this.requestElementUpdate();
+    },
+
+    flip() {
+      setTimeout(() => {
+        this.$el.classList.remove("is-flipped");
+      }, 50);
+      setTimeout(() => {
+        this.$refs.front.classList.remove("hidden");
+      }, 300);
+      setTimeout(() => {
+        this.$el.classList.remove("flipping");
+        let mc = new Hammer.Manager(this.$el);
+        mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
+
+        this.resetElement();
+
+        mc.on("hammer.input", this.onHammerInput);
+        mc.on("panstart panmove", this.onPanMove);
+      }, 1050);
     }
-  },
-
-  mounted() {
-    // set the stack order and the cascade effect
-    this.$el.style.zIndex = 100;
-
-    this.$el.classList.add("flipping", "is-flipped");
-    requestAnimationFrame(() => {
-      this.$el.classList.remove("is-flipped");
-    });
-    setTimeout(() => {
-      this.$el.classList.remove("flipping");
-      let mc = new Hammer.Manager(this.$el);
-      mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
-
-      this.resetElement();
-
-      mc.on("hammer.input", this.onHammerInput);
-      mc.on("panstart panmove", this.onPanMove);
-    }, 1000);
   }
 };
 </script>
@@ -171,6 +170,10 @@ export default {
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
+}
+
+.card-face.hidden {
+  opacity: 0;
 }
 
 .card-face-back {

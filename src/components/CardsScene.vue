@@ -37,7 +37,7 @@ export default {
 .card {
   position: relative;
   width: 512px;
-  height: 720px;
+  height: 716px;
 }
 
 .pool {
