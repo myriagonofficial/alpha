@@ -26,9 +26,13 @@ export default {
 
 <style>
 .jauges {
-  padding: 0.5em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: center;
+  margin: 16px;
 }
 
 .jauge {

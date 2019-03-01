@@ -1,6 +1,7 @@
 import { cards } from "./cards";
 
 export const state = {};
+window.state = state;
 
 export const initGame = () => {
   let pool = cards.slice();
@@ -23,6 +24,8 @@ export const onChoice = choice => {
   } else {
     state.card.noEffects.forEach(effect => effect());
   }
+
+  state.pool.push(state.card)
   state.card = null;
   setTimeout(() => nextCard(), 0)
 }

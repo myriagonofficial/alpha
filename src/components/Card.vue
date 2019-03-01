@@ -183,6 +183,7 @@ img {
   pointer-events: none;
   width: 100%;
   height: auto;
+  border-radius: 24px;
 }
 
 .text-active {
