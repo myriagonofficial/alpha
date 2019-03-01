@@ -3,7 +3,7 @@ import { changeJauge } from "./effects.js";
 export const cards = [
   {
     name: "Carotte",
-    image: "carrot.png",
+    image: "carrot.jpg",
     frame: "wood",
     description: "Ceci est une carotte ",
     yesLabel: "prout",
@@ -13,7 +13,7 @@ export const cards = [
   },
   {
     name: "Oeuf",
-    image: "egg.png",
+    image: "egg.jpg",
     frame: "wood",
     description: "Ceci est un oeuf",
     yesEffects: [changeJauge("Animal", +10), changeJauge("Végétal", -20)],
@@ -21,7 +21,7 @@ export const cards = [
   },
   {
     name: "Pêcheur",
-    image: "fisher.png",
+    image: "fisher.jpg",
     frame: "wood",
     description: "Ceci est un pêcheur",
     yesEffects: [changeJauge("Animal", +10), changeJauge("Végétal", -20)],
@@ -29,7 +29,7 @@ export const cards = [
   },
   {
     name: "Foudre",
-    image: "thunder.png",
+    image: "thunder.jpg",
     frame: "wood",
     description: "Ceci est un coup de foudre",
     yesEffects: [changeJauge("Animal", +10), changeJauge("Végétal", -20)],
