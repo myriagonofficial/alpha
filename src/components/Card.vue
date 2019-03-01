@@ -86,7 +86,7 @@ export default {
           this.requestElementUpdate();
           setTimeout(() => {
             this.$emit("choice", true);
-          }, 500);
+          }, 200);
         } else if (this.$refs.textNo.style.opacity == 1) {
           //offscreen
           this.$el.classList.add("animate");
@@ -97,7 +97,7 @@ export default {
           this.requestElementUpdate();
           setTimeout(() => {
             this.$emit("choice", false);
-          }, 500);
+          }, 200);
         } else {
           this.resetElement();
         }
@@ -115,7 +115,7 @@ export default {
 
       // change opacity of the YES / NO text and angle of card
       let multiplier = Math.min(
-        Math.max(Math.abs(ev.deltaX) / (this.$el.offsetWidth / 1.5), 0),
+        Math.max(Math.abs(ev.deltaX) / (this.$el.offsetWidth / 3), 0),
         1
       );
       if (ev.deltaX > 0) {
