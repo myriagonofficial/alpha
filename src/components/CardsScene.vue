@@ -5,14 +5,16 @@
       <img class="card" src="assets/frames/back_wood.png">
       <img class="card" src="assets/frames/back_wood.png">
     </div>
-    <Card v-if="state.card" :card="state.card" @choice="onChoice"/>
+    <Card v-if="state.card" :card="card" @choice="onChoice"/>
   </div>
 </template>
 
 <script>
 import Card from "@/components/Card.vue";
 
-import { state, onChoice } from "@/game.js";
+import { state } from "@/state.js";
+import { onChoice } from "@/game.js";
+import { cards } from "@/cards.js";
 
 export default {
   name: "CardsScene",
@@ -21,6 +23,11 @@ export default {
     return {
       state
     };
+  },
+  computed: {
+    card() {
+      return cards[state.card];
+    }
   },
 
   methods: {

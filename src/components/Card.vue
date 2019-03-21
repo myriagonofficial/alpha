@@ -5,8 +5,8 @@
     </div>
     <div class="card-face card-face-front hidden" ref="front">
       <div class="card-image">
-        <span class="card-image-yes" ref="textYes">{{ card.yesLabel || "Yes" }}</span>
-        <span class="card-image-no" ref="textNo">{{ card.noLabel || "No" }}</span>
+        <span class="card-image-yes" ref="textYes">{{ card.yesLabel || "Oui" }}</span>
+        <span class="card-image-no" ref="textNo">{{ card.noLabel || "Non" }}</span>
         <img :src="'assets/cards/' + card.image">
         <div
           class="card-frame"
@@ -234,7 +234,7 @@ img {
   padding: 5px;
   border: 5px solid;
   border-radius: 10px;
-  font-size: 5rem;
+  font-size: 3rem;
   box-shadow: 0 0 16px 16px rgba(0, 0, 0, 0.95);
   letter-spacing: 2px;
   text-align: center;
@@ -250,7 +250,7 @@ img {
 .card-image-no {
   left: calc(512px - 140px - 30px);
   color: white;
-  background-color: red;
+  background-color: #aa0000;
   transform: rotate(30deg);
 }
 .card-info {

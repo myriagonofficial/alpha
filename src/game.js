@@ -1,35 +1,41 @@
+import { state } from "./state.js"
+import { decks } from "./decks";
+import { stories } from "./stories";
 import { cards } from "./cards";
-
-export const state = {};
-window.state = state;
+import { pickRandomIn } from "./utils"
 
 export const initGame = () => {
-  let pool = cards.slice();
-  let card = pool.shift();
-
-  Object.assign(state, {
-    pool,
-    card,
-    jauges: [
-      { name: "Végétal", icon: "tree.png", level: 50 },
-      { name: "Minéral", icon: "stone.png", level: 50 },
-      { name: "Animal", icon: "animal.png", level: 50 }
-    ]
-  });
+  state.deck = decks[0]
+  nextCard()
 };
 
 export const onChoice = choice => {
+  let card = cards[state.card]
   if (choice) {
-    state.card.yesEffects.forEach(effect => effect());
+    card.yesEffects.forEach(effect => effect());
   } else {
-    state.card.noEffects.forEach(effect => effect());
+    card.noEffects.forEach(effect => effect());
   }
 
-  state.pool.push(state.card)
   state.card = null;
+  cleanupFinishedStories()
+  state.story = null
+
   setTimeout(() => nextCard(), 0)
 }
 
+export const cleanupFinishedStories = () => {
+  state.deck.stories = state.deck.stories.filter(story => stories[story].cards.length > 0)
+}
+
 export const nextCard = () => {
-  state.card = state.pool.shift();
+  if (state.deck.stories.length === 0) return alert("Y'a plus de cartes dispo")
+  cleanupFinishedStories()
+
+  state.story = pickRandomIn(state.deck.stories)
+  state.card = stories[state.story].cards.shift()
+  let card = cards[state.card]
+
+  if (!card.name) card.name = stories[state.story].name
+  if (!card.frame) card.frame = state.deck.frame
 }

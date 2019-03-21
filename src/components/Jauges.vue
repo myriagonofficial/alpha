@@ -8,12 +8,18 @@
 </template>
 
 <script>
-import { state } from "@/game.js";
+import { state } from "@/state.js";
+
 export default {
   name: "Jauges",
+  computed: {
+    jauges(){
+      return state.deck.jauges
+    }
+  },
   data() {
     return {
-      jauges: state.jauges
+
     };
   },
   methods: {

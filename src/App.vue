@@ -42,7 +42,7 @@ export default {
 
 <style lang="postcss">
 body {
-  font-family: "Laila", serif;
+  font-family: "Slabo 27px", serif;
   color: white;
   background: black;
   margin: 0;
