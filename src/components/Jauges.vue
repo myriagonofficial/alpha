@@ -13,13 +13,13 @@ import { state } from "@/state.js";
 export default {
   name: "Jauges",
   computed: {
-    jauges(){
-      return state.deck.jauges
+    jauges() {
+      return this.state.deck.jauges;
     }
   },
   data() {
     return {
-
+      state
     };
   },
   methods: {

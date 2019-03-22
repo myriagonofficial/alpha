@@ -9,12 +9,10 @@ export function changeJauge(type, value) {
 }
 
 export function startStory(name) {
-  console.log("startStory", name)
   return () => state.deck.stories.push(name)
 }
 
 export function endStory(name) {
-  console.log("endStory", name)
   return () => removeInArray(state.deck.stories, name);
 }
 
