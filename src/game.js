@@ -11,10 +11,11 @@ export const initGame = () => {
 
 export const onChoice = choice => {
   let card = cards[state.card]
+  state.choice = 0;
   if (choice) {
-    card.yesEffects.forEach(effect => effect());
+    card.yesEffects.forEach(effect => effect.apply());
   } else {
-    card.noEffects.forEach(effect => effect());
+    card.noEffects.forEach(effect => effect.apply());
   }
 
   state.card = null;

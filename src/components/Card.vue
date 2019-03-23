@@ -5,8 +5,8 @@
     </div>
     <div class="card-face card-face-front hidden" ref="front">
       <div class="card-image">
-        <span class="card-image-yes" ref="textYes">{{ card.yesLabel || "Oui" }}</span>
-        <span class="card-image-no" ref="textNo">{{ card.noLabel || "Non" }}</span>
+        <span class="card-image-yes" :style="{opacity: opacityYes }">{{ card.yesLabel || "Oui" }}</span>
+        <span class="card-image-no" :style="{opacity: opacityNo }">{{ card.noLabel || "Non" }}</span>
         <img :src="'assets/cards/' + card.image">
         <div
           class="card-frame"
@@ -25,6 +25,7 @@
 
 <script>
 import Hammer from "hammerjs";
+import { state } from "@/state.js";
 
 export default {
   name: "Card",
@@ -35,9 +36,19 @@ export default {
 
   data() {
     return {
+      state,
       active: false, // the active variable is used to render each frame of the animation
       transform: null
     };
+  },
+
+  computed: {
+    opacityYes() {
+      return this.state.choice > 0 ? this.state.choice : 0;
+    },
+    opacityNo() {
+      return this.state.choice < 0 ? -this.state.choice : 0;
+    }
   },
 
   methods: {
@@ -52,8 +63,7 @@ export default {
 
     resetElement() {
       this.$el.classList.add("animate");
-      this.$refs.textYes.style.opacity = 0;
-      this.$refs.textNo.style.opacity = 0;
+      state.choice = 0;
       this.transform = {
         translate: {
           x: 0,
@@ -76,7 +86,7 @@ export default {
 
     onHammerInput(ev) {
       if (ev.isFinal) {
-        if (this.$refs.textYes.style.opacity == 1) {
+        if (state.choice === 1) {
           //offscreen
           this.$el.classList.add("animate");
           this.transform.translate = {
@@ -87,7 +97,7 @@ export default {
           setTimeout(() => {
             this.$emit("choice", true);
           }, 200);
-        } else if (this.$refs.textNo.style.opacity == 1) {
+        } else if (state.choice === -1) {
           //offscreen
           this.$el.classList.add("animate");
           this.transform.translate = {
@@ -120,16 +130,8 @@ export default {
         Math.max(Math.abs(ev.deltaX) / (this.$el.offsetWidth / 3), 0),
         1
       );
-      if (ev.deltaX > 0) {
-        this.transform.angle = MAX_ANGLE * multiplier;
-        this.$refs.textYes.style.opacity = multiplier;
-        this.$refs.textNo.style.opacity = 0;
-      } else if (ev.deltaX <= 0) {
-        this.transform.angle = -MAX_ANGLE * multiplier;
-        this.$refs.textYes.style.opacity = 0;
-        this.$refs.textNo.style.opacity = multiplier;
-      }
-
+      state.choice = multiplier * Math.sign(ev.deltaX);
+      this.transform.angle = MAX_ANGLE * state.choice;
       this.requestElementUpdate();
     },
 
