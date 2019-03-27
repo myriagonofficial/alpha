@@ -1,52 +1,52 @@
 // story = scénario = ensemble de cartes sortant dans l'ordre
 
 export const stories = {
-    lune: {
-        name: "Lune",
-        cards: [6, 7, 8, 9]
-    },
-    tectonique: {
-        name: "Tectonique",
-        cards: [10, 11]
-    },
-    vegetation_terrestre: {
-        name: "Végétation terrestre",
-        cards: [13, 14]
-    },
-    vegetation_terrestre_tondue: {
-        name: "Végétation terrestre",
-        cards: [15]
-    },
-    vegetation_terrestre_sauvage: {
-        name: "Végétation terrestre",
-        cards: [16]
-    },
-    vegetation_terrestre_poison: {
-        name: "Végétation terrestre",
-        cards: [17]
-    },
-    vegetation_terrestre_dead: {
-        name: "Végétation terrestre",
-        cards: [22]
-    },
-    introduction: {
-        name: "Introduction",
-        cards: [1,2,3,4,5]
-    },
-    BdC: {
-        name: "Bouillon de culture",
-        cards: [18]
-    },
-    BdC2: {
-        name: "Bouillon de culture",
-        cards: [19]
-    },
-    BdC3: {
-        name: "Bouillon de culture",
-        cards: [20]
-    },
-    BdC4: {
-        name: "Bouillon de culture",
-        cards: [21]
-    }
-}
+  lune: {
+    name: "Lune",
+    cards: [6, 7, 8, 9]
+  },
+  terres_arides: {
+    name: "Terres Arides",
+    cards: [12]
+  },
+  oceans_chauds: {
+    name: "Océans Chauds",
+    cards: [13]
+  },
+  marecages: {
+    name: "Marécages",
+    cards: [14]
+  },
+  volcans: {
+    name: "Volcans",
+    cards: [15]
+  },
+  meteorites: {
+    name: "Météorites",
+    cards: [16]
+  },
+  oceans_geles: {
+    name: "Océans gelés",
+    cards: [17]
+  },
+  atmosphere_sombre: {
+    name: "Atmosphère sombre",
+    cards: [18]
+  },
+  rayonnemets_dangereux: {
+    name: "Rayonnements dangereux",
+    cards: [19]
+  },
+  sel_de_mer: {
+    name: "Sel de mer",
+    cards: [20]
+  },
+  sol_glace: {
+    name: "Sol glacé",
+    cards: [21]
+  },
+  algues: {
+    name: "Algues",
+    cards: [22]
+  }
+};
