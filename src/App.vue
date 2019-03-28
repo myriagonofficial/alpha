@@ -44,7 +44,7 @@ export default {
 body {
   font-family: "Slabo 27px", serif;
   color: white;
-  background: black;
+  background: rgb(245, 245, 240);
   margin: 0;
   padding: 0;
   overflow: hidden;

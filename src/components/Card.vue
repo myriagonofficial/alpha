@@ -209,7 +209,7 @@ img {
   transform: translateX(100%) rotateY(-180deg) translateY(15px) scale(0.98);
 }
 .card.flipping {
-  transition: transform 1s;
+  transition: transform 0.7s;
   transform-origin: center left;
 }
 
@@ -246,13 +246,13 @@ img {
 .card-image-yes {
   left: 30px;
   color: white;
-  background-color: green;
+  background-color: rgb(51, 31, 0);
   transform: rotate(-30deg);
 }
 .card-image-no {
   left: calc(512px - 140px - 30px);
   color: white;
-  background-color: #aa0000;
+  background-color: rgb(51, 31, 0);
   transform: rotate(30deg);
 }
 .card-info {
@@ -265,13 +265,13 @@ img {
   color: black;
 }
 .card-info .card-name {
-  font-size: 2em;
+  font-size: 1.8em;
   font-weight: bold;
   text-align: center;
 }
 
 .card-info .card-description {
-  font-size: 1.5em;
+  font-size: 1.3em;
   text-align: center;
   position: absolute;
   top: 100px;

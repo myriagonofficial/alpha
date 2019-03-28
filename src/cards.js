@@ -47,8 +47,8 @@ export const cards = {
       "Un astre sorti de nulle part semble s’être pris d’affection pour notre planète et s’y est satellisé.",
     yesLabel: "Ah !",
     noLabel: "Ah !",
-    yesEffects: [changeJauge("Céleste", -20)],
-    noEffects: [changeJauge("Céleste", -20)]
+    yesEffects: [changeJauge("Céleste", +20)],
+    noEffects: [changeJauge("Céleste", +20)]
   },
   7: {
     image: "thunder.jpg",

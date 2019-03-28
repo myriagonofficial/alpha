@@ -9,7 +9,7 @@
           xmlns="http://www.w3.org/2000/svg"
           :style="{ opacity: Math.abs(state.choice) }"
         >
-          <circle cx="20" cy="20" :r="Math.abs(getChoiceEffect(jauge))"></circle>
+          <circle cx="20" cy="20" :r="Math.abs(getChoiceEffect(jauge))/2"></circle>
         </svg>
       </div>
     </div>
@@ -74,13 +74,13 @@ export default {
 }
 
 .jauge img {
-  height: 64px;
-  width: 64px;
-  margin: 0 1em;
+  height: 48px;
+  width: 48px;
+  margin: 0 3em;
 }
 
 .jauge .level {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(245, 245, 240, 0.9);
   position: absolute;
   top: 0;
   left: 0;

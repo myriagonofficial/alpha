@@ -40,7 +40,7 @@ export default {
 .cards-scene {
   perspective: 1600px;
   position: absolute;
-  top: 120px;
+  top: 180px;
   left: 50%;
   right: 0;
   bottom: 0;
