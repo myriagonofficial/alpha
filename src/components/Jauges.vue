@@ -74,8 +74,8 @@ export default {
 }
 
 .jauge img {
-  height: 48px;
-  width: 48px;
+  height: 96px;
+  width: 96px;
   margin: 0 3em;
 }
 
