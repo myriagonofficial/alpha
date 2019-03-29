@@ -162,6 +162,7 @@ export default {
   transform-style: preserve-3d;
   transform-origin: center;
   cursor: grab;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
 }
 
 .card.is-flipped {
@@ -233,6 +234,7 @@ img {
   z-index: 99;
   position: absolute;
   top: 50px;
+  max-width: 200px;
   padding: 5px;
   border: 5px solid;
   border-radius: 10px;
@@ -250,7 +252,7 @@ img {
   transform: rotate(-30deg);
 }
 .card-image-no {
-  left: calc(512px - 140px - 30px);
+  right: 30px;
   color: white;
   background-color: rgb(84, 102, 109);
   transform: rotate(30deg);
