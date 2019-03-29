@@ -246,22 +246,22 @@ img {
 .card-image-yes {
   left: 30px;
   color: white;
-  background-color: rgb(51, 31, 0);
+  background-color: rgb(84, 102, 109);
   transform: rotate(-30deg);
 }
 .card-image-no {
   left: calc(512px - 140px - 30px);
   color: white;
-  background-color: rgb(51, 31, 0);
+  background-color: rgb(84, 102, 109);
   transform: rotate(30deg);
 }
 .card-info {
   z-index: 3;
   position: absolute;
-  bottom: 235px;
+  bottom: 215px;
   left: 80px;
   right: 80px;
-  padding: 0.5em;
+  padding: 0.8em;
   color: black;
 }
 .card-info .card-name {
@@ -271,10 +271,10 @@ img {
 }
 
 .card-info .card-description {
-  font-size: 1.3em;
+  font-size: 1.7em;
   text-align: center;
   position: absolute;
-  top: 100px;
+  top: 62px;
   left: 0;
   right: 0;
   height: 160px;

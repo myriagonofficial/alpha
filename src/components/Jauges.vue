@@ -5,11 +5,11 @@
       <div class="level" :style="{ height: getLevelHeight(jauge) }"/>
       <div class="indicator" v-if="shouldShowIndicator">
         <svg
-          viewBox="0 0 40 40"
+          viewBox="0 32 110 110"
           xmlns="http://www.w3.org/2000/svg"
           :style="{ opacity: Math.abs(state.choice) }"
         >
-          <circle cx="20" cy="20" :r="Math.abs(getChoiceEffect(jauge))/2"></circle>
+          <circle cx="55" cy="55" :r="Math.abs(getChoiceEffect(jauge))"></circle>
         </svg>
       </div>
     </div>
@@ -80,7 +80,7 @@ export default {
 }
 
 .jauge .level {
-  background: rgba(245, 245, 240, 0.9);
+  background: rgba(245, 245, 240, 0.92);
   position: absolute;
   top: 0;
   left: 0;
@@ -93,9 +93,9 @@ export default {
   text-align: center;
 
   svg {
-    width: 20px;
-    height: 20px;
-    fill: white;
+    width: 5px;
+    height: 5px;
+    fill: rgb(84, 102, 109);
     transition: all 300ms;
   }
 }

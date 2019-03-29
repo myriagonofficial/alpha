@@ -1,9 +1,9 @@
 <template>
   <div class="cards-scene">
     <div class="pool">
-      <img class="card" src="assets/frames/back_wood.png">
-      <img class="card" src="assets/frames/back_wood.png">
-      <img class="card" src="assets/frames/back_wood.png">
+      <img class="card" src="assets/frames/back_alpha.png">
+      <img class="card" src="assets/frames/back_alpha.png">
+      <img class="card" src="assets/frames/back_alpha.png">
     </div>
     <Card v-if="state.card" :card="card" @choice="onChoice"/>
   </div>

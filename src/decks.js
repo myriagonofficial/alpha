@@ -3,7 +3,7 @@
 export const decks = [
   {
     name: "(Re)naissance",
-    frame: "wood",
+    frame: "alpha",
     stories: [
       "lune",
       "terres_arides",
