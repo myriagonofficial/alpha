@@ -5,6 +5,7 @@ export const decks = [
     name: "(Re)naissance",
     frame: "alpha",
     stories: [
+      "intro",
       "lune",
       "terres_arides",
       "oceans_chauds",

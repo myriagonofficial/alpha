@@ -1,6 +1,11 @@
 // story = scénario = ensemble de cartes sortant dans l'ordre
 
 export const stories = {
+  intro: {
+    name: "Intro",
+    cards: [1, 2, 3, 4, 5],
+    priority: 2
+  },
   lune: {
     name: "Lune",
     cards: [6, 7, 8, 9]

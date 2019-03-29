@@ -29,7 +29,7 @@ export default {
     },
     shouldShowIndicator() {
       return true;
-      return state.choice !== 0;
+      //return state.choice !== 0;
     }
   },
   data() {
