@@ -1,7 +1,5 @@
-export const incidence = [
-  {
-    s: 5,
-    m: 10,
-    l: 20
-  }
-];
+export const incidence = {
+  s: 5,
+  m: 10,
+  l: 20
+};
