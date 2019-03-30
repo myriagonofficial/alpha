@@ -9,7 +9,7 @@
           xmlns="http://www.w3.org/2000/svg"
           :style="{ opacity: Math.abs(state.choice) }"
         >
-          <circle cx="55" cy="55" :r="Math.abs(getChoiceEffect(jauge))"></circle>
+          <circle cx="55" cy="55" fill="rgb(84, 102, 109)" :r="Math.abs(getChoiceEffect(jauge))"></circle>
         </svg>
       </div>
     </div>

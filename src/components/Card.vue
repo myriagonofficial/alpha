@@ -162,6 +162,7 @@ export default {
   transform-style: preserve-3d;
   transform-origin: center;
   cursor: grab;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
 }
 
 .card.is-flipped {
