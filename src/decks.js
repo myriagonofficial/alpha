@@ -20,9 +20,9 @@ export const decks = [
       "algues"
     ],
     jauges: [
-      { name: "Céleste", icon: "CIEL.png", level: 50 },
-      { name: "Terrestre", icon: "TERRE.png", level: 50 },
-      { name: "Marine", icon: "MARIN.png", level: 50 }
+      { name: "Céleste", icon: "CIEL2.png", level: 50 },
+      { name: "Terrestre", icon: "TERRE2.png", level: 50 },
+      { name: "Marine", icon: "MARIN2.png", level: 50 }
     ]
   }
 ];
