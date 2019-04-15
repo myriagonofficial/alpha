@@ -5,7 +5,6 @@ export const decks = [
     name: "(Re)naissance",
     frame: "primal",
     stories: [
-      "intro",
       "lune",
       "terres_arides",
       "oceans_chauds",
@@ -17,7 +16,9 @@ export const decks = [
       "rayonnemets_dangereux",
       "sel_de_mer",
       "sol_glace",
-      "algues"
+      "algues",
+      "introduction",
+      "tectonique"
     ],
     jauges: [
       { name: "Céleste", icon: "CIEL2.png", level: 50 },

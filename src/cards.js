@@ -4,41 +4,46 @@ import { incidence } from "./const.js";
 export const cards = {
   1: {
     image: "thunder.jpg",
-    description: "Coucou mec !",
-    yesLabel: "Salut",
-    noLabel: "Salut",
+    description:
+      "L'incommensurable envergure de l’Univers s’offre à nous, enivrante et vertigineuse. La Vie - peuplant jadis galaxies, étoiles et planètes - décline secrètement ...",
+    yesLabel: "...",
+    noLabel: "...",
     yesEffects: [],
     noEffects: []
   },
   2: {
     image: "thunder.jpg",
-    description: "Tu vas bien ?",
-    yesLabel: "Oui",
-    noLabel: "Non",
+    description:
+      "Nous sommes les Gardiens du Temps, édificateurs du Cosmos, martyrs d'une malédiction nous rendant esclaves de la Vie.",
+    yesLabel: "...",
+    noLabel: "...",
     yesEffects: [],
     noEffects: []
   },
   3: {
     image: "thunder.jpg",
-    description: "Bah cool alors !",
-    yesLabel: "Super !",
-    noLabel: "Super !",
+    description:
+      "Sans Vie, plus de témoins du Temps. Le Temps n'existe qu'au travers de ses observateurs, les êtres vivants.",
+    yesLabel: "...",
+    noLabel: "...",
     yesEffects: [],
     noEffects: []
   },
   4: {
     image: "thunder.jpg",
-    description: "C'est sympa d'te voir !",
-    yesLabel: "Super !",
-    noLabel: "Super !",
+    description:
+      "Comme chaque témoin avant toi, tu as vécu une partie infinitésimale du champs des possibles, et maintenant la tâche t'incombe d'endosser à ton tour le lourd fardeau des Gardiens.",
+    yesLabel: "...",
+    noLabel: "...",
     yesEffects: [],
     noEffects: []
   },
   5: {
     image: "thunder.jpg",
-    description: "Bonne journée !",
-    yesLabel: "Super !",
-    noLabel: "Super !",
+    description:
+      "Nous te confions ce berceau, au printemps de son Histoire. Il sera ta mémoire, l'empreinte que tu laisseras en ce monde.",
+    yesLabel: "...",
+    noLabel: "...",
     yesEffects: [],
     noEffects: []
   },
@@ -48,8 +53,8 @@ export const cards = {
       "Un astre sorti de nulle part semble s’être pris d’affection pour notre planète et s’y est satellisé.",
     yesLabel: "Ah !",
     noLabel: "Ah !",
-    yesEffects: [changeJauge("Céleste", +incidence.l)],
-    noEffects: [changeJauge("Céleste", +incidence.l)]
+    yesEffects: [changeJauge("Céleste", -incidence.l)],
+    noEffects: [changeJauge("Céleste", -incidence.l)]
   },
   7: {
     image: "thunder.jpg",
@@ -58,7 +63,7 @@ export const cards = {
     yesLabel: "On le détruit !",
     noLabel: "Pourquoi pas ...",
     yesEffects: [endStory("lune"), changeJauge("Céleste", +incidence.l)],
-    noEffects: []
+    noEffects: [changeJauge("Terrestre", +incidence.s)]
   },
   8: {
     image: "thunder.jpg",
@@ -84,16 +89,23 @@ export const cards = {
       "Le magma sous la croûte terrestre agite beaucoup les plaques tectoniques. On calme un peu le jeu ?",
     yesLabel: "Oui",
     noLabel: "Non",
-    yesEffects: [],
-    noEffects: []
+    yesEffects: [changeJauge("Terrestre", +incidence.m)],
+    noEffects: [startStory("end_tectonique")]
   },
   11: {
     image: "thunder.jpg",
-    description: "",
-    yesLabel: "",
-    noLabel: "",
-    yesEffects: [],
-    noEffects: []
+    description:
+      "Quelques volcans ont réchauffé les mers et l'atmosphère terrestre, et rendu la terre fertile pour les végétaux.",
+    yesLabel: "D'accord",
+    noLabel: "D'accord",
+    yesEffects: [
+      changeJauge("Marine", +incidence.m),
+      changeJauge("Céleste", +incidence.m)
+    ],
+    noEffects: [
+      changeJauge("Marine", +incidence.m),
+      changeJauge("Céleste", +incidence.m)
+    ]
   },
   12: {
     image: "desert.png",
@@ -120,7 +132,7 @@ export const cards = {
     yesLabel: "Oui",
     noLabel: "Non",
     yesEffects: [
-      changeJauge("Céleste", -incidence.m),
+      changeJauge("Céleste", +incidence.m),
       changeJauge("Terrestre", -incidence.m)
     ],
     noEffects: [changeJauge("Terrestre", +incidence.m)]
@@ -132,10 +144,13 @@ export const cards = {
     yesLabel: "Oui",
     noLabel: "Non",
     yesEffects: [
-      changeJauge("Terrestre", -incidence.m),
+      changeJauge("Marine", +incidence.m),
       changeJauge("Céleste", +incidence.m)
     ],
-    noEffects: [changeJauge("Marine", -incidence.m)]
+    noEffects: [
+      changeJauge("Marine", +incidence.m),
+      changeJauge("Céleste", +incidence.m)
+    ]
   },
   16: {
     image: "meteor.png",
@@ -143,8 +158,8 @@ export const cards = {
       "Une pluie de météorites est sur le point de s'abattre sur le monde.",
     yesLabel: "Les faire tomber dans l'océan.",
     noLabel: "Les faire tomber sur un continent.",
-    yesEffects: [changeJauge("Marine", +incidence.m)],
-    noEffects: [changeJauge("Terrestre", +incidence.m)]
+    yesEffects: [startStory("end_meteorite_marine")],
+    noEffects: [startStory("end_meteorite_terrestre")]
   },
   17: {
     image: "water.png",
@@ -153,10 +168,10 @@ export const cards = {
     yesLabel: "Soleil ...?",
     noLabel: "Tant mieux.",
     yesEffects: [
-      changeJauge("Marine", -incidence.m),
-      changeJauge("Céleste", -incidence.m)
+      changeJauge("Marine", +incidence.m),
+      changeJauge("Terrestre", -incidence.m)
     ],
-    noEffects: [changeJauge("Marine", +incidence.m)]
+    noEffects: [changeJauge("Marine", -incidence.m)]
   },
   18: {
     image: "valley.png",
@@ -164,22 +179,22 @@ export const cards = {
       "L'atmosphère est rendue si épaisse qu'elle s'est opacifiée. La réchauffer pourrait bien précipiter les nuages.",
     yesLabel: "C'est parti !",
     noLabel: "Surtout pas !",
-    yesEffects: [changeJauge("Céleste", -incidence.m)],
-    noEffects: [
-      changeJauge("Marine", +incidence.m),
-      changeJauge("Céleste", +incidence.m)
-    ]
+    yesEffects: [changeJauge("Céleste", +incidence.m)],
+    noEffects: [changeJauge("Terrestre", +incidence.m)]
   },
   19: {
     image: "valley.png",
     description:
-      "Les rayons du soleil sont intenses et deviennent nocifs. Peut-être qu'un peu d'atmosphère ferait bouclier ?",
+      "Par endroits, les rayons du soleil sont intenses et deviennent nocifs. Peut-être qu'un peu d'atmosphère ferait bouclier ?",
     yesLabel: "Oui",
     noLabel: "Non",
-    yesEffects: [changeJauge("Céleste", +incidence.m)],
+    yesEffects: [
+      changeJauge("Céleste", +incidence.s),
+      changeJauge("Terrestre", +incidence.l)
+    ],
     noEffects: [
-      changeJauge("Terrestre", -incidence.m),
-      changeJauge("Céleste", -incidence.m)
+      changeJauge("Terrestre", -incidence.l),
+      changeJauge("Céleste", -incidence.s)
     ]
   },
   20: {
@@ -188,10 +203,7 @@ export const cards = {
       "De la glace persiste à la surface de nos océans. On pourrait peut-être utiliser des roches salées pour la faire fondre ?",
     yesLabel: "Oui",
     noLabel: "Non",
-    yesEffects: [
-      changeJauge("Marine", +incidence.m),
-      changeJauge("Terrestre", -incidence.m)
-    ],
+    yesEffects: [changeJauge("Marine", +incidence.m)],
     noEffects: [changeJauge("Marine", -incidence.m)]
   },
   21: {
@@ -201,10 +213,11 @@ export const cards = {
     yesLabel: "Oui",
     noLabel: "Non",
     yesEffects: [
-      changeJauge("Terrestre", +incidence.m),
-      changeJauge("Céleste", +incidence.m)
+      changeJauge("Terrestre", -incidence.l),
+      changeJauge("Céleste", +incidence.m),
+      changeJauge("Marine", +incidence.s)
     ],
-    noEffects: [changeJauge("Marine", +incidence.m)]
+    noEffects: [changeJauge("Terrestre", +incidence.m)]
   },
   22: {
     image: "water.png",
@@ -213,58 +226,64 @@ export const cards = {
     yesLabel: "Soleil !",
     noLabel: "Chouette.",
     yesEffects: [
-      changeJauge("Marine", -incidence.m),
-      changeJauge("Céleste", -incidence.m)
+      changeJauge("Marine", +incidence.s),
+      changeJauge("Céleste", +incidence.m)
     ],
-    noEffects: [changeJauge("Marine", +incidence.m)]
+    noEffects: []
   },
   23: {
-    image: "",
-    description: "",
-    yesLabel: "",
-    noLabel: "",
-    yesEffects: "",
-    noEffects: ""
+    image: "thunder.jpg",
+    description:
+      "Un astre sorti de nulle part semble s’être pris d’affection pour notre planète et s’y est satellisé.",
+    yesLabel: "On le détruit !",
+    noLabel: "Pourquoi pas ...",
+    yesEffects: [],
+    noEffects: [changeJauge("Céleste", -incidence.l)]
   },
   24: {
-    image: "",
-    description: "",
-    yesLabel: "",
-    noLabel: "",
-    yesEffects: "",
-    noEffects: ""
+    image: "thunder.jpg",
+    description:
+      "L'astre qui a élu domicile autour de notre planète s'est stabilisé sur une orbite régulière.",
+    yesLabel: "Chouette !",
+    noLabel: "Chouette !",
+    yesEffects: [],
+    noEffects: []
   },
   25: {
-    image: "",
-    description: "",
-    yesLabel: "",
-    noLabel: "",
-    yesEffects: "",
-    noEffects: ""
+    image: "thunder.jpg",
+    description:
+      "Il y a en chaque être de cette planète un peu de toi, ils sont ton paradis, ta gratitude inconditionnelle.",
+    yesLabel: "...",
+    noLabel: "...",
+    yesEffects: [],
+    noEffects: []
   },
   26: {
-    image: "",
-    description: "",
-    yesLabel: "",
-    noLabel: "",
-    yesEffects: "",
-    noEffects: ""
+    image: "thunder.jpg",
+    description:
+      "Nous laisserons libre cours à ton imagination, mais garde bien à l'esprit que l'équilibre sera la clef du fleurissement de ton jardin.",
+    yesLabel: "...",
+    noLabel: "...",
+    yesEffects: [],
+    noEffects: []
   },
   27: {
-    image: "",
-    description: "",
-    yesLabel: "",
-    noLabel: "",
-    yesEffects: "",
-    noEffects: ""
+    image: "meteor.png",
+    description:
+      "Ce vaisseau minéral abritait des formes de vie à qui profite ce nouvel environnement. ",
+    yesLabel: "Surprenant !",
+    noLabel: "Surprenant !",
+    yesEffects: [changeJauge("Marine", +incidence.m)],
+    noEffects: [changeJauge("Marine", +incidence.m)]
   },
   28: {
-    image: "",
-    description: "",
-    yesLabel: "",
-    noLabel: "",
-    yesEffects: "",
-    noEffects: ""
+    image: "meteor.png",
+    description:
+      "Ce vaisseau minéral abritait des formes de vie à qui profite ce nouvel environnement. ",
+    yesLabel: "Surprenant !",
+    noLabel: "Surprenant !",
+    yesEffects: [changeJauge("Terrestre", +incidence.m)],
+    noEffects: [changeJauge("Terrestre", +incidence.m)]
   },
   29: {
     image: "",
