@@ -50,38 +50,41 @@ export const cards = {
   6: {
     image: "thunder.jpg",
     description:
-      "Un astre sorti de nulle part semble s’être pris d’affection pour notre planète et s’y est satellisé.",
+      "Quelques poussières qui dérivaient dans l'espace se sont laissées attirer par l'orbite de notre planète.",
     yesLabel: "Ah !",
     noLabel: "Ah !",
-    yesEffects: [changeJauge("Céleste", -incidence.l)],
-    noEffects: [changeJauge("Céleste", -incidence.l)]
+    yesEffects: [],
+    noEffects: []
   },
   7: {
     image: "thunder.jpg",
     description:
-      "Par effet boule de neige il s’est mis à grossir rapidement et obscurci maintenant en partie notre ciel.",
-    yesLabel: "On le détruit !",
-    noLabel: "Pourquoi pas ...",
-    yesEffects: [endStory("lune"), changeJauge("Céleste", +incidence.l)],
-    noEffects: [changeJauge("Terrestre", +incidence.s)]
+      "Les poussières qui gravitent autour de notre planète semblent s'aglutiner petit à petit et forment quelques roches. On s'en débarrasse ?",
+    yesLabel: "Oui",
+    noLabel: "Non, c'est joli.",
+    yesEffects: [endStory("lune")],
+    noEffects: []
   },
   8: {
     image: "thunder.jpg",
     description:
-      "Notre satellite est devenu trop massif et menace de faire sortir notre planète de son orbite.",
-    yesLabel: "Cette fois ça suffit !",
-    noLabel: "Laissons voir.",
-    yesEffects: [endStory("lune"), changeJauge("Céleste", +incidence.l)],
-    noEffects: []
+      "Le temps passant, les quelques roches qui nous entourent ont grandi et une ceinture se dessine petit à petit autour de notre astre. Le ciel s'obscurci légèrement.",
+    yesLabel: "Très bien.",
+    noLabel: "Soufflons tout ça.",
+    yesEffects: [
+      changeJauge("Terrestre", +incidence.s),
+      changeJauge("Céleste", -incidence.s)
+    ],
+    noEffects: [endStory("lune")]
   },
   9: {
     image: "thunder.jpg",
     description:
-      "Ce qui est devenu un diptyque gravitationnel se dirige maintenant droit vers notre étoile ...",
-    yesLabel: "Arf ...",
-    noLabel: "Arf ...",
-    yesEffects: [gameOver()],
-    noEffects: [gameOver()]
+      "Un météore imposant s'approche calmement de notre orbite et représente un risque en cas de collision. On l'explose ?",
+    yesLabel: "Oui",
+    noLabel: "Non",
+    yesEffects: [startStory("astre_explose")],
+    noEffects: [startStory("astre_safe")]
   },
   10: {
     image: "thunder.jpg",
@@ -99,11 +102,11 @@ export const cards = {
     yesLabel: "D'accord",
     noLabel: "D'accord",
     yesEffects: [
-      changeJauge("Marine", +incidence.m),
+      changeJauge("Marine", +incidence.s),
       changeJauge("Céleste", +incidence.m)
     ],
     noEffects: [
-      changeJauge("Marine", +incidence.m),
+      changeJauge("Marine", +incidence.s),
       changeJauge("Céleste", +incidence.m)
     ]
   },
@@ -114,7 +117,7 @@ export const cards = {
     yesLabel: "Oui",
     noLabel: "Non",
     yesEffects: [changeJauge("Terrestre", +incidence.m)],
-    noEffects: [changeJauge("Céleste", -incidence.m)]
+    noEffects: [changeJauge("Céleste", -incidence.l)]
   },
   13: {
     image: "valley.png",
@@ -123,7 +126,7 @@ export const cards = {
     yesLabel: "Oui",
     noLabel: "Non",
     yesEffects: [changeJauge("Marine", -incidence.m)],
-    noEffects: [changeJauge("Céleste", +incidence.m)]
+    noEffects: []
   },
   14: {
     image: "valley.png",
@@ -132,7 +135,7 @@ export const cards = {
     yesLabel: "Oui",
     noLabel: "Non",
     yesEffects: [
-      changeJauge("Céleste", +incidence.m),
+      changeJauge("Céleste", -incidence.s),
       changeJauge("Terrestre", -incidence.m)
     ],
     noEffects: [changeJauge("Terrestre", +incidence.m)]
@@ -143,10 +146,7 @@ export const cards = {
       "Notre planète semble bouillonner de lave en fusion. Est-ce qu'on la soulage en laissant émerger quelques volcans ?",
     yesLabel: "Oui",
     noLabel: "Non",
-    yesEffects: [
-      changeJauge("Marine", +incidence.m),
-      changeJauge("Céleste", +incidence.m)
-    ],
+    yesEffects: [changeJauge("Terrestre", -incidence.l)],
     noEffects: [
       changeJauge("Marine", +incidence.m),
       changeJauge("Céleste", +incidence.m)
@@ -171,7 +171,7 @@ export const cards = {
       changeJauge("Marine", +incidence.m),
       changeJauge("Terrestre", -incidence.m)
     ],
-    noEffects: [changeJauge("Marine", -incidence.m)]
+    noEffects: [changeJauge("Marine", -incidence.l)]
   },
   18: {
     image: "valley.png",
@@ -180,7 +180,7 @@ export const cards = {
     yesLabel: "C'est parti !",
     noLabel: "Surtout pas !",
     yesEffects: [changeJauge("Céleste", +incidence.m)],
-    noEffects: [changeJauge("Terrestre", +incidence.m)]
+    noEffects: [changeJauge("Terrestre", +incidence.s)]
   },
   19: {
     image: "valley.png",
@@ -227,7 +227,8 @@ export const cards = {
     noLabel: "Chouette.",
     yesEffects: [
       changeJauge("Marine", +incidence.s),
-      changeJauge("Céleste", +incidence.m)
+      changeJauge("Céleste", +incidence.m),
+      changeJauge("Terrestre", -incidence.m)
     ],
     noEffects: []
   },
@@ -273,8 +274,8 @@ export const cards = {
       "Ce vaisseau minéral abritait des formes de vie à qui profite ce nouvel environnement. ",
     yesLabel: "Surprenant !",
     noLabel: "Surprenant !",
-    yesEffects: [changeJauge("Marine", +incidence.m)],
-    noEffects: [changeJauge("Marine", +incidence.m)]
+    yesEffects: [changeJauge("Marine", +incidence.s)],
+    noEffects: [changeJauge("Marine", +incidence.s)]
   },
   28: {
     image: "meteor.png",
@@ -286,54 +287,98 @@ export const cards = {
     noEffects: [changeJauge("Terrestre", +incidence.m)]
   },
   29: {
-    image: "",
-    description: "",
-    yesLabel: "",
-    noLabel: "",
-    yesEffects: "",
-    noEffects: ""
+    image: "thunder.jpg",
+    description:
+      "Le météore explose à une bonne distance de notre planète mais une grande quantité de débris se précipite vers elle. ",
+    yesLabel: "Soufflons dessus.",
+    noLabel: "Mince ...",
+    yesEffects: [startStory("astre_explose_souffle")],
+    noEffects: [startStory("pluie_eclats")]
   },
   30: {
-    image: "",
-    description: "",
-    yesLabel: "",
-    noLabel: "",
-    yesEffects: "",
-    noEffects: ""
+    image: "thunder.jpg",
+    description:
+      "Quelques éclats du météore explosé sont venus peupler la masse grandissante de rochers autour de notre planète, et un gros rocher semble attirer ses voisins vers lui.",
+    yesLabel: "Chassons-le",
+    noLabel: "Ok !",
+    yesEffects: [startStory("astre_explose_souffle_ceinture")],
+    noEffects: [startStory("astre_explose_souffle_lune")]
   },
   31: {
-    image: "",
-    description: "",
-    yesLabel: "",
-    noLabel: "",
-    yesEffects: "",
-    noEffects: ""
+    image: "thunder.jpg",
+    description:
+      "Le météore file droit vers notre planète et le percute violemment, la disloquant en quelques secondes ... Ce qu'il en reste ne risque plus d'abriter la vie.",
+    yesLabel: "Mince ...",
+    noLabel: "Mince ...",
+    yesEffects: [gameOver()],
+    noEffects: [gameOver()]
   },
   32: {
-    image: "",
-    description: "",
-    yesLabel: "",
-    noLabel: "",
-    yesEffects: "",
-    noEffects: ""
+    image: "thunder.jpg",
+    description:
+      "Un joli disque de poussières et de rochers a fini par se stabiliser autour de notre planète et filtre un peu la lumière de l'étoile. ",
+    yesLabel: "Soufflons dessus.",
+    noLabel: "Superbe !",
+    yesEffects: [
+      changeJauge("Terrestre", -incidence.s),
+      changeJauge("Céleste", +incidence.s)
+    ],
+    noEffects: [
+      changeJauge("Terrestre", +incidence.l),
+      changeJauge("Céleste", -incidence.s)
+    ]
   },
   33: {
-    image: "",
-    description: "",
-    yesLabel: "",
-    noLabel: "",
-    yesEffects: "",
-    noEffects: ""
+    image: "thunder.jpg",
+    description:
+      "Le rocher de notre ceinture de poussières s'est transformé en une lune toute rondelette, est-ce risqué de la laisser grossir ?",
+    yesLabel: "Oui",
+    noLabel: "Non",
+    yesEffects: [startStory("end_lune_gardee")],
+    noEffects: [startStory("end_lune_enorme")]
   },
   34: {
-    image: "",
-    description: "",
-    yesLabel: "",
-    noLabel: "",
-    yesEffects: "",
-    noEffects: ""
+    image: "thunder.jpg",
+    description:
+      "La Lune massive continuant à s'alimenter de notre ceinture de débris a fini par faire dévier notre planète de son orbite. Ce qui est devenu un diptyque gravitationnel se dirige maintenant droit vers notre étoile ...",
+    yesLabel: "Mince ...",
+    noLabel: "Mince ...",
+    yesEffects: [gameOver()],
+    noEffects: [gameOver()]
   },
   35: {
+    image: "thunder.jpg",
+    description:
+      "Les débris restants chassés, seule notre nouvelle amie sattelisée demeure autour de notre planète et ne risque plus de faire autre chose que de l'ombre.",
+    yesLabel: "Chouette !",
+    noLabel: "Chouette !",
+    yesEffects: [
+      changeJauge("Terrestre", +incidence.l),
+      changeJauge("Céleste", -incidence.m)
+    ],
+    noEffects: [
+      changeJauge("Terrestre", +incidence.l),
+      changeJauge("Céleste", -incidence.m)
+    ]
+  },
+  36: {
+    image: "thunder.jpg",
+    description:
+      "Les éclats du météore s'effondrent sur notre planète en creusant de nombreux cratères à la surface du sol, formant au passage des cuvettes océaniques.",
+    yesLabel: "Aïe !",
+    noLabel: "Aïe !",
+    yesEffects: [
+      changeJauge("Marine", +incidence.s),
+      changeJauge("Céleste", -incidence.l),
+      changeJauge("Terrestre", -incidence.l)
+    ],
+    noEffects: [
+      changeJauge("Marine", +incidence.s),
+      changeJauge("Céleste", -incidence.l),
+      changeJauge("Terrestre", -incidence.l)
+    ]
+  },
+  "": {
     image: "",
     description: "",
     yesLabel: "",

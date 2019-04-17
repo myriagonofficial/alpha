@@ -260,8 +260,8 @@ img {
 .card-info {
   z-index: 3;
   position: absolute;
-  bottom: 215px;
-  left: 80px;
+  bottom: 210px;
+  left: 60px;
   right: 80px;
   padding: 0.8em;
   color: black;
@@ -273,10 +273,10 @@ img {
 }
 
 .card-info .card-description {
-  font-size: 1.7em;
+  font-size: 1.6em;
   text-align: center;
   position: absolute;
-  top: 62px;
+  top: 52px;
   left: 0;
   right: 0;
   height: 160px;
