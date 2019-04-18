@@ -3,7 +3,6 @@
 export const decks = [
   {
     name: "(Re)naissance",
-    frame: "primal",
     stories: [
       "init_lune",
       "init_terres_arides",
@@ -21,9 +20,9 @@ export const decks = [
       "init_tectonique"
     ],
     jauges: [
-      { name: "Céleste", icon: "CIEL2.png", level: 50 },
-      { name: "Terrestre", icon: "TERRE2.png", level: 50 },
-      { name: "Marine", icon: "MARIN2.png", level: 50 }
+      { name: "Céleste", icon: "interface_jauge_picto_celeste.png", level: 25 },
+      { name: "Marine", icon: "interface_jauge_picto_marine.png", level: 75 },
+      { name: "Terrestre", icon: "interface_jauge_picto_terrestre.png", level: 50 },
     ]
   }
 ];

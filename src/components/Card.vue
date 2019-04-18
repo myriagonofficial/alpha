@@ -1,23 +1,14 @@
 <template>
   <div class="card is-flipped flipping">
     <div class="card-face card-face-back" ref="back">
-      <img class="card-frame" :src="'assets/frames/back_' + card.frame + '.png'" @load="flip">
+      <img class="card-frame" src="assets/frames/carte_fond_arriere.png" @load="flip">
     </div>
     <div class="card-face card-face-front hidden" ref="front">
       <div class="card-image">
         <span class="card-image-yes" :style="{opacity: opacityYes }">{{ card.yesLabel || "Oui" }}</span>
         <span class="card-image-no" :style="{opacity: opacityNo }">{{ card.noLabel || "Non" }}</span>
         <img :src="'assets/cards/' + card.image">
-        <div
-          class="card-frame"
-          :style="{
-            backgroundImage: 'url(./assets/frames/' + card.frame + '.png)'
-          }"
-        />
-      </div>
-      <div class="card-info clearfix">
-        <div class="card-name">{{ card.name }}</div>
-        <div class="card-description">{{ card.description }}</div>
+        <div class="card-effect"/>
       </div>
     </div>
   </div>
@@ -188,7 +179,6 @@ img {
   pointer-events: none;
   width: 100%;
   height: auto;
-  border-radius: 24px;
 }
 
 .text-active {

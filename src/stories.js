@@ -104,7 +104,7 @@ export const stories = {
   introduction: {
     name: "Gardiens du Temps",
     cards: [1, 2, 3, 4, 5, 25, 26],
-    priority: 5
+    priority: 1 //5
   },
   init_tectonique: {
     name: "Tectonique",

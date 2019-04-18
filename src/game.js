@@ -43,5 +43,4 @@ export const nextCard = () => {
   let card = cards[state.card]
 
   if (!card.name) card.name = stories[state.story].name
-  if (!card.frame) card.frame = state.deck.frame
 }

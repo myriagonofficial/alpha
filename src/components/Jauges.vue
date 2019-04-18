@@ -1,15 +1,15 @@
 <template>
   <div class="jauges">
     <div class="jauge" v-for="jauge in jauges" :key="jauge.name">
-      <img :src="'assets/icons/' + jauge.icon">
       <div class="level" :style="{ height: getLevelHeight(jauge) }"/>
+      <img class="jauge-icon" :src="'assets/icons/' + jauge.icon">
       <div class="indicator" v-if="shouldShowIndicator">
         <svg
-          viewBox="0 32 110 110"
+          viewBox="0 0 110 110"
           xmlns="http://www.w3.org/2000/svg"
-          :style="{ opacity: Math.abs(state.choice) }"
+          :style="{ opacity: getIndicatorOpacity() }"
         >
-          <circle cx="55" cy="55" fill="rgb(84, 102, 109)" :r="Math.abs(getChoiceEffect(jauge))"></circle>
+          <circle cx="55" cy="55" fill="#dad8cc" :r="getIndicatorRadius(jauge)"></circle>
         </svg>
       </div>
     </div>
@@ -39,7 +39,11 @@ export default {
   },
   methods: {
     getLevelHeight(jauge) {
-      return (1 - jauge.level / 100) * 64 + "px";
+      let pc = 1 - jauge.level / 100;
+      let height = 12;
+      let marginTop = 9 / 148;
+      let marginBottom = 16 / 148;
+      return (marginTop + pc) * height * (1 - marginTop - marginBottom) + "vh";
     },
     getChoiceEffect(jauge) {
       if (!state.card || state.choice === 0) return 0;
@@ -53,6 +57,12 @@ export default {
         )
         .map(effect => effect.value)
         .reduce((a, b) => a + b, 0);
+    },
+    getIndicatorRadius(jauge) {
+      return Math.abs(this.getChoiceEffect(jauge)) * 2;
+    },
+    getIndicatorOpacity() {
+      return Math.pow(Math.abs(state.choice), 2);
     }
   }
 };
@@ -66,21 +76,30 @@ export default {
   right: 0;
   display: flex;
   justify-content: center;
-  margin: 16px;
 }
 
 .jauge {
   position: relative;
+  background-image: url("../assets/ui/interface_jauge_fond_pleine.png");
+  height: 15vh;
+  width: calc(12vh * 98 / 148);
+  background-size: auto 12vh;
+  background-repeat: no-repeat;
+  text-align: center;
+  transition: all 400ms ease-in-out;
 }
 
-.jauge img {
-  height: 96px;
-  width: 96px;
-  margin: 0 3em;
+.jauge-icon {
+  position: absolute;
+  height: 12vh;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .jauge .level {
-  background: rgba(245, 245, 240, 0.92);
+  background-image: url("../assets/ui/interface_jauge_fond_vide.png");
+  background-size: auto 12vh;
   position: absolute;
   top: 0;
   left: 0;
@@ -91,11 +110,13 @@ export default {
 
 .indicator {
   text-align: center;
+  position: absolute;
+  top: 11vh;
+  width: 100%;
 
   svg {
-    width: 5px;
-    height: 5px;
-    fill: rgb(84, 102, 109);
+    width: 3vh;
+    height: 3vh;
     transition: all 300ms;
   }
 }
