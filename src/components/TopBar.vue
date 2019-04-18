@@ -20,7 +20,7 @@ header {
   right: 0;
   top: 0;
   height: 14.5vh;
-  background-image: url("../assets/ui/interface_barre_haut_fond.png");
+  background-image: url("/assets/ui/interface_barre_haut_fond.png");
   background-size: 100% 100%;
 }
 </style>

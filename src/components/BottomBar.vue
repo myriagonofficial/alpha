@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <div class="card-info">
+    <div class="card-info" v-if="card">
       <div class="card-name">{{ card.name }}</div>
       <div class="card-description">{{ card.description }}</div>
     </div>
@@ -30,7 +30,7 @@ footer {
   right: 0;
   bottom: 0;
   height: 14.5vh;
-  background-image: url("../assets/ui/interface_barre_bas_fond.png");
+  background-image: url("/assets/ui/interface_barre_bas_fond.png");
   background-size: cover;
   background-position: center;
 }
