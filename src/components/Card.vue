@@ -1,7 +1,7 @@
 <template>
   <div class="card is-flipped flipping">
     <div class="card-face card-face-back" ref="back">
-      <img class="card-frame" src="assets/frames/carte_fond_arriere.png" @load="flip">
+      <img class="card-frame" src="assets/frames/carte_fond_arriere.png">
     </div>
     <div class="card-face card-face-front hidden" ref="front">
       <div class="card-image">
@@ -40,6 +40,10 @@ export default {
     opacityNo() {
       return this.state.choice < 0 ? -this.state.choice : 0;
     }
+  },
+
+  mounted() {
+    this.flip();
   },
 
   methods: {
@@ -197,7 +201,7 @@ img {
 }
 
 .card.is-flipped {
-  transform: translateX(100%) rotateY(-180deg) translateY(15px) scale(0.98);
+  transform: translateX(100%) rotateY(-180deg);
 }
 .card.flipping {
   transition: transform 0.7s;
@@ -211,11 +215,8 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  background-size: 100% 100%;
-}
-
-.card-face-front .card-frame,
-.card-face-front .card-info {
+  width: 100%;
+  height: 100%;
   backface-visibility: hidden;
 }
 

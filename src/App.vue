@@ -35,11 +35,11 @@ export default {
 
   methods: {
     resizeScene() {
-      let scale = Math.min(window.innerWidth / 640, window.innerHeight / 1080);
+      /*let scale = Math.min(window.innerWidth / 640, window.innerHeight / 1080);
       const autoscaledElements = this.$el.querySelectorAll(".autoscale");
       for (let elm of autoscaledElements) {
         elm.style.transform = `scale(${scale})`;
-      }
+      }*/
     }
   }
 };
