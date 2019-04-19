@@ -52,7 +52,7 @@ export default {
 
 .card {
   position: relative;
-  width: calc(512 / 720 * 70vh);
+  width: calc(630 / 720 * 70vh);
   height: 70vh;
   margin: auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);

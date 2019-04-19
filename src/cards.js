@@ -3,7 +3,7 @@ import { incidence } from "./const.js";
 
 export const cards = {
   1: {
-    image: "thunder.jpg",
+    image: "carte_volcan_terre.png",
     description:
       "L'incommensurable envergure de l’Univers s’offre à nous, enivrante et vertigineuse. La Vie - peuplant jadis galaxies, étoiles et planètes - décline secrètement ...",
     yesLabel: "...",
@@ -12,7 +12,7 @@ export const cards = {
     noEffects: []
   },
   2: {
-    image: "thunder.jpg",
+    image: "carte_pluie_meteorites.png",
     description:
       "Nous sommes les Gardiens du Temps, édificateurs du Cosmos, martyrs d'une malédiction nous rendant esclaves de la Vie.",
     yesLabel: "...",
@@ -21,7 +21,7 @@ export const cards = {
     noEffects: []
   },
   3: {
-    image: "thunder.jpg",
+    image: "carte_plantes_ciel.png",
     description:
       "Sans Vie, plus de témoins du Temps. Le Temps n'existe qu'au travers de ses observateurs, les êtres vivants.",
     yesLabel: "...",
@@ -30,7 +30,7 @@ export const cards = {
     noEffects: []
   },
   4: {
-    image: "thunder.jpg",
+    image: "carte_algues.png",
     description:
       "Comme chaque témoin avant toi, tu as vécu une partie infinitésimale du champs des possibles, et maintenant la tâche t'incombe d'endosser à ton tour le lourd fardeau des Gardiens.",
     yesLabel: "...",
