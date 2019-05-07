@@ -1,4 +1,4 @@
-import { changeJauge, endStory, startStory, gameOver } from "./effects.js";
+import { changeJauge, endStory, startStory, gameOver, playSound } from "./effects.js";
 import { incidence } from "./const.js";
 
 export const cards = {
@@ -9,7 +9,8 @@ export const cards = {
     yesLabel: "...",
     noLabel: "...",
     yesEffects: [],
-    noEffects: []
+    noEffects: [],
+    inEffects: [playSound("vox_gardien_01", "voice"), playSound("mus_gardien_01", "music")]
   },
   2: {
     image: "carte_pluie_meteorites.png",
@@ -18,7 +19,8 @@ export const cards = {
     yesLabel: "...",
     noLabel: "...",
     yesEffects: [],
-    noEffects: []
+    noEffects: [],
+    inEffects: [playSound("vox_gardien_02", "voice")]
   },
   3: {
     image: "carte_plantes_ciel.png",
@@ -27,7 +29,8 @@ export const cards = {
     yesLabel: "...",
     noLabel: "...",
     yesEffects: [],
-    noEffects: []
+    noEffects: [],
+    inEffects: [playSound("vox_gardien_03", "voice"), playSound("mus_gardien_02", "music")]
   },
   4: {
     image: "carte_algues.png",
@@ -36,7 +39,8 @@ export const cards = {
     yesLabel: "...",
     noLabel: "...",
     yesEffects: [],
-    noEffects: []
+    noEffects: [],
+    inEffects: [playSound("vox_gardien_04", "voice")]
   },
   5: {
     image: "thunder.jpg",
@@ -45,7 +49,8 @@ export const cards = {
     yesLabel: "...",
     noLabel: "...",
     yesEffects: [],
-    noEffects: []
+    noEffects: [],
+    inEffects: [playSound("vox_gardien_05", "voice"), playSound("mus_gardien_03", "music")]
   },
   6: {
     image: "thunder.jpg",

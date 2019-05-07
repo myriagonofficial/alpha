@@ -2,6 +2,12 @@
 
 export const decks = [
   {
+    name: "Introduction",
+    stories: [
+      "introduction"
+    ]
+  },
+  {
     name: "(Re)naissance",
     stories: [
       "init_lune",
@@ -16,7 +22,6 @@ export const decks = [
       "init_sel_de_mer",
       "init_sol_glace",
       "init_algues",
-      "introduction",
       "init_tectonique"
     ],
     jauges: [

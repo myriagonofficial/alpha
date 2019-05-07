@@ -6,8 +6,11 @@ import { pickRandomIn } from "./utils"
 import { endStory } from "./effects.js";
 
 export const initGame = () => {
-  state.deck = decks[0]
-  nextCard()
+  Object.assign(state, {
+    era: 0,
+    choice: 0
+  })
+  nextDeck()
 };
 
 export const onChoice = choice => {
@@ -17,6 +20,9 @@ export const onChoice = choice => {
     card.yesEffects.forEach(effect => effect.apply());
   } else {
     card.noEffects.forEach(effect => effect.apply());
+  }
+  if (card.outEffects) {
+    card.outEffects.forEach(effect => effect.apply());
   }
 
   state.card = null;
@@ -33,7 +39,7 @@ export const cleanupFinishedStories = () => {
 }
 
 export const nextCard = () => {
-  if (state.deck.stories.length === 0) return alert("Y'a plus de cartes dispo")
+  if (state.deck.stories.length === 0) return nextDeck()
   cleanupFinishedStories()
 
   let highestPriority = state.deck.stories.reduce((highest, story) => Math.max(highest, stories[story].priority || 0), 0)
@@ -43,4 +49,12 @@ export const nextCard = () => {
   let card = cards[state.card]
 
   if (!card.name) card.name = stories[state.story].name
+
+  if (card.inEffects) card.inEffects.forEach(effect => effect.apply());
+}
+
+export const nextDeck = () => {
+  state.deck = decks[state.era]
+  state.era++;
+  nextCard()
 }

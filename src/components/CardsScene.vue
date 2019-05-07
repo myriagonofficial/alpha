@@ -38,6 +38,9 @@ export default {
 </script>
 
 <style lang="postcss">
+$card_width: 630;
+$card_height: 720;
+
 .cards-scene {
   perspective: 1600px;
   position: absolute;
@@ -52,17 +55,22 @@ export default {
 
 .card {
   position: relative;
-  width: calc(630 / 720 * 70vh);
+  width: calc($card_width / $card_height * 70vh);
   height: 70vh;
   margin: auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+  img {
+    max-width: calc($card_width / $card_height * 70vh);
+    max-height: 70vh;
+  }
 }
 
 .pool {
   position: absolute;
-  width: calc(512 / 720 * 70vh);
+  width: calc($card_width / $card_height * 70vh);
   height: 70vh;
-  left: calc(50% - 256 / 720 * 70vh);
+  left: calc(50% - $card_width / $card_height * 0.5 * 70vh);
   top: calc(50% - 35vh);
 }
 

@@ -17,6 +17,7 @@
 <script>
 import Hammer from "hammerjs";
 import { state } from "@/state.js";
+import { sounds } from "@/sounds.js";
 
 export default {
   name: "Card",
@@ -104,6 +105,7 @@ export default {
             this.$emit("choice", false);
           }, 200);
         } else {
+          sounds.play("gui_card_off");
           this.resetElement();
         }
       }
@@ -146,6 +148,7 @@ export default {
 
         mc.on("hammer.input", this.onHammerInput);
         mc.on("panstart panmove", this.onPanMove);
+        mc.on("panstart", () => sounds.play("gui_card_on"));
       }, 1050);
     }
   }
@@ -225,7 +228,7 @@ img {
   z-index: 99;
   position: absolute;
   top: 50px;
-  max-width: 200px;
+  max-width: 12em;
   padding: 5px;
   border: 5px solid;
   border-radius: 10px;

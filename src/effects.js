@@ -1,5 +1,6 @@
 import { state } from "./state.js";
 import { removeInArray } from "./utils.js"
+import { sounds } from "./sounds.js"
 
 export function changeJauge(jaugeToUpdate, value) {
   return {
@@ -38,6 +39,15 @@ export function gameOver() {
     type: gameOver,
     apply() {
       alert("Game over !");
+    }
+  }
+}
+
+export function playSound(key, channel) {
+  return {
+    type: playSound,
+    apply() {
+      sounds.play(key, channel)
     }
   }
 }
