@@ -59,7 +59,7 @@ body {
   font-family: "Montserrat", serif;
   color: white;
   background-color: black;
-  background-image: url("/assets/ui/interface_fond_total.png");
+  background-image: url("./assets/ui/interface_fond_total.png");
   background-size: cover;
 }
 
