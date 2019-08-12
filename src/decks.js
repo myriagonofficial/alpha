@@ -7,27 +7,44 @@ export const decks = [
       "introduction"
     ]
   },
+  // {
+  //   name: "(Re)naissance",
+  //   stories: [
+  //     "init_lune",
+  //     "init_terres_arides",
+  //     "init_oceans_chauds",
+  //     "init_marecages",
+  //     "init_volcans",
+  //     "init_meteorites",
+  //     "init_oceans_geles",
+  //     "init_atmosphere_sombre",
+  //     "init_rayonnemets_dangereux",
+  //     "init_sel_de_mer",
+  //     "init_sol_glace",
+  //     "init_algues",
+  //     "init_tectonique"
+  //   ],
+  //   jauges: [
+  //     { name: "Céleste", level: 50},
+  //     { name: "Marine", level: 50},
+  //     { name: "Terrestre", level: 50}
+  //   ]
+  // },
   {
-    name: "(Re)naissance",
+    name: "Progrès_Marine",
     stories: [
-      "init_lune",
-      "init_terres_arides",
-      "init_oceans_chauds",
-      "init_marecages",
-      "init_volcans",
-      "init_meteorites",
-      "init_oceans_geles",
-      "init_atmosphere_sombre",
-      "init_rayonnemets_dangereux",
-      "init_sel_de_mer",
-      "init_sol_glace",
-      "init_algues",
-      "init_tectonique"
+      "init_marine_progrès_debut",
+      "init_arc_marine_deplacement",
+      "init_arc_religion_base",
+      "init_religion_nomadisme",
+      "init_religion_reproduction",
+      "init_arc_reproduction_intro"
     ],
     jauges: [
-      { name: "Céleste", icon: "interface_jauge_picto_celeste.png", level: 25 },
-      { name: "Marine", icon: "interface_jauge_picto_marine.png", level: 75 },
-      { name: "Terrestre", icon: "interface_jauge_picto_terrestre.png", level: 50 },
+      { name: "Technique", icon: "interface_jauge_picto_progres.png", level: 50 },
+      { name: "Developpement", icon: "interface_jauge_picto_demographie.png", level: 50 },
+      { name: "Bonheur", icon: "interface_jauge_picto_bonheur.png", level: 50 },
+      { name: "Environnement", icon: "interface_jauge_picto_environnement.png", level: 50 }
     ]
   }
 ];

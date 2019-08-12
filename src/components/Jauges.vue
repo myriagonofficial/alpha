@@ -80,7 +80,7 @@ export default {
 
 .jauge {
   position: relative;
-  background-image: url("/assets/ui/interface_jauge_fond_pleine.png");
+  background-image: url("../assets/ui/interface_jauge_fond_pleine.png");
   height: 15vh;
   width: calc(12vh * 98 / 148);
   background-size: auto 12vh;
@@ -98,7 +98,7 @@ export default {
 }
 
 .jauge .level {
-  background-image: url("/assets/ui/interface_jauge_fond_vide.png");
+  background-image: url("../assets/ui/interface_jauge_fond_vide.png");
   background-size: auto 12vh;
   position: absolute;
   top: 0;
