@@ -311,19 +311,74 @@ export const stories = {
         cards: [103],
         priority: 1
     },
-    init_arc_reproduction_intro: {
+    init_arc_repro_base: {
         name: "Reproduction",
         cards: [107],
         priority: 1
     },
-    arc_reproduction_cache: {
+    arc_repro_attention: {
         name: "Reproduction",
         cards: [108],
-        priority: 2
+        priority: 1
     },
-    "": {
+    arc_repro_plus: {
         name: "Reproduction",
-        cards: "",
-        priority: ""
+        cards: [109],
+        priority: 1
+    },
+    arc_repro_bagarre: {
+        name: "Reproduction",
+        cards: [110],
+        priority: 1
+    },
+    arc_repro_declin: {
+        name: "Reproduction",
+        cards: [111],
+        priority: 1
+    },
+    arc_repro_extension: {
+        name: "Reproduction",
+        cards: [119],
+        priority: 1
+    },
+    arc_repro_bagarre_2: {
+        name: "Reproduction",
+        cards: [112],
+        priority: 1
+    },
+    arc_repro_stabilisation: {
+        name: "Reproduction",
+        cards: [113],
+        priority: 1
+    },
+    arc_repro_medecine: {
+        name: "Reproduction",
+        cards: [117],
+        priority: 1
+    },
+    arc_repro_maladie: {
+        name: "Reproduction",
+        cards: [120],
+        priority: 1
+    },
+    arc_repro_game_over: {
+        name: "Reproduction",
+        cards: [114],
+        priority: 6
+    },
+    arc_repro_religieux: {
+        name: "Reproduction",
+        cards: [116],
+        priority: 1
+    },
+    arc_repro_game_over_2: {
+        name: "Reproduction",
+        cards: [115],
+        priority: 1
+    },
+    arc_repro_prospere: {
+        name: "Reproduction",
+        cards: [118],
+        priority: 1
     }
 }

@@ -54,7 +54,7 @@ export const cards = {
         noLabel: "Ah !",
         yesEffects: [],
         noEffects: [],
-        inEffects: ""
+        inEffects: []
     },
     7: {
         image: "carte_pluie_meteorites.png",
@@ -63,7 +63,7 @@ export const cards = {
         noLabel: "Non, c'est joli.",
         yesEffects: [endStory('lune')],
         noEffects: [],
-        inEffects: ""
+        inEffects: []
     },
     8: {
         image: "carte_pluie_meteorites.png",
@@ -72,7 +72,7 @@ export const cards = {
         noLabel: "Soufflons tout ça.",
         yesEffects: [changeJauge('Terrestre',+incidence.s),changeJauge('Céleste',-incidence.s)],
         noEffects: [endStory('lune')],
-        inEffects: ""
+        inEffects: []
     },
     9: {
         image: "carte_pluie_meteorites.png",
@@ -81,7 +81,7 @@ export const cards = {
         noLabel: "Non",
         yesEffects: [startStory('astre_explose')],
         noEffects: [startStory('astre_safe')],
-        inEffects: ""
+        inEffects: []
     },
     10: {
         image: "carte_volcan_terre.png",
@@ -90,7 +90,7 @@ export const cards = {
         noLabel: "Non",
         yesEffects: [changeJauge('Terrestre', +incidence.m)],
         noEffects: [startStory('end_tectonique')],
-        inEffects: ""
+        inEffects: []
     },
     11: {
         image: "carte_volcan_terre.png",
@@ -99,7 +99,7 @@ export const cards = {
         noLabel: "D'accord",
         yesEffects: [changeJauge('Marine', +incidence.s),changeJauge('Céleste',+incidence.m)],
         noEffects: [changeJauge('Marine', +incidence.s),changeJauge('Céleste',+incidence.m)],
-        inEffects: ""
+        inEffects: []
     },
     12: {
         image: "carte_volcan_terre.png",
@@ -108,7 +108,7 @@ export const cards = {
         noLabel: "Non",
         yesEffects: [changeJauge('Terrestre', +incidence.m)],
         noEffects: [changeJauge('Céleste', -incidence.l)],
-        inEffects: ""
+        inEffects: []
     },
     13: {
         image: "carte_pluie_meteorites.png",
@@ -117,7 +117,7 @@ export const cards = {
         noLabel: "Non",
         yesEffects: [changeJauge('Marine', -incidence.m)],
         noEffects: [],
-        inEffects: ""
+        inEffects: []
     },
     14: {
         image: "carte_pluie_meteorites.png",
@@ -126,7 +126,7 @@ export const cards = {
         noLabel: "Non",
         yesEffects: [changeJauge('Céleste', -incidence.s), changeJauge('Terrestre',-incidence.m)],
         noEffects: [changeJauge('Terrestre', +incidence.m)],
-        inEffects: ""
+        inEffects: []
     },
     15: {
         image: "carte_pluie_meteorites.png",
@@ -135,7 +135,7 @@ export const cards = {
         noLabel: "Non",
         yesEffects: [changeJauge('Terrestre', -incidence.l)],
         noEffects: [changeJauge('Marine', +incidence.m),changeJauge('Céleste',+incidence.m)],
-        inEffects: ""
+        inEffects: []
     },
     16: {
         image: "carte_pluie_meteorites.png",
@@ -144,7 +144,7 @@ export const cards = {
         noLabel: "Les faire tomber sur un continent.",
         yesEffects: [startStory('end_meteorite_marine')],
         noEffects: [startStory('end_meteorite_terrestre')],
-        inEffects: ""
+        inEffects: []
     },
     17: {
         image: "carte_pluie_meteorites.png",
@@ -153,7 +153,7 @@ export const cards = {
         noLabel: "Tant mieux.",
         yesEffects: [changeJauge('Marine', +incidence.m),changeJauge('Terrestre', -incidence.m)],
         noEffects: [changeJauge('Marine', -incidence.l)],
-        inEffects: ""
+        inEffects: []
     },
     18: {
         image: "carte_pluie_meteorites.png",
@@ -162,7 +162,7 @@ export const cards = {
         noLabel: "Surtout pas !",
         yesEffects: [changeJauge('Céleste', +incidence.m)],
         noEffects: [changeJauge('Terrestre', +incidence.s)],
-        inEffects: ""
+        inEffects: []
     },
     19: {
         image: "carte_pluie_meteorites.png",
@@ -171,7 +171,7 @@ export const cards = {
         noLabel: "Non",
         yesEffects: [changeJauge('Céleste', +incidence.s),changeJauge('Terrestre', +incidence.l)],
         noEffects: [changeJauge('Terrestre', -incidence.l), changeJauge('Céleste', -incidence.s)],
-        inEffects: ""
+        inEffects: []
     },
     20: {
         image: "carte_pluie_meteorites.png",
@@ -180,7 +180,7 @@ export const cards = {
         noLabel: "Non",
         yesEffects: [changeJauge('Marine',+incidence.m),],
         noEffects: [changeJauge('Marine', -incidence.m)],
-        inEffects: ""
+        inEffects: []
     },
     21: {
         image: "carte_pluie_meteorites.png",
@@ -189,7 +189,7 @@ export const cards = {
         noLabel: "Non",
         yesEffects: [changeJauge('Terrestre', -incidence.l), changeJauge('Céleste', +incidence.m),changeJauge('Marine', +incidence.s)],
         noEffects: [changeJauge('Terrestre', +incidence.m)],
-        inEffects: ""
+        inEffects: []
     },
     22: {
         image: "carte_pluie_meteorites.png",
@@ -198,7 +198,7 @@ export const cards = {
         noLabel: "Chouette.",
         yesEffects: [changeJauge('Marine', +incidence.s), changeJauge('Céleste', +incidence.m),changeJauge('Terrestre',-incidence.m)],
         noEffects: [],
-        inEffects: ""
+        inEffects: []
     },
     23: {
         image: "carte_pluie_meteorites.png",
@@ -207,7 +207,7 @@ export const cards = {
         noLabel: "Pourquoi pas ...",
         yesEffects: [],
         noEffects: [changeJauge('Céleste', -incidence.l)],
-        inEffects: ""
+        inEffects: []
     },
     24: {
         image: "carte_pluie_meteorites.png",
@@ -216,7 +216,7 @@ export const cards = {
         noLabel: "Chouette !",
         yesEffects: [],
         noEffects: [],
-        inEffects: ""
+        inEffects: []
     },
     25: {
         image: "carte_pluie_meteorites.png",
@@ -225,7 +225,7 @@ export const cards = {
         noLabel: "...",
         yesEffects: [],
         noEffects: [],
-        inEffects: ""
+        inEffects: []
     },
     26: {
         image: "carte_pluie_meteorites.png",
@@ -234,7 +234,7 @@ export const cards = {
         noLabel: "...",
         yesEffects: [],
         noEffects: [],
-        inEffects: ""
+        inEffects: []
     },
     27: {
         image: "carte_pluie_meteorites.png",
@@ -243,7 +243,7 @@ export const cards = {
         noLabel: "Surprenant !",
         yesEffects: [changeJauge('Marine', +incidence.s)],
         noEffects: [changeJauge('Marine', +incidence.s)],
-        inEffects: ""
+        inEffects: []
     },
     28: {
         image: "carte_pluie_meteorites.png",
@@ -252,7 +252,7 @@ export const cards = {
         noLabel: "Surprenant !",
         yesEffects: [changeJauge('Terrestre', +incidence.m)],
         noEffects: [changeJauge('Terrestre', +incidence.m)],
-        inEffects: ""
+        inEffects: []
     },
     29: {
         image: "carte_pluie_meteorites.png",
@@ -261,7 +261,7 @@ export const cards = {
         noLabel: "Mince ...",
         yesEffects: [startStory('astre_explose_souffle')],
         noEffects: [startStory('pluie_eclats')],
-        inEffects: ""
+        inEffects: []
     },
     30: {
         image: "carte_pluie_meteorites.png",
@@ -270,7 +270,7 @@ export const cards = {
         noLabel: "Ok !",
         yesEffects: [startStory('astre_explose_souffle_ceinture')],
         noEffects: [startStory('astre_explose_souffle_lune')],
-        inEffects: ""
+        inEffects: []
     },
     31: {
         image: "carte_pluie_meteorites.png",
@@ -279,7 +279,7 @@ export const cards = {
         noLabel: "Mince ...",
         yesEffects: [gameOver()],
         noEffects: [gameOver()],
-        inEffects: ""
+        inEffects: []
     },
     32: {
         image: "carte_pluie_meteorites.png",
@@ -288,7 +288,7 @@ export const cards = {
         noLabel: "Superbe !",
         yesEffects: [changeJauge('Terrestre',-incidence.s),changeJauge('Céleste',+incidence.s)],
         noEffects: [changeJauge('Terrestre',+incidence.l),changeJauge('Céleste',-incidence.s)],
-        inEffects: ""
+        inEffects: []
     },
     33: {
         image: "carte_pluie_meteorites.png",
@@ -297,7 +297,7 @@ export const cards = {
         noLabel: "Non",
         yesEffects: [startStory('end_lune_gardee')],
         noEffects: [startStory('end_lune_enorme')],
-        inEffects: ""
+        inEffects: []
     },
     34: {
         image: "carte_pluie_meteorites.png",
@@ -306,7 +306,7 @@ export const cards = {
         noLabel: "Mince ...",
         yesEffects: [gameOver()],
         noEffects: [gameOver()],
-        inEffects: ""
+        inEffects: []
     },
     35: {
         image: "carte_pluie_meteorites.png",
@@ -315,7 +315,7 @@ export const cards = {
         noLabel: "Chouette !",
         yesEffects: [changeJauge('Terrestre',+incidence.l),changeJauge('Céleste',-incidence.m)],
         noEffects: [changeJauge('Terrestre',+incidence.l),changeJauge('Céleste',-incidence.m)],
-        inEffects: ""
+        inEffects: []
     },
     36: {
         image: "carte_pluie_meteorites.png",
@@ -324,7 +324,7 @@ export const cards = {
         noLabel: "Aïe !",
         yesEffects: [changeJauge('Marine',+incidence.s),changeJauge('Céleste',-incidence.l),changeJauge('Terrestre',-incidence.l)],
         noEffects: [changeJauge('Marine',+incidence.s),changeJauge('Céleste',-incidence.l),changeJauge('Terrestre',-incidence.l)],
-        inEffects: ""
+        inEffects: []
     },
     37: {
         image: "carte_pluie_meteorites.png",
@@ -333,7 +333,7 @@ export const cards = {
         noLabel: "Zut !",
         yesEffects: [gameOver()],
         noEffects: [gameOver()],
-        inEffects: ""
+        inEffects: []
     },
     38: {
         image: "carte_pluie_meteorites.png",
@@ -342,7 +342,7 @@ export const cards = {
         noLabel: "Zut !",
         yesEffects: [gameOver()],
         noEffects: [gameOver()],
-        inEffects: ""
+        inEffects: []
     },
     39: {
         image: "carte_pluie_meteorites.png",
@@ -351,7 +351,7 @@ export const cards = {
         noLabel: "Zut !",
         yesEffects: [gameOver()],
         noEffects: [gameOver()],
-        inEffects: ""
+        inEffects: []
     },
     40: {
         image: "carte_pluie_meteorites.png",
@@ -360,7 +360,7 @@ export const cards = {
         noLabel: "Zut !",
         yesEffects: [gameOver()],
         noEffects: [gameOver()],
-        inEffects: ""
+        inEffects: []
     },
     41: {
         image: "carte_pluie_meteorites.png",
@@ -369,7 +369,7 @@ export const cards = {
         noLabel: "Zut !",
         yesEffects: [gameOver()],
         noEffects: [gameOver()],
-        inEffects: ""
+        inEffects: []
     },
     42: {
         image: "carte_pluie_meteorites.png",
@@ -378,7 +378,7 @@ export const cards = {
         noLabel: "Zut !",
         yesEffects: [gameOver()],
         noEffects: [gameOver()],
-        inEffects: ""
+        inEffects: []
     },
     43: {
         image: "carte_plantes_ciel.png",
@@ -387,79 +387,7 @@ export const cards = {
         noLabel: "Non",
         yesEffects: [startStory('vegetaux_brules'), changeJauge('Celeste',-incidence.m)],
         noEffects: [startStory('vegetaux_compet'), changeJauge('Celeste',+incidence.s)],
-        inEffects: ""
-    },
-    44: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    45: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    46: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    47: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    48: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    49: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    50: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    51: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
+        inEffects: []
     },
     52: {
         image: "carte_algues.png",
@@ -468,7 +396,7 @@ export const cards = {
         noLabel: "Oui",
         yesEffects: [],
         noEffects: [],
-        inEffects: ""
+        inEffects: []
     },
     53: {
         image: "carte_algue_saine.png",
@@ -477,25 +405,25 @@ export const cards = {
         noLabel: "Au nord",
         yesEffects: [startStory('arc_marine_deplacement_sud_narration')],
         noEffects: [startStory('arc_marine_deplacement_nord_narration')],
-        inEffects: ""
+        inEffects: []
     },
     54: {
         image: "carte_algue_poison.png",
         description: "Ce long voyage vers le sud fût éreintant. La population est fatiguée.",
         yesLabel: "Fichtre !",
         noLabel: "Fichtre !",
-        yesEffects: [changeJauge('Developpement', -incidence.ml),startStory('arc_marine_deplacement_sud')],
-        noEffects: [changeJauge('Developpement', -incidence.m),startStory('arc_marine_deplacement_sud')],
-        inEffects: ""
+        yesEffects: [changeJauge('Démographie', -incidence.m),startStory('arc_marine_deplacement_sud')],
+        noEffects: [changeJauge('Démographie', -incidence.m),startStory('arc_marine_deplacement_sud')],
+        inEffects: []
     },
     55: {
         image: "carte_algues.png",
         description: "Ce long voyage vers le nord fût éreintant. La population est fatiguée.",
         yesLabel: "Diantre !",
         noLabel: "Diantre !",
-        yesEffects: [changeJauge('Developpement', -incidence.m),startStory('arc_marine_deplacement_nord')],
-        noEffects: [changeJauge('Developpement', -incidence.m),startStory('arc_marine_deplacement_nord')],
-        inEffects: ""
+        yesEffects: [changeJauge('Démographie', -incidence.m),startStory('arc_marine_deplacement_nord')],
+        noEffects: [changeJauge('Démographie', -incidence.m),startStory('arc_marine_deplacement_nord')],
+        inEffects: []
     },
     56: {
         image: "carte_algue_saine.png",
@@ -504,7 +432,7 @@ export const cards = {
         noLabel: "Les asservir !",
         yesEffects: [changeJauge('Bonheur', -incidence.l),changeJauge('Environnement', +incidence.l),startStory('arc_marine_deplacement_attaque')],
         noEffects: [changeJauge('Bonheur', +incidence.s),changeJauge('Environnement', +incidence.s),startStory('arc_marine_deplacement_asservir')],
-        inEffects: ""
+        inEffects: []
     },
     57: {
         image: "carte_algue_poison.png",
@@ -513,7 +441,7 @@ export const cards = {
         noLabel: "Aller au sud",
         yesEffects: [changeJauge('Environnement', +incidence.s),startStory('arc_marine_deplacement_sedentarisation')],
         noEffects: [startStory('arc_marine_deplacement_sud_narration')],
-        inEffects: ""
+        inEffects: []
     },
     58: {
         image: "carte_algues.png",
@@ -522,7 +450,7 @@ export const cards = {
         noLabel: "Aller ailleurs",
         yesEffects: [changeJauge('Environnement', -incidence.s),startStory('arc_marine_deplacement_sedentarisation')],
         noEffects: [changeJauge('Environnement', +incidence.m),changeJauge('Bonheur',+incidence.m),startStory('arc_marine_deplacement_intellectuel')],
-        inEffects: ""
+        inEffects: []
     },
     59: {
         image: "carte_algue_saine.png",
@@ -531,7 +459,7 @@ export const cards = {
         noLabel: "Aller ailleurs",
         yesEffects: [changeJauge('Environnement', -incidence.s),startStory('arc_marine_deplacement_sedentarisation')],
         noEffects: [changeJauge('Environnement', +incidence.m),changeJauge('Bonheur', +incidence.m),startStory('arc_marine_deplacement_intellectuel')],
-        inEffects: ""
+        inEffects: []
     },
     60: {
         image: "carte_algue_poison.png",
@@ -540,16 +468,16 @@ export const cards = {
         noLabel: "Hmmm...",
         yesEffects: [],
         noEffects: [],
-        inEffects: ""
+        inEffects: []
     },
     61: {
         image: "carte_algues.png",
         description: "Tous ces déplacements apporte énormément de ressources à l'espèce ! On peut désormais prendre le temps de former des individus. Quelle spécialité choisir ?",
         yesLabel: "Intellectuel",
         noLabel: "Guerrier",
-        yesEffects: [changeJauge('Environnement', +incidence.m),changeJauge('Developpement', +incidence.m),changeJauge('Bonheur', +incidence.m),startStory('arc_marine_deplacement_expert_nomade')],
-        noEffects: [changeJauge('Environnement', +incidence.s),changeJauge('Developpement', +incidence.s),changeJauge('Bonheur', +incidence.s),startStory('arc_marine_deplacement_guerrier')],
-        inEffects: ""
+        yesEffects: [changeJauge('Environnement', +incidence.m),changeJauge('Démographie', +incidence.m),changeJauge('Bonheur', +incidence.m),startStory('arc_marine_deplacement_expert_nomade')],
+        noEffects: [changeJauge('Environnement', +incidence.s),changeJauge('Démographie', +incidence.s),changeJauge('Bonheur', +incidence.s),startStory('arc_marine_deplacement_guerrier')],
+        inEffects: []
     },
     62: {
         image: "carte_algue_saine.png",
@@ -558,7 +486,7 @@ export const cards = {
         noLabel: "Super !",
         yesEffects: [],
         noEffects: [],
-        inEffects: ""
+        inEffects: []
     },
     63: {
         image: "carte_algue_poison.png",
@@ -566,143 +494,8 @@ export const cards = {
         yesLabel: "Combattre",
         noLabel: "Fuir ailleurs",
         yesEffects: [changeJauge('Bonheur', -incidence.m),changeJauge('Environnement', +incidence.s),startStory('arc_marine_deplacement_attaque')],
-        noEffects: [changeJauge('Developpement', -incidence.s),startStory('arc_marine_deplacement_nord')],
-        inEffects: ""
-    },
-    64: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    65: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    66: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    67: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    68: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    69: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    70: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    71: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    72: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    73: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    74: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    75: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    76: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    77: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    78: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
+        noEffects: [changeJauge('Démographie', -incidence.s),startStory('arc_marine_deplacement_nord')],
+        inEffects: []
     },
     79: {
         image: "carte_algues.png",
@@ -711,7 +504,7 @@ export const cards = {
         noLabel: "Ne rien faire",
         yesEffects: [changeJauge('Bonheur', +incidence.m),startStory('arc_religion_obscurantisme')],
         noEffects: [startStory('arc_religion_base_narratif')],
-        inEffects: ""
+        inEffects: []
     },
     80: {
         image: "carte_algue_saine.png",
@@ -720,7 +513,7 @@ export const cards = {
         noLabel: "Bien",
         yesEffects: [startStory('arc_religion_polythéisme')],
         noEffects: [startStory('arc_religion_polythéisme')],
-        inEffects: ""
+        inEffects: []
     },
     81: {
         image: "carte_algue_poison.png",
@@ -728,8 +521,8 @@ export const cards = {
         yesLabel: "Punir ces polythéistes",
         noLabel: "Les laisser faire",
         yesEffects: [changeJauge('Bonheur', -incidence.m),startStory('arc_religion_conversion')],
-        noEffects: [changeJauge('Technique', +incidence.m)],
-        inEffects: ""
+        noEffects: [changeJauge('Progrès', +incidence.m)],
+        inEffects: []
     },
     82: {
         image: "carte_algues.png",
@@ -737,8 +530,8 @@ export const cards = {
         yesLabel: "Envoyer un signe",
         noLabel: "Ne rien faire",
         yesEffects: [changeJauge('Bonheur', +incidence.m),startStory('arc_religion_guerre_avortee')],
-        noEffects: [changeJauge('Technique', +incidence.m),changeJauge('Bonheur', +incidence.m),startStory('arc_religion_envahisseurs_guerre')],
-        inEffects: ""
+        noEffects: [changeJauge('Progrès', +incidence.m),changeJauge('Bonheur', +incidence.m),startStory('arc_religion_envahisseurs_guerre')],
+        inEffects: []
     },
     83: {
         image: "carte_algue_saine.png",
@@ -747,7 +540,7 @@ export const cards = {
         noLabel: "Bien",
         yesEffects: [startStory('arc_religion_laïcité')],
         noEffects: [startStory('arc_religion_laïcité')],
-        inEffects: ""
+        inEffects: []
     },
     84: {
         image: "carte_algue_poison.png",
@@ -756,7 +549,7 @@ export const cards = {
         noLabel: "Ne rien faire",
         yesEffects: [changeJauge('Bonheur', +incidence.m),startStory('arc_religion_obscurantisme')],
         noEffects: [startStory('arc_religion_liberté_de_culte')],
-        inEffects: ""
+        inEffects: []
     },
     85: {
         image: "carte_algues.png",
@@ -765,7 +558,7 @@ export const cards = {
         noLabel: "Ne rien faire",
         yesEffects: [startStory('arc_religion_intégration')],
         noEffects: [startStory('arc_religion_obscurantisme')],
-        inEffects: ""
+        inEffects: []
     },
     86: {
         image: "carte_algue_saine.png",
@@ -774,7 +567,7 @@ export const cards = {
         noLabel: "Les accueillir",
         yesEffects: [startStory('arc_religion_obscurantisme')],
         noEffects: [startStory('arc_religion_envahisseurs')],
-        inEffects: ""
+        inEffects: []
     },
     87: {
         image: "carte_algue_poison.png",
@@ -783,7 +576,7 @@ export const cards = {
         noLabel: "Bien",
         yesEffects: [startStory('arc_religion_intégration')],
         noEffects: [startStory('arc_religion_intégration')],
-        inEffects: ""
+        inEffects: []
     },
     88: {
         image: "carte_algues.png",
@@ -792,34 +585,34 @@ export const cards = {
         noLabel: "Le rejeter.",
         yesEffects: [changeJauge('Bonheur', +incidence.m),startStory('arc_religion_obscurantisme_pouvoir')],
         noEffects: [changeJauge('Bonheur', -incidence.m),startStory('arc_religion_polythéisme')],
-        inEffects: ""
+        inEffects: []
     },
     89: {
         image: "carte_algue_saine.png",
         description: "Le messie s'impose de plus en plus comme une force de décision politique. ",
         yesLabel: "Soulever le peuple",
         noLabel: "Ne rien faire",
-        yesEffects: [changeJauge('Bonheur', -incidence.s),changeJauge('Technique', -incidence.s),startStory('arc_religion_polythéisme')],
+        yesEffects: [changeJauge('Bonheur', -incidence.s),changeJauge('Progrès', -incidence.s),startStory('arc_religion_polythéisme')],
         noEffects: [startStory('arc_religion_fin_obscurantisme')],
-        inEffects: ""
+        inEffects: []
     },
     90: {
         image: "carte_algue_poison.png",
         description: "La pratique d'une religion unique dévie en extrémisme, des massacres ont lieu régulièrement au nom de la religion. ",
         yesLabel: "Ah ...",
         noLabel: "Ah ...",
-        yesEffects: [changeJauge('Bonheur', -incidence.l),changeJauge('Technique', -incidence.l)],
-        noEffects: [changeJauge('Bonheur', -incidence.l),changeJauge('Technique', -incidence.l)],
-        inEffects: ""
+        yesEffects: [changeJauge('Bonheur', -incidence.l),changeJauge('Progrès', -incidence.l)],
+        noEffects: [changeJauge('Bonheur', -incidence.l),changeJauge('Progrès', -incidence.l)],
+        inEffects: []
     },
     91: {
         image: "carte_algue_poison.png",
         description: "Le peuple est désormais laïque et chaque individu souhaitant librement pratiquer un culte peut s'y adonner sans problème !\nVous êtes désormais un expert en religions marine !",
         yesLabel: " Super !",
         noLabel: "Super !",
-        yesEffects: [changeJauge('Bonheur', +incidence.l),changeJauge('Developpement', +incidence.s)],
-        noEffects: [changeJauge('Bonheur', +incidence.l),changeJauge('Developpement', +incidence.s)],
-        inEffects: ""
+        yesEffects: [changeJauge('Bonheur', +incidence.l),changeJauge('Démographie', +incidence.s)],
+        noEffects: [changeJauge('Bonheur', +incidence.l),changeJauge('Démographie', +incidence.s)],
+        inEffects: []
     },
     92: {
         image: "carte_algues.png",
@@ -828,16 +621,16 @@ export const cards = {
         noLabel: "Refuser ce précepte",
         yesEffects: [startStory('religion_nomadisme_accepte')],
         noEffects: [],
-        inEffects: ""
+        inEffects: []
     },
     93: {
         image: "carte_algue_saine.png",
         description: "Certains individus craignent désormais de partir en exploration.",
         yesLabel: "Ah.",
         noLabel: "Ah.",
-        yesEffects: [changeJauge('Environnement', +incidence.s),changeJauge('Technique', -incidence.s)],
-        noEffects: [changeJauge('Environnement', +incidence.s),changeJauge('Technique', -incidence.s)],
-        inEffects: ""
+        yesEffects: [changeJauge('Environnement', +incidence.s),changeJauge('Progrès', -incidence.s)],
+        noEffects: [changeJauge('Environnement', +incidence.s),changeJauge('Progrès', -incidence.s)],
+        inEffects: []
     },
     94: {
         image: "carte_algue_poison.png",
@@ -846,7 +639,7 @@ export const cards = {
         noLabel: "Parfait",
         yesEffects: [],
         noEffects: [],
-        inEffects: ""
+        inEffects: []
     },
     98: {
         image: "carte_algues.png",
@@ -855,16 +648,16 @@ export const cards = {
         noLabel: "Refuser ce précepte",
         yesEffects: [startStory('religion_reproduction_accepte')],
         noEffects: [],
-        inEffects: ""
+        inEffects: []
     },
     99: {
         image: "carte_algue_saine.png",
         description: "La démographie progresse moins rapidement mais l'environnement s'en trouve préservé.",
         yesLabel: "Chouette",
         noLabel: "Chouette",
-        yesEffects: [changeJauge('Environnement', +incidence.s),changeJauge('Technique', -incidence.s)],
-        noEffects: [changeJauge('Environnement', +incidence.s),changeJauge('Technique', -incidence.s)],
-        inEffects: ""
+        yesEffects: [changeJauge('Environnement', +incidence.s),changeJauge('Progrès', -incidence.s)],
+        noEffects: [changeJauge('Environnement', +incidence.s),changeJauge('Progrès', -incidence.s)],
+        inEffects: []
     },
     103: {
         image: "carte_algue_poison.png",
@@ -873,618 +666,159 @@ export const cards = {
         noLabel: "S'opposer",
         yesEffects: [changeJauge('Environnement', -incidence.s),changeJauge('Bonheur', +incidence.s)],
         noEffects: [],
-        inEffects: ""
+        inEffects: []
     },
     104: {
         image: "",
         description: "",
         yesLabel: "",
         noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
     },
     105: {
         image: "",
         description: "",
         yesLabel: "",
         noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
     },
     106: {
         image: "",
         description: "",
         yesLabel: "",
         noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
     },
     107: {
         image: "carte_algues.png",
-        description: "La stratégie reproductive de nos poulpes est fondée sur la quantité. La mortalité infantile est élevée.",
-        yesLabel: "Ah.",
-        noLabel: "Ah.",
-        yesEffects: [startStory('arc_reproduction_cache')],
-        noEffects: [startStory('arc_reproduction_cache')],
-        inEffects: ""
+        description: "Une maladie touchant principalement les plus jeunes se déclare et menace la population.\nComment assurer leur survie ?",
+        yesLabel: "Donner plus d’attention",
+        noLabel: "Faire plus d’enfants",
+        yesEffects: [startStory('arc_repro_attention'),changeJauge('Bonheur', +incidence.m),changeJauge('Progrès', +incidence.s)],
+        noEffects: [startStory('arc_repro_plus'),changeJauge('Démographie', +incidence.m),changeJauge('Environnement', -incidence.s)],
+        inEffects: []
     },
     108: {
         image: "carte_algue_saine.png",
-        description: "De nombreuses espèces concurentes se nourrissent des oeufs. Les protéger en les cachant dans les coraux ?",
-        yesLabel: "Oui",
-        noLabel: "Non",
-        yesEffects: [changeJauge('Environnement', -incidence.s),changeJauge('Technique', +incidence.s)],
-        noEffects: [changeJauge('Bonheur', -incidence.s)],
-        inEffects: ""
+        description: "La partie de la population dédiée au soin et à l’éducation des jeunes tend à grandir, et la démographie se stabilise.",
+        yesLabel: "Cela me satisfait.",
+        noLabel: "Donner encore plus d’attention",
+        yesEffects: [startStory('arc_repro_bagarre'),changeJauge('Bonheur', -incidence.m)],
+        noEffects: [startStory('arc_repro_declin'),changeJauge('Démographie', -incidence.m),changeJauge('Bonheur', -incidence.s)],
+        inEffects: []
     },
     109: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
+        image: "carte_algue_saine.png",
+        description: "La mortalité augmente moins vite que la natalité, la démographie accroît.",
+        yesLabel: "Stabiliser la taille des familles",
+        noLabel: "Continuer sur cette voie",
+        yesEffects: [startStory('arc_repro_bagarre'),changeJauge('Bonheur', -incidence.s)],
+        noEffects: [startStory('arc_repro_extension'),changeJauge('Démographie', +incidence.m),changeJauge('Environnement', -incidence.m)],
+        inEffects: []
     },
     110: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
+        image: "carte_algue_saine.png",
+        description: "Au sein de chaque famille, les membres sont plus proches. Les familles s’organisent en castes rivales et cela génère des tensions.",
+        yesLabel: "Les plus forts survivront",
+        noLabel: "Encourager le métissage",
+        yesEffects: [startStory('arc_repro_bagarre_2'),changeJauge('Démographie', -incidence.l),changeJauge('Bonheur', -incidence.m)],
+        noEffects: [startStory('arc_repro_stabilisation'),changeJauge('Démographie', +incidence.s),changeJauge('Bonheur', +incidence.s)],
+        inEffects: []
     },
     111: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
+        image: "carte_algue_saine.png",
+        description: "Ce surcroît d’efforts alloués au soin des plus jeunes se réalise au détriment des activités de collecte de nourriture et de défense.",
+        yesLabel: "Persévérer",
+        noLabel: "Rééquilibrer l’organisation",
+        yesEffects: [startStory('arc_repro_bagarre'),changeJauge('Bonheur', -incidence.m)],
+        noEffects: [startStory('arc_repro_stabilisation'),changeJauge('Progrès', +incidence.m)],
+        inEffects: []
     },
     112: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
+        image: "carte_algue_saine.png",
+        description: "Les guerres entre castes font rage. Cela rend la population vulnérable aux attaques d’autres espèces belliqueuses.",
+        yesLabel: "Ha zut",
+        noLabel: "Ha zut",
+        yesEffects: [startStory('arc_repro_game_over')],
+        noEffects: [startStory('arc_repro_game_over')],
+        inEffects: []
     },
     113: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
+        image: "carte_algue_saine.png",
+        description: "La population est stabilisée. Les savoirs liés au soin ont été documentés. A qui les confier ?",
+        yesLabel: "Les religieux",
+        noLabel: "Les scientifiques ",
+        yesEffects: [startStory('arc_repro_religieux'),changeJauge('Progrès', -incidence.m),changeJauge('Environnement', +incidence.m)],
+        noEffects: [startStory('arc_repro_medecine'),changeJauge('Progrès', +incidence.m)],
+        inEffects: []
     },
     114: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
+        image: "carte_algue_poison.png",
+        description: "Une autre espèce déclare la guerre, et la remporte.",
+        yesLabel: "C'est perdu",
+        noLabel: "C'est perdu",
+        yesEffects: [gameOver()],
+        noEffects: [gameOver()],
+        inEffects: []
     },
     115: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
+        image: "carte_algue_poison.png",
+        description: "La population se développe à un rythme bien trop soutenu pour les ressources. Les disettes sont un terreau favorables au communautarisme.",
+        yesLabel: "Ouh là là",
+        noLabel: "Ouh là là",
+        yesEffects: [startStory('arc_repro_bagarre')],
+        noEffects: [startStory('arc_repro_bagarre')],
+        inEffects: []
     },
     116: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
+        image: "carte_algue_saine.png",
+        description: "Les guides spirituels proposent de bannir les malades",
+        yesLabel: "Bannir",
+        noLabel: "Consulter les scientifiques",
+        yesEffects: [startStory('arc_repro_bagarre'),changeJauge('Bonheur', -incidence.m),changeJauge('Démographie', -incidence.m)],
+        noEffects: [startStory('arc_repro_medecine'),changeJauge('Bonheur', -incidence.m),changeJauge('Démographie', -incidence.m)],
+        inEffects: []
     },
     117: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
+        image: "carte_algue_saine.png",
+        description: "Le développement de la médecine a permis de trouver un remède. La croissance démographique reprend fortement.",
+        yesLabel: "Continuer sur cette voie",
+        noLabel: "Développer la contraception",
+        yesEffects: [startStory('arc_repro_game_over_2'),changeJauge('Environnement', -incidence.m),changeJauge('Démographie', +incidence.m)],
+        noEffects: [startStory('arc_repro_prospere'),changeJauge('Environnement', +incidence.s),changeJauge('Progrès', +incidence.m)],
+        inEffects: []
     },
     118: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
+        image: "carte_algue_saine.png",
+        description: "La population se développe à rythme idéal et peut prospérer.",
+        yesLabel: "Excellent",
+        noLabel: "Excellent",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
     },
     119: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
+        image: "carte_algue_saine.png",
+        description: "Cette forte croissance de la population lui permet d’occuper plus de territoire et la rend moins vulnérable aux attaques des autres espèces. Cependant, la maladie sévit toujours.",
+        yesLabel: "Développer la médecine ",
+        noLabel: "Continuer sur cette voie",
+        yesEffects: [startStory('arc_repro_medecine'),changeJauge('Progrès', +incidence.m),changeJauge('Démographie', +incidence.l)],
+        noEffects: [startStory('arc_repro_maladie'),changeJauge('Progrès', -incidence.m),changeJauge('Démographie', +incidence.l),changeJauge('Environnement', -incidence.l)],
+        inEffects: []
     },
     120: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    121: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    122: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    123: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    124: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    125: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    126: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    127: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    128: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    129: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    130: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    131: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    132: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    133: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    134: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    135: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    136: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    137: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    138: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    139: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    140: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    141: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    142: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    143: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    144: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    145: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    146: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    147: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    148: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    149: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    150: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    151: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    152: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    153: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    154: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    155: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    156: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    157: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    158: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    159: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    160: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    161: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    162: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    163: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    164: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    165: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    166: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    167: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    168: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    169: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    170: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
-    },
-    171: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
-        inEffects: ""
+        image: "carte_algue_poison.png",
+        description: "Sans attention portée à son traitement, la maladie se développe et frappe toutes les tranches d’âge. Cela rend la population vulnérable aux attaques d’autres espèces belliqueuses.",
+        yesLabel: "Noooon",
+        noLabel: "Noooon",
+        yesEffects: [startStory('arc_repro_game_over')],
+        noEffects: [startStory('arc_repro_game_over')],
+        inEffects: []
     }
 }

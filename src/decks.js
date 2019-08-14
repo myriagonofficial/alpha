@@ -1,12 +1,12 @@
 // deck = ère = ensemble de stories, mélangées
 
 export const decks = [
-  {
-    name: "Introduction",
-    stories: [
-      "introduction"
-    ]
-  },
+  // {
+  //   name: "Introduction",
+  //   stories: [
+  //     "introduction"
+  //   ]
+  // },
   // {
   //   name: "(Re)naissance",
   //   stories: [
@@ -38,11 +38,11 @@ export const decks = [
       "init_arc_religion_base",
       "init_religion_nomadisme",
       "init_religion_reproduction",
-      "init_arc_reproduction_intro"
+      "init_arc_repro_base"
     ],
     jauges: [
-      { name: "Technique", icon: "interface_jauge_picto_progres.png", level: 50 },
-      { name: "Developpement", icon: "interface_jauge_picto_demographie.png", level: 50 },
+      { name: "Progrès", icon: "interface_jauge_picto_progres.png", level: 50 },
+      { name: "Démographie", icon: "interface_jauge_picto_demographie.png", level: 50 },
       { name: "Bonheur", icon: "interface_jauge_picto_bonheur.png", level: 50 },
       { name: "Environnement", icon: "interface_jauge_picto_environnement.png", level: 50 }
     ]
