@@ -3,7 +3,7 @@ import { decks } from "./decks";
 import { stories } from "./stories";
 import { cards } from "./cards";
 import { pickRandomIn } from "./utils"
-import { endStory } from "./effects.js";
+import { startStory, endStory } from "./effects.js";
 
 export const initGame = () => {
   Object.assign(state, {
@@ -27,13 +27,8 @@ export const onChoice = choice => {
 
   state.card = null;
   state.story = null;
+  checkJauges();
   setTimeout(() => nextCard(), 0)
-}
-
-export const cleanupFinishedStories = () => {
-  state.deck.stories
-    .filter(story => stories[story].cards.length === 0)
-    .forEach(story => endStory(story).apply())
 }
 
 export const nextCard = () => {
@@ -52,8 +47,27 @@ export const nextCard = () => {
 }
 
 export const nextDeck = () => {
-  state.deck = decks[state.era]
-  state.deck.finishedStories = 0;
+  state.deck = Object.assign({
+    finishedStories: 0,
+    jauges: []
+  }, decks[state.era])
+
+  state.deck.jauges.forEach(jauge => { jauge.level = 50 })
+  state.deck.stories.forEach(s => s in stories || console.error(`Story not found: ${s}`))
+
   state.era++;
   nextCard()
+}
+
+export const cleanupFinishedStories = () => {
+  state.deck.stories
+    .filter(story => stories[story].cards.length === 0)
+    .forEach(story => endStory(story).apply())
+}
+
+export const checkJauges = () => {
+  let jaugeFull = state.deck.jauges.find(jauge => jauge.level >= 100)
+  let jaugeEmpty = state.deck.jauges.find(jauge => jauge.level <= 0)
+  if (jaugeFull) startStory(jaugeFull.gameOverUp).apply()
+  else if (jaugeEmpty) startStory(jaugeEmpty.gameOverDown).apply()
 }

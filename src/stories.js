@@ -103,7 +103,7 @@ export const stories = {
     },
     introduction: {
         name: "Gardiens du Temps",
-        cards: [1,2,3,4,5,25,26],
+        cards: [1, 2, 3, 4, 5, 25, 26],
         priority: 5
     },
     init_tectonique: {
@@ -129,32 +129,32 @@ export const stories = {
     gameOverUp_Céleste: {
         name: "Game Over",
         cards: [37],
-        priority: 6
+        priority: 9
     },
     gameOverUp_Marine: {
         name: "Game Over",
         cards: [38],
-        priority: 6
+        priority: 9
     },
     gameOverUp_Terrestre: {
         name: "Game Over",
         cards: [39],
-        priority: 6
+        priority: 9
     },
     gameOverDown_Céleste: {
         name: "Game Over",
         cards: [40],
-        priority: 6
+        priority: 9
     },
     gameOverDown_Marine: {
         name: "Game Over",
         cards: [41],
-        priority: 6
+        priority: 9
     },
     gameOverDown_Terrestre: {
         name: "Game Over",
         cards: [42],
-        priority: 6
+        priority: 9
     },
     init_marine_progrès_debut: {
         name: "Introduction Progrès Marin",
