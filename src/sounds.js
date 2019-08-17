@@ -6,7 +6,7 @@ export const sounds = {
     channels: {},
 
     play(key, channel) {
-        if (!sounds.hasOwnProperty(key)) console.error(`Sound not found: ${key}`)
+        if (!(key in sounds)) console.error(`Sound not found: ${key}`)
         sounds[key].play();
         if (channel) {
             if (sounds.channels[channel]) sounds.channels[channel].stop() // stop previous sound in same channel
