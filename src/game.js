@@ -26,9 +26,7 @@ export const onChoice = choice => {
   }
 
   state.card = null;
-  cleanupFinishedStories()
-  state.story = null
-
+  state.story = null;
   setTimeout(() => nextCard(), 0)
 }
 
@@ -39,8 +37,8 @@ export const cleanupFinishedStories = () => {
 }
 
 export const nextCard = () => {
-  if (state.deck.stories.length === 0) return nextDeck()
   cleanupFinishedStories()
+  if (state.deck.stories.length === 0 || state.deck.finishedStories >= state.deck.nbStoriesToComplete) return nextDeck()
 
   let highestPriority = state.deck.stories.reduce((highest, story) => Math.max(highest, stories[story].priority || 0), 0)
   let priorityStories = state.deck.stories.filter(story => !highestPriority || stories[story].priority === highestPriority)
@@ -55,6 +53,7 @@ export const nextCard = () => {
 
 export const nextDeck = () => {
   state.deck = decks[state.era]
+  state.deck.finishedStories = 0;
   state.era++;
   nextCard()
 }

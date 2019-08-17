@@ -40,6 +40,7 @@ export const decks = [
       "init_religion_reproduction",
       "init_arc_repro_base"
     ],
+    nbStoriesToComplete: 5,
     jauges: [
       { name: "Progrès", icon: "interface_jauge_picto_progres.png", level: 50 },
       { name: "Démographie", icon: "interface_jauge_picto_demographie.png", level: 50 },

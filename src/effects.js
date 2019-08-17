@@ -30,6 +30,7 @@ export function endStory(name) {
     story: name,
     apply() {
       removeInArray(state.deck.stories, name);
+      state.deck.finishedStories++;
     }
   }
 }
