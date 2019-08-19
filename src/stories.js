@@ -103,7 +103,7 @@ export const stories = {
     },
     introduction: {
         name: "Gardiens du Temps",
-        cards: [1, 2, 3, 4, 5, 25, 26],
+        cards: [1,2,3,4,5,25,26],
         priority: 5
     },
     init_tectonique: {
@@ -129,32 +129,32 @@ export const stories = {
     gameOverUp_Céleste: {
         name: "Game Over",
         cards: [37],
-        priority: 9
+        priority: 6
     },
     gameOverUp_Marine: {
         name: "Game Over",
         cards: [38],
-        priority: 9
+        priority: 6
     },
     gameOverUp_Terrestre: {
         name: "Game Over",
         cards: [39],
-        priority: 9
+        priority: 6
     },
     gameOverDown_Céleste: {
         name: "Game Over",
         cards: [40],
-        priority: 9
+        priority: 6
     },
     gameOverDown_Marine: {
         name: "Game Over",
         cards: [41],
-        priority: 9
+        priority: 6
     },
     gameOverDown_Terrestre: {
         name: "Game Over",
         cards: [42],
-        priority: 9
+        priority: 6
     },
     init_marine_progrès_debut: {
         name: "Introduction Progrès Marin",
@@ -164,7 +164,7 @@ export const stories = {
     init_arc_marine_deplacement: {
         name: "Déplacement",
         cards: [53],
-        priority: 2
+        priority: 1
     },
     arc_marine_deplacement_sud_narration: {
         name: "Déplacement",
@@ -179,27 +179,27 @@ export const stories = {
     arc_marine_deplacement_sud: {
         name: "Déplacement",
         cards: [56],
-        priority: 2
+        priority: 1
     },
     arc_marine_deplacement_nord: {
         name: "Déplacement",
         cards: [57],
-        priority: 2
+        priority: 1
     },
     arc_marine_deplacement_attaque: {
         name: "Déplacement",
         cards: [58],
-        priority: 2
+        priority: 1
     },
     arc_marine_deplacement_asservir: {
         name: "Déplacement",
         cards: [59],
-        priority: 2
+        priority: 1
     },
     arc_marine_deplacement_sedentarisation: {
         name: "Déplacement",
         cards: [60],
-        priority: 2
+        priority: 1
     },
     arc_marine_deplacement_intellectuel: {
         name: "Déplacement",
@@ -209,7 +209,7 @@ export const stories = {
     arc_marine_deplacement_expert_nomade: {
         name: "Déplacement",
         cards: [62],
-        priority: 2
+        priority: 1
     },
     arc_marine_deplacement_guerrier: {
         name: "Déplacement",
@@ -379,6 +379,76 @@ export const stories = {
     arc_repro_prospere: {
         name: "Reproduction",
         cards: [118],
+        priority: 1
+    },
+    init_arc_poli_base: {
+        name: "Politique & économie",
+        cards: [124],
+        priority: 1
+    },
+    arc_poli_leader: {
+        name: "Politique & économie",
+        cards: [125],
+        priority: 1
+    },
+    arc_poli_peuple: {
+        name: "Politique & économie",
+        cards: [129],
+        priority: 2
+    },
+    arc_poli_duel: {
+        name: "Politique & économie",
+        cards: [126],
+        priority: 1
+    },
+    arc_poli_trucages: {
+        name: "Politique & économie",
+        cards: [127],
+        priority: 2
+    },
+    arc_poli_loyal: {
+        name: "Politique & économie",
+        cards: [128],
+        priority: 2
+    },
+    arc_poli_vote: {
+        name: "Politique & économie",
+        cards: [130],
+        priority: 1
+    },
+    arc_poli_inegalites: {
+        name: "Politique & économie",
+        cards: [132],
+        priority: 1
+    },
+    arc_poli_marche: {
+        name: "Politique & économie",
+        cards: [133],
+        priority: 1
+    },
+    arc_poli_emeute: {
+        name: "Politique & économie",
+        cards: [134],
+        priority: 1
+    },
+    arc_poli_cartel: {
+        name: "Politique & économie",
+        cards: [137],
+        priority: 1
+    },
+    arc_poli_emeute_equilibre: {
+        name: "Politique & économie",
+        cards: [135],
+        priority: 2
+    },
+    arc_poli_emeute_guerre: {
+        name: "Politique & économie",
+        cards: [136],
+        priority: 1
+    },
+    arc_poli_parlement: {
+        name: "Politique & économie",
+        cards: [131],
         priority: 1
     }
 }

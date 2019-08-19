@@ -389,6 +389,78 @@ export const cards = {
         noEffects: [startStory('vegetaux_compet'), changeJauge('Celeste',+incidence.s)],
         inEffects: []
     },
+    44: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    45: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    46: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    47: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    48: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    49: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    50: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    51: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
     52: {
         image: "carte_algues.png",
         description: "Des profondeurs marines ont émergé une forme de vie qui se distingue par quelques signes d'intelligence primaire. Concentrons-nous maintenant sur cette civilisation à l'aube de sa grandeur.",
@@ -495,6 +567,141 @@ export const cards = {
         noLabel: "Fuir ailleurs",
         yesEffects: [changeJauge('Bonheur', -incidence.m),changeJauge('Environnement', +incidence.s),startStory('arc_marine_deplacement_attaque')],
         noEffects: [changeJauge('Démographie', -incidence.s),startStory('arc_marine_deplacement_nord')],
+        inEffects: []
+    },
+    64: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    65: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    66: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    67: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    68: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    69: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    70: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    71: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    72: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    73: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    74: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    75: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    76: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    77: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
+        inEffects: []
+    },
+    78: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: [],
+        noEffects: [],
         inEffects: []
     },
     79: {
@@ -820,5 +1027,464 @@ export const cards = {
         yesEffects: [startStory('arc_repro_game_over')],
         noEffects: [startStory('arc_repro_game_over')],
         inEffects: []
+    },
+    121: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    122: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    123: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    124: {
+        image: "carte_algue_saine.png",
+        description: "Suite à un conflit majeur dans la société, un leader naturel émerge.",
+        yesLabel: "Lui laisser sa chance\n",
+        noLabel: "Laisser décider le peuple de son sort",
+        yesEffects: [startStory('arc_poli_leader'),changeJauge('Progrès', -incidence.s),changeJauge('Bonheur', +incidence.s)],
+        noEffects: [startStory('arc_poli_peuple'),changeJauge('Progrès', +incidence.s),changeJauge('Bonheur', -incidence.s)],
+        inEffects: []
+    },
+    125: {
+        image: "carte_algue_saine.png",
+        description: "Des rumeurs remettent en cause la légitimité du leader.",
+        yesLabel: "Construire un édifice à sa gloire",
+        noLabel: "Organiser des duels",
+        yesEffects: [startStory('arc_poli_leader'),changeJauge('Environnement', -incidence.m),changeJauge('Progrès', +incidence.s)],
+        noEffects: [startStory('arc_poli_duel'),changeJauge('Démographie', -incidence.s),changeJauge('Bonheur', +incidence.m)],
+        inEffects: []
+    },
+    126: {
+        image: "carte_algue_saine.png",
+        description: "Les duels sont maintenant devenus une tradition.\nAujourd’hui, l’adversaire menace de destituer le pouvoir en place.",
+        yesLabel: "Truquer le combat",
+        noLabel: "A la loyale",
+        yesEffects: [startStory('arc_poli_trucages'),changeJauge('Bonheur', -incidence.m)],
+        noEffects: [startStory('arc_poli_loyal'),changeJauge('Bonheur', +incidence.s)],
+        inEffects: []
+    },
+    127: {
+        image: "carte_algue_saine.png",
+        description: "Le despote vieillissant, le peuple cesse d’être dupe. On peut tromper une  fois mille personne, mais pas mille fois mille personne. Euh...  On peut...",
+        yesLabel: "Ah...",
+        noLabel: "Ah...",
+        yesEffects: [startStory('arc_poli_peuple'),changeJauge('Progrès', +incidence.s)],
+        noEffects: [startStory('arc_poli_peuple'),changeJauge('Progrès', +incidence.s)],
+        inEffects: []
+    },
+    128: {
+        image: "carte_algue_saine.png",
+        description: "Le gagnant du duel prend le pouvoir à son tour, et perpétue le système politique mis en place.",
+        yesLabel: "Bien",
+        noLabel: "Bien",
+        yesEffects: [startStory('arc_poli_leader'),changeJauge('Progrès', -incidence.s)],
+        noEffects: [startStory('arc_poli_leader'),changeJauge('Progrès', -incidence.s)],
+        inEffects: []
+    },
+    129: {
+        image: "carte_algue_saine.png",
+        description: "La difficulté du peuple à s’organiser est source de tensions.",
+        yesLabel: "Privilégier un vote",
+        noLabel: "Laisser faire",
+        yesEffects: [startStory('arc_poli_vote'),changeJauge('Progrès', +incidence.s)],
+        noEffects: [startStory('arc_poli_inegalites'),changeJauge('Bonheur', -incidence.s)],
+        inEffects: []
+    },
+    130: {
+        image: "carte_algue_saine.png",
+        description: "Deux approches politiques émergent. Favoriser...",
+        yesLabel: "Un président",
+        noLabel: "Un parlement",
+        yesEffects: [startStory('arc_poli_leader'),changeJauge('Progrès', +incidence.s),changeJauge('Bonheur', -incidence.s)],
+        noEffects: [startStory('arc_poli_parlement'),changeJauge('Progrès', -incidence.s),changeJauge('Bonheur', +incidence.s)],
+        inEffects: []
+    },
+    131: {
+        image: "carte_algue_saine.png",
+        description: "Les égos de chacun ralentissent la prise de décision. L’inertie de l’instance parlementaire n’est pas suffisante au regard des choix à légiférer.",
+        yesLabel: "Zut...",
+        noLabel: "Zut...",
+        yesEffects: [startStory('arc_poli_peuple'),changeJauge('Progrès', -incidence.s),changeJauge('Bonheur', -incidence.s)],
+        noEffects: [startStory('arc_poli_peuple'),changeJauge('Progrès', -incidence.s),changeJauge('Bonheur', -incidence.s)],
+        inEffects: []
+    },
+    132: {
+        image: "carte_algue_saine.png",
+        description: "On constate des inégalités de répartition des ressources au sein de la société.\n",
+        yesLabel: "Favoriser le marché libre",
+        noLabel: "Provoquer des émeutes anti libéralistes.\n",
+        yesEffects: [startStory('arc_poli_marche'),changeJauge('Bonheur', -incidence.m)],
+        noEffects: [startStory('arc_poli_emeute'),changeJauge('Bonheur', -incidence.l)],
+        inEffects: ""
+    },
+    133: {
+        image: "carte_algue_saine.png",
+        description: "Des classes apparaissent dans la société et la dominante s’organise en cartel.",
+        yesLabel: "C’est le marché libre",
+        noLabel: "Créer des pénuries de ressources",
+        yesEffects: [startStory('arc_poli_cartel'),changeJauge('Progrès', +incidence.s),changeJauge('Bonheur', -incidence.s)],
+        noEffects: [startStory('arc_poli_emeute'),changeJauge('Bonheur', -incidence.l)],
+        inEffects: ""
+    },
+    134: {
+        image: "carte_algue_saine.png",
+        description: "Au travers des luttes apparaissent des castes qui se disputent les ressources.",
+        yesLabel: "Aider les plus faibles",
+        noLabel: "Laisser faire les plus forts",
+        yesEffects: [startStory('arc_poli_emeute_equilibre'),changeJauge('Progrès', +incidence.m),changeJauge('Bonheur', +incidence.m)],
+        noEffects: [startStory('arc_poli_emeute_guerre'),changeJauge('Progrès', -incidence.m),changeJauge('Bonheur', +incidence.s)],
+        inEffects: ""
+    },
+    135: {
+        image: "carte_algue_saine.png",
+        description: "Les plus démunis rééquilibrent la balance en s’appropriant une partie des ressources. L’autogestion économique et politique est optimale.",
+        yesLabel: "Super !",
+        noLabel: "Super !",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    136: {
+        image: "carte_algue_saine.png",
+        description: "La pression de la caste supérieure sur les pauvres éclate en conflit.",
+        yesLabel: "Zut...",
+        noLabel: "Zut...",
+        yesEffects: [startStory('init_arc_poli_base'),changeJauge('Progrès', -incidence.m),changeJauge('Bonheur',-incidence.m),changeJauge('Démographie', -incidence.m)],
+        noEffects: [startStory('init_arc_poli_base'),changeJauge('Progrès', -incidence.m),changeJauge('Bonheur',-incidence.m),changeJauge('Démographie', -incidence.m)],
+        inEffects: ""
+    },
+    137: {
+        image: "carte_algue_saine.png",
+        description: "Le monopole du cartel conduit les classes dominées à se révolter et une guerre civile incontrôlable éclate.",
+        yesLabel: "Zut...",
+        noLabel: "Zut...",
+        yesEffects: [startStory('init_arc_poli_base'),changeJauge('Progrès', -incidence.m),changeJauge('Bonheur',-incidence.m)],
+        noEffects: [startStory('init_arc_poli_base'),changeJauge('Progrès', -incidence.m),changeJauge('Bonheur',-incidence.m)],
+        inEffects: ""
+    },
+    138: {
+        image: "carte_algue_saine.png",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    139: {
+        image: "carte_algue_saine.png",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    140: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    141: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    142: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    143: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    144: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    145: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    146: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    147: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    148: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    149: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    150: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    151: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    152: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    153: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    154: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    155: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    156: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    157: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    158: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    159: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    160: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    161: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    162: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    163: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    164: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    165: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    166: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    167: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    168: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    169: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    170: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
+    },
+    171: {
+        image: "",
+        description: "",
+        yesLabel: "",
+        noLabel: "",
+        yesEffects: "",
+        noEffects: "",
+        inEffects: ""
     }
 }

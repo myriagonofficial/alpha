@@ -1,5 +1,5 @@
 export const incidence = {
-  s: 5,
-  m: 10,
-  l: 20
+  s: 15,
+  m: 25,
+  l: 35
 };
