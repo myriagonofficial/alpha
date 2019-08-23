@@ -56,7 +56,7 @@ export const decks = [
       "init_arc_repro_base",
       "init_arc_poli_base"
     ],
-    nbArcsToComplete: 2,
+    nbArcsToComplete: 3,
     jauges: [
       {
         name: "Progrès",

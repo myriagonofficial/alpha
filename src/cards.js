@@ -466,8 +466,8 @@ export const cards = {
         description: "Des profondeurs marines ont émergé une forme de vie qui se distingue par quelques signes d'intelligence primaire. Concentrons-nous maintenant sur cette civilisation à l'aube de sa grandeur.",
         yesLabel: "Oui",
         noLabel: "Oui",
-        yesEffects: [endArc()],
-        noEffects: [endArc()],
+        yesEffects: [],
+        noEffects: [],
         inEffects: []
     },
     53: {
