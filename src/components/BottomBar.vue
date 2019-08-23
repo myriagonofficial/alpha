@@ -38,7 +38,7 @@ footer {
 .card-info {
   margin: 1vh auto;
   width: 60vh;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 .card-name {

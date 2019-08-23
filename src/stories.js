@@ -157,7 +157,7 @@ export const stories = {
         priority: 6
     },
     init_marine_progrès_debut: {
-        name: "Introduction Progrès Marin",
+        name: "Emergence",
         cards: [52],
         priority: 5
     },
@@ -450,5 +450,45 @@ export const stories = {
         name: "Politique & économie",
         cards: [131],
         priority: 1
+    },
+    gameOverUp_Progrès: {
+        name: "Game Over",
+        cards: [160],
+        priority: 6
+    },
+    gameOverUp_Environnement: {
+        name: "Game Over",
+        cards: [161],
+        priority: 6
+    },
+    gameOverUp_Démographie: {
+        name: "Game Over",
+        cards: [162],
+        priority: 6
+    },
+    gameOverUp_Bonheur: {
+        name: "Game Over",
+        cards: [163],
+        priority: 6
+    },
+    gameOverDown_Progrès: {
+        name: "Game Over",
+        cards: [164],
+        priority: 6
+    },
+    gameOverDown_Environnement: {
+        name: "Game Over",
+        cards: [165],
+        priority: 6
+    },
+    gameOverDown_Démographie: {
+        name: "Game Over",
+        cards: [166],
+        priority: 6
+    },
+    gameOverDown_Bonheur: {
+        name: "Game Over",
+        cards: [167],
+        priority: 6
     }
 }

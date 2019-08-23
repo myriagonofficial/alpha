@@ -56,31 +56,31 @@ export const decks = [
       "init_arc_repro_base",
       "init_arc_poli_base"
     ],
-    nbStoriesToComplete: 5,
+    nbArcsToComplete: 2,
     jauges: [
       {
         name: "Progrès",
         icon: "interface_jauge_picto_progres.png",
-        gameOverUp: "gameOverUp_Céleste",
-        gameOverDown: "gameOverDown_Céleste"
+        gameOverUp: "gameOverUp_Progrès",
+        gameOverDown: "gameOverDown_Progrès"
       },
       {
         name: "Démographie",
         icon: "interface_jauge_picto_demographie.png",
-        gameOverUp: "gameOverUp_Céleste",
-        gameOverDown: "gameOverDown_Céleste"
+        gameOverUp: "gameOverUp_Démographie",
+        gameOverDown: "gameOverDown_Démographie"
       },
       {
         name: "Bonheur",
         icon: "interface_jauge_picto_bonheur.png",
-        gameOverUp: "gameOverUp_Céleste",
-        gameOverDown: "gameOverDown_Céleste"
+        gameOverUp: "gameOverUp_Bonheur",
+        gameOverDown: "gameOverDown_Bonheur"
       },
       {
         name: "Environnement",
         icon: "interface_jauge_picto_environnement.png",
-        gameOverUp: "gameOverUp_Céleste",
-        gameOverDown: "gameOverDown_Céleste"
+        gameOverUp: "gameOverUp_Environnement",
+        gameOverDown: "gameOverDown_Environnement"
       }
     ]
   }

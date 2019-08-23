@@ -1,4 +1,4 @@
-import { changeJauge, endStory, startStory, gameOver, playSound } from "./effects.js";
+import { changeJauge, endStory, startStory, gameOver, playSound, endArc } from "./effects.js";
 import { incidence } from "./const.js";
 
 export const cards = {
@@ -462,16 +462,16 @@ export const cards = {
         inEffects: []
     },
     52: {
-        image: "carte_algues.png",
+        image: "carte_volcan_terre.png",
         description: "Des profondeurs marines ont émergé une forme de vie qui se distingue par quelques signes d'intelligence primaire. Concentrons-nous maintenant sur cette civilisation à l'aube de sa grandeur.",
         yesLabel: "Oui",
         noLabel: "Oui",
-        yesEffects: [],
-        noEffects: [],
+        yesEffects: [endArc()],
+        noEffects: [endArc()],
         inEffects: []
     },
     53: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Le groupe grandit et les ressources s'amenuisent, le groupe doit se déplacer.",
         yesLabel: "Au sud",
         noLabel: "Au nord",
@@ -480,7 +480,7 @@ export const cards = {
         inEffects: []
     },
     54: {
-        image: "carte_algue_poison.png",
+        image: "carte_plantes_ciel.png",
         description: "Ce long voyage vers le sud fût éreintant. La population est fatiguée.",
         yesLabel: "Fichtre !",
         noLabel: "Fichtre !",
@@ -489,7 +489,7 @@ export const cards = {
         inEffects: []
     },
     55: {
-        image: "carte_algues.png",
+        image: "carte_volcan_terre.png",
         description: "Ce long voyage vers le nord fût éreintant. La population est fatiguée.",
         yesLabel: "Diantre !",
         noLabel: "Diantre !",
@@ -498,16 +498,16 @@ export const cards = {
         inEffects: []
     },
     56: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Les ressources abondent ici ! Cependant vous rencontrez une autre espèce pacifique qui en profite...",
         yesLabel: "Les anéantir !",
         noLabel: "Les asservir !",
-        yesEffects: [changeJauge('Bonheur', -incidence.l),changeJauge('Environnement', +incidence.l),startStory('arc_marine_deplacement_attaque')],
+        yesEffects: [changeJauge('Bonheur', -incidence.l),changeJauge('Environnement', +incidence.s),startStory('arc_marine_deplacement_attaque')],
         noEffects: [changeJauge('Bonheur', +incidence.s),changeJauge('Environnement', +incidence.s),startStory('arc_marine_deplacement_asservir')],
         inEffects: []
     },
     57: {
-        image: "carte_algue_poison.png",
+        image: "carte_plantes_ciel.png",
         description: "Les ressources sont peu abondantes, cependant aucun rival en vue. Serait-il plus intéressant de chercher d'autres endroits plus riches ?",
         yesLabel: "S'installer",
         noLabel: "Aller au sud",
@@ -516,25 +516,25 @@ export const cards = {
         inEffects: []
     },
     58: {
-        image: "carte_algues.png",
+        image: "carte_volcan_terre.png",
         description: "L'espèce concurrente est décimé. Cela fait quelques temps que vous utilisez les ressources locales. Vous pouvez rester pour développer vos activités sédentaires ou partir pour reprendre une vie nomade.",
         yesLabel: "Sédentarisation",
         noLabel: "Aller ailleurs",
         yesEffects: [changeJauge('Environnement', -incidence.s),startStory('arc_marine_deplacement_sedentarisation')],
-        noEffects: [changeJauge('Environnement', +incidence.m),changeJauge('Bonheur',+incidence.m),startStory('arc_marine_deplacement_intellectuel')],
+        noEffects: [changeJauge('Environnement', +incidence.s),changeJauge('Bonheur',+incidence.m),startStory('arc_marine_deplacement_intellectuel')],
         inEffects: []
     },
     59: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Le groupe de poulpe utilise les ressources locales en cohabitation avec l'espèce déjà présente. Repartir à l'aventure en quête de nouvelles richesses ?",
         yesLabel: "Sédentarisation",
         noLabel: "Aller ailleurs",
         yesEffects: [changeJauge('Environnement', -incidence.s),startStory('arc_marine_deplacement_sedentarisation')],
-        noEffects: [changeJauge('Environnement', +incidence.m),changeJauge('Bonheur', +incidence.m),startStory('arc_marine_deplacement_intellectuel')],
+        noEffects: [changeJauge('Environnement', +incidence.s),changeJauge('Bonheur', +incidence.m),startStory('arc_marine_deplacement_intellectuel')],
         inEffects: []
     },
     60: {
-        image: "carte_algue_poison.png",
+        image: "carte_plantes_ciel.png",
         description: "Le mode de vie sédentaire permet juste la survie du groupe de poulpe localement.",
         yesLabel: "Hmmm...",
         noLabel: "Hmmm...",
@@ -543,25 +543,25 @@ export const cards = {
         inEffects: []
     },
     61: {
-        image: "carte_algues.png",
+        image: "carte_volcan_terre.png",
         description: "Tous ces déplacements apporte énormément de ressources à l'espèce ! On peut désormais prendre le temps de former des individus. Quelle spécialité choisir ?",
         yesLabel: "Intellectuel",
         noLabel: "Guerrier",
-        yesEffects: [changeJauge('Environnement', +incidence.m),changeJauge('Démographie', +incidence.m),changeJauge('Bonheur', +incidence.m),startStory('arc_marine_deplacement_expert_nomade')],
+        yesEffects: [changeJauge('Environnement', +incidence.s),changeJauge('Démographie', +incidence.m),changeJauge('Bonheur', +incidence.m),startStory('arc_marine_deplacement_expert_nomade')],
         noEffects: [changeJauge('Environnement', +incidence.s),changeJauge('Démographie', +incidence.s),changeJauge('Bonheur', +incidence.s),startStory('arc_marine_deplacement_guerrier')],
         inEffects: []
     },
     62: {
-        image: "carte_algue_saine.png",
-        description: "Vous avez élaboré une cartographie avancée, bravo ! Vous avez le stade de nomade expert ! 3 expertises sont nécessaires pour atteindre l'ère.",
+        image: "carte_algues.png",
+        description: "Votre espèce trouve une stabilité dans le nomadisme, bravo !",
         yesLabel: "Super !",
         noLabel: "Super !",
-        yesEffects: [],
-        noEffects: [],
+        yesEffects: [endArc()],
+        noEffects: [endArc()],
         inEffects: []
     },
     63: {
-        image: "carte_algue_poison.png",
+        image: "carte_plantes_ciel.png",
         description: "Vos guerriers représetent une menace pour les groupes d'espèces voisines qui se liguent contre vous et vous lance un ultimatum.",
         yesLabel: "Combattre",
         noLabel: "Fuir ailleurs",
@@ -705,7 +705,7 @@ export const cards = {
         inEffects: []
     },
     79: {
-        image: "carte_algues.png",
+        image: "carte_volcan_terre.png",
         description: "Cherchant des réponses au sens de leur vie, des individus commencent à vouer un culte à ce qui s'apparente à vous, Gardien du temps.",
         yesLabel: "Leur envoyer un signe",
         noLabel: "Ne rien faire",
@@ -714,7 +714,7 @@ export const cards = {
         inEffects: []
     },
     80: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "La vie suit son cours, aucune idée religieuse ne s'immisce dans les esprits.",
         yesLabel: "Bien",
         noLabel: "Bien",
@@ -723,7 +723,7 @@ export const cards = {
         inEffects: []
     },
     81: {
-        image: "carte_algue_poison.png",
+        image: "carte_plantes_ciel.png",
         description: "En quête d'explication du monde qui les entoure, de nombreux membres de la société imaginent des Dieux associés à la mer, les coraux, les algues ...",
         yesLabel: "Punir ces polythéistes",
         noLabel: "Les laisser faire",
@@ -732,7 +732,7 @@ export const cards = {
         inEffects: []
     },
     82: {
-        image: "carte_algues.png",
+        image: "carte_volcan_terre.png",
         description: "Une espèce étrangère qui a fondé des croyances divergentes tente de les imposer à notre peuple. Un conflit risque d'éclater.",
         yesLabel: "Envoyer un signe",
         noLabel: "Ne rien faire",
@@ -741,7 +741,7 @@ export const cards = {
         inEffects: []
     },
     83: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Une guerre éclate. Notre espèce ressort victorieuse, les différents cultes sont pratiqués en harmonie.",
         yesLabel: "Bien",
         noLabel: "Bien",
@@ -750,7 +750,7 @@ export const cards = {
         inEffects: []
     },
     84: {
-        image: "carte_algue_poison.png",
+        image: "carte_plantes_ciel.png",
         description: "Une partie de la population restée non-croyante cherche toujours des réponses à ses questions existentielles.",
         yesLabel: "Leur envoyer un signe",
         noLabel: "Ne rien faire",
@@ -759,7 +759,7 @@ export const cards = {
         inEffects: []
     },
     85: {
-        image: "carte_algues.png",
+        image: "carte_volcan_terre.png",
         description: "Les polythéistes se sont convertis à la religion dominante, mais tentent désormais d'évangéliser les non-croyants sous la crainte d'une punition divine.",
         yesLabel: "Les empêcher",
         noLabel: "Ne rien faire",
@@ -768,7 +768,7 @@ export const cards = {
         inEffects: []
     },
     86: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Un groupe d'invidus pacifistes mène une croyance parallèle.",
         yesLabel: "Les convertir",
         noLabel: "Les accueillir",
@@ -777,7 +777,7 @@ export const cards = {
         inEffects: []
     },
     87: {
-        image: "carte_algue_poison.png",
+        image: "carte_plantes_ciel.png",
         description: "L'apparition du signe a focalisé les croyants et mis fin à la guerre.",
         yesLabel: "Bien",
         noLabel: "Bien",
@@ -786,7 +786,7 @@ export const cards = {
         inEffects: []
     },
     88: {
-        image: "carte_algues.png",
+        image: "carte_volcan_terre.png",
         description: "Une religion unique s'est imposée à toute la société, un individu prétend avoir la parole de Dieu et se propose de l'incarner.",
         yesLabel: "Accepter le messie",
         noLabel: "Le rejeter.",
@@ -795,7 +795,7 @@ export const cards = {
         inEffects: []
     },
     89: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Le messie s'impose de plus en plus comme une force de décision politique. ",
         yesLabel: "Soulever le peuple",
         noLabel: "Ne rien faire",
@@ -804,16 +804,16 @@ export const cards = {
         inEffects: []
     },
     90: {
-        image: "carte_algue_poison.png",
+        image: "carte_plantes_ciel.png",
         description: "La pratique d'une religion unique dévie en extrémisme, des massacres ont lieu régulièrement au nom de la religion. ",
         yesLabel: "Ah ...",
         noLabel: "Ah ...",
-        yesEffects: [changeJauge('Bonheur', -incidence.l),changeJauge('Progrès', -incidence.l)],
-        noEffects: [changeJauge('Bonheur', -incidence.l),changeJauge('Progrès', -incidence.l)],
+        yesEffects: [changeJauge('Bonheur', -incidence.m),changeJauge('Progrès', -incidence.m)],
+        noEffects: [changeJauge('Bonheur', -incidence.m),changeJauge('Progrès', -incidence.m)],
         inEffects: []
     },
     91: {
-        image: "carte_algue_poison.png",
+        image: "carte_plantes_ciel.png",
         description: "Le peuple est désormais laïque et chaque individu souhaitant librement pratiquer un culte peut s'y adonner sans problème !\nVous êtes désormais un expert en religions marine !",
         yesLabel: " Super !",
         noLabel: "Super !",
@@ -822,7 +822,7 @@ export const cards = {
         inEffects: []
     },
     92: {
-        image: "carte_algues.png",
+        image: "carte_volcan_terre.png",
         description: "Une mouvance religieuse considère l'exploration comme la fuite de la terre Sainte, berceau de notre civilisation. ",
         yesLabel: "L'accepter",
         noLabel: "Refuser ce précepte",
@@ -831,7 +831,7 @@ export const cards = {
         inEffects: []
     },
     93: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Certains individus craignent désormais de partir en exploration.",
         yesLabel: "Ah.",
         noLabel: "Ah.",
@@ -840,16 +840,16 @@ export const cards = {
         inEffects: []
     },
     94: {
-        image: "carte_algue_poison.png",
-        description: "La croyance s'estompe, les choses reprennent leurs cours normale",
+        image: "carte_plantes_ciel.png",
+        description: "La croyance s'estompe, les choses reprennent leur cours normal",
         yesLabel: "Parfait",
         noLabel: "Parfait",
-        yesEffects: [],
-        noEffects: [],
+        yesEffects: [endArc()],
+        noEffects: [endArc()],
         inEffects: []
     },
     98: {
-        image: "carte_algues.png",
+        image: "carte_volcan_terre.png",
         description: "Un précepte religieux émanant préconise désormais des relations monogames entre les individus. ",
         yesLabel: "L'accepter",
         noLabel: "Refuser ce précepte",
@@ -858,7 +858,7 @@ export const cards = {
         inEffects: []
     },
     99: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "La démographie progresse moins rapidement mais l'environnement s'en trouve préservé.",
         yesLabel: "Chouette",
         noLabel: "Chouette",
@@ -867,7 +867,7 @@ export const cards = {
         inEffects: []
     },
     103: {
-        image: "carte_algue_poison.png",
+        image: "carte_plantes_ciel.png",
         description: "La religion préconise à sa communauté la consommation de coraux, qui font partie des ressources principales de notre espèce.",
         yesLabel: "Suivre",
         noLabel: "S'opposer",
@@ -903,7 +903,7 @@ export const cards = {
         inEffects: []
     },
     107: {
-        image: "carte_algues.png",
+        image: "carte_volcan_terre.png",
         description: "Une maladie touchant principalement les plus jeunes se déclare et menace la population.\nComment assurer leur survie ?",
         yesLabel: "Donner plus d’attention",
         noLabel: "Faire plus d’enfants",
@@ -912,7 +912,7 @@ export const cards = {
         inEffects: []
     },
     108: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "La partie de la population dédiée au soin et à l’éducation des jeunes tend à grandir, et la démographie se stabilise.",
         yesLabel: "Cela me satisfait.",
         noLabel: "Donner encore plus d’attention",
@@ -921,7 +921,7 @@ export const cards = {
         inEffects: []
     },
     109: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "La mortalité augmente moins vite que la natalité, la démographie accroît.",
         yesLabel: "Stabiliser la taille des familles",
         noLabel: "Continuer sur cette voie",
@@ -930,7 +930,7 @@ export const cards = {
         inEffects: []
     },
     110: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Au sein de chaque famille, les membres sont plus proches. Les familles s’organisent en castes rivales et cela génère des tensions.",
         yesLabel: "Les plus forts survivront",
         noLabel: "Encourager le métissage",
@@ -939,7 +939,7 @@ export const cards = {
         inEffects: []
     },
     111: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Ce surcroît d’efforts alloués au soin des plus jeunes se réalise au détriment des activités de collecte de nourriture et de défense.",
         yesLabel: "Persévérer",
         noLabel: "Rééquilibrer l’organisation",
@@ -948,7 +948,7 @@ export const cards = {
         inEffects: []
     },
     112: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Les guerres entre castes font rage. Cela rend la population vulnérable aux attaques d’autres espèces belliqueuses.",
         yesLabel: "Ha zut",
         noLabel: "Ha zut",
@@ -957,16 +957,16 @@ export const cards = {
         inEffects: []
     },
     113: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "La population est stabilisée. Les savoirs liés au soin ont été documentés. A qui les confier ?",
         yesLabel: "Les religieux",
         noLabel: "Les scientifiques ",
-        yesEffects: [startStory('arc_repro_religieux'),changeJauge('Progrès', -incidence.m),changeJauge('Environnement', +incidence.m)],
+        yesEffects: [startStory('arc_repro_religieux'),changeJauge('Progrès', -incidence.m),changeJauge('Environnement', +incidence.s)],
         noEffects: [startStory('arc_repro_medecine'),changeJauge('Progrès', +incidence.m)],
         inEffects: []
     },
     114: {
-        image: "carte_algue_poison.png",
+        image: "carte_plantes_ciel.png",
         description: "Une autre espèce déclare la guerre, et la remporte.",
         yesLabel: "C'est perdu",
         noLabel: "C'est perdu",
@@ -975,7 +975,7 @@ export const cards = {
         inEffects: []
     },
     115: {
-        image: "carte_algue_poison.png",
+        image: "carte_plantes_ciel.png",
         description: "La population se développe à un rythme bien trop soutenu pour les ressources. Les disettes sont un terreau favorables au communautarisme.",
         yesLabel: "Ouh là là",
         noLabel: "Ouh là là",
@@ -984,7 +984,7 @@ export const cards = {
         inEffects: []
     },
     116: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Les guides spirituels proposent de bannir les malades",
         yesLabel: "Bannir",
         noLabel: "Consulter les scientifiques",
@@ -993,7 +993,7 @@ export const cards = {
         inEffects: []
     },
     117: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Le développement de la médecine a permis de trouver un remède. La croissance démographique reprend fortement.",
         yesLabel: "Continuer sur cette voie",
         noLabel: "Développer la contraception",
@@ -1002,16 +1002,16 @@ export const cards = {
         inEffects: []
     },
     118: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "La population se développe à rythme idéal et peut prospérer.",
         yesLabel: "Excellent",
         noLabel: "Excellent",
-        yesEffects: [],
-        noEffects: [],
+        yesEffects: [endArc()],
+        noEffects: [endArc()],
         inEffects: []
     },
     119: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Cette forte croissance de la population lui permet d’occuper plus de territoire et la rend moins vulnérable aux attaques des autres espèces. Cependant, la maladie sévit toujours.",
         yesLabel: "Développer la médecine ",
         noLabel: "Continuer sur cette voie",
@@ -1020,7 +1020,7 @@ export const cards = {
         inEffects: []
     },
     120: {
-        image: "carte_algue_poison.png",
+        image: "carte_plantes_ciel.png",
         description: "Sans attention portée à son traitement, la maladie se développe et frappe toutes les tranches d’âge. Cela rend la population vulnérable aux attaques d’autres espèces belliqueuses.",
         yesLabel: "Noooon",
         noLabel: "Noooon",
@@ -1056,7 +1056,7 @@ export const cards = {
         inEffects: ""
     },
     124: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Suite à un conflit majeur dans la société, un leader naturel émerge.",
         yesLabel: "Lui laisser sa chance\n",
         noLabel: "Laisser décider le peuple de son sort",
@@ -1065,7 +1065,7 @@ export const cards = {
         inEffects: []
     },
     125: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Des rumeurs remettent en cause la légitimité du leader.",
         yesLabel: "Construire un édifice à sa gloire",
         noLabel: "Organiser des duels",
@@ -1074,7 +1074,7 @@ export const cards = {
         inEffects: []
     },
     126: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Les duels sont maintenant devenus une tradition.\nAujourd’hui, l’adversaire menace de destituer le pouvoir en place.",
         yesLabel: "Truquer le combat",
         noLabel: "A la loyale",
@@ -1083,7 +1083,7 @@ export const cards = {
         inEffects: []
     },
     127: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Le despote vieillissant, le peuple cesse d’être dupe. On peut tromper une  fois mille personne, mais pas mille fois mille personne. Euh...  On peut...",
         yesLabel: "Ah...",
         noLabel: "Ah...",
@@ -1092,7 +1092,7 @@ export const cards = {
         inEffects: []
     },
     128: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Le gagnant du duel prend le pouvoir à son tour, et perpétue le système politique mis en place.",
         yesLabel: "Bien",
         noLabel: "Bien",
@@ -1101,7 +1101,7 @@ export const cards = {
         inEffects: []
     },
     129: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "La difficulté du peuple à s’organiser est source de tensions.",
         yesLabel: "Privilégier un vote",
         noLabel: "Laisser faire",
@@ -1110,16 +1110,16 @@ export const cards = {
         inEffects: []
     },
     130: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Deux approches politiques émergent. Favoriser...",
         yesLabel: "Un président",
         noLabel: "Un parlement",
-        yesEffects: [startStory('arc_poli_leader'),changeJauge('Progrès', +incidence.s),changeJauge('Bonheur', -incidence.s)],
+        yesEffects: [startStory('arc_poli_leader'),changeJauge('Progrès', +incidence.m),changeJauge('Bonheur', -incidence.s)],
         noEffects: [startStory('arc_poli_parlement'),changeJauge('Progrès', -incidence.s),changeJauge('Bonheur', +incidence.s)],
         inEffects: []
     },
     131: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Les égos de chacun ralentissent la prise de décision. L’inertie de l’instance parlementaire n’est pas suffisante au regard des choix à légiférer.",
         yesLabel: "Zut...",
         noLabel: "Zut...",
@@ -1128,16 +1128,16 @@ export const cards = {
         inEffects: []
     },
     132: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "On constate des inégalités de répartition des ressources au sein de la société.\n",
         yesLabel: "Favoriser le marché libre",
         noLabel: "Provoquer des émeutes anti libéralistes.\n",
-        yesEffects: [startStory('arc_poli_marche'),changeJauge('Bonheur', -incidence.m)],
-        noEffects: [startStory('arc_poli_emeute'),changeJauge('Bonheur', -incidence.l)],
+        yesEffects: [startStory('arc_poli_marche'),changeJauge('Bonheur', -incidence.s)],
+        noEffects: [startStory('arc_poli_emeute'),changeJauge('Bonheur', -incidence.m)],
         inEffects: ""
     },
     133: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Des classes apparaissent dans la société et la dominante s’organise en cartel.",
         yesLabel: "C’est le marché libre",
         noLabel: "Créer des pénuries de ressources",
@@ -1146,7 +1146,7 @@ export const cards = {
         inEffects: ""
     },
     134: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Au travers des luttes apparaissent des castes qui se disputent les ressources.",
         yesLabel: "Aider les plus faibles",
         noLabel: "Laisser faire les plus forts",
@@ -1155,34 +1155,34 @@ export const cards = {
         inEffects: ""
     },
     135: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Les plus démunis rééquilibrent la balance en s’appropriant une partie des ressources. L’autogestion économique et politique est optimale.",
         yesLabel: "Super !",
         noLabel: "Super !",
-        yesEffects: "",
-        noEffects: "",
+        yesEffects: [endArc()],
+        noEffects: [endArc()],
         inEffects: ""
     },
     136: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "La pression de la caste supérieure sur les pauvres éclate en conflit.",
         yesLabel: "Zut...",
         noLabel: "Zut...",
-        yesEffects: [startStory('init_arc_poli_base'),changeJauge('Progrès', -incidence.m),changeJauge('Bonheur',-incidence.m),changeJauge('Démographie', -incidence.m)],
+        yesEffects: [startStory('init_arc_poli_base'),changeJauge('Progrès', -incidence.s),changeJauge('Bonheur',-incidence.m),changeJauge('Démographie', -incidence.m)],
         noEffects: [startStory('init_arc_poli_base'),changeJauge('Progrès', -incidence.m),changeJauge('Bonheur',-incidence.m),changeJauge('Démographie', -incidence.m)],
         inEffects: ""
     },
     137: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "Le monopole du cartel conduit les classes dominées à se révolter et une guerre civile incontrôlable éclate.",
         yesLabel: "Zut...",
         noLabel: "Zut...",
-        yesEffects: [startStory('init_arc_poli_base'),changeJauge('Progrès', -incidence.m),changeJauge('Bonheur',-incidence.m)],
-        noEffects: [startStory('init_arc_poli_base'),changeJauge('Progrès', -incidence.m),changeJauge('Bonheur',-incidence.m)],
+        yesEffects: [startStory('init_arc_poli_base'),changeJauge('Progrès', -incidence.s),changeJauge('Bonheur',-incidence.s)],
+        noEffects: [startStory('init_arc_poli_base'),changeJauge('Progrès', -incidence.s),changeJauge('Bonheur',-incidence.s)],
         inEffects: ""
     },
     138: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "",
         yesLabel: "",
         noLabel: "",
@@ -1191,7 +1191,7 @@ export const cards = {
         inEffects: ""
     },
     139: {
-        image: "carte_algue_saine.png",
+        image: "carte_algues.png",
         description: "",
         yesLabel: "",
         noLabel: "",
@@ -1380,75 +1380,75 @@ export const cards = {
         inEffects: ""
     },
     160: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
+        image: "carte_pluie_meteorites.png",
+        description: "Trop de progrès tue le progrès !",
+        yesLabel: "Zut !",
+        noLabel: "Zut !",
+        yesEffects: [gameOver()],
+        noEffects: [gameOver()],
         inEffects: ""
     },
     161: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
+        image: "carte_pluie_meteorites.png",
+        description: "Il semblerait que la nature ait repris ses droits, votre espèce est décimée par la concurence rude de ses prédateurs.",
+        yesLabel: "Zut !",
+        noLabel: "Zut !",
+        yesEffects: [gameOver()],
+        noEffects: [gameOver()],
         inEffects: ""
     },
     162: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
+        image: "carte_pluie_meteorites.png",
+        description: "L'explosion démographique devient problématique et votre société devient ingérable à cette échelle.",
+        yesLabel: "Zut !",
+        noLabel: "Zut !",
+        yesEffects: [gameOver()],
+        noEffects: [gameOver()],
         inEffects: ""
     },
     163: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
+        image: "carte_pluie_meteorites.png",
+        description: "Le bonheur dans lequel se complaisent finalement les individus de votre société paralyse finalement le progrès et signe son déclin.",
+        yesLabel: "Zut !",
+        noLabel: "Zut !",
+        yesEffects: [gameOver()],
+        noEffects: [gameOver()],
         inEffects: ""
     },
     164: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
+        image: "carte_pluie_meteorites.png",
+        description: "Le progrès ne suffit plus à trouver des solutions aux nouvelles problématiques auxquelles fait face votre espèce.",
+        yesLabel: "Zut !",
+        noLabel: "Zut !",
+        yesEffects: [gameOver()],
+        noEffects: [gameOver()],
         inEffects: ""
     },
     165: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
+        image: "carte_pluie_meteorites.png",
+        description: "L'environnement ne suffit plus à subvenir en ressources à votre société, et à la pénurie fait suite une guerre pour les ressources qui met fin à votre espèce.",
+        yesLabel: "Zut !",
+        noLabel: "Zut !",
+        yesEffects: [gameOver()],
+        noEffects: [gameOver()],
         inEffects: ""
     },
     166: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
+        image: "carte_pluie_meteorites.png",
+        description: "Trop peu d'individus survivent et ne suffisent plus à maintenir l'équilibre face aux contraintes d'environnement et conflits inter-espèces.",
+        yesLabel: "Zut !",
+        noLabel: "Zut !",
+        yesEffects: [gameOver()],
+        noEffects: [gameOver()],
         inEffects: ""
     },
     167: {
-        image: "",
-        description: "",
-        yesLabel: "",
-        noLabel: "",
-        yesEffects: "",
-        noEffects: "",
+        image: "carte_pluie_meteorites.png",
+        description: "L'espoir vient à manquer aux individus de votre société et elle sombre dans sa perte sans envie d'en sortir.",
+        yesLabel: "Zut !",
+        noLabel: "Zut !",
+        yesEffects: [gameOver()],
+        noEffects: [gameOver()],
         inEffects: ""
     },
     168: {
