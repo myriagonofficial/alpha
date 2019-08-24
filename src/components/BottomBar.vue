@@ -37,8 +37,30 @@ footer {
 
 .card-info {
   margin: 1vh auto;
-  width: 60vh;
+  width: 60vw;
+  min-width: 720px;
   font-size: 1.2rem;
+  position: relative;
+
+  @media (max-width: 720px) {
+    min-width: 100%;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  &::before,
+  &::after {
+    content: url("../assets/ui/interface_barre_bas_bord.png");
+    position: absolute;
+    top: 0;
+  }
+
+  &::before {
+    right: 100%;
+  }
+  &::after {
+    left: 100%;
+  }
 }
 
 .card-name {
