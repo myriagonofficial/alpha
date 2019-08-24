@@ -1,14 +1,14 @@
 <template>
   <div class="card is-flipped flipping">
     <div class="card-face card-face-back" ref="back">
-      <img class="card-frame" src="assets/frames/carte_fond_arriere.png">
+      <img class="card-frame" src="assets/frames/carte_fond_arriere.png" />
     </div>
     <div class="card-face card-face-front hidden" ref="front">
       <div class="card-image">
-        <span class="card-image-yes" :style="{opacity: opacityYes }">{{ card.yesLabel || "Oui" }}</span>
-        <span class="card-image-no" :style="{opacity: opacityNo }">{{ card.noLabel || "Non" }}</span>
-        <img :src="'assets/cards/' + card.image">
-        <div class="card-effect"/>
+        <span class="card-image-yes" ref="yesLabel">{{ card.yesLabel || "Oui" }}</span>
+        <span class="card-image-no" ref="noLabel">{{ card.noLabel || "Non" }}</span>
+        <img :src="'assets/cards/' + card.image" />
+        <div class="card-effect" />
       </div>
     </div>
   </div>
@@ -29,7 +29,6 @@ export default {
   data() {
     return {
       state,
-      active: false, // the active variable is used to render each frame of the animation
       transform: null
     };
   },
@@ -48,15 +47,6 @@ export default {
   },
 
   methods: {
-    // all animation takes place between when active changes state from true
-    // in requestElementUpdate to false in updateElementTransform
-    requestElementUpdate() {
-      if (!this.active) {
-        requestAnimationFrame(this.updateElementTransform);
-        this.active = true;
-      }
-    },
-
     resetElement() {
       this.$el.classList.add("animate");
       state.choice = 0;
@@ -67,47 +57,47 @@ export default {
         },
         angle: 0
       };
-      this.requestElementUpdate();
+      requestAnimationFrame(this.render);
     },
 
-    updateElementTransform() {
+    render() {
       const {
         angle,
         translate: { x, y }
       } = this.transform;
       const style = `translate3d(${x}px, ${y}px, 0) rotate(${angle}deg)`;
       this.$el.style.transform = style;
-      this.active = false;
+      this.$refs.yesLabel.style.opacity = this.opacityYes;
+      this.$refs.noLabel.style.opacity = this.opacityNo;
+      //this.active = false;
     },
 
-    onHammerInput(ev) {
-      if (ev.isFinal) {
-        if (state.choice === 1) {
-          //offscreen
-          this.$el.classList.add("animate");
-          this.transform.translate = {
-            x: ev.deltaX * 3,
-            y: ev.deltaY * 3
-          };
-          this.requestElementUpdate();
-          setTimeout(() => {
-            this.$emit("choice", true);
-          }, 200);
-        } else if (state.choice === -1) {
-          //offscreen
-          this.$el.classList.add("animate");
-          this.transform.translate = {
-            x: ev.deltaX * 3,
-            y: ev.deltaY * 3
-          };
-          this.requestElementUpdate();
-          setTimeout(() => {
-            this.$emit("choice", false);
-          }, 200);
-        } else {
-          sounds.play("gui_card_off");
-          this.resetElement();
-        }
+    onPanEnd(ev) {
+      if (state.choice === 1) {
+        //offscreen
+        this.$el.classList.add("animate");
+        this.transform.translate = {
+          x: ev.deltaX * 3,
+          y: ev.deltaY * 3
+        };
+        requestAnimationFrame(this.render);
+        setTimeout(() => {
+          this.$emit("choice", true);
+        }, 200);
+      } else if (state.choice === -1) {
+        //offscreen
+        this.$el.classList.add("animate");
+        this.transform.translate = {
+          x: ev.deltaX * 3,
+          y: ev.deltaY * 3
+        };
+        requestAnimationFrame(this.render);
+        setTimeout(() => {
+          this.$emit("choice", false);
+        }, 200);
+      } else {
+        sounds.play("gui_card_off");
+        this.resetElement();
       }
     },
 
@@ -129,7 +119,7 @@ export default {
       );
       state.choice = multiplier * Math.sign(ev.deltaX);
       this.transform.angle = MAX_ANGLE * state.choice;
-      this.requestElementUpdate();
+      requestAnimationFrame(this.render);
     },
 
     flip() {
@@ -146,9 +136,9 @@ export default {
 
         this.resetElement();
 
-        mc.on("hammer.input", this.onHammerInput);
         mc.on("panstart panmove", this.onPanMove);
         mc.on("panstart", () => sounds.play("gui_card_on"));
+        mc.on("panend", this.onPanEnd);
       }, 1050);
     }
   }
@@ -196,7 +186,7 @@ img {
 }
 
 .card.animate {
-  transition: all 0.3s;
+  transition: transform 0.3s;
 }
 .card-image {
   position: relative;
@@ -240,13 +230,13 @@ img {
   opacity: 0;
 }
 .card-image-yes {
-  left: 30px;
+  right: 80%;
   color: white;
   background-color: rgb(84, 102, 109);
   transform: rotate(-30deg);
 }
 .card-image-no {
-  right: 30px;
+  left: 80%;
   color: white;
   background-color: rgb(84, 102, 109);
   transform: rotate(30deg);

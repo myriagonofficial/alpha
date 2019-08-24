@@ -43,8 +43,8 @@ footer {
   position: relative;
 
   @media (max-width: 720px) {
-    min-width: 100%;
-    width: 100%;
+    min-width: 95%;
+    width: 95%;
     font-size: 1rem;
   }
 
