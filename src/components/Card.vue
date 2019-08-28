@@ -257,7 +257,7 @@ img {
 }
 
 .card-info .card-description {
-  font-size: 1.6em;
+  font-size: 1.4em;
   text-align: center;
   position: absolute;
   top: 52px;

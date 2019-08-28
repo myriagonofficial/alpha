@@ -1,13 +1,15 @@
 <template>
   <div id="app">
-    <TopBar/>
-    <CardsScene/>
-    <BottomBar/>
+    <TopBar />
+    <Menu v-if="scene==='menu'" @play="scene = 'game'" />
+    <CardsScene v-if="scene==='game'" />
+    <BottomBar />
   </div>
 </template>
 
 <script>
 import CardsScene from "@/components/CardsScene.vue";
+import Menu from "@/components/Menu.vue";
 import TopBar from "@/components/TopBar.vue";
 import BottomBar from "@/components/BottomBar.vue";
 
@@ -15,9 +17,11 @@ import { initGame } from "@/game.js";
 
 export default {
   name: "Alpha",
-  components: { CardsScene, TopBar, BottomBar },
+  components: { CardsScene, Menu, TopBar, BottomBar },
   data() {
-    return {};
+    return {
+      scene: "menu"
+    };
   },
 
   created() {
