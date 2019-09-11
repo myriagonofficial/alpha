@@ -34,22 +34,6 @@ export function endStory(name) {
   }
 }
 
-export function endArc() {
-  return {
-    apply() {
-      state.deck.finishedArcs++;
-      let msgToDisplay;
-      if (state.deck.finishedArcs < state.deck.nbArcsToComplete) {
-        let nb = state.deck.nbArcsToComplete - state.deck.finishedArcs;
-        msgToDisplay = "Arc terminé avec succès ! Plus que " + nb + " pour terminer la démo.";
-      } else {
-        msgToDisplay = "Démo terminée !";
-      }
-      alert(msgToDisplay);
-    }
-  }
-}
-
 export function gameOver() {
   return {
     type: gameOver,
