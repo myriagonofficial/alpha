@@ -14,9 +14,14 @@ import { cards } from "@/cards.js";
 export default {
   name: "BottomBar",
   components: {},
+  data() {
+    return {
+      state
+    };
+  },
   computed: {
     card() {
-      return cards[state.card];
+      return cards[this.state.card];
     }
   }
 };

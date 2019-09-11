@@ -1,32 +1,31 @@
 <template>
-  <div id="app">
+  <div id="app" :class="'scene-'+state.scene">
     <TopBar />
-    <Menu v-if="scene==='menu'" @play="scene = 'game'" />
-    <CardsScene v-if="scene==='game'" />
+    <MenuScene v-if="state.scene==='menu'" @play="play()" />
+    <CardsScene v-if="state.scene==='game'" />
     <BottomBar />
   </div>
 </template>
 
 <script>
 import CardsScene from "@/components/CardsScene.vue";
-import Menu from "@/components/Menu.vue";
+import MenuScene from "@/components/MenuScene.vue";
 import TopBar from "@/components/TopBar.vue";
 import BottomBar from "@/components/BottomBar.vue";
 
 import { initGame } from "@/game.js";
+import { state } from "@/state.js";
 
 export default {
   name: "Alpha",
-  components: { CardsScene, Menu, TopBar, BottomBar },
+  components: { CardsScene, MenuScene, TopBar, BottomBar },
   data() {
     return {
-      scene: "menu"
+      state
     };
   },
 
-  created() {
-    initGame();
-  },
+  created() {},
 
   mounted() {
     this.resizeScene();
@@ -38,6 +37,10 @@ export default {
   },
 
   methods: {
+    play() {
+      initGame();
+      this.state.scene = "game";
+    },
     resizeScene() {
       /*let scale = Math.min(window.innerWidth / 640, window.innerHeight / 1080);
       const autoscaledElements = this.$el.querySelectorAll(".autoscale");
@@ -73,5 +76,11 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
+
+  &.scene-menu {
+    background-image: url("assets/background.png");
+    background-size: cover;
+    background-position: center center;
+  }
 }
 </style>

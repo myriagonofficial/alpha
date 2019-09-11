@@ -1,15 +1,21 @@
 <template>
   <header>
-    <Jauges/>
+    <Jauges v-if="state.scene === 'game'" />
   </header>
 </template>
 
 <script>
 import Jauges from "@/components/Jauges.vue";
+import { state } from "@/state.js";
 
 export default {
   name: "TopBar",
-  components: { Jauges }
+  components: { Jauges },
+  data() {
+    return {
+      state
+    };
+  }
 };
 </script>
 
