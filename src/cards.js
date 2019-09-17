@@ -45,6 +45,9 @@ export const cards = {
     6: {
         image: "carte_pluie_meteorites.png",
         description: "Quelques poussières qui dérivaient dans l'espace se sont laissées attirer par l'orbite de notre planète.",
+        choices: {
+            "Super": () => { }
+        }
     },
     7: {
         image: "carte_pluie_meteorites.png",

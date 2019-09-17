@@ -1,12 +1,13 @@
 <template>
   <div class="cards-scene">
-    <div class="pool">
-      <img class="card" src="assets/frames/carte_fond_arriere.png">
-      <img class="card" src="assets/frames/carte_fond_arriere.png">
-      <img class="card" src="assets/frames/carte_fond_arriere.png">
-      <img class="card" src="assets/frames/carte_fond_arriere.png">
+    <div class="background-overlay"></div>
+    <div class="card-zone">
+      <Card v-if="state.card" :card="card" @choice="onChoice" />
     </div>
-    <Card v-if="state.card" :card="card" @choice="onChoice"/>
+    <div class="card-info" v-if="card">
+      <div class="card-name">{{ card.name }}</div>
+      <div class="card-description">{{ card.description }}</div>
+    </div>
   </div>
 </template>
 
@@ -47,10 +48,57 @@ $card_height: 720;
   top: 15vh;
   left: 0;
   right: 0;
-  bottom: 15vh;
+  bottom: 5vh;
   transform-origin: center;
   text-align: center;
   z-index: 2;
+
+  .background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../assets/ui/interface_fond_total.png");
+    background-size: cover;
+    background-position: center center;
+    opacity: 0.75;
+  }
+
+  .card-zone {
+    position: absolute;
+    top: 5vh;
+    bottom: 5vh;
+    left: 0;
+    right: 50%;
+  }
+
+  .card-info {
+    position: absolute;
+    left: 50%;
+    right: 5vh;
+    top: 5vh;
+    bottom: 5vh;
+    padding: 2rem;
+    color: black;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .card-name {
+      font-weight: bold;
+      font-size: 4rem;
+      text-transform: uppercase;
+      flex: 0;
+      margin: 1em 0;
+    }
+
+    .card-description {
+      font-size: 3rem;
+      flex: 1;
+    }
+  }
 }
 
 .card {
@@ -64,31 +112,5 @@ $card_height: 720;
     max-width: calc($card_width / $card_height * 70vh);
     max-height: 70vh;
   }
-}
-
-.pool {
-  position: absolute;
-  width: calc($card_width / $card_height * 70vh);
-  height: 70vh;
-  left: calc(50% - $card_width / $card_height * 0.5 * 70vh);
-  top: calc(50% - 35vh);
-}
-
-.pool img {
-  position: absolute;
-  top: 0;
-}
-
-.pool img:nth-child(4) {
-  left: 15px;
-}
-.pool img:nth-child(3) {
-  left: 30px;
-}
-.pool img:nth-child(2) {
-  left: 45px;
-}
-.pool img:nth-child(1) {
-  left: 55px;
 }
 </style>

@@ -33,7 +33,7 @@ export const onChoice = choice => {
 
 export const nextCard = () => {
   cleanupFinishedStories()
-  if (state.deck.stories.length === 0 || state.deck.finishedArcs >= state.deck.nbArcsToComplete) return nextDeck()
+  if (state.deck.stories.length === 0) return nextDeck()
 
   let highestPriority = state.deck.stories.reduce((highest, story) => Math.max(highest, stories[story].priority || 0), 0)
   let priorityStories = state.deck.stories.filter(story => !highestPriority || stories[story].priority === highestPriority)
@@ -47,8 +47,9 @@ export const nextCard = () => {
 }
 
 export const nextDeck = () => {
+  if (state.era >= decks.length) return alert("fin du game")
+
   state.deck = Object.assign({
-    finishedArcs: 0,
     jauges: []
   }, decks[state.era])
 

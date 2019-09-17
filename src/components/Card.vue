@@ -1,8 +1,5 @@
 <template>
-  <div class="card is-flipped flipping">
-    <div class="card-face card-face-back" ref="back">
-      <img class="card-frame" src="assets/frames/carte_fond_arriere.png" />
-    </div>
+  <div class="card" v-if="card">
     <div class="card-face card-face-front hidden" ref="front">
       <div class="card-image">
         <img :src="'assets/cards/' + card.image" />
@@ -40,6 +37,14 @@ export default {
     };
   },
 
+  mounted() {
+    this.randomAngle = Math.random() * Math.PI * 2;
+    this.putCardAway();
+    setTimeout(() => {
+      this.$el.style.transform = null;
+    }, 400);
+  },
+
   computed: {
     choices() {
       return Object.keys(this.card.choices);
@@ -50,28 +55,15 @@ export default {
     card: {
       handler() {
         this.randomAngle = Math.random() * Math.PI * 2;
-        this.flip();
-      },
-      immediate: true
+        this.putCardAway();
+      }
     }
   },
 
   methods: {
-    flip() {
-      setTimeout(() => {
-        this.$el.classList.remove("is-flipped");
-      }, 50);
-      setTimeout(() => {
-        this.$refs.front.classList.remove("hidden");
-      }, 300);
-      setTimeout(() => {
-        this.$el.classList.remove("flipping");
-      }, 1050);
-    },
-
     choose(action) {
       this.card.choices[action](state);
-      this.throwCard();
+      this.putCardAway();
       setTimeout(() => {
         this.state.card = null;
       }, 900);
@@ -87,8 +79,9 @@ export default {
       };
     },
 
-    throwCard() {
-      let randomAngle = (1 + Math.random()) * Math.PI;
+    putCardAway() {
+      if (!this.$el) return;
+      let randomAngle = (0.75 + Math.random() * 0.5) * Math.PI;
       let dx = Math.cos(randomAngle) * 150;
       let dy = Math.sin(randomAngle) * 150;
       let rotation = randomAngle < (Math.PI * 3) / 2 ? -180 : +180;
@@ -103,27 +96,15 @@ export default {
   transform-style: preserve-3d;
   transform-origin: center;
   transition: transform 0.8s;
+  transform: rotateZ(-2deg);
   cursor: pointer;
   filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
-}
-
-.card.is-flipped {
-  transform: translateX(100%) rotateY(-180deg);
 }
 
 .card-face {
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden;
-}
-
-.card-face.hidden {
-  opacity: 0;
-}
-
-.card-face-back {
-  transform: rotateY(180deg);
 }
 
 img {
@@ -141,15 +122,6 @@ img {
 
 .card-image {
   position: relative;
-  backface-visibility: hidden;
-}
-
-.card.is-flipped {
-  transform: translateX(100%) rotateY(-180deg);
-}
-.card.flipping {
-  transition: transform 0.7s;
-  transform-origin: center left;
 }
 
 .card-frame {
@@ -161,7 +133,6 @@ img {
   bottom: 0;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden;
 }
 
 .choices {
