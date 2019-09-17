@@ -41,7 +41,7 @@ export const sounds = {
         src: ['assets/sound/vox_gardien_05.mp3']
     }),
 
-    mus_menu_01: new Howl({
+    mus_menu: new Howl({
         src: ['assets/sound/mus_menu_01.mp3'],
         loop: true
     }),

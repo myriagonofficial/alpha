@@ -78,9 +78,14 @@ body {
   bottom: 0;
 
   &.scene-menu {
-    background-image: url("assets/background.png");
+    background-image: url("assets/ECRAN_INTRO.png");
     background-size: cover;
     background-position: center center;
+
+    header,
+    footer {
+      display: none;
+    }
   }
 }
 </style>
