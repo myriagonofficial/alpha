@@ -1,16 +1,16 @@
 <template>
   <header>
-    <Jauges v-if="state.scene === 'game'" />
+    <p>Compteur environnement</p>
+    <p>Compteur bonheur</p>
   </header>
 </template>
 
 <script>
-import Jauges from "@/components/Jauges.vue";
 import { state } from "@/state.js";
 
 export default {
   name: "TopBar",
-  components: { Jauges },
+  components: {},
   data() {
     return {
       state

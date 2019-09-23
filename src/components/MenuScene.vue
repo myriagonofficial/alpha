@@ -4,7 +4,11 @@
       <img src="assets/icons/PICTO_SON.png" alt="Son" class="icon" />
       L'expérience sonore est vivement conseillée
     </p>
-    <p class="button" @click="playMusic">OK</p>
+    <p
+      class="button"
+      @click="play"
+      :class="{ disabled: !loaded }"
+    >{{loaded ? "Jouer": "Chargement "+loadingPc+"%"}}</p>
   </div>
   <div id="menu-scene" v-else>
     <img class="logo-myriagon" src="assets/MYRIAGON_LOGO.png" alt="Myriagon" />
@@ -17,24 +21,37 @@
 </template>
 
 <script>
-import { sounds } from "@/sounds";
+import { playMusic, stopMusic } from "@/audio";
+import { preloadGame } from "@/preloader";
+
 export default {
   name: "MenuScene",
   data() {
     return {
-      isMusicActivated: false
+      isMusicActivated: false,
+      loaded: false,
+      loadingPc: 0
     };
+  },
+
+  mounted() {
+    preloadGame(this.onProgress).then(() => {
+      this.loaded = true;
+    });
   },
 
   methods: {
     startGame() {
-      sounds.stopMusic();
+      stopMusic();
       this.$emit("play");
     },
-    playMusic() {
-      if (this.isMusicActivated) return;
+    play() {
+      if (this.isMusicActivated || !this.loaded) return;
       this.isMusicActivated = true;
-      sounds.play("mus_menu", "music");
+      playMusic("mus_menu");
+    },
+    onProgress(pc) {
+      this.loadingPc = Math.round(pc);
     }
   }
 };
@@ -91,7 +108,11 @@ export default {
   cursor: pointer;
   background: rgba(128, 128, 128, 0.15);
 
-  &:hover {
+  &.disabled {
+    background: rgba(32, 32, 32, 0.25);
+  }
+
+  &:not(.disabled):hover {
     animation: none;
     background: rgba(128, 128, 128, 0.25);
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);

@@ -19,3 +19,7 @@ export function pickRandomIn(array) {
 export function removeInArray(array, item) {
     array.splice(array.indexOf(item), 1)
 }
+
+export function deduplicate(array) {
+    return array.filter((e, i, a) => a.indexOf(e) === i)
+}

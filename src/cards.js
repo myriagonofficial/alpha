@@ -1,4 +1,6 @@
-import { changeJauge, endStory, startStory, playSound } from "./effects.js";
+import { playSound, playMusic } from "./audio.js"
+import { changeScore } from "./game.js"
+import { endStory, startStory } from "./stories.js";
 import { incidence } from "./const.js";
 
 export const cards = {
@@ -8,7 +10,10 @@ export const cards = {
         choices: {
             "Qui êtes-vous ?": () => { }
         },
-        inEffects: [playSound('vox_gardien_01', 'voice'), playSound('mus_gardien_01', 'music')]
+        onEnter() {
+            playMusic('mus_gardien_01')
+            playSound('vox_gardien_01', 'voice')
+        }
     },
     2: {
         image: "carte_pluie_meteorites.png",
@@ -16,7 +21,9 @@ export const cards = {
         choices: {
             "Gardiens du Temps ?": () => { }
         },
-        inEffects: [playSound('vox_gardien_02', 'voice'), playSound('mus_gardien_01', 'music')]
+        onEnter() {
+            playSound('vox_gardien_02', 'voice')
+        }
     },
     3: {
         image: "carte_pluie_meteorites.png",
@@ -24,7 +31,10 @@ export const cards = {
         choices: {
             "Pourquoi suis-je ici ?": () => { }
         },
-        inEffects: [playSound('vox_gardien_03', 'voice'), playSound('mus_gardien_02', 'music')]
+        onEnter() {
+            playMusic('mus_gardien_02')
+            playSound('vox_gardien_03', 'voice')
+        }
     },
     4: {
         image: "carte_pluie_meteorites.png",
@@ -32,7 +42,9 @@ export const cards = {
         choices: {
             "Que dois-je faire ?": () => { }
         },
-        inEffects: [playSound('vox_gardien_04', 'voice')]
+        onEnter() {
+            playSound('vox_gardien_04', 'voice')
+        }
     },
     5: {
         image: "carte_pluie_meteorites.png",
@@ -40,7 +52,10 @@ export const cards = {
         choices: {
             "J'accepte": () => { }
         },
-        inEffects: [playSound('vox_gardien_05', 'voice'), playSound('mus_gardien_03', 'music')]
+        onEnter() {
+            playMusic('mus_gardien_03')
+            playSound('vox_gardien_05', 'voice')
+        }
     },
     6: {
         image: "carte_pluie_meteorites.png",
@@ -64,8 +79,8 @@ export const cards = {
         description: "Le temps passant, les quelques roches qui nous entourent ont grandi et une ceinture se dessine petit à petit autour de notre astre. Le ciel s'obscurcit légèrement.",
         choices: {
             "Laisser les choses se faire": () => {
-                changeJauge('Terrestre', +incidence.s);
-                changeJauge('Céleste', -incidence.s);
+                changeScore('Terrestre', +incidence.s);
+                changeScore('Céleste', -incidence.s);
             },
             "Soufflons tout ça": () => {
                 endStory('lune')
@@ -89,7 +104,7 @@ export const cards = {
         description: "Le magma sous la croûte terrestre agite beaucoup les plaques tectoniques.",
         choices: {
             "Calmer le jeu": () => {
-                changeJauge('Terrestre', +incidence.m)
+                changeScore('Terrestre', +incidence.m)
             },
             "Laisser les plaques tectoniques s'agiter": () => {
                 startStory('end_tectonique')
@@ -101,12 +116,12 @@ export const cards = {
         description: "Quelques volcans ont réchauffé les mers et l'atmosphère terrestre, et rendu la terre fertile pour les végétaux.",
         choices: {
             "Protéger les plants": () => {
-                changeJauge('Marine', +incidence.s)
-                changeJauge('Céleste', +incidence.m)
+                changeScore('Marine', +incidence.s)
+                changeScore('Céleste', +incidence.m)
             },
             "Détruire les plants": () => {
-                changeJauge('Marine', -incidence.s)
-                changeJauge('Céleste', -incidence.m)
+                changeScore('Marine', -incidence.s)
+                changeScore('Céleste', -incidence.m)
             }
         }
     },
@@ -115,10 +130,10 @@ export const cards = {
         description: "Les terres asséchées sont devenues arides et finissent par se craqueler.",
         choices: {
             "Faire tomber la pluie": () => {
-                changeJauge('Terrestre', +incidence.m)
+                changeScore('Terrestre', +incidence.m)
             },
             "Ne pas intervenir": () => {
-                changeJauge('Céleste', -incidence.l)
+                changeScore('Céleste', -incidence.l)
             }
         }
     }

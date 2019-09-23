@@ -21,7 +21,6 @@
 <script>
 import { state } from "@/state.js";
 import { nextCard } from "@/game.js";
-//import { sounds } from "@/sounds.js";
 
 export default {
   name: "Card",

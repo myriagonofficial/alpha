@@ -2,7 +2,7 @@
   <div class="cards-scene">
     <div class="background-overlay"></div>
     <div class="card-zone">
-      <Card v-if="state.card" :card="card" @choice="onChoice" />
+      <Card v-if="state.card" :card="card" />
     </div>
     <div class="card-info" v-if="card">
       <div class="card-name">{{ card.name }}</div>
@@ -15,7 +15,6 @@
 import Card from "@/components/Card.vue";
 
 import { state } from "@/state.js";
-import { onChoice } from "@/game.js";
 import { cards } from "@/cards.js";
 
 export default {
@@ -30,10 +29,6 @@ export default {
     card() {
       return cards[state.card];
     }
-  },
-
-  methods: {
-    onChoice
   }
 };
 </script>

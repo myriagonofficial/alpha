@@ -1,3 +1,6 @@
+import { state } from "./state.js";
+import { removeInArray } from "./utils.js"
+
 // story = scénario = ensemble de cartes sortant dans l'ordre
 
 export const stories = {
@@ -21,4 +24,12 @@ export const stories = {
         cards: [12],
         priority: 1
     }
+}
+
+export function startStory(name) {
+    state.deck.stories.push(name)
+}
+
+export function endStory(name) {
+    removeInArray(state.deck.stories, name);
 }

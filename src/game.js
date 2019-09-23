@@ -1,9 +1,8 @@
 import { state } from "./state.js"
 import { decks } from "./decks";
-import { stories } from "./stories";
+import { stories, endStory } from "./stories";
 import { cards } from "./cards";
 import { pickRandomIn } from "./utils"
-import { startStory, endStory } from "./effects.js";
 
 export const initGame = () => {
   Object.assign(state, {
@@ -12,24 +11,6 @@ export const initGame = () => {
   })
   nextDeck()
 };
-
-export const onChoice = choice => {
-  let card = cards[state.card]
-  state.choice = 0;
-  if (choice) {
-    card.yesEffects.forEach(effect => effect.apply());
-  } else {
-    card.noEffects.forEach(effect => effect.apply());
-  }
-  if (card.outEffects) {
-    card.outEffects.forEach(effect => effect.apply());
-  }
-
-  state.card = null;
-  state.story = null;
-  checkJauges();
-  setTimeout(() => nextCard(), 0)
-}
 
 export const nextCard = () => {
   cleanupFinishedStories()
@@ -43,17 +24,13 @@ export const nextCard = () => {
 
   if (!card.name) card.name = stories[state.story].name
 
-  if (card.inEffects) card.inEffects.forEach(effect => effect.apply());
+  if (card.onStart) card.onStart();
 }
 
 export const nextDeck = () => {
-  if (state.era >= decks.length) return alert("fin du game")
+  if (state.era >= decks.length) return alert("fin du game") //TODO
 
-  state.deck = Object.assign({
-    jauges: []
-  }, decks[state.era])
-
-  state.deck.jauges.forEach(jauge => { jauge.level = 50 })
+  state.deck = Object.assign({}, decks[state.era])
   state.deck.stories.forEach(s => s in stories || console.error(`Story not found: ${s}`))
 
   state.era++;
@@ -66,9 +43,6 @@ export const cleanupFinishedStories = () => {
     .forEach(story => endStory(story).apply())
 }
 
-export const checkJauges = () => {
-  let jaugeFull = state.deck.jauges.find(jauge => jauge.level >= 100)
-  let jaugeEmpty = state.deck.jauges.find(jauge => jauge.level <= 0)
-  if (jaugeFull) startStory(jaugeFull.gameOverUp).apply()
-  else if (jaugeEmpty) startStory(jaugeEmpty.gameOverDown).apply()
+export const changeScore = (scoreToUpdate, value) => {
+  state.scores[scoreToUpdate] += value;
 }
