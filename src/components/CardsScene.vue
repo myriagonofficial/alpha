@@ -57,7 +57,7 @@ $card_height: 720;
     background-image: url("../assets/ui/interface_fond_total.png");
     background-size: cover;
     background-position: center center;
-    opacity: 0.75;
+    opacity: 0.85;
   }
 
   .card-zone {
@@ -83,14 +83,14 @@ $card_height: 720;
 
     .card-name {
       font-weight: bold;
-      font-size: 4rem;
+      font-size: 4vmin;
       text-transform: uppercase;
       flex: 0;
       margin: 1em 0;
     }
 
     .card-description {
-      font-size: 3rem;
+      font-size: 3vmin;
       flex: 1;
     }
   }

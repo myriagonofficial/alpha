@@ -1,5 +1,5 @@
 <template>
-  <div class="card" v-if="card">
+  <div class="card" v-if="card" :style="cardStyle">
     <div class="card-face card-face-front hidden" ref="front">
       <div class="card-image">
         <img :src="'assets/cards/' + card.image" />
@@ -32,7 +32,8 @@ export default {
   data() {
     return {
       state,
-      randomAngle: 0
+      randomAngle: 0,
+      cardStyle: this.calcCardStyle()
     };
   },
 
@@ -42,6 +43,12 @@ export default {
     setTimeout(() => {
       this.$el.style.transform = null;
     }, 400);
+
+    this.resizeListener = window.addEventListener("resize", this.onResize);
+  },
+
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
   },
 
   computed: {
@@ -69,6 +76,30 @@ export default {
         this.state.card = null;
       }, 900);
       setTimeout(() => nextCard(), 1000);
+    },
+
+    calcCardStyle() {
+      const zone = document.querySelector(".card-zone");
+
+      if (!zone) return;
+      let { width: maxWidth, height: maxHeight } = zone.getBoundingClientRect();
+      const ratio = 630 / 720;
+      const margin = 10;
+      maxHeight -= margin * 2;
+      maxWidth -= margin * 2;
+
+      const width = Math.min(maxWidth, maxHeight * ratio);
+      const height = Math.min(maxHeight, maxWidth / ratio);
+
+      return {
+        width: width + "px",
+        height: height + "px",
+        top: Math.floor((maxHeight - height) / 2 + margin) + "px"
+      };
+    },
+
+    onResize() {
+      this.cardStyle = this.calcCardStyle();
     },
 
     calcPositionChoice(i) {
@@ -177,31 +208,6 @@ img {
       filter: drop-shadow(0 0 25px white);
     }
   }
-}
-
-.card-info {
-  z-index: 3;
-  position: absolute;
-  bottom: 210px;
-  left: 60px;
-  right: 80px;
-  padding: 0.8em;
-  color: black;
-}
-.card-info .card-name {
-  font-size: 1.8em;
-  font-weight: bold;
-  text-align: center;
-}
-
-.card-info .card-description {
-  font-size: 1.4em;
-  text-align: center;
-  position: absolute;
-  top: 52px;
-  left: 0;
-  right: 0;
-  height: 160px;
 }
 
 @keyframes appear {
