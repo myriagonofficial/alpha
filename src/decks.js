@@ -4,15 +4,19 @@ export const decks = [
   {
     name: "Introduction",
     stories: [
-      "introduction"
+      "introduction",
     ]
   },
   {
-    name: "(Re)naissance",
+    name: "Primal",
     stories: [
-      "init_lune",
-      "init_terres_arides",
-      "init_tectonique"
+      "choix_espece"
+    ]
+  },
+  {
+    name: "Headway",
+    stories: [
+      "interaction_espece"
     ]
   }
 ];

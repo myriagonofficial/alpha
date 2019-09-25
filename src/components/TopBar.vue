@@ -1,7 +1,7 @@
 <template>
   <header>
-    <p>Compteur environnement</p>
-    <p>Compteur bonheur</p>
+    <p v-if="state.shouldShowIndicateurEnvironnement">Compteur environnement</p>
+    <p v-if="state.shouldShowIndicateurBonheur">Compteur bonheur</p>
   </header>
 </template>
 

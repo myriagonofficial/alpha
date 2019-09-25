@@ -13,7 +13,9 @@
         :key="label"
         :style="calcPositionChoice(i)"
         @click="choose(label)"
-      >{{ label }}</div>
+      >
+        {{ label }}
+      </div>
     </div>
   </div>
 </template>
@@ -61,7 +63,8 @@ export default {
 
   methods: {
     choose(action) {
-      this.card.choices[action](state);
+      const choice = this.card.choices[action];
+      if (choice.effect) choice.effect(state);
       this.putCardAway();
       setTimeout(() => {
         this.state.card = null;

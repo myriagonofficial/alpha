@@ -6,24 +6,20 @@ import { removeInArray } from "./utils.js"
 export const stories = {
     introduction: {
         name: "Gardiens du Temps",
-        cards: [1, 2, 3, 4, 5],
+        cards: [1, 2, 3, 4, 5, 6, 7],
         priority: 5
     },
-    init_lune: {
-        name: "Lune",
-        cards: [6, 7, 8, 9],
-        priority: 1
+    choix_espece: {
+        name: "Choix de l'espèce",
+        cards: [100, 101],
+        priority: 5
     },
-    init_tectonique: {
-        name: "Tectonique",
-        cards: [10, 11],
-        priority: 1
-    },
-    init_terres_arides: {
-        name: "Terres Arides",
-        cards: [12],
+    interaction_espece: {
+        name: "Interaction avec les autres espèces",
+        cards: [200],
         priority: 1
     }
+
 }
 
 export function startStory(name) {

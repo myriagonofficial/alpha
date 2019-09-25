@@ -40,9 +40,19 @@ export const nextDeck = () => {
 export const cleanupFinishedStories = () => {
   state.deck.stories
     .filter(story => stories[story].cards.length === 0)
-    .forEach(story => endStory(story).apply())
+    .forEach(story => endStory(story))
 }
 
 export const changeScore = (scoreToUpdate, value) => {
-  state.scores[scoreToUpdate] += value;
+  state.scores[scoreToUpdate] = Math.round(state.scores[scoreToUpdate] * (100 + value) / 100);
 }
+
+export const showIndicateurBonheur = () => {
+  state.shouldShowIndicateurBonheur = true
+}
+
+export const showIndicateurEnvironnement = () => {
+  state.shouldShowIndicateurEnvironnement = true
+}
+
+export const addPassive = passiveName => state.passives.push(passiveName)
