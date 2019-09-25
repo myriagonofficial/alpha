@@ -9,13 +9,11 @@
     <div class="choices">
       <div
         class="choice"
-        v-for="(label, i) in choices"
-        :key="label"
+        v-for="(choice, i) in choices"
+        :key="choice.label"
         :style="calcPositionChoice(i)"
-        @click="choose(label)"
-      >
-        {{ label }}
-      </div>
+        @click="choose(choice)"
+      >{{ choice.label }}</div>
     </div>
   </div>
 </template>
@@ -48,7 +46,9 @@ export default {
 
   computed: {
     choices() {
-      return Object.keys(this.card.choices);
+      return Object.entries(this.card.choices)
+        .map(([label, choice]) => ({ ...choice, label }))
+        .filter(choice => !choice.test || choice.test() === true);
     }
   },
 
@@ -62,8 +62,7 @@ export default {
   },
 
   methods: {
-    choose(action) {
-      const choice = this.card.choices[action];
+    choose(choice) {
       if (choice.effect) choice.effect(state);
       this.putCardAway();
       setTimeout(() => {
