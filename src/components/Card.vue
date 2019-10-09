@@ -178,7 +178,6 @@ img {
     position: absolute;
     display: inline-block;
     background: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
     font-size: 2vh;
     padding: 1em 0.5em;
     transform: translate(-50%, -50%);

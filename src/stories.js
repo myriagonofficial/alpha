@@ -14,6 +14,26 @@ export const stories = {
         cards: [100, 101],
         priority: 5
     },
+    region: {
+        name: "Région",
+        cards: [102],
+        priority: 1
+    },
+    reproduction: {
+        name: "Reproduction",
+        cards: [103, 104],
+        priority: 1
+    },
+    saisons: {
+        name: "Saisons",
+        cards: [105],
+        priority: 1
+    },
+    communication: {
+        name: "Mode de communication",
+        cards: [106],
+        priority: 1
+    },
     interaction_espece: {
         name: "Interaction avec les autres espèces",
         cards: [200],

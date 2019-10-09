@@ -127,8 +127,111 @@ export const cards = {
                     addPassive("omnivore")
                 },
             }
-        },
-        onStart() {
+        }
+    },
+
+    102: {
+        image: "carte_algues.png",
+        description: `Gardien : Les contrées de cette planète sont très variées et je ne doute pas qu'un jour ton peuple les aura toutes explorées. Où voudrais-tu lui que ton peuple s'installe en premier lieu ?`,
+        choices: {
+            "Proche des côtes océaniques": {
+                effect() {
+                    addPassive("ocean");
+                }
+            },
+            "Au pied des volcans": {
+                effect() {
+                    addPassive("volcan");
+                }
+            },
+            "Dans la végétation luxuriante": {
+                effect() {
+                    addPassive("jungle")
+                },
+            }
+        }
+    },
+
+    103: {
+        image: "carte_algues.png",
+        description: `Gardien : Ton peuple doit se reproduire pour assurer son avenir. Que crois-tu être la meilleure stratégie reproductive à leur transmettre ?`,
+        choices: {
+            "Beaucoup de progénitures faibles": {
+                effect() {
+                    changeScore("bonheur", +10);
+                    changeScore("environnement", -10);
+                    addPassive("bebes_faibles");
+                }
+            },
+            "Peu de progénitures fortes": {
+                effect() {
+                    changeScore("bonheur", +5);
+                    changeScore("environnement", -5);
+                    addPassive("bebes_forts");
+                }
+            }
+        }
+    },
+
+    104: {
+        image: "carte_algues.png",
+        description: `Gardien: Les générations futures tireront le meilleur de leurs ancêtres, par un processus de sélection amoureuse. Quel critère devra être favorisé ?`,
+        choices: {
+            "La force par des combats": {
+                effect() {
+                    changeScore("bonheur", -10);
+                    addPassive("force");
+                }
+            },
+            "La beauté par l'apparât": {
+                effect() {
+                    changeScore("bonheur", +5);
+                    changeScore("environnement", -5);
+                    addPassive("beauté");
+                }
+            }
+        }
+    },
+
+    105: {
+        image: "carte_algues.png",
+        description: `Le coeur de ce monde bat au rythme des saisons. Comment s'adapter aux périodes difficiles de grands froids et de vagues de chaleur ?`,
+        choices: {
+            "Hiberner": {
+                effect() {
+                    changeScore("bonheur", -10);
+                    addPassive("hiberne");
+                }
+            },
+            "Migrer": {
+                effect() {
+                    changeScore("bonheur", +5);
+                    changeScore("environnement", -10);
+                    addPassive("migre");
+                }
+            }
+        }
+    },
+
+    106: {
+        image: "carte_algues.png",
+        description: `Gardien: La communication est la clé du progrès social. Comment les individus de ton espèce communiqueront ensemble ?`,
+        choices: {
+            "Signes": {
+                effect() {
+                    addPassive("signes");
+                }
+            },
+            "Olfactif": {
+                effect() {
+                    addPassive("olfactif");
+                }
+            },
+            "Vocal": {
+                effect() {
+                    addPassive("vocal")
+                }
+            }
         }
     },
 

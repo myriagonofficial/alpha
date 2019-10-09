@@ -10,7 +10,11 @@ export const decks = [
   {
     name: "Primal",
     stories: [
-      "choix_espece"
+      "choix_espece",
+      "region",
+      "reproduction",
+      "saisons",
+      "communication"
     ]
   },
   {
