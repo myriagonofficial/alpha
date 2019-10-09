@@ -60,7 +60,7 @@ export const cards = {
     6: {
         image: "aube2.png",
         description: `Il y a en chaque être de cette planète un peu de toi, ils sont ton paradis,
-         ta gratitude inconditionnelle. Ton premier objectif sera de veiller au bonheur de tous : 
+         ta gratitude inconditionnelle. Ton premier objectif sera de veiller au bonheur de tous :
          il sera représenté par cet indicateur.`,
         choices: {
             "C'est tout ?": {}
@@ -71,8 +71,8 @@ export const cards = {
     },
     7: {
         image: "aube3.png",
-        description: `Nous laisserons libre cours à ton imagination, mais garde bien à l'esprit que l'équilibre 
-        sera la clef du fleurissement de ton jardin. Il faudra t'assurer qu'il ne dépérisse pas : cet indicateur 
+        description: `Nous laisserons libre cours à ton imagination, mais garde bien à l'esprit que l'équilibre
+        sera la clef du fleurissement de ton jardin. Il faudra t'assurer qu'il ne dépérisse pas : cet indicateur
         environnemental t'y aidera.`,
         choices: {
             "On commence ?": {}
@@ -85,8 +85,8 @@ export const cards = {
 
     100: {
         image: "paysage_montagne.png",
-        description: `Gardien : Tu as peut-être une affinité élémentaire ... Préférerais-tu voir ton espèce évoluer 
-        parmi les mystérieux fonds marins, sur la terre meuble et fertile, ou bien dans les airs, surplombant toute 
+        description: `Gardien : Tu as peut-être une affinité élémentaire ... Préférerais-tu voir ton espèce évoluer
+        parmi les mystérieux fonds marins, sur la terre meuble et fertile, ou bien dans les airs, surplombant toute
         la vie végétale ?`,
         choices: {
             "Espèce Marine": {
@@ -104,8 +104,8 @@ export const cards = {
     },
 
     101: {
-        image: "carte_algue_saine.png",
-        description: `Gardien : Bien des espèces désireraient t'avoir comme guide. Quel régime alimentaire 
+        image: "algue_saine.png",
+        description: `Gardien : Bien des espèces désireraient t'avoir comme guide. Quel régime alimentaire
         crois-tu être raisonnable de favoriser pour celle qui dominera ce monde ?`,
         choices: {
             "Carnivore": {
@@ -234,7 +234,7 @@ export const cards = {
             }
         }
     },
-    
+
     200: {
         image: "colonisation_celeste.png",
         description: `Gardien : Je te laisse désormais t'adresser à ta création. Des individus appelés prophètes entendrons ta voix et sauront, je l'espère, lui donner réalité.`,
@@ -315,6 +315,6 @@ export const cards = {
         }
     }
 
-    
+
 
 }
