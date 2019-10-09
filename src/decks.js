@@ -21,6 +21,7 @@ export const decks = [
     name: "Headway",
     stories: [
       "interaction_espece",
+      "prophetes",
       "sedentarisation"
     ]
   }

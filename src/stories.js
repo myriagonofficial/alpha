@@ -38,14 +38,19 @@ export const stories = {
     },
 
     // HEADWAY
+    prophetes: {
+        name: "Prophètes",
+        cards: [200],
+        priority: 5
+    },
     interaction_espece: {
         name: "Interaction avec les autres espèces",
-        cards: [200],
+        cards: [201],
         priority: 1
     },
     sedentarisation: {
         name: "Sédentarisation",
-        cards: [201],
+        cards: [202],
         priority: 1
     }
 
