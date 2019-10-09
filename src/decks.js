@@ -20,7 +20,8 @@ export const decks = [
   {
     name: "Headway",
     stories: [
-      "interaction_espece"
+      "interaction_espece",
+      "sedentarisation"
     ]
   }
 ];

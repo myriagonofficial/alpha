@@ -265,5 +265,24 @@ export const cards = {
                 }
             }
         }
+    },
+
+    201: {
+        image: "carte_algues.png",
+        description: `Prophète : Alpha, notre peuple se querelle. Certains voudraient changer de région pour varier nos sources de nourriture, et d’autres s’implanter et exploiter au mieux le territoire proche. Que pensez-vous bon de faire ?`,
+        choices: {
+            "Vous devriez vous sédentariser.": {
+                effect() {
+                    changeScore("bonheur", +10)
+                    changeScore("environnement", -10)
+                }
+            },
+            "N'ayez pas peur d'explorer.": {
+                effect() {
+                    changeScore("bonheur", +5)
+                    changeScore("environnement", -5)
+                }
+            }
+        }
     }
 }

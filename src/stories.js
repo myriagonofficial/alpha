@@ -9,6 +9,8 @@ export const stories = {
         cards: [1, 2, 3, 4, 5, 6, 7],
         priority: 5
     },
+
+    // PRIMAL
     choix_espece: {
         name: "Choix de l'espèce",
         cards: [100, 101],
@@ -34,9 +36,16 @@ export const stories = {
         cards: [106],
         priority: 1
     },
+
+    // HEADWAY
     interaction_espece: {
         name: "Interaction avec les autres espèces",
         cards: [200],
+        priority: 1
+    },
+    sedentarisation: {
+        name: "Sédentarisation",
+        cards: [201],
         priority: 1
     }
 
