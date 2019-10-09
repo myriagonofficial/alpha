@@ -7,8 +7,11 @@ import { pickRandomIn } from "./utils"
 export const initGame = () => {
   Object.assign(state, {
     era: 0,
-    choice: 0
+    choice: 0,
+    deck: null,
+    card: null
   })
+
   nextDeck()
 };
 

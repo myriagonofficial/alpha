@@ -39,11 +39,8 @@ export default {
 
   mounted() {
     this.randomAngle = Math.random() * Math.PI * 2;
-    this.putCardAway();
-    setTimeout(() => {
-      this.$el.style.transform = null;
-    }, 400);
-
+    this.putCardAway(true);
+    setTimeout(() => this.bringCardIn(), 400);
     this.resizeListener = window.addEventListener("resize", this.onResize);
   },
 
@@ -59,23 +56,14 @@ export default {
     }
   },
 
-  watch: {
-    card: {
-      handler() {
-        this.randomAngle = Math.random() * Math.PI * 2;
-        this.putCardAway();
-      }
-    }
-  },
-
   methods: {
     choose(choice) {
       if (choice.effect) choice.effect(state);
       this.putCardAway();
       setTimeout(() => {
-        this.state.card = null;
-      }, 900);
-      setTimeout(() => nextCard(), 1000);
+        nextCard();
+        this.bringCardIn();
+      }, 800);
     },
 
     calcCardStyle() {
@@ -111,13 +99,23 @@ export default {
       };
     },
 
-    putCardAway() {
+    putCardAway(immediate = false) {
       if (!this.$el) return;
       let randomAngle = (0.75 + Math.random() * 0.5) * Math.PI;
-      let dx = Math.cos(randomAngle) * 150;
-      let dy = Math.sin(randomAngle) * 150;
-      let rotation = randomAngle < (Math.PI * 3) / 2 ? -180 : +180;
+      let dx = Math.cos(randomAngle) * 100;
+      let dy = Math.sin(randomAngle) * 100;
+      let rotation =
+        (randomAngle < Math.PI ? -1 : +1) * Math.round(90 + Math.random() * 90);
+      if (immediate) this.$el.style.transitionDelay = 0;
       this.$el.style.transform = `translate(${dx}vw,${dy}vh) rotate(${rotation}deg)`;
+      this.$nextTick(() => delete this.$el.style.transitionDelay);
+    },
+
+    bringCardIn(immediate = false) {
+      this.randomAngle = Math.random() * Math.PI * 2;
+      if (immediate) this.$el.style.transitionDelay = 0;
+      this.$el.style.transform = `translate(0,0) rotateZ(-2deg)`;
+      this.$nextTick(() => delete this.$el.style.transitionDelay);
     }
   }
 };
