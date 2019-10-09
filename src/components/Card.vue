@@ -178,10 +178,10 @@ img {
     position: absolute;
     display: inline-block;
     background: rgba(0, 0, 0, 0.5);
-    font-size: 2vh;
+    font-size: 1.6vmin;
     padding: 1em 0.5em;
     transform: translate(-50%, -50%);
-    max-width: 20%;
+    max-width: 25%;
     transition: all 400ms all;
     animation: appear 500ms linear;
     animation-fill-mode: forwards;
