@@ -90,13 +90,16 @@ export const cards = {
         la vie végétale ?`,
         choices: {
             "Espèce Marine": {
-                effect() { addPassive("marine") }
+                effect() { addPassive("marine") },
+                position: { top: "85%", left: "30%" }
             },
             "Espèce Céleste": {
-                effect() { addPassive("céleste") }
+                effect() { addPassive("céleste") },
+                position: { top: "15%", left: "45%" }
             },
             "Espèce Terrestre": {
-                effect() { addPassive("terrestre") }
+                effect() { addPassive("terrestre") },
+                position: { top: "55%", left: "80%" }
             },
         },
         onStart() {
@@ -137,17 +140,20 @@ export const cards = {
             "Proche des côtes océaniques": {
                 effect() {
                     addPassive("ocean");
-                }
+                },
+                position: { top: "55%", left: "85%" }
             },
             "Au pied des volcans": {
                 effect() {
                     addPassive("volcan");
-                }
+                },
+                position: { top: "85%", left: "50%" }
             },
             "Dans la végétation luxuriante": {
                 effect() {
                     addPassive("jungle")
                 },
+                position: { top: "65%", left: "15%" }
             }
         }
     },
@@ -303,18 +309,21 @@ export const cards = {
             "Cartographiez le territoire au sol.": {
                 effect() {
                     addPassive("cartographie");
-                }
+                },
+                position: { top: "85%", left: "25%" }
             },
             "Observez les étoiles et vous y trouverez des réponses.": {
                 effect() {
                     addPassive("astronomie");
-                }
+                },
+                position: { top: "15%", left: "50%" }
             },
             "Balisez au sol.": {
                 effect() {
                     addPassive("herboristerie");
                     changeScore("environnement", -5)
-                }
+                },
+                position: { top: "85%", left: "85%" }
             }
         }
     },
@@ -349,7 +358,7 @@ export const cards = {
         description: `Prophète : Parmi les différents groupes, on observe des luttes de pouvoir s'orienter sur la question de genre. Qui devrait dominer ?`,
         choices: {
             "Encouragez la domination masculine.": {
-                effect(){
+                effect() {
                     addPassive("dominationMasculine");
                 }
             },
@@ -361,7 +370,7 @@ export const cards = {
             "Promouvez une société non fondée sur une inégalté de genre": {
                 effect() {
                     addPassive("EquiteGenre");
-                    changeScore("bonheur",+10);
+                    changeScore("bonheur", +10);
                 }
             }
         }
@@ -372,29 +381,29 @@ export const cards = {
         description: `Prophète : Avec le développement de la société, le nombre d'individus qui nuisent à son bon fonctionnement prend également de l'ampleur. Comment pouvons-nous les punir et les décourager de continuer dans cette voie ?`,
         choices: {
             "Construisez des prisons et enfermez-les y.": {
-                effect(){
+                effect() {
                     addPassive("prisons");
-                    changeScore("environnement",-10);
+                    changeScore("environnement", -10);
                 }
             },
             "Eduquez-les afin qu'ils retrouvent le droit chemin.": {
                 effect() {
                     addPassive("reinsertion");
-                    changeScore("environnement",-5);
-                    changeScore("bonheur",+10);
+                    changeScore("environnement", -5);
+                    changeScore("bonheur", +10);
                 }
             },
             "Instaurez la peine de mort.": {
                 effect() {
                     addPassive("peineMort");
-                    changeScore("environnement",+5);
-                    changeScore("bonheur",-10);
+                    changeScore("environnement", +5);
+                    changeScore("bonheur", -10);
                 }
             },
             "Exilez-les de la société.": {
                 effect() {
                     addPassive("Exil");
-                    changeScore("environnement",-10);
+                    changeScore("environnement", -10);
                 }
             }
         }
@@ -405,10 +414,10 @@ export const cards = {
         description: `Prophète : notre société est de plus en plus énergivore, nos chercheurs sont parvenus à découvrir plusieurs sources d'énergie, la question de se pose de savoir laquelle développer industriellement.`,
         choices: {
             "Vous devriez utiliser le gaz emprisonné sous terre.": {
-                effect(){
+                effect() {
                     addPassive("gaz");
-                    changeScore("environnement",-10);
-                    changeScore("bonheur",+10);
+                    changeScore("environnement", -10);
+                    changeScore("bonheur", +10);
 
                 }
             },
@@ -418,7 +427,7 @@ export const cards = {
                 },
                 effect() {
                     addPassive("eolien");
-                    changeScore("bonheur",+5);
+                    changeScore("bonheur", +5);
                 }
             },
             "Utiliser la force du vent me semble être une idée viable.": {
@@ -427,7 +436,7 @@ export const cards = {
                 },
                 effect() {
                     addPassive("hydrolique");
-                    changeScore("bonheur",+5);
+                    changeScore("bonheur", +5);
                 }
             },
             "Mettre à profit la chaleur de la Terre me semble être une idée viable.": {
@@ -436,15 +445,15 @@ export const cards = {
                 },
                 effect() {
                     addPassive("geothermique");
-                    changeScore("bonheur",+5);
+                    changeScore("bonheur", +5);
                 }
             },
 
             "Vous pourriez étudier la matière elle-même et en extraire son énergie fondamentale.": {
                 effect() {
                     addPassive("nucléaire");
-                    changeScore("environnement",-15);
-                    changeScore("bonheur",+15);
+                    changeScore("environnement", -15);
+                    changeScore("bonheur", +15);
                 }
             }
         }

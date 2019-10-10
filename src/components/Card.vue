@@ -91,6 +91,10 @@ export default {
     },
 
     calcPositionChoice(i) {
+      if (this.choices[i].position) {
+        return this.choices[i].position;
+      }
+
       let angle =
         ((this.randomAngle + i / this.choices.length) % 1) * Math.PI * 2;
       return {
