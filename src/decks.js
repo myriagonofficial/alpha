@@ -22,7 +22,17 @@ export const decks = [
     stories: [
       "interaction_espece",
       "prophetes",
-      "sedentarisation"
+      "sedentarisation",
+      "exploration",
+      "dominationGenre",
+      "epidemie"
+    ]
+  },
+  {
+    name: "Apex",
+    stories: [
+      "criminalite",
+      "energie"
     ]
   }
 ];
