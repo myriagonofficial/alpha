@@ -52,8 +52,32 @@ export const stories = {
         name: "Sédentarisation",
         cards: [202],
         priority: 1
+    },
+    exploration: {
+        name: "Exploration",
+        cards: [203],
+        priority: 1
+    },
+    epidemie: {
+        name: "Epidémie mystérieuse",
+        cards: [204],
+        priority: 1
+    },
+    dominationGenre: {
+        name: "Domination de genre",
+        cards: [205],
+        priority: 1
+    },
+    criminalite: {
+        name: "Criminalité",
+        cards: [300],
+        priority: 1
+    },
+    energie: {
+        name: "Besoins en énergie",
+        cards: [301],
+        priority: 1
     }
-
 }
 
 export function startStory(name) {
