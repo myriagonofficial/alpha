@@ -6,7 +6,7 @@
     </div>
     <div class="card-info" v-if="card">
       <div class="card-name">{{ card.name }}</div>
-      <div class="card-description">{{ card.description }}</div>
+      <div class="card-description" ref="description">{{ card.description }}</div>
     </div>
   </div>
 </template>
@@ -28,6 +28,12 @@ export default {
   computed: {
     card() {
       return cards[state.card];
+    }
+  },
+  watch: {
+    "state.card"() {
+      this.$refs.description.classList.add("appear");
+      setTimeout(() => this.$refs.description.classList.remove("appear"), 600);
     }
   }
 };
@@ -106,6 +112,19 @@ $card_height: 720;
   img {
     max-width: calc($card_width / $card_height * 70vh);
     max-height: 70vh;
+  }
+}
+
+.appear {
+  animation: appear 600ms linear;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 </style>

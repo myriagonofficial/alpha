@@ -102,8 +102,8 @@ export default {
     putCardAway(immediate = false) {
       if (!this.$el) return;
       let randomAngle = (0.75 + Math.random() * 0.5) * Math.PI;
-      let dx = Math.cos(randomAngle) * 100;
-      let dy = Math.sin(randomAngle) * 100;
+      let dx = Math.cos(randomAngle) * 120;
+      let dy = Math.sin(randomAngle) * 120;
       let rotation =
         (randomAngle < Math.PI ? -1 : +1) * Math.round(90 + Math.random() * 90);
       if (immediate) this.$el.style.transitionDelay = 0;
