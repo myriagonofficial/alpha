@@ -26,7 +26,7 @@ export const cards = {
         }
     },
     3: {
-        image: "aube1.png",
+        image: "aube2.png",
         description: "Sans Vie, plus de témoins du Temps. Le Temps n'existe qu'au travers de ses observateurs, les êtres vivants.",
         choices: {
             "Pourquoi suis-je ici ?": {}
@@ -297,23 +297,159 @@ export const cards = {
     },
 
     203: {
-        image: "colonisation_celeste.png",
-        description: `Prophète : Alpha, notre peuple se querelle. Certains voudraient changer de région pour varier nos sources de nourriture, et d’autres s’implanter et exploiter au mieux le territoire proche. Que pensez-vous bon de faire ?`,
+        image: "aube3.png",
+        description: `Prophète : Nous avons conquis un large territoire et continuons à l’explorer, cependant la taille de notre environnement connu commence à dépasser notre capacité d’orientation ...`,
         choices: {
-            "Vous devriez vous sédentariser.": {
+            "Cartographiez le territoire au sol.": {
                 effect() {
-                    changeScore("bonheur", +10)
-                    changeScore("environnement", -10)
+                    addPassive("cartographie");
                 }
             },
-            "N'ayez pas peur d'explorer.": {
+            "Observez les étoiles et vous y trouverez des réponses.": {
                 effect() {
-                    changeScore("bonheur", +5)
+                    addPassive("astronomie");
+                }
+            },
+            "Balisez au sol.": {
+                effect() {
+                    addPassive("herboristerie");
                     changeScore("environnement", -5)
                 }
             }
         }
+    },
+
+    204: {
+        image: "algue_poison.png",
+        description: `Prophète : Nombre de nos amis souffrent d'un mal mystérieux, d'aucuns s'imaginent que vous êtes la source de cette malédiction ...`,
+        choices: {
+            "Apprenez l'humilité, vous n'êtes que peu de choses à l'échelle de ce monde. ": {
+                effect() {
+                    changeScore("bonheur", -10)
+                    changeScore("environnement", +10)
+                }
+            },
+            "Vous devriez étudier les plantes qui vous entourent, elles recèlent de propriétés étonnantes.": {
+                effect() {
+                    changeScore("bonheur", +5)
+                    changeScore("environnement", -5)
+                    addPassive("herboristerie");
+                }
+            },
+            "Méfiez-vous des contagions, organisez une quarantaine.": {
+                effect() {
+                    changeScore("bonheur", -5)
+                }
+            }
+        }
+    },
+
+    205: {
+        image: "colonisation_celeste.png",
+        description: `Prophète : Parmi les différents groupes, on observe des luttes de pouvoir s'orienter sur la question de genre. Qui devrait dominer ?`,
+        choices: {
+            "Encouragez la domination masculine.": {
+                effect(){
+                    addPassive("dominationMasculine");
+                }
+            },
+            "Encouragez la domination féminine.": {
+                effect() {
+                    addPassive("dominationFéminine");
+                }
+            },
+            "Promouvez une société non fondée sur une inégalté de genre": {
+                effect() {
+                    addPassive("EquiteGenre");
+                    changeScore("bonheur",+10);
+                }
+            }
+        }
+    },
+
+    300: {
+        image: "colonisation_celeste.png",
+        description: `Prophète : Avec le développement de la société, le nombre d'individus qui nuisent à son bon fonctionnement prend également de l'ampleur. Comment pouvons-nous les punir et les décourager de continuer dans cette voie ?`,
+        choices: {
+            "Construisez des prisons et enfermez-les y.": {
+                effect(){
+                    addPassive("prisons");
+                    changeScore("environnement",-10);
+                }
+            },
+            "Eduquez-les afin qu'ils retrouvent le droit chemin.": {
+                effect() {
+                    addPassive("reinsertion");
+                    changeScore("environnement",-5);
+                    changeScore("bonheur",+10);
+                }
+            },
+            "Instaurez la peine de mort.": {
+                effect() {
+                    addPassive("peineMort");
+                    changeScore("environnement",+5);
+                    changeScore("bonheur",-10);
+                }
+            },
+            "Exilez-les de la société.": {
+                effect() {
+                    addPassive("Exil");
+                    changeScore("environnement",-10);
+                }
+            }
+        }
+    },
+
+    301: {
+        image: "volcan_terre.png",
+        description: `Prophète : notre société est de plus en plus énergivore, nos chercheurs sont parvenus à découvrir plusieurs sources d'énergie, la question de se pose de savoir laquelle développer industriellement.`,
+        choices: {
+            "Vous devriez utiliser le gaz emprisonné sous terre.": {
+                effect(){
+                    addPassive("gaz");
+                    changeScore("environnement",-10);
+                    changeScore("bonheur",+10);
+
+                }
+            },
+            "Utiliser la puissance des courants marins me semble être une idée viable.": {
+                test() {
+                    return state.passives.includes("marine")
+                },
+                effect() {
+                    addPassive("eolien");
+                    changeScore("bonheur",+5);
+                }
+            },
+            "Utiliser la force du vent me semble être une idée viable.": {
+                test() {
+                    return state.passives.includes("céleste")
+                },
+                effect() {
+                    addPassive("hydrolique");
+                    changeScore("bonheur",+5);
+                }
+            },
+            "Mettre à profit la chaleur de la Terre me semble être une idée viable.": {
+                test() {
+                    return state.passives.includes("terrestre")
+                },
+                effect() {
+                    addPassive("geothermique");
+                    changeScore("bonheur",+5);
+                }
+            },
+
+            "Vous pourriez étudier la matière elle-même et en extraire son énergie fondamentale.": {
+                effect() {
+                    addPassive("nucléaire");
+                    changeScore("environnement",-15);
+                    changeScore("bonheur",+15);
+                }
+            }
+        }
     }
+
 
 
 
