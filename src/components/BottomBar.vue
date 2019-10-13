@@ -1,10 +1,13 @@
 <template>
-  <footer></footer>
+  <footer>
+    <button v-if="isIntro" @click="nextDeck">Passer l'introduction</button>
+  </footer>
 </template>
 
 <script>
 import { state } from "@/state.js";
 import { cards } from "@/cards.js";
+import { nextDeck } from "@/game.js";
 
 export default {
   name: "BottomBar",
@@ -17,7 +20,13 @@ export default {
   computed: {
     card() {
       return cards[this.state.card];
+    },
+    isIntro() {
+      return this.state.deck && this.state.deck.name === "Introduction";
     }
+  },
+  methods: {
+    nextDeck
   }
 };
 </script>
@@ -33,5 +42,7 @@ footer {
   background-image: url("../assets/ui/interface_barre_bas_fond.png");
   background-size: cover;
   background-position: top center;
+  padding-top: 5px;
+  box-sizing: border-box;
 }
 </style>

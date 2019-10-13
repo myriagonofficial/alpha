@@ -85,7 +85,7 @@ export const cards = {
 
     100: {
         image: "paysage_montagne.png",
-        description: `Gardien : Tu as peut-être une affinité élémentaire ... Préférerais-tu voir ton espèce évoluer
+        description: `Tu as peut-être une affinité élémentaire ... Préférerais-tu voir ton espèce évoluer
         parmi les mystérieux fonds marins, sur la terre meuble et fertile, ou bien dans les airs, surplombant toute
         la vie végétale ?`,
         choices: {
@@ -108,7 +108,7 @@ export const cards = {
 
     101: {
         image: "algue_saine.png",
-        description: `Gardien : Bien des espèces désireraient t'avoir comme guide. Quel régime alimentaire
+        description: `Bien des espèces désireraient t'avoir comme guide. Quel régime alimentaire
         crois-tu être raisonnable de favoriser pour celle qui dominera ce monde ?`,
         choices: {
             "Carnivore": {
@@ -135,7 +135,7 @@ export const cards = {
 
     102: {
         image: "litoral.png",
-        description: `Gardien : Les contrées de cette planète sont très variées et je ne doute pas qu'un jour ton peuple les aura toutes explorées. Où voudrais-tu lui que ton peuple s'installe en premier lieu ?`,
+        description: `Les contrées de cette planète sont très variées et je ne doute pas qu'un jour ton peuple les aura toutes explorées. Où voudrais-tu lui que ton peuple s'installe en premier lieu ?`,
         choices: {
             "Proche des côtes océaniques": {
                 effect() {
@@ -160,7 +160,7 @@ export const cards = {
 
     103: {
         image: "algues.png",
-        description: `Gardien : Ton peuple doit se reproduire pour assurer son avenir. Que crois-tu être la meilleure stratégie reproductive à leur transmettre ?`,
+        description: `Ton peuple doit se reproduire pour assurer son avenir. Que crois-tu être la meilleure stratégie reproductive à leur transmettre ?`,
         choices: {
             "Beaucoup de progénitures faibles": {
                 effect() {
@@ -181,7 +181,7 @@ export const cards = {
 
     104: {
         image: "algues.png",
-        description: `Gardien: Les générations futures tireront le meilleur de leurs ancêtres, par un processus de sélection amoureuse. Quel critère devra être favorisé ?`,
+        description: `Les générations futures tireront le meilleur de leurs ancêtres, par un processus de sélection amoureuse. Quel critère devra être favorisé ?`,
         choices: {
             "La force par des combats": {
                 effect() {
@@ -221,7 +221,7 @@ export const cards = {
 
     106: {
         image: "algues.png",
-        description: `Gardien: La communication est la clé du progrès social. Comment les individus de ton espèce communiqueront ensemble ?`,
+        description: `La communication est la clé du progrès social. Comment les individus de ton espèce communiqueront ensemble ?`,
         choices: {
             "Par le biais de signes": {
                 effect() {
@@ -241,11 +241,12 @@ export const cards = {
         }
     },
 
-    200: {
+    199: {
         image: "colonisation_celeste.png",
-        description: `Gardien : Je te laisse désormais t'adresser à ta création. Des individus appelés prophètes entendrons ta voix et sauront, je l'espère, lui donner réalité.`,
+        description: `Je te laisse désormais t'adresser à ta création. Des individus appelés prophètes entendrons ta voix et sauront, je l'espère, lui donner réalité.`,
         choices: {
             "Merci": {
+                effect() { }
             }
         }
     },
@@ -253,7 +254,7 @@ export const cards = {
 
     201: {
         image: "colonisation_celeste.png",
-        description: `Prophète : Pourrions-nous profiter d’une quelconque manière des individus des autres espèces ? Ce n’est pas la première fois que nous sommes confrontés à cette situation et il semblerait que nous ne soyons pas capables de nous mettre d’accord.`,
+        description: `Pourrions-nous profiter d’une quelconque manière des individus des autres espèces ? Ce n’est pas la première fois que nous sommes confrontés à cette situation et il semblerait que nous ne soyons pas capables de nous mettre d’accord.`,
         choices: {
             "Vous feriez mieux de les faire fuir": {
                 effect() {
@@ -285,7 +286,7 @@ export const cards = {
 
     202: {
         image: "colonisation_celeste.png",
-        description: `Prophète : Alpha, notre peuple se querelle. Certains voudraient changer de région pour varier nos sources de nourriture, et d’autres s’implanter et exploiter au mieux le territoire proche. Que pensez-vous bon de faire ?`,
+        description: `Alpha, notre peuple se querelle. Certains voudraient changer de région pour varier nos sources de nourriture, et d’autres s’implanter et exploiter au mieux le territoire proche. Que pensez-vous bon de faire ?`,
         choices: {
             "Vous devriez vous sédentariser.": {
                 effect() {
@@ -304,7 +305,7 @@ export const cards = {
 
     203: {
         image: "aube3.png",
-        description: `Prophète : Nous avons conquis un large territoire et continuons à l’explorer, cependant la taille de notre environnement connu commence à dépasser notre capacité d’orientation ...`,
+        description: `Nous avons conquis un large territoire et continuons à l’explorer, cependant la taille de notre environnement connu commence à dépasser notre capacité d’orientation ...`,
         choices: {
             "Cartographiez le territoire au sol.": {
                 effect() {
@@ -330,7 +331,7 @@ export const cards = {
 
     204: {
         image: "algue_poison.png",
-        description: `Prophète : Nombre de nos amis souffrent d'un mal mystérieux, d'aucuns s'imaginent que vous êtes la source de cette malédiction ...`,
+        description: `Nombre de nos amis souffrent d'un mal mystérieux, d'aucuns s'imaginent que vous êtes la source de cette malédiction ...`,
         choices: {
             "Apprenez l'humilité, vous n'êtes que peu de choses à l'échelle de ce monde. ": {
                 effect() {
@@ -355,7 +356,7 @@ export const cards = {
 
     205: {
         image: "colonisation_celeste.png",
-        description: `Prophète : Parmi les différents groupes, on observe des luttes de pouvoir s'orienter sur la question de genre. Qui devrait dominer ?`,
+        description: `Parmi les différents groupes, on observe des luttes de pouvoir s'orienter sur la question de genre. Qui devrait dominer ?`,
         choices: {
             "Encouragez la domination masculine.": {
                 effect() {
@@ -378,7 +379,7 @@ export const cards = {
 
     300: {
         image: "colonisation_celeste.png",
-        description: `Prophète : Avec le développement de la société, le nombre d'individus qui nuisent à son bon fonctionnement prend également de l'ampleur. Comment pouvons-nous les punir et les décourager de continuer dans cette voie ?`,
+        description: `Avec le développement de la société, le nombre d'individus qui nuisent à son bon fonctionnement prend également de l'ampleur. Comment pouvons-nous les punir et les décourager de continuer dans cette voie ?`,
         choices: {
             "Construisez des prisons et enfermez-les y.": {
                 effect() {
@@ -411,7 +412,7 @@ export const cards = {
 
     301: {
         image: "volcan_terre.png",
-        description: `Prophète : notre société est de plus en plus énergivore, nos chercheurs sont parvenus à découvrir plusieurs sources d'énergie, la question de se pose de savoir laquelle développer industriellement.`,
+        description: `notre société est de plus en plus énergivore, nos chercheurs sont parvenus à découvrir plusieurs sources d'énergie, la question de se pose de savoir laquelle développer industriellement.`,
         choices: {
             "Vous devriez utiliser le gaz emprisonné sous terre.": {
                 effect() {

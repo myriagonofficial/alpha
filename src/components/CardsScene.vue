@@ -6,7 +6,9 @@
     </div>
     <div class="card-info" v-if="card">
       <div class="card-name">{{ card.name }}</div>
-      <div class="card-description" ref="description">{{ card.description }}</div>
+      <div class="card-description" ref="description">
+        {{state.deck.interlocuteur}} : {{ card.description }}
+      </div>
     </div>
   </div>
 </template>

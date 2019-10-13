@@ -4,16 +4,15 @@
       <img src="assets/icons/PICTO_SON.png" alt="Son" class="icon" />
       L'expérience sonore est vivement conseillée
     </p>
-    <p
-      class="button"
+    <button
       @click="play"
       :class="{ disabled: !loaded }"
-    >{{loaded ? "Jouer": "Chargement "+loadingPc+"%"}}</p>
+    >{{loaded ? "Jouer": "Chargement "+loadingPc+"%"}}</button>
   </div>
   <div id="menu-scene" v-else>
     <img class="logo-myriagon" src="assets/MYRIAGON_LOGO.png" alt="Myriagon" />
     <img class="logo-alpha" src="assets/ALPHA_TITRE.png" alt="Alpha" />
-    <p class="start button" @click="startGame">Commencer le jeu</p>
+    <button class="start" @click="startGame">Commencer le jeu</button>
     <p
       class="credits"
     >Visuels: Arthur Lemaître | Développement: Sylvain Pollet-Villard | Son et concept: Myriagon</p>
@@ -89,7 +88,6 @@ export default {
     margin: 2vh auto 8vh;
     display: inline-block;
     transition: box-shadow 300ms;
-    opacity: 0;
     animation: blink 1s alternate ease-in-out infinite;
     animation-delay: 3000ms;
     cursor: pointer;
@@ -98,25 +96,6 @@ export default {
 
   p.credits {
     font-size: 2em;
-  }
-}
-
-.button {
-  display: inline-block;
-  margin: auto;
-  padding: 0.5em 1em;
-  cursor: pointer;
-  background: rgba(128, 128, 128, 0.15);
-
-  &.disabled {
-    background: rgba(32, 32, 32, 0.25);
-  }
-
-  &:not(.disabled):hover {
-    animation: none;
-    background: rgba(128, 128, 128, 0.25);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-    opacity: 1;
   }
 }
 
@@ -147,7 +126,7 @@ export default {
 
 @keyframes blink {
   0% {
-    opacity: 0.2;
+    opacity: 0.25;
   }
   100% {
     opacity: 0.9;

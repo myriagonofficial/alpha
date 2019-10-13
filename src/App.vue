@@ -87,5 +87,33 @@ body {
       display: none;
     }
   }
+
+  button {
+    display: inline-block;
+    margin: auto;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    background: rgba(128, 128, 128, 0.15);
+    border: none;
+    color: white;
+    font-family: "Montserrat", serif;
+    font-size: 2vh;
+
+    &.disabled {
+      background: rgba(32, 32, 32, 0.25);
+    }
+
+    &:focus {
+      outline: 4px white;
+      box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+    }
+
+    &:not(.disabled):hover {
+      animation: none;
+      background: rgba(128, 128, 128, 0.25);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+      opacity: 1;
+    }
+  }
 }
 </style>

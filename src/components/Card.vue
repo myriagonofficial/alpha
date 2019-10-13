@@ -39,8 +39,12 @@ export default {
 
   mounted() {
     this.randomAngle = Math.random() * Math.PI * 2;
-    this.putCardAway(true);
-    setTimeout(() => this.bringCardIn(), 400);
+    this.$el.style.transition = "none";
+    this.putCardAway();
+    setTimeout(() => {
+      this.$el.style.transition = null;
+      this.bringCardIn();
+    }, 400);
     this.resizeListener = window.addEventListener("resize", this.onResize);
   },
 
@@ -103,16 +107,17 @@ export default {
       };
     },
 
-    putCardAway(immediate = false) {
+    putCardAway() {
       if (!this.$el) return;
       let randomAngle = (0.75 + Math.random() * 0.5) * Math.PI;
       let dx = Math.cos(randomAngle) * 120;
       let dy = Math.sin(randomAngle) * 120;
       let rotation =
         (randomAngle < Math.PI ? -1 : +1) * Math.round(90 + Math.random() * 90);
-      if (immediate) this.$el.style.transitionDelay = 0;
-      this.$el.style.transform = `translate(${dx}vw,${dy}vh) rotate(${rotation}deg)`;
-      this.$nextTick(() => delete this.$el.style.transitionDelay);
+
+      this.$nextTick(() => {
+        this.$el.style.transform = `translate(${dx}vw,${dy}vh) rotate(${rotation}deg)`;
+      });
     },
 
     bringCardIn(immediate = false) {

@@ -36,13 +36,13 @@ export const stories = {
         cards: [106],
         priority: 1
     },
-
-    // HEADWAY
     prophetes: {
         name: "Prophètes",
-        cards: [200],
-        priority: 5
+        cards: [199],
+        priority: 0
     },
+
+    // HEADWAY
     interaction_espece: {
         name: "Interaction avec les autres espèces",
         cards: [201],
