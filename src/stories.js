@@ -77,6 +77,26 @@ export const stories = {
         name: "Besoins en énergie",
         cards: [301],
         priority: 1
+    },
+    pharmacologie: {
+        name: "Pharmacologie",
+        cards: [302],
+        priority: 1
+    },
+    eaupolluee: {
+        name: "Eau polluée",
+        cards: [303],
+        priority: 1
+    },
+    alimentation: {
+        name: "Récoltes faibles",
+        cards: [304],
+        priority: 1
+    },
+    puceselectroniques: {
+        name: "Puces électroniques",
+        cards: [305],
+        priority: 1
     }
 }
 

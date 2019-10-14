@@ -2,16 +2,16 @@
 
 import { shuffleArray } from "./utils"
 
-export const prophetesPrimal!s = shuffleArray([
+export const prophetesPrimal = shuffleArray([
   "Isaac","Jibril","Śrījnāna","Hönir","Jacob","Maryam","Atīśa","Ítreksjód","Abel","Aśoka"
 ]);
-export const prophetesHeadway!s = shuffleArray([
+export const prophetesHeadway = shuffleArray([
   "Uriel","Salomon","Mounkar","Thamûd","Jetāri","Candrakīrti","Narfi","Skjöld","Hajar","Loth","Hermód"
 ]);
-export const prophetesApex!s = shuffleArray([
+export const prophetesApex = shuffleArray([
   "Frigg","Lazare","Jonas","Ya`qoub","Zakariya","Dao'an","Dinnāga","Sudri","Austri","Kalyānaśrī",
 ]);
-export const prophetesAgony!s = shuffleArray([
+export const prophetesAgony = shuffleArray([
   "Ezéchiel","Isaiah","Ariel","Sarah","Phir`awn","Jâlût","Dōgen","Dōkyō","Genshin","Hyrrokkin","Thrudgelmir","Ægir"
 ]);
 
@@ -52,9 +52,13 @@ export const decks = [
     interlocuteur: `Prophète ${prophetesApex[0]}`,
     stories: [
       "criminalite",
-      "energie"
+      "energie",
+      "pharmacologie",
+      "eaupolluee",
+      "alimentation",
+      "puceselectroniques"
     ]
-  }
+  },
   {
     name: "Agony",
     interlocuteur: `Prophète ${prophetesAgony[0]}`,

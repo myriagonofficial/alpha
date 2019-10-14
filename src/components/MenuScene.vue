@@ -15,7 +15,7 @@
     <button class="start" @click="startGame">Commencer le jeu</button>
     <p
       class="credits"
-    >Visuels: Arthur Lemaître | Développement: Sylvain Pollet-Villard | Son et concept: Myriagon</p>
+    >Visuels : Arthur Lemaître | Développement : Sylvain Pollet-Villard | Son et concept : Myriagon</p>
   </div>
 </template>
 
@@ -95,7 +95,7 @@ export default {
   }
 
   p.credits {
-    font-size: 2em;
+    font-size: 2vh;
   }
 }
 

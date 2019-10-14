@@ -40,6 +40,12 @@ export const nextDeck = () => {
   nextCard()
 }
 
+export const skipIntro = () => {
+  showIndicateurEnvironnement();
+  showIndicateurBonheur();
+  nextDeck();
+}
+
 export const cleanupFinishedStories = () => {
   state.deck.stories
     .filter(story => stories[story].cards.length === 0)

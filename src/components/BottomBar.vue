@@ -1,13 +1,13 @@
 <template>
   <footer>
-    <button v-if="isIntro" @click="nextDeck">Passer l'introduction</button>
+    <button v-if="isIntro" @click="skipIntro">Passer l'introduction</button>
   </footer>
 </template>
 
 <script>
 import { state } from "@/state.js";
 import { cards } from "@/cards.js";
-import { nextDeck } from "@/game.js";
+import { skipIntro } from "@/game.js";
 
 export default {
   name: "BottomBar",
@@ -26,7 +26,7 @@ export default {
     }
   },
   methods: {
-    nextDeck
+    skipIntro
   }
 };
 </script>
@@ -44,5 +44,9 @@ footer {
   background-position: top center;
   padding-top: 5px;
   box-sizing: border-box;
+}
+
+footer button{
+  float: right;
 }
 </style>

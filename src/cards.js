@@ -292,12 +292,16 @@ export const cards = {
                 effect() {
                     changeScore("bonheur", +10)
                     changeScore("environnement", -10)
+                    addPassive("sedentaire");
+
                 }
             },
             "N'ayez pas peur d'explorer.": {
                 effect() {
                     changeScore("bonheur", +5)
                     changeScore("environnement", -5)
+                    addPassive("nomade");
+
                 }
             }
         }
@@ -458,7 +462,145 @@ export const cards = {
                 }
             }
         }
-    }
+    },
+
+    302: {
+        image: "volcan_terre.png",
+        description: `devant notre façon de lutter contre les maladies, nos systèmes immunitaires se sont affaiblis et les germes ont muté et sont devenus plus virulents. Comment endiguer ce problème qui semble être un cercle vicieux ?`,
+        choices: {
+            "Basez progressivement les remèdes sur l'effet placebo pour réhabituer vos corps à lutter": {
+                effect() {
+                    changeScore("environnement", +10);
+                    changeScore("bonheur", -10);
+                }
+            },
+            "Synthétisez des médicaments, plus efficaces contre les maladies.": {
+                test() {
+                    return state.passives.includes("herboristerie")
+                },
+                effect() {
+                    changeScore("bonheur", +10);
+                    changeScore("environnement", -15);
+                }
+            },
+            "Favorisez les synergies entre les pathologies": {
+                effect() {
+                    changeScore("environnement", +10);
+                    changeScore("bonheur", -10);
+
+                }
+            },
+            "Cela fait partie de l'ordre naturel des choses, laissez les maladies faire le tri, seuls les forts peuvent survivre. (bonheur --; environnement +)": {
+                effect() {
+                    changeScore("environnement", +20);
+                    changeScore("bonheur", -15);
+                }
+            }
+        }
+    },
+
+    303: {
+        image: "mer1.png",
+        description: `l’industrialisation à outrance de l’extraction de minerais génère de la pollution de l'eau et propage des maladies à notre peuple.`,
+        choices: {
+            "Tentez de réguler vos besoins.": {
+                effect() {
+                    changeScore("environnement", +5);
+                    changeScore("bonheur", -10);
+                }
+            },
+            "Lancer des recherches pour trouver une alternative.": {
+                effect() {
+                    changeScore("environnement", +5);
+                }
+            },
+            "Continuez malgré tout, votre société a besoin de cette croissance.": {
+                effect() {
+                    changeScore("environnement", -15);
+                    changeScore("bonheur", -5);
+
+                }
+            },
+            "Développez de quoi assainir l'eau polluée.": {
+                effect() {
+                    changeScore("environnement", +5);
+                }
+            }
+        }
+    },
+
+    304: {
+        image: "champ2.png",
+        description: `nos ressources de nourriture viennent parfois à manquer, quel comportement adopter ?`,
+        choices: {
+            "Rationner pour chacun.": {
+                effect() {
+                    changeScore("bonheur", -10);
+                }
+            },
+            "Seul les plus puissants / influents auront donc la nourriture": {
+                effect() {
+                    changeScore("bonheur", -15);
+                }
+            },
+            "Former plus de cueilleurs": {
+                test() {
+                    return state.passives.includes("nomade")
+                },
+                effect() {
+                    changeScore("environnement", -10);
+                    changeScore("bonheur", +5);
+
+                }
+            },
+            "Augmenter autant que possible la surface de terre cultivée par les champs.": {
+                test() {
+                    return state.passives.includes("sedentaire")
+                },
+                effect() {
+                    changeScore("environnement", -15);
+                    changeScore("bonheur", +5);
+
+                }
+            },            
+            "Concevoir des engrais pour maximiser le rendement des cultures.": {
+                test() {
+                    return state.passives.includes("chimie")
+                },
+                effect() {
+                    changeScore("environnement", -20);
+                    changeScore("bonheur", +10);
+                }
+            }
+        }
+    },
+
+    305: {
+        image: "laboratoire3.png",
+        description: `des puces mesurant des propriétés physiques et biologiques ont été implantées sur chaque individu. Comment s'en servir ?`,
+        choices: {
+            "Pratiquez l'eugénisme en fonction de la qualité du patrimoine génétique. (Bonheur --, Environnement +)": {
+                effect() {
+                    changeScore("bonheur", -10);
+                    changeScore("environnement", +3);
+                }
+            },
+            "Identifiez les génies et donnez-leur les moyens de s'exprimer. (Bonheur +)": {
+                effect() {
+                    changeScore("bonheur", +5);
+                }
+            },
+            "Utilisez les résultats pour servir la médecine. (Bonheur +, Environnement -)": {
+                effect() {
+                    changeScore("environnement", -5);
+                    changeScore("bonheur", +5);
+                }
+            }
+        }
+    },
+    
+
+
 
 
 
