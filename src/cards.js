@@ -84,7 +84,7 @@ export const cards = {
 
 
     100: {
-        image: "paysage_montagne.png",
+        image: "montagne.png",
         description: `Tu as peut-être une affinité élémentaire ... Préférerais-tu voir ton espèce évoluer
         parmi les mystérieux fonds marins, sur la terre meuble et fertile, ou bien dans les airs, surplombant toute
         la vie végétale ?`,
@@ -159,17 +159,17 @@ export const cards = {
     },
 
     103: {
-        image: "algues.png",
+        image: "montagne.png",
         description: `Ton peuple doit se reproduire pour assurer son avenir. Que crois-tu être la meilleure stratégie reproductive à leur transmettre ?`,
         choices: {
-            "Beaucoup de progénitures faibles": {
+            "Engendrer de nombreuses progénitures, mais faibles.": {
                 effect() {
                     changeScore("bonheur", +10);
                     changeScore("environnement", -10);
                     addPassive("bebes_faibles");
                 }
             },
-            "Peu de progénitures fortes": {
+            "Mettre au monde un petit nombre de progénitures robustes.": {
                 effect() {
                     changeScore("bonheur", +5);
                     changeScore("environnement", -5);
@@ -180,7 +180,7 @@ export const cards = {
     },
 
     104: {
-        image: "algues.png",
+        image: "montagne.png",
         description: `Les générations futures tireront le meilleur de leurs ancêtres, par un processus de sélection amoureuse. Quel critère devra être favorisé ?`,
         choices: {
             "La force par des combats": {
@@ -200,7 +200,7 @@ export const cards = {
     },
 
     105: {
-        image: "algues.png",
+        image: "colonisation_celeste.png",
         description: `Le coeur de ce monde bat au rythme des saisons. Comment s'adapter aux périodes difficiles de grands froids et de vagues de chaleur ?`,
         choices: {
             "Hiberner": {
@@ -220,7 +220,7 @@ export const cards = {
     },
 
     106: {
-        image: "algues.png",
+        image: "colonisation_celeste.png",
         description: `La communication est la clé du progrès social. Comment les individus de ton espèce communiqueront ensemble ?`,
         choices: {
             "Par le biais de signes": {
@@ -576,7 +576,7 @@ export const cards = {
     },
 
     305: {
-        image: "laboratoire3.png",
+        image: "labo3.png",
         description: `des puces mesurant des propriétés physiques et biologiques ont été implantées sur chaque individu. Comment s'en servir ?`,
         choices: {
             "Pratiquez l'eugénisme en fonction de la qualité du patrimoine génétique. (Bonheur --, Environnement +)": {
