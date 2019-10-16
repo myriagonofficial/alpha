@@ -12,7 +12,7 @@
   <div id="menu-scene" v-else>
     <img class="logo-myriagon" src="assets/MYRIAGON_LOGO.png" alt="Myriagon" />
     <img class="logo-alpha" src="assets/ALPHA_TITRE.png" alt="Alpha" />
-    <button class="start" @click="startGame">Commencer le jeu</button>
+    <button @click="startGame" :class="['start', { hidden: !showStartButton }]">Commencer le jeu</button>
     <p
       class="credits"
     >Visuels : Arthur Lemaître | Développement : Sylvain Pollet-Villard | Son et concept : Myriagon</p>
@@ -29,7 +29,8 @@ export default {
     return {
       isMusicActivated: false,
       loaded: false,
-      loadingPc: 0
+      loadingPc: 0,
+      showStartButton: false
     };
   },
 
@@ -48,6 +49,9 @@ export default {
       if (this.isMusicActivated || !this.loaded) return;
       this.isMusicActivated = true;
       playMusic("mus_menu");
+      setTimeout(() => {
+        this.showStartButton = true;
+      }, 3000);
     },
     onProgress(pc) {
       this.loadingPc = Math.round(pc);
@@ -89,9 +93,19 @@ export default {
     display: inline-block;
     transition: box-shadow 300ms;
     animation: blink 1s alternate ease-in-out infinite;
-    animation-delay: 3000ms;
     cursor: pointer;
     background: rgba(0, 0, 0, 0);
+
+    &.hidden {
+      animation: none;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &:hover {
+      animation: none;
+      opacity: 1;
+    }
   }
 
   p.credits {

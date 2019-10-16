@@ -261,7 +261,7 @@ const drawTree = (maxDepth, trunkWidth) => {
     BRANCH_COLOR
   ).then(branches => {
     for (let i = 0; i < NB_FLOWERS; i++) {
-      setTimeout(attachFlower, i * 100);
+      setTimeout(attachFlower, i * 30);
     }
 
     branchEndings = branches;

@@ -109,10 +109,8 @@ body {
     }
 
     &:not(.disabled):hover {
-      animation: none;
       background: rgba(128, 128, 128, 0.25);
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-      opacity: 1;
     }
   }
 }
