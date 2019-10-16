@@ -31,8 +31,6 @@ export const loadAssets = function (imageFiles, audioFiles, callback, onProgress
         started = 0,
         MAX_CONCURRENT_DL = 10;
 
-    console.log(assets)
-
     function onload(src) {
         if (src in loadedAssets) return;
         loadedAssets[src] = true;
