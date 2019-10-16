@@ -1,8 +1,9 @@
-import { state } from "./state.js"
+import { state } from "./state"
 import { decks } from "./decks";
 import { stories, endStory } from "./stories";
 import { cards } from "./cards";
 import { pickRandomIn } from "./utils"
+import { stopSound } from "./audio"
 
 export const initGame = () => {
   Object.assign(state, {
@@ -37,12 +38,15 @@ export const nextDeck = () => {
   state.deck.stories.forEach(s => s in stories || console.error(`Story not found: ${s}`))
 
   state.era++;
+
+  if (state.deck.onStart) state.deck.onStart();
   nextCard()
 }
 
 export const skipIntro = () => {
   showIndicateurEnvironnement();
   showIndicateurBonheur();
+  stopSound("voice")
   nextDeck();
 }
 

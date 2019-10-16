@@ -6,15 +6,15 @@
         <div class="card-effect" />
       </div>
     </div>
-    <div class="choices">
-      <div
-        class="choice"
+    <ul class="choices">
+      <li
+        :class="['choice', choice.anim, { special: !!choice.test }]"
         v-for="(choice, i) in choices"
         :key="choice.label"
         :style="calcPositionChoice(i)"
         @click="choose(choice)"
-      >{{ choice.label }}</div>
-    </div>
+      >{{ choice.label }}</li>
+    </ul>
   </div>
 </template>
 
@@ -33,7 +33,8 @@ export default {
     return {
       state,
       randomAngle: 0,
-      cardStyle: this.calcCardStyle()
+      cardStyle: this.calcCardStyle(),
+      choices: []
     };
   },
 
@@ -52,11 +53,23 @@ export default {
     window.removeEventListener("resize", this.onResize);
   },
 
-  computed: {
-    choices() {
-      return Object.entries(this.card.choices)
-        .map(([label, choice]) => ({ ...choice, label }))
-        .filter(choice => !choice.test || choice.test() === true);
+  watch: {
+    card: {
+      immediate: true,
+      handler() {
+        this.choices = Object.entries(this.card.choices)
+          .map(([label, choice]) => ({ ...choice, label, anim: "hidden" }))
+          .filter(choice => !choice.test || choice.test() === true);
+
+        this.choices.forEach((choice, i) => {
+          setTimeout(() => {
+            choice.anim = "appear";
+          }, 1500 + i * 1000);
+          setTimeout(() => {
+            choice.anim = "glow";
+          }, 2000 + i * 1000);
+        });
+      }
     }
   },
 
@@ -116,6 +129,7 @@ export default {
         (randomAngle < Math.PI ? -1 : +1) * Math.round(90 + Math.random() * 90);
 
       this.$nextTick(() => {
+        this.choices = [];
         this.$el.style.transform = `translate(${dx}vw,${dy}vh) rotate(${rotation}deg)`;
       });
     },
@@ -184,34 +198,35 @@ img {
   .choice {
     position: absolute;
     display: inline-block;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.75);
     font-size: 1.6vmin;
     padding: 1em 0.5em;
     transform: translate(-50%, -50%);
     max-width: 25%;
     transition: all 400ms all;
-    animation: appear 500ms linear;
-    animation-fill-mode: forwards;
-    opacity: 0;
 
-    &:nth-child(0) {
-      animation-delay: 1s;
+    &.hidden {
+      visibility: hidden;
+      opacity: 0;
+      animation: none;
     }
 
-    &:nth-child(1) {
-      animation-delay: 1.5s;
+    &.appear {
+      animation: appear 500ms linear;
+      animation-fill-mode: forwards;
     }
 
-    &:nth-child(2) {
-      animation-delay: 2s;
-    }
+    &.glow {
+      animation: glow 500ms alternate ease-in-out infinite;
 
-    &:nth-child(3) {
-      animation-delay: 2.5s;
+      &.special {
+        animation-name: glow-special;
+      }
     }
 
     &:hover {
-      filter: drop-shadow(0 0 25px white);
+      animation: none;
+      box-shadow: 0 0 25px white;
     }
   }
 }
@@ -219,9 +234,29 @@ img {
 @keyframes appear {
   0% {
     opacity: 0;
+    box-shadow: none;
   }
   100% {
     opacity: 1;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.35);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(128, 128, 128, 0.45);
+  }
+}
+
+@keyframes glow-special {
+  0% {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(64, 64, 64, 0.5);
   }
 }
 </style>

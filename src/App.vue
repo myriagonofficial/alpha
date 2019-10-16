@@ -29,11 +29,11 @@ export default {
 
   mounted() {
     this.resizeScene();
-    this.resizeListener = window.addEventListener("resize", this.resizeScene);
+    window.addEventListener("resize", this.resizeScene);
   },
 
   destroyed() {
-    window.removeEventListener(this.resizeListener);
+    window.removeEventListener("resize", this.resizeScene);
   },
 
   methods: {
@@ -68,6 +68,13 @@ body {
   background-color: black;
   background-image: url("assets/ECRAN_INTRO.png");
   background-size: cover;
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 #app {

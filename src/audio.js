@@ -18,9 +18,11 @@ export const playMusic = (key) => {
     soundChannels.music = musics[key]
 }
 
-export const stopMusic = () => {
-    if (soundChannels.music) soundChannels.music.stop()
+export const stopSound = channel => {
+    if (soundChannels[channel]) soundChannels[channel].stop()
 }
+
+export const stopMusic = () => stopSound("music")
 
 export const SOUNDS = {
     gui_card_on: 'assets/sound/gui_card_on.mp3',
