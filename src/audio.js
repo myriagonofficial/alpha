@@ -25,11 +25,13 @@ export const stopMusic = () => {
 export const SOUNDS = {
     gui_card_on: 'assets/sound/gui_card_on.mp3',
     gui_card_off: 'assets/sound/gui_card_off.mp3',
-    vox_gardien_01: 'assets/sound/vox_gardien_01.mp3',
-    vox_gardien_02: 'assets/sound/vox_gardien_02.mp3',
-    vox_gardien_03: 'assets/sound/vox_gardien_03.mp3',
-    vox_gardien_04: 'assets/sound/vox_gardien_04.mp3',
-    vox_gardien_05: 'assets/sound/vox_gardien_05.mp3'
+    vox_gardien_01: 'assets/sound/vox_gardien_01.ogg',
+    vox_gardien_02: 'assets/sound/vox_gardien_02.ogg',
+    vox_gardien_03: 'assets/sound/vox_gardien_03.ogg',
+    vox_gardien_04: 'assets/sound/vox_gardien_04.ogg',
+    vox_gardien_05: 'assets/sound/vox_gardien_05.ogg',
+    vox_gardien_06: 'assets/sound/vox_gardien_06.ogg',
+    vox_gardien_07: 'assets/sound/vox_gardien_07.ogg'
 }
 
 export const MUSICS = {
