@@ -1,14 +1,14 @@
 <template>
-  <div id="info-son" v-if="!isMusicActivated">
+  <div id="info-son" v-if="!state.hasInteractedWithPage">
     <p>
       <img src="../assets/ui/sound_on.png" alt="Son" class="icon" />
       L'expérience sonore est vivement conseillée
     </p>
     <button
       @mouseover="onButtonMouseOver"
-      @click="play"
-      :class="{ disabled: !loaded }"
-    >{{loaded ? "Jouer": "Chargement "+loadingPc+"%"}}</button>
+      @click="showMenu"
+      :disabled="!state.loaded"
+    >{{state.loaded ? "Jouer": "Chargement "+loadingPc+"%"}}</button>
   </div>
   <div id="menu-scene" v-else>
     <img class="logo-myriagon" src="assets/MYRIAGON_LOGO.png" alt="Myriagon" />
@@ -26,8 +26,9 @@
 </template>
 
 <script>
-import { playMusic, stopMusic, playSound } from "@/audio";
-import { preloadGame } from "@/preloader";
+import { playMusic, stopMusic, playSound } from "@/audio.js";
+import { preloadGame } from "@/preloader.js";
+import { state } from "@/state.js";
 
 import VolumeControl from "@/components/VolumeControl.vue";
 
@@ -35,8 +36,7 @@ export default {
   name: "MenuScene",
   data() {
     return {
-      isMusicActivated: false,
-      loaded: false,
+      state,
       loadingPc: 0,
       showStartButton: false
     };
@@ -45,9 +45,13 @@ export default {
   components: { VolumeControl },
 
   mounted() {
-    preloadGame(this.onProgress).then(() => {
-      this.loaded = true;
-    });
+    if (!state.loaded) {
+      preloadGame(this.onProgress).then(() => {
+        state.loaded = true;
+      });
+    } else if (state.hasInteractedWithPage) {
+      this.showMenu();
+    }
   },
 
   methods: {
@@ -56,9 +60,9 @@ export default {
       playSound("gui_click_button", "gui");
       this.$emit("play");
     },
-    play() {
-      if (this.isMusicActivated || !this.loaded) return;
-      this.isMusicActivated = true;
+    showMenu() {
+      if (!state.loaded) return;
+      state.hasInteractedWithPage = true;
       playSound("gui_click_button", "gui");
       playMusic("mus_menu");
       setTimeout(() => {
@@ -116,6 +120,11 @@ export default {
       opacity: 0;
       visibility: hidden;
     }
+
+    &:hover {
+      animation: none;
+      opacity: 1;
+    }
   }
 
   p.credits {
@@ -151,6 +160,14 @@ export default {
     vertical-align: middle;
     margin: 0 0.5em 0.15em 0;
     animation: tada 2s ease-in-out infinite;
+  }
+
+  button {
+    font-size: 3vmin;
+    background: rgba(128, 128, 128, 0.15);
+    &:not(:disabled):hover {
+      background: rgba(128, 128, 128, 0.25);
+    }
   }
 }
 

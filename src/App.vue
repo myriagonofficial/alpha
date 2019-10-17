@@ -103,7 +103,7 @@ li {
     margin: auto;
     padding: 0.5em 1em;
     cursor: pointer;
-    background: rgba(128, 128, 128, 0.15);
+    background: rgba(0, 0, 0, 0.15);
     border: none;
     color: white;
     font-family: "Montserrat", serif;
@@ -124,7 +124,7 @@ li {
     }
 
     &:not(.disabled):hover {
-      background: rgba(128, 128, 128, 0.25);
+      background: rgba(0, 0, 0, 0.25);
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
     }
   }
