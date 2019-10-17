@@ -47,6 +47,7 @@ export default {
     setTimeout(() => {
       this.$el.style.transition = null;
       this.bringCardIn();
+      this.showChoices();
     }, 400);
     this.resizeListener = window.addEventListener("resize", this.onResize);
   },
@@ -56,22 +57,8 @@ export default {
   },
 
   watch: {
-    card: {
-      immediate: true,
-      handler() {
-        this.choices = Object.entries(this.card.choices)
-          .map(([label, choice]) => ({ ...choice, label, anim: "hidden" }))
-          .filter(choice => !choice.test || choice.test() === true);
-
-        this.choices.forEach((choice, i) => {
-          setTimeout(() => {
-            choice.anim = "appear";
-          }, 1500 + i * 1000);
-          setTimeout(() => {
-            choice.anim = "glow";
-          }, 2000 + i * 1000);
-        });
-      }
+    card() {
+      this.showChoices();
     }
   },
 
@@ -84,6 +71,21 @@ export default {
         nextCard();
         this.bringCardIn();
       }, 800);
+    },
+
+    showChoices() {
+      this.choices = Object.entries(this.card.choices)
+        .map(([label, choice]) => ({ ...choice, label, anim: "hidden" }))
+        .filter(choice => !choice.test || choice.test() === true);
+
+      this.choices.forEach((choice, i) => {
+        setTimeout(() => {
+          choice.anim = "appear";
+        }, 1500 + i * 1000);
+        setTimeout(() => {
+          choice.anim = "glow";
+        }, 2000 + i * 1000);
+      });
     },
 
     calcCardStyle() {
