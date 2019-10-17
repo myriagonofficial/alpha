@@ -35,9 +35,8 @@ export const updateVolume = () => {
 }
 
 export const updateMute = () => {
-    if (soundChannels.music) {
-        soundChannels.music.mute(state.mute)
-    }
+    soundChannels.voice && soundChannels.voice.mute(state.mute)
+    soundChannels.music && soundChannels.music.mute(state.mute)
 }
 
 export const SOUNDS = {

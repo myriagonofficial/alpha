@@ -21,12 +21,15 @@
     <p
       class="credits"
     >Visuels : Arthur Lemaître | Développement : Sylvain Pollet-Villard | Son et concept : Myriagon</p>
+    <VolumeControl />
   </div>
 </template>
 
 <script>
 import { playMusic, stopMusic, playSound } from "@/audio";
 import { preloadGame } from "@/preloader";
+
+import VolumeControl from "@/components/VolumeControl.vue";
 
 export default {
   name: "MenuScene",
@@ -38,6 +41,8 @@ export default {
       showStartButton: false
     };
   },
+
+  components: { VolumeControl },
 
   mounted() {
     preloadGame(this.onProgress).then(() => {
@@ -97,7 +102,7 @@ export default {
   }
 
   .start {
-    font-size: 5vh;
+    font-size: 5vmin;
     padding: 0.25em 0.5em;
     margin: 2vh auto 8vh;
     display: inline-block;
@@ -111,15 +116,16 @@ export default {
       opacity: 0;
       visibility: hidden;
     }
-
-    &:hover {
-      animation: none;
-      opacity: 1;
-    }
   }
 
   p.credits {
     font-size: 2vh;
+  }
+
+  .volume {
+    position: fixed;
+    bottom: 0;
+    left: 0;
   }
 }
 
@@ -145,15 +151,6 @@ export default {
     vertical-align: middle;
     margin: 0 0.5em 0.15em 0;
     animation: tada 2s ease-in-out infinite;
-  }
-}
-
-@keyframes blink {
-  0% {
-    opacity: 0.25;
-  }
-  100% {
-    opacity: 0.9;
   }
 }
 
