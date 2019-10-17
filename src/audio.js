@@ -1,19 +1,24 @@
 import { Howl } from "howler"
+import { state } from "@/state.js";
 
 export const soundChannels = {}
 
 export const playSound = (key, channel) => {
+    if (state.mute) return;
     if (!(key in sounds)) return console.error(`Sound not found: ${key}`)
     if (channel) {
         if (soundChannels[channel]) soundChannels[channel].stop() // stop previous sound in same channel
         soundChannels[channel] = sounds[key]
     }
+    sounds[key].volume(state.volume)
     sounds[key].play();
 }
 
 export const playMusic = (key) => {
     if (!(key in musics)) return console.error(`Music not found: ${key}`)
     stopMusic();
+    musics[key].volume(state.volume)
+    musics[key].mute(state.mute)
     musics[key].play();
     soundChannels.music = musics[key]
 }
@@ -23,6 +28,18 @@ export const stopSound = channel => {
 }
 
 export const stopMusic = () => stopSound("music")
+
+export const updateVolume = () => {
+    if (soundChannels.music) {
+        soundChannels.music.volume(state.volume / 100)
+    }
+}
+
+export const updateMute = () => {
+    if (soundChannels.music) {
+        soundChannels.music.mute(state.mute)
+    }
+}
 
 export const SOUNDS = {
     /*gui_card_on: 'assets/sound/gui_card_on.mp3',
@@ -54,13 +71,15 @@ export const MUSICS = {
 
 export const sounds = Object.fromEntries(Object.entries(SOUNDS).map(([key, path]) => {
     return [key, new Howl({
-        src: [path]
+        src: [path],
+        volume: state.volume / 100
     })];
 }))
 
 export const musics = Object.fromEntries(Object.entries(MUSICS).map(([key, path]) => {
     return [key, new Howl({
         src: [path],
-        loop: true
+        loop: true,
+        volume: state.volume / 100
     })];
 }))

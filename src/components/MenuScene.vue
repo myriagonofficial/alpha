@@ -1,7 +1,7 @@
 <template>
   <div id="info-son" v-if="!isMusicActivated">
     <p>
-      <img src="assets/icons/PICTO_SON.png" alt="Son" class="icon" />
+      <img src="../assets/ui/sound_on.png" alt="Son" class="icon" />
       L'expérience sonore est vivement conseillée
     </p>
     <button

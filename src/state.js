@@ -10,6 +10,8 @@ export const state = {
     },
     shouldShowIndicateurBonheur: false,
     shouldShowIndicateurEnvironnement: false,
-    passives: []
+    passives: [],
+    mute: false,
+    volume: 100
 };
 window.state = state;
