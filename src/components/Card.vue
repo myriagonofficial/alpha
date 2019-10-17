@@ -12,6 +12,7 @@
         v-for="(choice, i) in choices"
         :key="choice.label"
         :style="calcPositionChoice(i)"
+        @mouseover="onMouseOverChoice"
         @click="choose(choice)"
       >{{ choice.label }}</li>
     </ul>
@@ -21,6 +22,7 @@
 <script>
 import { state } from "@/state.js";
 import { nextCard } from "@/game.js";
+import { playSound } from "@/audio.js";
 
 export default {
   name: "Card",
@@ -75,6 +77,7 @@ export default {
 
   methods: {
     choose(choice) {
+      playSound("gui_click_choice", "gui");
       if (choice.effect) choice.effect(state);
       this.putCardAway();
       setTimeout(() => {
@@ -139,6 +142,10 @@ export default {
       if (immediate) this.$el.style.transitionDelay = 0;
       this.$el.style.transform = `translate(0,0) rotateZ(-2deg)`;
       this.$nextTick(() => delete this.$el.style.transitionDelay);
+    },
+
+    onMouseOverChoice() {
+      playSound("gui_hover_choice", "gui");
     }
   }
 };
@@ -226,7 +233,8 @@ img {
 
     &:hover {
       animation: none;
-      box-shadow: 0 0 25px white;
+      box-shadow: 0 0 25px white, 0 0 35px rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.8);
     }
   }
 }

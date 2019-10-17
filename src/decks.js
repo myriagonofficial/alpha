@@ -36,7 +36,7 @@ export const decks = [
       "communication"
     ],
     onStart() {
-      playMusic('mus_gardien_03')
+      playMusic('mus_primal')
     }
   },
   {
@@ -51,7 +51,7 @@ export const decks = [
       "epidemie"
     ],
     onStart() {
-      playMusic('mus_gardien_03')
+      playMusic('mus_headway')
     }
   },
   {
@@ -66,7 +66,7 @@ export const decks = [
       "puceselectroniques"
     ],
     onStart() {
-      playMusic('mus_gardien_03')
+      playMusic('mus_apex')
     }
   },
   {
@@ -75,7 +75,7 @@ export const decks = [
     stories: [
     ],
     onStart() {
-      playMusic('mus_gardien_03')
+      playMusic('mus_agony')
     }
   }
 ];

@@ -5,6 +5,7 @@
       L'expérience sonore est vivement conseillée
     </p>
     <button
+      @mouseover="onButtonMouseOver"
       @click="play"
       :class="{ disabled: !loaded }"
     >{{loaded ? "Jouer": "Chargement "+loadingPc+"%"}}</button>
@@ -12,7 +13,11 @@
   <div id="menu-scene" v-else>
     <img class="logo-myriagon" src="assets/MYRIAGON_LOGO.png" alt="Myriagon" />
     <img class="logo-alpha" src="assets/ALPHA_TITRE.png" alt="Alpha" />
-    <button @click="startGame" :class="['start', { hidden: !showStartButton }]">Commencer le jeu</button>
+    <button
+      @mouseover="onButtonMouseOver"
+      @click="startGame"
+      :class="['start', { hidden: !showStartButton }]"
+    >Commencer le jeu</button>
     <p
       class="credits"
     >Visuels : Arthur Lemaître | Développement : Sylvain Pollet-Villard | Son et concept : Myriagon</p>
@@ -20,7 +25,7 @@
 </template>
 
 <script>
-import { playMusic, stopMusic } from "@/audio";
+import { playMusic, stopMusic, playSound } from "@/audio";
 import { preloadGame } from "@/preloader";
 
 export default {
@@ -43,11 +48,13 @@ export default {
   methods: {
     startGame() {
       stopMusic();
+      playSound("gui_click_button", "gui");
       this.$emit("play");
     },
     play() {
       if (this.isMusicActivated || !this.loaded) return;
       this.isMusicActivated = true;
+      playSound("gui_click_button", "gui");
       playMusic("mus_menu");
       setTimeout(() => {
         this.showStartButton = true;
@@ -55,6 +62,9 @@ export default {
     },
     onProgress(pc) {
       this.loadingPc = Math.round(pc);
+    },
+    onButtonMouseOver() {
+      playSound("gui_hover_button", "gui");
     }
   }
 };

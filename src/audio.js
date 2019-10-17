@@ -4,11 +4,11 @@ export const soundChannels = {}
 
 export const playSound = (key, channel) => {
     if (!(key in sounds)) return console.error(`Sound not found: ${key}`)
-    sounds[key].play();
     if (channel) {
         if (soundChannels[channel]) soundChannels[channel].stop() // stop previous sound in same channel
         soundChannels[channel] = sounds[key]
     }
+    sounds[key].play();
 }
 
 export const playMusic = (key) => {
@@ -25,8 +25,12 @@ export const stopSound = channel => {
 export const stopMusic = () => stopSound("music")
 
 export const SOUNDS = {
-    gui_card_on: 'assets/sound/gui_card_on.mp3',
-    gui_card_off: 'assets/sound/gui_card_off.mp3',
+    /*gui_card_on: 'assets/sound/gui_card_on.mp3',
+    gui_card_off: 'assets/sound/gui_card_off.mp3',*/
+    gui_click_button: 'assets/sound/gui_menuCliqueSurBoutonJouer_01.ogg',
+    gui_click_choice: 'assets/sound/gui_cliqueSurChoix_01.ogg',
+    gui_hover_button: 'assets/sound/gui_menuSurvolBoutonJouer_01.ogg',
+    gui_hover_choice: 'assets/sound/gui_survolUnChoix_01.ogg',
     vox_gardien_01: 'assets/sound/vox_gardien_01.ogg',
     vox_gardien_02: 'assets/sound/vox_gardien_02.ogg',
     vox_gardien_03: 'assets/sound/vox_gardien_03.ogg',
@@ -40,7 +44,12 @@ export const MUSICS = {
     mus_menu: 'assets/sound/mus_menu_01.mp3',
     mus_gardien_01: 'assets/sound/mus_gardien_01.mp3',
     mus_gardien_02: 'assets/sound/mus_gardien_02.mp3',
-    mus_gardien_03: 'assets/sound/mus_gardien_03.mp3'
+    mus_gardien_03: 'assets/sound/mus_gardien_03.mp3',
+    mus_agony: 'assets/sound/mus_agonyMaster_01.ogg',
+    mus_apex: 'assets/sound/mus_apexMaster_01.ogg',
+    mus_headway: 'assets/sound/mus_headwayMaster_01.ogg',
+    mus_lull: 'assets/sound/mus_lullMaster_01.ogg',
+    mus_primal: 'assets/sound/mus_primalMaster_01.ogg',
 }
 
 export const sounds = Object.fromEntries(Object.entries(SOUNDS).map(([key, path]) => {
