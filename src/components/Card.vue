@@ -208,10 +208,10 @@ img {
     position: absolute;
     display: inline-block;
     background: rgba(0, 0, 0, 0.75);
-    font-size: 1.6vmin;
+    font-size: 1.8vmin;
     padding: 1em 0.5em;
     transform: translate(-50%, -50%);
-    max-width: 25%;
+    max-width: 30%;
     transition: all 400ms all;
 
     &.hidden {

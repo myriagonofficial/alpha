@@ -6,7 +6,7 @@
     </label>
     <label id="volume">
       Volume
-      <input type="range" min="0" max="100" v-model="state.volume" @change="updateVolume" />
+      <input type="range" min="0" max="100" v-model="state.volume" @input="updateVolume" />
     </label>
   </div>
 </template>

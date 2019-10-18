@@ -120,7 +120,6 @@ const detachFlowers = n => {
     n = flowers.length - flowerDetachIndex;
   }
   flowerDetachIndex += n;
-  console.log({ n, flowerDetachIndex });
 
   for (let i = 0; i < n; i++) {
     setTimeout(() => {
@@ -281,10 +280,11 @@ export default {
 
   watch: {
     "state.scores.environnement"(newValue, oldValue) {
-      let valueLost = newValue - oldValue;
-      let nbFlowersToDrop = Math.ceil(Math.max(1, valueLost));
-      //console.log({ newValue, oldValue, nbFlowersToDrop });
-      detachFlowers(nbFlowersToDrop);
+      let valueLost = oldValue - newValue;
+      if (valueLost > 0) {
+        let nbFlowersToDrop = Math.ceil(Math.max(1, valueLost));
+        detachFlowers(nbFlowersToDrop);
+      }
     }
   },
 
