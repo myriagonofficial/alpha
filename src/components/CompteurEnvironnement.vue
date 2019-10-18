@@ -6,28 +6,16 @@
   >
     <defs>
       <g id="red" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g transform="rotate(-30)">
-          <ellipse fill="#000000" cx="4.5" cy="5" rx="3.1" ry="2.6" />
-          <ellipse fill="#B05DAA" cx="4.5" cy="5" rx="3" ry="2.5" />
-        </g>
+        <ellipse fill="#000000" cx="4.5" cy="5" rx="3.1" ry="2.6" />
+        <ellipse fill="#B05DAA" cx="4.5" cy="5" rx="3" ry="2.5" />
       </g>
       <g id="blue" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g transform="rotate(30)">
-          <ellipse fill="#000000" cx="4.5" cy="5" rx="3.1" ry="2.6" />
-          <ellipse fill="#4C6AB2" cx="4.5" cy="5" rx="3" ry="2.5" />
-        </g>
+        <ellipse fill="#000000" cx="4.5" cy="5" rx="3.1" ry="2.6" />
+        <ellipse fill="#4C6AB2" cx="4.5" cy="5" rx="3" ry="2.5" />
       </g>
-      <g id="leaf1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g transform="rotate(65)">
-          <ellipse fill="#000000" cx="3" cy="1.5" rx="6" ry="3" />
-          <ellipse fill="#61866B" cx="3" cy="1.5" rx="5.9" ry="2.8" />
-        </g>
-      </g>
-      <g id="leaf2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g transform="rotate(-60)">
-          <ellipse fill="#000000" cx="3" cy="1.5" rx="6" ry="3" />
-          <ellipse fill="#61866B" cx="3" cy="1.5" rx="5.9" ry="2.8" />
-        </g>
+      <g id="leaf" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <ellipse fill="#000000" cx="3" cy="1.5" rx="6" ry="3" />
+        <ellipse fill="#61866B" cx="3" cy="1.5" rx="5.9" ry="2.8" />
       </g>
     </defs>
   </svg>
@@ -57,8 +45,9 @@ function shadeRGBColor(color, percent) {
 }
 
 const maxDepth = 8;
-const trunkWidth = 16;
-const branchShrinkage = 0.7;
+const trunkWidth = 14;
+const trunkLength = 75;
+const branchShrinkage = 0.75;
 const maxAngleDelta = Math.PI / 12;
 const delay = 100;
 
@@ -73,18 +62,22 @@ let wind = 1;
 const windIncrement = 0.5;
 const maxWind = 2;
 
-const createFlower = ({ x, y, idx, type }) => {
+const createFlower = ({ x, y, type }) => {
   let telomeres = MAX_FLOWER_AGE;
   let growthPhase = 0;
   let scale = 0.5;
-  let rotation = 0;
+  let rotation = Math.floor(Math.random() * 60);
+  if (type === "leaf") {
+    rotation += Math.random() < 0.5 ? -120 : +60;
+    let rx = Math.floor(Math.random() * 40);
+    x += rx;
+    y += 0.1 * rx;
+  }
   const element = document.createElementNS(SVG_NS, "use");
   element.setAttribute("href", "#" + type);
-  element.setAttribute("style", "z-index: -1");
+  element.setAttribute("style", "z-index: 2");
 
   const flower = {
-    idx,
-
     attached: true,
 
     grow() {
@@ -159,11 +152,11 @@ const detachFlowers = n => {
 
 const flowersPerLevel = {
   0: ["red", "blue"],
-  1: ["red", "blue", "leaf1", "leaf2"],
-  2: ["red", "blue", "leaf1", "leaf2"],
-  3: ["red", "blue", "leaf1", "leaf2", "leaf1", "leaf2"],
-  4: ["leaf1", "leaf2"],
-  5: ["leaf1", "leaf2"]
+  1: ["red", "blue"],
+  2: ["red", "blue", "leaf", "leaf"],
+  3: ["red", "blue", "leaf", "leaf", "leaf", "leaf"],
+  4: ["leaf"],
+  5: ["leaf"]
 };
 
 const attachFlower = node => {
@@ -174,7 +167,7 @@ const attachFlower = node => {
 const addFlowers = () => {
   branchEndings = shuffleArray(branchEndings);
   branchEndings.forEach((node, i) => {
-    setTimeout(() => attachFlower(node), i * 30);
+    setTimeout(() => attachFlower(node), i * 25);
   });
 };
 
@@ -237,14 +230,13 @@ const drawBranch = (x1, y1, length, angle, depth, branchWidth, branchColor) => {
   }
 
   const newBranchWidth = branchWidth * branchShrinkage;
-  const newBranchColor = shadeRGBColor(branchColor, 0.1);
+  const newBranchColor = shadeRGBColor(branchColor, 0.05);
 
   return Promise.all(
     [-1, 1].map(direction => {
       const newAngle =
         angle + maxAngleDelta * (0.25 + Math.random() * 0.25) * direction;
-      const newLength =
-        length * (branchShrinkage + Math.random() * (1.0 - branchShrinkage));
+      const newLength = length * (branchShrinkage + Math.random() * 0.2);
 
       return new Promise(resolve => {
         setTimeout(
@@ -271,9 +263,9 @@ const drawBranch = (x1, y1, length, angle, depth, branchWidth, branchColor) => {
 const drawTree = () => {
   branchEndings = [];
   return drawBranch(
-    0,
+    -50,
     20,
-    70,
+    trunkLength,
     Math.PI / 16,
     maxDepth,
     trunkWidth,
@@ -319,25 +311,5 @@ export default {
 <style lang="postcss" scoped>
 svg {
   height: 100%;
-
-  .st0 {
-    display: none;
-  }
-  .st1 {
-    display: inline;
-  }
-  .st2 {
-    display: inline;
-    fill: #5864af;
-  }
-  .st3 {
-    fill: #319390;
-  }
-  .st4 {
-    fill: #7a6fb9;
-  }
-  .st5 {
-    fill: #5864af;
-  }
 }
 </style>
