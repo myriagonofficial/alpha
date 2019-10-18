@@ -3,22 +3,7 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 1400 200"
-  >
-    <defs>
-      <g id="red" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <ellipse fill="#000000" cx="4.5" cy="5" rx="3.1" ry="2.6" />
-        <ellipse fill="#B05DAA" cx="4.5" cy="5" rx="3" ry="2.5" />
-      </g>
-      <g id="blue" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <ellipse fill="#000000" cx="4.5" cy="5" rx="3.1" ry="2.6" />
-        <ellipse fill="#4C6AB2" cx="4.5" cy="5" rx="3" ry="2.5" />
-      </g>
-      <g id="leaf" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <ellipse fill="#000000" cx="3" cy="1.5" rx="6" ry="3" />
-        <ellipse fill="#61866B" cx="3" cy="1.5" rx="5.9" ry="2.8" />
-      </g>
-    </defs>
-  </svg>
+  />
 </template>
 
 <script>
@@ -66,15 +51,9 @@ const createFlower = ({ x, y, type }) => {
   let telomeres = MAX_FLOWER_AGE;
   let growthPhase = 0;
   let scale = 0.5;
-  let rotation = Math.floor(Math.random() * 60);
-  if (type === "leaf") {
-    rotation += Math.random() < 0.5 ? -120 : +60;
-    let rx = Math.floor(Math.random() * 40);
-    x += rx;
-    y += 0.1 * rx;
-  }
+  let rotation = Math.floor(Math.random() * 360);
   const element = document.createElementNS(SVG_NS, "use");
-  element.setAttribute("href", "#" + type);
+  element.setAttribute("href", `assets/environment/${type}.svg#fleur`);
   element.setAttribute("style", "z-index: 2");
 
   const flower = {
@@ -150,17 +129,8 @@ const detachFlowers = n => {
   }
 };
 
-const flowersPerLevel = {
-  0: ["red", "blue"],
-  1: ["red", "blue"],
-  2: ["red", "blue", "leaf", "leaf"],
-  3: ["red", "blue", "leaf", "leaf", "leaf", "leaf"],
-  4: ["leaf"],
-  5: ["leaf"]
-};
-
 const attachFlower = node => {
-  let type = pickRandomIn(flowersPerLevel[node.depth]);
+  let type = pickRandomIn(["fleur1", "fleur2"]);
   flowers.push(createFlower(Object.assign({ type }, node)));
 };
 
@@ -216,8 +186,24 @@ const drawBranch = (x1, y1, length, angle, depth, branchWidth, branchColor) => {
   line.setAttribute("y1", y1);
   line.setAttribute("y2", y2);
   line.setAttribute("style", style);
-
   svg.appendChild(line);
+
+  const borderStyle = `stroke:#000;stroke-width:1px;z-index:1;`;
+  const btop = document.createElementNS(SVG_NS, "line");
+  btop.setAttribute("x1", x1);
+  btop.setAttribute("x2", x2);
+  btop.setAttribute("y1", y1 - branchWidth / 2 - 1);
+  btop.setAttribute("y2", y2 - branchWidth / 2);
+  btop.setAttribute("style", borderStyle);
+  svg.appendChild(btop);
+
+  const bbot = document.createElementNS(SVG_NS, "line");
+  bbot.setAttribute("x1", x1);
+  bbot.setAttribute("x2", x2);
+  bbot.setAttribute("y1", y1 + branchWidth / 2);
+  bbot.setAttribute("y2", y2 + branchWidth / 2 - 1);
+  bbot.setAttribute("style", borderStyle);
+  svg.appendChild(bbot);
 
   const newDepth = depth - 1;
 
@@ -235,7 +221,7 @@ const drawBranch = (x1, y1, length, angle, depth, branchWidth, branchColor) => {
   return Promise.all(
     [-1, 1].map(direction => {
       const newAngle =
-        angle + maxAngleDelta * (0.25 + Math.random() * 0.25) * direction;
+        angle + maxAngleDelta * (0.4 + Math.random() * 0.1) * direction;
       const newLength = length * (branchShrinkage + Math.random() * 0.2);
 
       return new Promise(resolve => {
