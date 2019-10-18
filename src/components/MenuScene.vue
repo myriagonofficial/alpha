@@ -165,8 +165,16 @@ export default {
   button {
     font-size: 3vmin;
     background: rgba(128, 128, 128, 0.15);
-    &:not(:disabled):hover {
-      background: rgba(128, 128, 128, 0.25);
+
+    &:hover {
+      &:disabled {
+        background: rgba(128, 128, 128, 0.15);
+        box-shadow: none;
+        cursor: wait;
+      }
+      &:not(:disabled) {
+        background: rgba(128, 128, 128, 0.25);
+      }
     }
   }
 }

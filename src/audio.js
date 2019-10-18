@@ -30,6 +30,10 @@ export const stopSound = channel => {
 export const stopMusic = () => stopSound("music")
 
 export const updateVolume = () => {
+    if (state.mute === true) {
+        state.mute = false;
+        updateMute()
+    }
     soundChannels.voice && soundChannels.voice.volume(state.volume / 100)
     soundChannels.music && soundChannels.music.volume(state.volume / 100)
     saveSettings();

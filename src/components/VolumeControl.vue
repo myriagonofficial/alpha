@@ -41,6 +41,7 @@ export default {
 
   label {
     font-size: 0;
+    cursor: pointer;
   }
 
   input[type="range"] {
