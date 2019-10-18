@@ -1,5 +1,5 @@
 import { Howl } from "howler"
-import { state } from "@/state.js";
+import { state, saveSettings } from "@/state.js";
 
 export const soundChannels = {}
 
@@ -32,11 +32,13 @@ export const stopMusic = () => stopSound("music")
 export const updateVolume = () => {
     soundChannels.voice && soundChannels.voice.volume(state.volume / 100)
     soundChannels.music && soundChannels.music.volume(state.volume / 100)
+    saveSettings();
 }
 
 export const updateMute = () => {
     soundChannels.voice && soundChannels.voice.mute(state.mute)
     soundChannels.music && soundChannels.music.mute(state.mute)
+    saveSettings();
 }
 
 export const SOUNDS = {

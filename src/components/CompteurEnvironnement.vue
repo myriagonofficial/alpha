@@ -51,7 +51,7 @@ const createFlower = ({ x, y, type }) => {
   let telomeres = MAX_FLOWER_AGE;
   let growthPhase = 0;
   let scale = 0.5;
-  let rotation = Math.floor(Math.random() * 360);
+  let rotation = Math.floor(Math.random() * 60) - 30;
   const element = document.createElementNS(SVG_NS, "use");
   element.setAttribute("href", `assets/environment/${type}.svg#fleur`);
   element.setAttribute("style", "z-index: 2");
@@ -200,8 +200,8 @@ const drawBranch = (x1, y1, length, angle, depth, branchWidth, branchColor) => {
   const bbot = document.createElementNS(SVG_NS, "line");
   bbot.setAttribute("x1", x1);
   bbot.setAttribute("x2", x2);
-  bbot.setAttribute("y1", y1 + branchWidth / 2);
-  bbot.setAttribute("y2", y2 + branchWidth / 2 - 1);
+  bbot.setAttribute("y1", y1 + branchWidth / 2 + 1);
+  bbot.setAttribute("y2", y2 + branchWidth / 2);
   bbot.setAttribute("style", borderStyle);
   svg.appendChild(bbot);
 
@@ -296,6 +296,6 @@ export default {
 
 <style lang="postcss" scoped>
 svg {
-  height: 100%;
+  height: 98%;
 }
 </style>
