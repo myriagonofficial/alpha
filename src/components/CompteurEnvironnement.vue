@@ -2,14 +2,31 @@
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
-    viewBox="0 0 1000 200"
+    viewBox="0 0 1400 200"
   >
     <defs>
-      <g id="flower" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g>
-          <ellipse fill="#000000" cx="4.64971266" cy="5.00538314" rx="6" ry="4.2" />
-          <ellipse id="color" fill="#B05DAA" cx="4.64971266" cy="5.00538314" rx="5.9" ry="4" />
-          <ellipse fill="#000000" cx="4.64971266" cy="5.00538314" rx="0.9724348" ry="0.99215915" />
+      <g id="red" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="rotate(-30)">
+          <ellipse fill="#000000" cx="4.5" cy="5" rx="3.1" ry="2.6" />
+          <ellipse fill="#B05DAA" cx="4.5" cy="5" rx="3" ry="2.5" />
+        </g>
+      </g>
+      <g id="blue" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="rotate(30)">
+          <ellipse fill="#000000" cx="4.5" cy="5" rx="3.1" ry="2.6" />
+          <ellipse fill="#4C6AB2" cx="4.5" cy="5" rx="3" ry="2.5" />
+        </g>
+      </g>
+      <g id="leaf1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="rotate(65)">
+          <ellipse fill="#000000" cx="3" cy="1.5" rx="6" ry="3" />
+          <ellipse fill="#61866B" cx="3" cy="1.5" rx="5.9" ry="2.8" />
+        </g>
+      </g>
+      <g id="leaf2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="rotate(-60)">
+          <ellipse fill="#000000" cx="3" cy="1.5" rx="6" ry="3" />
+          <ellipse fill="#61866B" cx="3" cy="1.5" rx="5.9" ry="2.8" />
         </g>
       </g>
     </defs>
@@ -18,13 +35,12 @@
 
 <script>
 import { state } from "@/state.js";
-//import { pickRandomIn } from "@/utils.js";
+import { pickRandomIn, shuffleArray } from "@/utils.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const MAX_FLOWER_AGE = 10;
 const MAX_GROWTH_TICKS = 25;
 const BRANCH_COLOR = "rgb(87, 85, 69)";
-const NB_FLOWERS = 100;
 
 // from http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
 function shadeRGBColor(color, percent) {
@@ -40,8 +56,8 @@ function shadeRGBColor(color, percent) {
   return `rgb(${r},${g},${b})`;
 }
 
-const maxDepth = 8,
-  trunkWidth = 12;
+const maxDepth = 8;
+const trunkWidth = 16;
 const branchShrinkage = 0.7;
 const maxAngleDelta = Math.PI / 12;
 const delay = 100;
@@ -57,17 +73,14 @@ let wind = 1;
 const windIncrement = 0.5;
 const maxWind = 2;
 
-const createFlower = ({ x, y, idx }) => {
+const createFlower = ({ x, y, idx, type }) => {
   let telomeres = MAX_FLOWER_AGE;
   let growthPhase = 0;
   let scale = 0.5;
   let rotation = 0;
   const element = document.createElementNS(SVG_NS, "use");
-  element.setAttribute("href", "#flower");
+  element.setAttribute("href", "#" + type);
   element.setAttribute("style", "z-index: -1");
-  /*element
-    .querySelector("#color")
-    .setAttribute("fill", pickRandomIn(["red", "blue", "yellow"]));*/
 
   const flower = {
     idx,
@@ -82,7 +95,7 @@ const createFlower = ({ x, y, idx }) => {
     drop() {
       y += dropIncrement * Math.random();
       x += dropIncrement * (wind + Math.random() * 2);
-      rotation += rotateIncrement * (Math.random() - 0.5);
+      rotation += rotateIncrement * (2 + Math.random() - 0.5);
     },
 
     transform() {
@@ -126,7 +139,6 @@ const createFlower = ({ x, y, idx }) => {
   return flower;
 };
 
-const branchesInUse = {};
 let flowers = [];
 let flowerDetachIndex = 0;
 let branchEndings;
@@ -145,24 +157,25 @@ const detachFlowers = n => {
   }
 };
 
-const findFreeBranchIdx = () => {
-  for (let i = 0; i < branchEndings.length; i++) {
-    const idx = Math.floor(Math.random() * branchEndings.length);
-    if (!branchesInUse[idx]) {
-      branchesInUse[idx] = true;
-      return idx;
-    }
-  }
-
-  return -1;
+const flowersPerLevel = {
+  0: ["red", "blue"],
+  1: ["red", "blue", "leaf1", "leaf2"],
+  2: ["red", "blue", "leaf1", "leaf2"],
+  3: ["red", "blue", "leaf1", "leaf2", "leaf1", "leaf2"],
+  4: ["leaf1", "leaf2"],
+  5: ["leaf1", "leaf2"]
 };
 
-const attachFlower = () => {
-  const idx = findFreeBranchIdx();
-  if (idx >= 0) {
-    const branch = branchEndings[idx];
-    flowers.push(createFlower(Object.assign({}, branch, { idx })));
-  }
+const attachFlower = node => {
+  let type = pickRandomIn(flowersPerLevel[node.depth]);
+  flowers.push(createFlower(Object.assign({ type }, node)));
+};
+
+const addFlowers = () => {
+  branchEndings = shuffleArray(branchEndings);
+  branchEndings.forEach((node, i) => {
+    setTimeout(() => attachFlower(node), i * 30);
+  });
 };
 
 const animateFlowers = () => {
@@ -172,7 +185,6 @@ const animateFlowers = () => {
         return acc.concat([flower]);
       } else {
         flower.delete();
-        delete branchesInUse[flower.idx];
         return acc;
       }
     }, []);
@@ -199,7 +211,7 @@ const flatten = a => {
 };
 
 const drawBranch = (x1, y1, length, angle, depth, branchWidth, branchColor) => {
-  let randomLength = Math.round(length * (0.8 + 0.4 * Math.random()));
+  let randomLength = Math.round(length * (0.9 + 0.2 * Math.random()));
   const x2 = x1 + randomLength * Math.cos(angle);
   const y2 = y1 + randomLength * Math.sin(angle);
 
@@ -215,6 +227,11 @@ const drawBranch = (x1, y1, length, angle, depth, branchWidth, branchColor) => {
   svg.appendChild(line);
 
   const newDepth = depth - 1;
+
+  if (newDepth <= 5) {
+    branchEndings.push({ x: x2, y: y2, depth: newDepth });
+  }
+
   if (newDepth <= 0) {
     return Promise.resolve({ x: x2, y: y2 });
   }
@@ -251,23 +268,17 @@ const drawBranch = (x1, y1, length, angle, depth, branchWidth, branchColor) => {
 };
 
 // returns a promise that resolves to an array of the positions of the branches
-const drawTree = (maxDepth, trunkWidth) => {
+const drawTree = () => {
+  branchEndings = [];
   return drawBranch(
     0,
-    0,
-    75,
-    Math.PI / 10,
+    20,
+    70,
+    Math.PI / 16,
     maxDepth,
     trunkWidth,
     BRANCH_COLOR
-  ).then(branches => {
-    for (let i = 0; i < NB_FLOWERS; i++) {
-      setTimeout(attachFlower, i * 30);
-    }
-
-    branchEndings = branches;
-    return branches;
-  });
+  );
 };
 
 export default {
@@ -277,7 +288,9 @@ export default {
     svg = this.$el;
     this.resize();
     window.addEventListener("resize", this.resize);
-    drawTree(maxDepth, trunkWidth).then(animateFlowers);
+    drawTree()
+      .then(addFlowers)
+      .then(animateFlowers);
   },
 
   destroyed() {
@@ -303,8 +316,28 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 svg {
   height: 100%;
+
+  .st0 {
+    display: none;
+  }
+  .st1 {
+    display: inline;
+  }
+  .st2 {
+    display: inline;
+    fill: #5864af;
+  }
+  .st3 {
+    fill: #319390;
+  }
+  .st4 {
+    fill: #7a6fb9;
+  }
+  .st5 {
+    fill: #5864af;
+  }
 }
 </style>
