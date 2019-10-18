@@ -6,13 +6,10 @@
   >
     <defs>
       <g id="flower" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group">
-          <ellipse fill="#D2172E" cx="1.9724348" cy="4.19841371" rx="1.9724348" ry="1.99215915" />
-          <ellipse fill="#D2172E" cx="4.55630988" cy="2.019449" rx="1.9724348" ry="1.99215915" />
-          <ellipse fill="#D2172E" cx="6.29091552" cy="7.27775063" rx="1.9724348" ry="1.99215915" />
-          <ellipse fill="#D2172E" cx="7.32232646" cy="4.19841371" rx="1.9724348" ry="1.99215915" />
-          <ellipse fill="#D2172E" cx="3.16363164" cy="7.27775063" rx="1.9724348" ry="1.99215915" />
-          <ellipse fill="#FFFFFF" cx="4.64971266" cy="5.00538314" rx="1.9724348" ry="1.99215915" />
+        <g>
+          <ellipse fill="#000000" cx="4.64971266" cy="5.00538314" rx="6" ry="4.2" />
+          <ellipse id="color" fill="#B05DAA" cx="4.64971266" cy="5.00538314" rx="5.9" ry="4" />
+          <ellipse fill="#000000" cx="4.64971266" cy="5.00538314" rx="0.9724348" ry="0.99215915" />
         </g>
       </g>
     </defs>
@@ -21,11 +18,12 @@
 
 <script>
 import { state } from "@/state.js";
+//import { pickRandomIn } from "@/utils.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const MAX_FLOWER_AGE = 10;
 const MAX_GROWTH_TICKS = 25;
-const BRANCH_COLOR = "rgb(101, 67, 33)";
+const BRANCH_COLOR = "rgb(87, 85, 69)";
 const NB_FLOWERS = 100;
 
 // from http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
@@ -67,6 +65,9 @@ const createFlower = ({ x, y, idx }) => {
   const element = document.createElementNS(SVG_NS, "use");
   element.setAttribute("href", "#flower");
   element.setAttribute("style", "z-index: -1");
+  /*element
+    .querySelector("#color")
+    .setAttribute("fill", pickRandomIn(["red", "blue", "yellow"]));*/
 
   const flower = {
     idx,
@@ -253,9 +254,9 @@ const drawBranch = (x1, y1, length, angle, depth, branchWidth, branchColor) => {
 const drawTree = (maxDepth, trunkWidth) => {
   return drawBranch(
     0,
-    200,
+    0,
     75,
-    -Math.PI / 10,
+    Math.PI / 10,
     maxDepth,
     trunkWidth,
     BRANCH_COLOR

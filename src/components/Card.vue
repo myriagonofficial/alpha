@@ -81,10 +81,10 @@ export default {
       this.choices.forEach((choice, i) => {
         setTimeout(() => {
           choice.anim = "appear";
-        }, 1500 + i * 1000);
+        }, 1400 + i * 500);
         setTimeout(() => {
           choice.anim = "glow";
-        }, 2000 + i * 1000);
+        }, 1900 + i * 500);
       });
     },
 
