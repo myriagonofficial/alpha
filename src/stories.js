@@ -9,6 +9,7 @@ export const stories = {
         cards: [1, 2, 3, 4, 5, 6, 7],
         priority: 5
     },
+    
 
     // PRIMAL
     choix_espece: {
@@ -68,6 +69,27 @@ export const stories = {
         cards: [205],
         priority: 1
     },
+    abris:
+    {
+        name: "Abris",
+        cards: [206],
+        priority: 1
+    },
+    politique:
+    {
+        name: "Jeu de pouvoirs",
+        cards: [207],
+        priority: 1
+    },
+    feu1:
+    {
+        name: "Forêt en flammes",
+        cards: [208],
+        priority: 1
+    },
+
+
+    // APEX 
     criminalite: {
         name: "Criminalité",
         cards: [300],
@@ -96,6 +118,39 @@ export const stories = {
     puceselectroniques: {
         name: "Puces électroniques",
         cards: [305],
+        priority: 1
+    },
+    gestation: {
+        name: "Temps de gestation",
+        cards: [306],
+        priority: 1
+    },
+    mutiles: {
+        name: "Mutilés de guerre",
+        cards: [307],
+        priority: 1
+    },
+    etoiles: {
+        name: "Etoiles",
+        cards: [308],
+        priority: 1
+    },
+    feu2: {
+        name: "Encore une forêt en flammes",
+        cards: [309],
+        priority: 1
+    },
+
+
+    // APEX 
+    UV: {
+        name: "Rayonnements solaires",
+        cards: [400],
+        priority: 1
+    },
+    fertilite: {
+        name: "Fertilité",
+        cards: [401],
         priority: 1
     }
 }
