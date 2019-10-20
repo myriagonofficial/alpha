@@ -49,7 +49,10 @@ export const decks = [
       "sedentarisation",
       "exploration",
       "dominationGenre",
-      "epidemie"
+      "epidemie",
+      "abris",
+      "politique",
+      "feu1"
     ],
     onStart() {
       playMusic('mus_headway')
@@ -64,7 +67,11 @@ export const decks = [
       "pharmacologie",
       "eaupolluee",
       "alimentation",
-      "puceselectroniques"
+      "puceselectroniques",
+      "gestation",
+      "mutiles",
+      "etoiles",
+      "feu2"
     ],
     onStart() {
       playMusic('mus_apex')
@@ -74,6 +81,8 @@ export const decks = [
     name: "Agony",
     interlocuteur: `Prophète ${propheteAgony}`,
     stories: [
+      "UV",
+      "fertilite"
     ],
     onStart() {
       playMusic('mus_agony')

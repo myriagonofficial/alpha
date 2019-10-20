@@ -349,14 +349,22 @@ export const cards = {
                 effect() {
                     changeScore("bonheur", +5)
                     changeScore("environnement", -5)
-                    addPassive("herboristerie");
+                    addPassive("herboristerie")
                 }
             },
             "Méfiez-vous des contagions, organisez une quarantaine.": {
                 effect() {
                     changeScore("bonheur", -5)
                 }
-            }
+            },
+            "Etudiez le corps des victimes.": {
+                effect() {
+                    changeScore("bonheur", -10)
+                    addPassive("medecine")
+                }
+            },
+
+            
         }
     },
 
@@ -374,7 +382,7 @@ export const cards = {
                     addPassive("dominationFéminine");
                 }
             },
-            "Promouvez une société non fondée sur une inégalté de genre": {
+            "Promouvez une société non fondée sur une inégalité de genre": {
                 effect() {
                     addPassive("EquiteGenre");
                     changeScore("bonheur", +10);
@@ -382,6 +390,101 @@ export const cards = {
             }
         }
     },
+    206: {
+        image: "colonisation_celeste.png",
+        description: `la population s'accroît et les artisans ne savent pas fournir suffisamment de ressources pour construire assez d'abris. Quelle solution préconiser ?`,
+        choices: {
+            "Former plus d'artisans.": {
+                effect() {
+                    addPassive("artisanat");
+                    changeScore("environnement", -10);
+                    changeScore("bonheur", +10);
+                }
+            },
+            "Encourager la mutualisation des abris.": {
+                effect() {
+                    changeScore("bonheur", -10);
+                }
+            },
+            "Concevoir des machines qui permettent d'accélérer le travail des artisans.": {
+                effect() {
+                    addPassive("mecanique");
+                    changeScore("bonheur", +10);
+                }
+            }
+        }
+    },
+    207: {
+        image: "politique1.png",
+        description: `cela fait longtemps que nous discutons des mêmes problèmes sans jamais prendre de décisions, il nous faudrait un système pour coordonner notre groupe.`,
+        choices: {
+            "Vous, prophète, serez leur guide par ma main.": {
+                effect() {
+                    addPassive("religion");
+                    changeScore("bonheur", -10);
+                }
+            },
+            "Faites en sorte de consulter équitablement chaque individu par un vote.": {
+                effect() {
+                    changeScore("bonheur", +10);
+                    addPassive("democratie");
+                }
+            },
+            "Laissez vos éléments charismatiques fonder différentes tribus. ": {
+                effect() {
+                    addPassive("tribus");
+                    changeScore("bonheur", +10);
+                }
+            },
+            "Je ne pense pas utile de formaliser un système de décision.": {
+                effect() {
+                    addPassive("anarchie");
+                    changeScore("bonheur", +5);
+                }
+            }
+        }
+    },
+    208: {
+        image: "feu1.png",
+        description: `un gigantesque feu de forêt s'est déclaré !`,
+        choices: {
+            "N'ayez crainte, vous pouvez assouvir votre curiosité et vous approcher.": {
+                effect() {
+                    changeScore("bonheur", +2);
+                    addPassive("feu");
+                }
+            },
+            "Vous n'avez pas les moyens d'agir : tenez vous à distance.": {
+                test() {
+                    return !state.passives.includes("jungle")
+                },
+                effect() {
+                    changeScore("environnement", -5);
+                }
+            },
+            "Vous n'avez pas les moyens d'agir : fuyez la forêt": {
+                test() {
+                    return state.passives.includes("jungle")
+                },
+                effect() {
+                    changeScore("environnement", -5);
+                    changeScore("bonheur", -10);
+
+                }
+            },
+            "Vous devriez clairement courir dans les flammes.": {
+                effect() {
+                    changeScore("bonheur", -10);
+                }
+            }
+        }
+    },
+    
+    
+
+    
+
+    
 
     300: {
         image: "colonisation_celeste.png",
@@ -492,7 +595,7 @@ export const cards = {
 
                 }
             },
-            "Cela fait partie de l'ordre naturel des choses, laissez les maladies faire le tri, seuls les forts peuvent survivre. (bonheur --; environnement +)": {
+            "Cela fait partie de l'ordre naturel des choses, laissez les maladies faire le tri, seuls les forts peuvent survivre.": {
                 effect() {
                     changeScore("environnement", +20);
                     changeScore("bonheur", -15);
@@ -581,23 +684,214 @@ export const cards = {
         image: "labo3.png",
         description: `des puces mesurant des propriétés physiques et biologiques ont été implantées sur chaque individu. Comment s'en servir ?`,
         choices: {
-            "Pratiquez l'eugénisme en fonction de la qualité du patrimoine génétique. (Bonheur --, Environnement +)": {
+            "Pratiquez l'eugénisme en fonction de la qualité du patrimoine génétique.": {
                 effect() {
                     changeScore("bonheur", -10);
                     changeScore("environnement", +3);
                 }
             },
-            "Identifiez les génies et donnez-leur les moyens de s'exprimer. (Bonheur +)": {
+            "Identifiez les génies et donnez-leur les moyens de s'exprimer.": {
                 effect() {
                     changeScore("bonheur", +5);
                 }
             },
-            "Utilisez les résultats pour servir la médecine. (Bonheur +, Environnement -)": {
+            "Utilisez les résultats pour servir la médecine.": {
                 effect() {
                     changeScore("environnement", -5);
                     changeScore("bonheur", +5);
                 }
             }
+        }
+    },
+
+    306: {
+        image: "labo3.png",
+        description: `des chercheurs ont imaginé un traitement permettant d'accélérer le temps de gestation. Que faire ?`,
+        choices: {
+            "Commercialisez-le de façon accessible.": {
+                effect() {
+                    changeScore("bonheur", +10);
+                    changeScore("environnement", -10);
+                }
+            },
+            "Commercialisez-le de façon minoritaire.": {
+                effect() {
+                    changeScore("bonheur", -10);
+                }
+            },
+            "Interdisez-le.": {
+                effect() {
+                    changeScore("bonheur", -15);
+                }
+            }
+        }
+    },
+    307: {
+        image: "labo3.png",
+        description: `suite à une grande guerre, une partie de la population est mutilée.`,
+        choices: {
+            "Abrégez leur souffrance": {
+                effect() {
+                    changeScore("bonheur", -15);
+                    changeScore("environnement", +2);
+                }
+            },
+            "Développez des membres artificiels": {
+                effect() {
+                    changeScore("bonheur", +10);
+                    changeScore("environnement", -2);
+                    addPassive("protheses");
+                }
+            },
+            "Adaptez vos infrastructures pour leur rendre la vie plus simple.": {
+                effect() {
+                    changeScore("bonheur", +5);
+                    changeScore("environnement", -5);
+                }
+            }
+        }
+    },
+    308: {
+        image: "aube1.png",
+        description: `les étoiles fascinent depuis toujours un grand nombre d’entre nous. Pouvons-nous aller les visiter ?`,
+        choices: {
+            "Votre progrès technique semble vous permettre d'aller explorer l'espace, lancez-vous !": {
+                test() {
+                    return (state.passives.includes("astronomie") && !state.passives.includes("religion"))
+                },
+                effect() {
+                    changeScore("bonheur", +15);
+                    changeScore("environnement", -10);
+                    addPassive("voyageastral");
+                }
+            },
+            "Les étoiles sont le domaine des dieux, vous seriez bien présomptueux d'espérer vous y aventurer.": {
+                test() {
+                    return state.passives.includes("religion")
+                },
+                effect() {
+                    changeScore("bonheur", -10);
+                }
+            },
+            "Essayez donc d'y voyager, même si cela me semble prématuré": {
+                test() {
+                    return !state.passives.includes("astronomie")
+                },
+                effect() {
+                    changeScore("bonheur", -5);
+                    changeScore("environnement", -15);
+                }
+            },
+            "Mieux vaut déjà vous concentrer sur votre environnement proche, soyez raisonnables.":{
+                effect() {
+                }
+            }
+        }
+    },
+    309: {
+        image: "feu1.png",
+        description: `un gigantesque feu de forêt s'est déclaré !`,
+        choices: {
+            "Vous avez compris que vous pouviez l'éteindre grâce à l'eau, formez des équipes pour prévenir ce danger.": {
+                test() {
+                    return state.passives.includes("feu")
+                },
+                effect() {
+                    changeScore("bonheur", +10);
+                    addPassive("pompiers");
+                }
+            },
+            "Vous n'avez pas les moyens d'agir : restez éloignés.": {
+                test() {
+                    return (!state.passives.includes("feu") && !state.passives.includes("jungle"))
+                },
+                effect() {
+                    changeScore("bonheur", -10);
+
+                }
+            },
+            "Fuyez la forêt et sauvez le maximum de vos ressources.": {
+                test() {
+                    return (state.passives.includes("jungle") && !state.passives.includes("feu"))
+                },
+                effect() {
+                    changeScore("bonheur", -5);
+                }
+            }
+        }
+    },
+    
+
+    400: {
+        image: "labo3.png",
+        description: `nos activités industrielles ont engendré une altération des couches atmosphériques qui nous protégaient du soleil. Les rayonnements sont de plus en plus agressifs et la température augmente dangereusement ! Comment y remédier ? `,
+        choices: {
+            "Développez des vêtements et des onguents qui permettent de se protéger et de soulager les brûlures": {
+                effect() {
+                    changeScore("bonheur", +5);
+                    changeScore("environnement", -10);
+                }
+            },
+            "Laissez dépérir les populations situées dans les zones difficiles ": {
+                effect() {
+                    changeScore("bonheur", -10);
+                }
+            },
+            "Mettez au point des machines pour réémettre ces gaz protecteurs": {
+                effect() {
+                    changeScore("bonheur", +10);
+                    changeScore("environnement", -15);
+                }
+            }
+        }
+    },
+
+    401: {
+        image: "labo3.png",
+        description: `la fertilité est en berne. Comment s'assurer de la pérennisation de l'espèce ?`,
+        choices: {
+            "Les femmes fertiles sont identifiées et assument le rôle de mères porteuses.": {
+                effect() {
+                    changeScore("bonheur", -20);
+                    changeScore("environnement", -5);
+                }
+            },
+            "Encourager la reproduction par des biais culturels.": {
+                effect() {
+                    changeScore("bonheur", -5);
+                    changeScore("environnement", -5);
+                }
+            },
+            "Utiliser la manipulation génétique pour faciliter la procréation.": {
+                test() {
+                    return state.passives.includes("bioingenieurie")
+                },
+                effect() {
+                    changeScore("bonheur", +10);
+                    changeScore("environnement", -10);
+                }
+            },
+            "Maximiser l'espérance de vie des personnes déjà présentes par la médecine.": {
+                test() {
+                    return state.passives.includes("medecine")
+                },
+                effect() {
+                    changeScore("bonheur", +5);
+                    changeScore("environnement", -5);
+                }
+            },
+            "Maximiser l'espérance de vie des personnes déjà présentes par la mécanisation des corps.": {
+                test() {
+                    return (state.passives.includes("mecanique") && state.passives.includes("protheses"))
+                },
+                effect() {
+                    changeScore("bonheur", +15);
+                    changeScore("environnement", -15);
+                }
+            },
+            
+
+            
         }
     },
     
