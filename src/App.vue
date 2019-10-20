@@ -96,36 +96,37 @@ li {
       display: none;
     }
   }
+}
 
-  button {
-    display: inline-block;
-    margin: auto;
-    padding: 0.5em 1em;
-    cursor: pointer;
-    background: rgba(0, 0, 0, 0.15);
-    border: none;
-    color: white;
-    font-family: "Montserrat", serif;
-    font-size: 2vh;
+button,
+a {
+  display: inline-block;
+  margin: auto;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.15);
+  border: none;
+  color: white;
+  font-family: "Montserrat", serif;
+  font-size: 2vh;
 
-    &.disabled {
-      background: rgba(32, 32, 32, 0.25);
-    }
+  &.disabled {
+    background: rgba(32, 32, 32, 0.25);
+  }
 
-    &:focus {
-      outline: 4px white;
-      box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
-    }
+  &:focus {
+    outline: 4px white;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+  }
 
-    &:hover {
-      animation: none;
-      opacity: 1;
-    }
+  &:hover {
+    animation: none;
+    opacity: 1;
+  }
 
-    &:not(.disabled):hover {
-      background: rgba(0, 0, 0, 0.25);
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-    }
+  &:not(.disabled):hover {
+    background: rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
   }
 }
 

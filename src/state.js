@@ -14,7 +14,8 @@ export const state = {
     },
     shouldShowIndicateurBonheur: false,
     shouldShowIndicateurEnvironnement: false,
-    passives: []
+    passives: [],
+    achievement: null
 };
 
 export function resetStateToNewGame() {
@@ -30,7 +31,8 @@ export function resetStateToNewGame() {
         },
         shouldShowIndicateurBonheur: false,
         shouldShowIndicateurEnvironnement: false,
-        passives: []
+        passives: [],
+        achievement: null
     })
 }
 

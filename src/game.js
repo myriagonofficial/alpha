@@ -4,6 +4,7 @@ import { stories, endStory } from "./stories";
 import { cards } from "./cards";
 import { pickRandomIn } from "./utils"
 import { stopSound, stopMusic } from "./audio"
+import { achievements } from "./achievements";
 
 export const initGame = () => {
   resetStateToNewGame();
@@ -62,7 +63,13 @@ export const showIndicateurEnvironnement = () => {
   state.shouldShowIndicateurEnvironnement = true
 }
 
-export const addPassive = passiveName => state.passives.push(passiveName)
+export const addPassive = passiveName => {
+  state.passives.push(passiveName)
+}
+
+export const setAchievement = achievementName => {
+  state.achievement = achievements[achievementName];
+}
 
 export const gameOver = () => {
   stopMusic();

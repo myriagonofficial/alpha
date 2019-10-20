@@ -56,52 +56,52 @@ $card_height: 720;
   transform-origin: center;
   text-align: center;
   z-index: 2;
+}
 
-  .background-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url("../assets/ui/interface_fond_total.png");
-    background-size: cover;
-    background-position: center center;
-    opacity: 0.85;
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../assets/ui/interface_fond_total.png");
+  background-size: cover;
+  background-position: center center;
+  opacity: 0.85;
+}
+
+.card-zone {
+  position: absolute;
+  top: 5vh;
+  bottom: 5vh;
+  left: 0;
+  right: 50%;
+}
+
+.card-info {
+  position: absolute;
+  left: 50%;
+  right: 5vh;
+  top: 5vh;
+  bottom: 5vh;
+  padding: 2rem;
+  color: black;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  .card-name {
+    font-weight: bold;
+    font-size: 4vmin;
+    text-transform: uppercase;
+    flex: 0;
+    margin: 1em 0;
   }
 
-  .card-zone {
-    position: absolute;
-    top: 5vh;
-    bottom: 5vh;
-    left: 0;
-    right: 50%;
-  }
-
-  .card-info {
-    position: absolute;
-    left: 50%;
-    right: 5vh;
-    top: 5vh;
-    bottom: 5vh;
-    padding: 2rem;
-    color: black;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-
-    .card-name {
-      font-weight: bold;
-      font-size: 4vmin;
-      text-transform: uppercase;
-      flex: 0;
-      margin: 1em 0;
-    }
-
-    .card-description {
-      font-size: 3vmin;
-      flex: 1;
-    }
+  .card-description {
+    font-size: 3vmin;
+    flex: 1;
   }
 }
 
