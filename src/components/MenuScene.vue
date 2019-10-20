@@ -1,56 +1,79 @@
 <template>
-  <div id="info-son" v-if="!isMusicActivated">
+  <div id="info-son" v-if="!state.hasInteractedWithPage">
     <p>
-      <img src="assets/icons/PICTO_SON.png" alt="Son" class="icon" />
+      <img src="../assets/ui/sound_on.png" alt="Son" class="icon" />
       L'expérience sonore est vivement conseillée
     </p>
     <button
-      @click="play"
-      :class="{ disabled: !loaded }"
-    >{{loaded ? "Jouer": "Chargement "+loadingPc+"%"}}</button>
+      @mouseover="onButtonMouseOver"
+      @click="showMenu"
+      :disabled="!state.loaded"
+    >{{state.loaded ? "Jouer": "Chargement "+loadingPc+"%"}}</button>
   </div>
   <div id="menu-scene" v-else>
     <img class="logo-myriagon" src="assets/MYRIAGON_LOGO.png" alt="Myriagon" />
     <img class="logo-alpha" src="assets/ALPHA_TITRE.png" alt="Alpha" />
-    <button class="start" @click="startGame">Commencer le jeu</button>
+    <button
+      @mouseover="onButtonMouseOver"
+      @click="startGame"
+      :class="['start', { hidden: !showStartButton }]"
+    >Commencer le jeu</button>
     <p
       class="credits"
     >Visuels : Arthur Lemaître | Développement : Sylvain Pollet-Villard | Son et concept : Myriagon</p>
+    <VolumeControl />
   </div>
 </template>
 
 <script>
-import { playMusic, stopMusic } from "@/audio";
-import { preloadGame } from "@/preloader";
+import { playMusic, stopMusic, playSound } from "@/audio.js";
+import { preloadGame } from "@/preloader.js";
+import { state } from "@/state.js";
+
+import VolumeControl from "@/components/VolumeControl.vue";
 
 export default {
   name: "MenuScene",
   data() {
     return {
-      isMusicActivated: false,
-      loaded: false,
-      loadingPc: 0
+      state,
+      loadingPc: 0,
+      showStartButton: false
     };
   },
 
+  components: { VolumeControl },
+
   mounted() {
-    preloadGame(this.onProgress).then(() => {
-      this.loaded = true;
-    });
+    if (!state.loaded) {
+      preloadGame(this.onProgress).then(() => {
+        state.loaded = true;
+      });
+    } else if (state.hasInteractedWithPage) {
+      this.showMenu();
+    }
   },
 
   methods: {
     startGame() {
       stopMusic();
+      playSound("gui_click_button", "gui");
       this.$emit("play");
     },
-    play() {
-      if (this.isMusicActivated || !this.loaded) return;
-      this.isMusicActivated = true;
+    showMenu() {
+      if (!state.loaded) return;
+      state.hasInteractedWithPage = true;
+      playSound("gui_click_button", "gui");
       playMusic("mus_menu");
+      setTimeout(() => {
+        this.showStartButton = true;
+      }, 3000);
     },
     onProgress(pc) {
       this.loadingPc = Math.round(pc);
+    },
+    onButtonMouseOver() {
+      playSound("gui_hover_button", "gui");
     }
   }
 };
@@ -83,19 +106,35 @@ export default {
   }
 
   .start {
-    font-size: 5vh;
+    font-size: 5vmin;
     padding: 0.25em 0.5em;
     margin: 2vh auto 8vh;
     display: inline-block;
     transition: box-shadow 300ms;
     animation: blink 1s alternate ease-in-out infinite;
-    animation-delay: 3000ms;
     cursor: pointer;
     background: rgba(0, 0, 0, 0);
+
+    &.hidden {
+      animation: none;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &:hover {
+      animation: none;
+      opacity: 1;
+    }
   }
 
   p.credits {
     font-size: 2vh;
+  }
+
+  .volume {
+    position: fixed;
+    bottom: 0;
+    left: 0;
   }
 }
 
@@ -122,14 +161,21 @@ export default {
     margin: 0 0.5em 0.15em 0;
     animation: tada 2s ease-in-out infinite;
   }
-}
 
-@keyframes blink {
-  0% {
-    opacity: 0.25;
-  }
-  100% {
-    opacity: 0.9;
+  button {
+    font-size: 3vmin;
+    background: rgba(128, 128, 128, 0.15);
+
+    &:hover {
+      &:disabled {
+        background: rgba(128, 128, 128, 0.15);
+        box-shadow: none;
+        cursor: wait;
+      }
+      &:not(:disabled) {
+        background: rgba(128, 128, 128, 0.25);
+      }
+    }
   }
 }
 

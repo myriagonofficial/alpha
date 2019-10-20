@@ -67,6 +67,7 @@ export const cards = {
         },
         onStart() {
             showIndicateurBonheur();
+            playSound('vox_gardien_06', 'voice')
         }
     },
     7: {
@@ -79,6 +80,7 @@ export const cards = {
         },
         onStart() {
             showIndicateurEnvironnement();
+            playSound('vox_gardien_07', 'voice')
         }
     },
 

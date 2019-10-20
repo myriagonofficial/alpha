@@ -2,31 +2,18 @@
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
-    viewBox="0 0 1000 200"
-  >
-    <defs>
-      <g id="flower" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group">
-          <ellipse fill="#D2172E" cx="1.9724348" cy="4.19841371" rx="1.9724348" ry="1.99215915" />
-          <ellipse fill="#D2172E" cx="4.55630988" cy="2.019449" rx="1.9724348" ry="1.99215915" />
-          <ellipse fill="#D2172E" cx="6.29091552" cy="7.27775063" rx="1.9724348" ry="1.99215915" />
-          <ellipse fill="#D2172E" cx="7.32232646" cy="4.19841371" rx="1.9724348" ry="1.99215915" />
-          <ellipse fill="#D2172E" cx="3.16363164" cy="7.27775063" rx="1.9724348" ry="1.99215915" />
-          <ellipse fill="#FFFFFF" cx="4.64971266" cy="5.00538314" rx="1.9724348" ry="1.99215915" />
-        </g>
-      </g>
-    </defs>
-  </svg>
+    viewBox="0 0 1400 200"
+  />
 </template>
 
 <script>
 import { state } from "@/state.js";
+import { pickRandomIn, shuffleArray } from "@/utils.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const MAX_FLOWER_AGE = 10;
 const MAX_GROWTH_TICKS = 25;
-const BRANCH_COLOR = "rgb(101, 67, 33)";
-const NB_FLOWERS = 100;
+const BRANCH_COLOR = "rgb(87, 85, 69)";
 
 // from http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
 function shadeRGBColor(color, percent) {
@@ -42,9 +29,10 @@ function shadeRGBColor(color, percent) {
   return `rgb(${r},${g},${b})`;
 }
 
-const maxDepth = 8,
-  trunkWidth = 12;
-const branchShrinkage = 0.7;
+const maxDepth = 8;
+const trunkWidth = 14;
+const trunkLength = 75;
+const branchShrinkage = 0.75;
 const maxAngleDelta = Math.PI / 12;
 const delay = 100;
 
@@ -59,18 +47,16 @@ let wind = 1;
 const windIncrement = 0.5;
 const maxWind = 2;
 
-const createFlower = ({ x, y, idx }) => {
+const createFlower = ({ x, y, type }) => {
   let telomeres = MAX_FLOWER_AGE;
   let growthPhase = 0;
   let scale = 0.5;
-  let rotation = 0;
+  let rotation = Math.floor(Math.random() * 60) - 30;
   const element = document.createElementNS(SVG_NS, "use");
-  element.setAttribute("href", "#flower");
-  element.setAttribute("style", "z-index: -1");
+  element.setAttribute("href", `assets/environment/${type}.svg#fleur`);
+  element.setAttribute("style", "z-index: 2");
 
   const flower = {
-    idx,
-
     attached: true,
 
     grow() {
@@ -81,7 +67,7 @@ const createFlower = ({ x, y, idx }) => {
     drop() {
       y += dropIncrement * Math.random();
       x += dropIncrement * (wind + Math.random() * 2);
-      rotation += rotateIncrement * (Math.random() - 0.5);
+      rotation += rotateIncrement * (2 + Math.random() - 0.5);
     },
 
     transform() {
@@ -125,7 +111,6 @@ const createFlower = ({ x, y, idx }) => {
   return flower;
 };
 
-const branchesInUse = {};
 let flowers = [];
 let flowerDetachIndex = 0;
 let branchEndings;
@@ -135,7 +120,6 @@ const detachFlowers = n => {
     n = flowers.length - flowerDetachIndex;
   }
   flowerDetachIndex += n;
-  console.log({ n, flowerDetachIndex });
 
   for (let i = 0; i < n; i++) {
     setTimeout(() => {
@@ -144,24 +128,16 @@ const detachFlowers = n => {
   }
 };
 
-const findFreeBranchIdx = () => {
-  for (let i = 0; i < branchEndings.length; i++) {
-    const idx = Math.floor(Math.random() * branchEndings.length);
-    if (!branchesInUse[idx]) {
-      branchesInUse[idx] = true;
-      return idx;
-    }
-  }
-
-  return -1;
+const attachFlower = node => {
+  let type = pickRandomIn(["fleur1", "fleur2"]);
+  flowers.push(createFlower(Object.assign({ type }, node)));
 };
 
-const attachFlower = () => {
-  const idx = findFreeBranchIdx();
-  if (idx >= 0) {
-    const branch = branchEndings[idx];
-    flowers.push(createFlower(Object.assign({}, branch, { idx })));
-  }
+const addFlowers = () => {
+  branchEndings = shuffleArray(branchEndings);
+  branchEndings.forEach((node, i) => {
+    setTimeout(() => attachFlower(node), i * 25);
+  });
 };
 
 const animateFlowers = () => {
@@ -171,7 +147,6 @@ const animateFlowers = () => {
         return acc.concat([flower]);
       } else {
         flower.delete();
-        delete branchesInUse[flower.idx];
         return acc;
       }
     }, []);
@@ -198,7 +173,7 @@ const flatten = a => {
 };
 
 const drawBranch = (x1, y1, length, angle, depth, branchWidth, branchColor) => {
-  let randomLength = Math.round(length * (0.8 + 0.4 * Math.random()));
+  let randomLength = Math.round(length * (0.9 + 0.2 * Math.random()));
   const x2 = x1 + randomLength * Math.cos(angle);
   const y2 = y1 + randomLength * Math.sin(angle);
 
@@ -210,23 +185,43 @@ const drawBranch = (x1, y1, length, angle, depth, branchWidth, branchColor) => {
   line.setAttribute("y1", y1);
   line.setAttribute("y2", y2);
   line.setAttribute("style", style);
-
   svg.appendChild(line);
 
+  const borderStyle = `stroke:#000;stroke-width:1px;z-index:1;`;
+  const btop = document.createElementNS(SVG_NS, "line");
+  btop.setAttribute("x1", x1);
+  btop.setAttribute("x2", x2);
+  btop.setAttribute("y1", y1 - branchWidth / 2 - 1);
+  btop.setAttribute("y2", y2 - branchWidth / 2);
+  btop.setAttribute("style", borderStyle);
+  svg.appendChild(btop);
+
+  const bbot = document.createElementNS(SVG_NS, "line");
+  bbot.setAttribute("x1", x1);
+  bbot.setAttribute("x2", x2);
+  bbot.setAttribute("y1", y1 + branchWidth / 2 + 1);
+  bbot.setAttribute("y2", y2 + branchWidth / 2);
+  bbot.setAttribute("style", borderStyle);
+  svg.appendChild(bbot);
+
   const newDepth = depth - 1;
+
+  if (newDepth <= 5) {
+    branchEndings.push({ x: x2, y: y2, depth: newDepth });
+  }
+
   if (newDepth <= 0) {
     return Promise.resolve({ x: x2, y: y2 });
   }
 
   const newBranchWidth = branchWidth * branchShrinkage;
-  const newBranchColor = shadeRGBColor(branchColor, 0.1);
+  const newBranchColor = shadeRGBColor(branchColor, 0.05);
 
   return Promise.all(
     [-1, 1].map(direction => {
       const newAngle =
-        angle + maxAngleDelta * (0.25 + Math.random() * 0.25) * direction;
-      const newLength =
-        length * (branchShrinkage + Math.random() * (1.0 - branchShrinkage));
+        angle + maxAngleDelta * (0.4 + Math.random() * 0.1) * direction;
+      const newLength = length * (branchShrinkage + Math.random() * 0.2);
 
       return new Promise(resolve => {
         setTimeout(
@@ -250,23 +245,17 @@ const drawBranch = (x1, y1, length, angle, depth, branchWidth, branchColor) => {
 };
 
 // returns a promise that resolves to an array of the positions of the branches
-const drawTree = (maxDepth, trunkWidth) => {
+const drawTree = () => {
+  branchEndings = [];
   return drawBranch(
-    0,
-    200,
-    75,
-    -Math.PI / 10,
+    -50,
+    20,
+    trunkLength,
+    Math.PI / 16,
     maxDepth,
     trunkWidth,
     BRANCH_COLOR
-  ).then(branches => {
-    for (let i = 0; i < NB_FLOWERS; i++) {
-      setTimeout(attachFlower, i * 100);
-    }
-
-    branchEndings = branches;
-    return branches;
-  });
+  );
 };
 
 export default {
@@ -276,7 +265,9 @@ export default {
     svg = this.$el;
     this.resize();
     window.addEventListener("resize", this.resize);
-    drawTree(maxDepth, trunkWidth).then(animateFlowers);
+    drawTree()
+      .then(addFlowers)
+      .then(animateFlowers);
   },
 
   destroyed() {
@@ -289,10 +280,11 @@ export default {
 
   watch: {
     "state.scores.environnement"(newValue, oldValue) {
-      let valueLost = newValue - oldValue;
-      let nbFlowersToDrop = Math.ceil(Math.max(1, valueLost));
-      //console.log({ newValue, oldValue, nbFlowersToDrop });
-      detachFlowers(nbFlowersToDrop);
+      let valueLost = oldValue - newValue;
+      if (valueLost > 0) {
+        let nbFlowersToDrop = Math.ceil(Math.max(1, valueLost));
+        detachFlowers(nbFlowersToDrop);
+      }
     }
   },
 
@@ -302,8 +294,8 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 svg {
-  height: 100%;
+  height: 98%;
 }
 </style>

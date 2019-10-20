@@ -1,8 +1,9 @@
-import { state } from "./state.js"
+import { state } from "./state"
 import { decks } from "./decks";
 import { stories, endStory } from "./stories";
 import { cards } from "./cards";
 import { pickRandomIn } from "./utils"
+import { stopSound, stopMusic } from "./audio"
 
 export const initGame = () => {
   Object.assign(state, {
@@ -31,18 +32,21 @@ export const nextCard = () => {
 }
 
 export const nextDeck = () => {
-  if (state.era >= decks.length) return alert("fin du game") //TODO
+  if (state.era >= decks.length) return gameOver()
 
   state.deck = Object.assign({}, decks[state.era])
   state.deck.stories.forEach(s => s in stories || console.error(`Story not found: ${s}`))
 
   state.era++;
+
+  if (state.deck.onStart) state.deck.onStart();
   nextCard()
 }
 
 export const skipIntro = () => {
   showIndicateurEnvironnement();
   showIndicateurBonheur();
+  stopSound("voice")
   nextDeck();
 }
 
@@ -65,3 +69,8 @@ export const showIndicateurEnvironnement = () => {
 }
 
 export const addPassive = passiveName => state.passives.push(passiveName)
+
+export const gameOver = () => {
+  stopMusic();
+  state.scene = "gameover";
+}

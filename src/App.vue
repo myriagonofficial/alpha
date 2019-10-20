@@ -3,6 +3,7 @@
     <TopBar />
     <MenuScene v-if="state.scene==='menu'" @play="play()" />
     <CardsScene v-if="state.scene==='game'" />
+    <GameoverScene v-if="state.scene==='gameover'" />
     <BottomBar />
   </div>
 </template>
@@ -10,6 +11,7 @@
 <script>
 import CardsScene from "@/components/CardsScene.vue";
 import MenuScene from "@/components/MenuScene.vue";
+import GameoverScene from "@/components/GameoverScene.vue";
 import TopBar from "@/components/TopBar.vue";
 import BottomBar from "@/components/BottomBar.vue";
 
@@ -18,7 +20,7 @@ import { state } from "@/state.js";
 
 export default {
   name: "Alpha",
-  components: { CardsScene, MenuScene, TopBar, BottomBar },
+  components: { CardsScene, MenuScene, GameoverScene, TopBar, BottomBar },
   data() {
     return {
       state
@@ -29,11 +31,11 @@ export default {
 
   mounted() {
     this.resizeScene();
-    this.resizeListener = window.addEventListener("resize", this.resizeScene);
+    window.addEventListener("resize", this.resizeScene);
   },
 
   destroyed() {
-    window.removeEventListener(this.resizeListener);
+    window.removeEventListener("resize", this.resizeScene);
   },
 
   methods: {
@@ -70,6 +72,13 @@ body {
   background-size: cover;
 }
 
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   position: fixed;
   left: 0;
@@ -77,7 +86,8 @@ body {
   top: 0;
   bottom: 0;
 
-  &.scene-menu {
+  &.scene-menu,
+  &.scene-gameover {
     background-image: url("assets/ECRAN_INTRO.png");
     background-size: cover;
     background-position: center center;
@@ -93,7 +103,7 @@ body {
     margin: auto;
     padding: 0.5em 1em;
     cursor: pointer;
-    background: rgba(128, 128, 128, 0.15);
+    background: rgba(0, 0, 0, 0.15);
     border: none;
     color: white;
     font-family: "Montserrat", serif;
@@ -108,12 +118,24 @@ body {
       box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
     }
 
-    &:not(.disabled):hover {
+    &:hover {
       animation: none;
-      background: rgba(128, 128, 128, 0.25);
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
       opacity: 1;
     }
+
+    &:not(.disabled):hover {
+      background: rgba(0, 0, 0, 0.25);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0.9;
   }
 }
 </style>
