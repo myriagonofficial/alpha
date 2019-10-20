@@ -41,7 +41,6 @@ export default {
   methods: {
     play() {
       initGame();
-      this.state.scene = "game";
     },
     resizeScene() {
       /*let scale = Math.min(window.innerWidth / 640, window.innerHeight / 1080);

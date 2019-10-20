@@ -1,5 +1,9 @@
 export const state = {
     scene: "menu",
+    mute: false,
+    volume: 100,
+    loaded: false,
+    hasInteractedWithPage: false,
     deck: null,
     era: 0,
     choice: 0,
@@ -10,12 +14,25 @@ export const state = {
     },
     shouldShowIndicateurBonheur: false,
     shouldShowIndicateurEnvironnement: false,
-    passives: [],
-    mute: false,
-    volume: 100,
-    loaded: false,
-    hasInteractedWithPage: false
+    passives: []
 };
+
+export function resetStateToNewGame() {
+    Object.assign(state, {
+        scene: "game",
+        deck: null,
+        era: 0,
+        choice: 0,
+        card: null,
+        scores: {
+            bonheur: 10,
+            environnement: 100
+        },
+        shouldShowIndicateurBonheur: false,
+        shouldShowIndicateurEnvironnement: false,
+        passives: []
+    })
+}
 
 export function saveSettings() {
     localStorage.setItem("settings", JSON.stringify({

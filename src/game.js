@@ -1,4 +1,4 @@
-import { state } from "./state"
+import { state, resetStateToNewGame } from "./state"
 import { decks } from "./decks";
 import { stories, endStory } from "./stories";
 import { cards } from "./cards";
@@ -6,13 +6,7 @@ import { pickRandomIn } from "./utils"
 import { stopSound, stopMusic } from "./audio"
 
 export const initGame = () => {
-  Object.assign(state, {
-    era: 0,
-    choice: 0,
-    deck: null,
-    card: null
-  })
-
+  resetStateToNewGame();
   nextDeck()
 };
 
