@@ -50,7 +50,7 @@ const maxWind = 2;
 const createFlower = ({ x, y, type }) => {
   let telomeres = MAX_FLOWER_AGE;
   let growthPhase = 0;
-  let scale = 0.5;
+  let scale = 0.3;
   let rotation = Math.floor(Math.random() * 60) - 30;
   const element = document.createElementNS(SVG_NS, "use");
   element.setAttribute("href", `assets/environment/${type}.svg#fleur`);

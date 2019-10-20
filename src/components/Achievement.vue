@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="card-info">
-      <h3>Fin débloquée</h3>
+      <h3 v-if="!closable">Fin débloquée</h3>
       <div class="card-name">{{ title }}</div>
       <div class="card-description" ref="description">{{ description }}</div>
       <div class="bonus" v-if="bonus">
@@ -20,6 +20,9 @@
         </p>
         <a :href="bonus.url" download>Télécharger</a>
       </div>
+      <button class="close" v-if="closable" @click="$emit('close')">
+        <img src="../assets/ui/close.svg" alt="Retour" />
+      </button>
     </div>
   </div>
 </template>
@@ -36,7 +39,8 @@ export default {
       title: String,
       image: String,
       url: String
-    }
+    },
+    closable: Boolean
   }
 };
 </script>
@@ -44,7 +48,7 @@ export default {
 <style lang="postcss" scoped>
 .achievement-info {
   position: relative;
-  flex: 0 0 60vh;
+  height: 80vh;
   padding: 0;
   color: black;
   text-align: left;
@@ -73,13 +77,11 @@ export default {
 
   .card {
     position: relative;
-    width: calc(630 / 720 * 50vh);
-    height: 50vh;
     box-shadow: 0 0 3vh 0.5vh rgba(255, 255, 255, 0.5);
 
     img {
-      max-width: calc(630 / 720 * 50vh);
-      max-height: 50vh;
+      width: 100%;
+      height: 100%;
     }
   }
 
@@ -108,10 +110,25 @@ export default {
   }
 }
 
+button.close {
+  position: absolute;
+  top: 0vh;
+  right: 0vh;
+  font-size: 0;
+  width: 5vh;
+  height: 5vh;
+  border-radius: 50%;
+
+  img {
+    display: block;
+    width: 60%;
+    height: 60%;
+    margin: 20%;
+  }
+}
+
 .card-zone,
 .card-info {
-  height: 50vh;
-  bottom: auto;
   padding: 0;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <header>
-    <CompteurEnvironnement v-if="state.shouldShowIndicateurEnvironnement" />
-    <CompteurBonheur v-if="state.shouldShowIndicateurBonheur" />
+  <header v-if="state.loaded">
+    <CompteurEnvironnement v-if="state.scene==='game' && state.shouldShowIndicateurEnvironnement" />
+    <CompteurBonheur v-if="state.scene==='game' && state.shouldShowIndicateurBonheur" />
   </header>
 </template>
 

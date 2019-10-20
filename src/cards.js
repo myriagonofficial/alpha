@@ -1,5 +1,5 @@
 import { playSound, playMusic } from "./audio.js"
-import { showIndicateurBonheur, showIndicateurEnvironnement, addPassive, changeScore } from "./game.js"
+import { showIndicateurBonheur, showIndicateurEnvironnement, addPassive, changeScore, setAchievement } from "./game.js"
 import { state } from "./state.js"
 //import { endStory, startStory } from "./stories.js";
 
@@ -295,6 +295,7 @@ export const cards = {
                     changeScore("bonheur", +10)
                     changeScore("environnement", -10)
                     addPassive("sedentaire");
+                    setAchievement("batisseur"); //TEMP
 
                 }
             },
@@ -364,7 +365,7 @@ export const cards = {
                 }
             },
 
-            
+
         }
     },
 
@@ -479,12 +480,12 @@ export const cards = {
             }
         }
     },
-    
-    
 
-    
 
-    
+
+
+
+
 
     300: {
         image: "colonisation_celeste.png",
@@ -667,7 +668,7 @@ export const cards = {
                     changeScore("bonheur", +5);
 
                 }
-            },            
+            },
             "Concevoir des engrais pour maximiser le rendement des cultures.": {
                 test() {
                     return state.passives.includes("chimie")
@@ -782,7 +783,7 @@ export const cards = {
                     changeScore("environnement", -15);
                 }
             },
-            "Mieux vaut déjà vous concentrer sur votre environnement proche, soyez raisonnables.":{
+            "Mieux vaut déjà vous concentrer sur votre environnement proche, soyez raisonnables.": {
                 effect() {
                 }
             }
@@ -820,7 +821,7 @@ export const cards = {
             }
         }
     },
-    
+
 
     400: {
         image: "labo3.png",
@@ -889,12 +890,12 @@ export const cards = {
                     changeScore("environnement", -15);
                 }
             },
-            
 
-            
+
+
         }
     },
-    
+
 
 
 

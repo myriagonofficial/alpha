@@ -3,7 +3,6 @@ export const state = {
     mute: false,
     volume: 100,
     loaded: false,
-    hasInteractedWithPage: false,
     deck: null,
     era: 0,
     choice: 0,
@@ -15,6 +14,7 @@ export const state = {
     shouldShowIndicateurBonheur: false,
     shouldShowIndicateurEnvironnement: false,
     passives: [],
+    achievements: null,
     achievement: null
 };
 
@@ -47,5 +47,15 @@ export function loadSettings() {
     return JSON.parse(localStorage.getItem("settings"))
 }
 
-Object.assign(state, loadSettings())
+export function saveProgress() {
+    localStorage.setItem("achievements", JSON.stringify({
+        achievements: state.achievements
+    }))
+}
+
+export function loadProgress() {
+    return JSON.parse(localStorage.getItem("achievements"))
+}
+
+Object.assign(state, loadSettings(), loadProgress())
 window.state = state;

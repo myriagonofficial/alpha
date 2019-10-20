@@ -4,6 +4,7 @@
     <MenuScene v-if="state.scene==='menu'" @play="play()" />
     <CardsScene v-if="state.scene==='game'" />
     <GameoverScene v-if="state.scene==='gameover'" />
+    <AchievementsScene v-if="state.scene==='bonus'" />
     <BottomBar />
   </div>
 </template>
@@ -12,6 +13,7 @@
 import CardsScene from "@/components/CardsScene.vue";
 import MenuScene from "@/components/MenuScene.vue";
 import GameoverScene from "@/components/GameoverScene.vue";
+import AchievementsScene from "@/components/AchievementsScene.vue";
 import TopBar from "@/components/TopBar.vue";
 import BottomBar from "@/components/BottomBar.vue";
 
@@ -20,7 +22,14 @@ import { state } from "@/state.js";
 
 export default {
   name: "Alpha",
-  components: { CardsScene, MenuScene, GameoverScene, TopBar, BottomBar },
+  components: {
+    CardsScene,
+    MenuScene,
+    GameoverScene,
+    AchievementsScene,
+    TopBar,
+    BottomBar
+  },
   data() {
     return {
       state
@@ -90,10 +99,12 @@ li {
     background-image: url("assets/ECRAN_INTRO.png");
     background-size: cover;
     background-position: center center;
+  }
 
+  &.scene-menu {
     header,
     footer {
-      display: none;
+      background: none;
     }
   }
 }

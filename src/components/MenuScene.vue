@@ -1,5 +1,5 @@
 <template>
-  <div id="info-son" v-if="!state.hasInteractedWithPage">
+  <div id="info-son" v-if="!state.loaded">
     <p>
       <img src="../assets/ui/sound_on.png" alt="Son" class="icon" />
       L'expérience sonore est vivement conseillée
@@ -7,9 +7,10 @@
     <button
       @mouseover="onButtonMouseOver"
       @click="showMenu"
-      :disabled="!state.loaded"
-    >{{state.loaded ? "Jouer": "Chargement "+loadingPc+"%"}}</button>
+      :disabled="loadingPc < 100"
+    >{{loadingPc >= 100 ? "Jouer": "Chargement "+loadingPc+"%"}}</button>
   </div>
+
   <div id="menu-scene" v-else>
     <img class="logo-myriagon" src="assets/MYRIAGON_LOGO.png" alt="Myriagon" />
     <img class="logo-alpha" src="assets/ALPHA_TITRE.png" alt="Alpha" />
@@ -21,7 +22,6 @@
     <p
       class="credits"
     >Visuels : Arthur Lemaître | Développement : Sylvain Pollet-Villard | Son et concept : Myriagon</p>
-    <VolumeControl />
   </div>
 </template>
 
@@ -29,8 +29,6 @@
 import { playMusic, stopMusic, playSound } from "@/audio.js";
 import { preloadGame } from "@/preloader.js";
 import { state } from "@/state.js";
-
-import VolumeControl from "@/components/VolumeControl.vue";
 
 export default {
   name: "MenuScene",
@@ -42,14 +40,10 @@ export default {
     };
   },
 
-  components: { VolumeControl },
-
   mounted() {
     if (!state.loaded) {
-      preloadGame(this.onProgress).then(() => {
-        state.loaded = true;
-      });
-    } else if (state.hasInteractedWithPage) {
+      preloadGame(this.onProgress);
+    } else {
       this.showMenu();
     }
   },
@@ -61,8 +55,8 @@ export default {
       this.$emit("play");
     },
     showMenu() {
-      if (!state.loaded) return;
-      state.hasInteractedWithPage = true;
+      if (this.loadingPc < 100) return;
+      state.loaded = true;
       playSound("gui_click_button", "gui");
       playMusic("mus_menu");
       setTimeout(() => {
@@ -129,12 +123,6 @@ export default {
 
   p.credits {
     font-size: 2vh;
-  }
-
-  .volume {
-    position: fixed;
-    bottom: 0;
-    left: 0;
   }
 }
 
