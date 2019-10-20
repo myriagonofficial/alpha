@@ -9,6 +9,7 @@ export const stories = {
         cards: [1, 2, 3, 4, 5, 6, 7],
         priority: 5
     },
+    
 
     // PRIMAL
     choix_espece: {

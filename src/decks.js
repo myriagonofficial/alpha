@@ -26,13 +26,14 @@ export const decks = [
   },
   {
     name: "Primal",
-    interlocuteur: `Prophète ${prophetesPrimal[0]}`,
+    interlocuteur: `Gardien`,
     stories: [
       "choix_espece",
       "region",
       "reproduction",
       "saisons",
-      "communication"
+      "communication",
+      "prophetes"
     ]
   },
   {
