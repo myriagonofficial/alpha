@@ -26,7 +26,7 @@ const SVG_NS = "http://www.w3.org/2000/svg";
 const scaleIncrement = 0.2;
 const dropIncrement = 0.002;
 const rotateIncrement = Math.PI;
-const NB_ACCROCHES = 150;
+const NB_ACCROCHES = 200;
 let accroches;
 const groups = {
   leaves: {
@@ -109,6 +109,7 @@ const createFlower = ({ x, y, type, accroche, group }) => {
 const attachFlower = group => {
   let type = pickRandomIn(group.types);
   let accroche = accroches.find(accroche => !accroche.occupied);
+  if (!accroche) return; // plus de spot libre !
   let flower = createFlower({
     type,
     group,
