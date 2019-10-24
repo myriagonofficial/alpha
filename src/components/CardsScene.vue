@@ -9,7 +9,7 @@
       <div
         class="card-description"
         ref="description"
-      >{{state.deck.interlocuteur}} : {{ card.description }}</div>
+      >{{state.deck.interlocuteur}} : {{ description }}</div>
     </div>
   </div>
 </template>
@@ -31,6 +31,9 @@ export default {
   computed: {
     card() {
       return cards[state.card];
+    },
+    description(){
+      return typeof this.card.description === "function" ? this.card.description() : this.card.description
     }
   },
   watch: {

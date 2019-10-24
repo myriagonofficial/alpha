@@ -1019,7 +1019,7 @@ export const cards = {
 
     405: {
         image: "labo3.png",
-        description: `Une foule de réfugiés climatiques s'est présentée à nos portes. Ils disent que le vent et les aux ont détruit leurs habitations.`,
+        description: `Une foule de réfugiés climatiques s'est présentée à nos portes. Ils disent que le vent et les eaux ont détruit leurs habitations.`,
         choices: {
             "Accueillez-les et intégrez-les": {
                 test() {
@@ -1130,7 +1130,7 @@ export const cards = {
 
     407: {
         image: "labo3.png",
-        description: `A force de privilégier les plants les plus vigoureux, nous avons aussi tué la diversité des plantes, et nous en payons aujourd'hui le prix... Une épidémie ravage les champs ${state.passives.includes("carnivore") ? "destinés à l'alimentation du bétail " : ""} et va nous mener à la famine !`,
+        description: () => `A force de privilégier les plants les plus vigoureux, nous avons aussi tué la diversité des plantes, et nous en payons aujourd'hui le prix... Une épidémie ravage les champs ${state.passives.includes("carnivore") ? "destinés à l'alimentation du bétail " : ""} et va nous mener à la famine !`,
         choices: {
             "Variez votre alimentation. Vous avez essayé les insectes ?": {
                 test() {
