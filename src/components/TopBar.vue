@@ -1,20 +1,17 @@
 <template>
   <header v-if="state.loaded">
     <CompteurEnvironnement v-if="state.scene==='game' && state.shouldShowIndicateurEnvironnement" />
-    <CompteurBonheur v-if="state.scene==='game' && state.shouldShowIndicateurBonheur" />
   </header>
 </template>
 
 <script>
 import { state } from "@/state.js";
-import CompteurBonheur from "./CompteurBonheur.vue";
 import CompteurEnvironnement from "./CompteurEnvironnement.vue";
 
 export default {
   name: "TopBar",
   components: {
-    CompteurEnvironnement,
-    CompteurBonheur
+    CompteurEnvironnement
   },
   data() {
     return {
