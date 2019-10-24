@@ -66,11 +66,11 @@ export const MUSICS = {
     mus_gardien_01: 'assets/sound/mus_gardien_01.mp3',
     mus_gardien_02: 'assets/sound/mus_gardien_02.mp3',
     mus_gardien_03: 'assets/sound/mus_gardien_03.mp3',
-    mus_agony: 'assets/sound/mus_agonyMaster_01.ogg',
-    mus_apex: 'assets/sound/mus_apexMaster_01.ogg',
-    mus_headway: 'assets/sound/mus_headwayMaster_01.ogg',
+    mus_agony: 'assets/sound/mus_agonyLoop_01.ogg',
+    mus_apex: 'assets/sound/mus_apexLoop_01.ogg',
+    mus_headway: 'assets/sound/mus_headwayLoop_01.ogg',
     mus_lull: 'assets/sound/mus_lullMaster_01.ogg',
-    mus_primal: 'assets/sound/mus_primalMaster_01.ogg',
+    mus_primal: 'assets/sound/mus_primalLoop_01.ogg',
 }
 
 export const sounds = Object.fromEntries(Object.entries(SOUNDS).map(([key, path]) => {

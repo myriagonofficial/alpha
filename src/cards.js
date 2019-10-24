@@ -571,7 +571,7 @@ export const cards = {
     },
 
     302: {
-        image: "volcan_terre.png",
+        image: "chimie1.png",
         description: `devant notre façon de lutter contre les maladies, nos systèmes immunitaires se sont affaiblis et les germes ont muté et sont devenus plus virulents. Comment endiguer ce problème qui semble être un cercle vicieux ?`,
         choices: {
             "Basez progressivement les remèdes sur l'effet placebo pour réhabituer vos corps à lutter": {
@@ -824,7 +824,7 @@ export const cards = {
 
 
     400: {
-        image: "labo3.png",
+        image: "TODO.png",
         description: `nos activités industrielles ont engendré une altération des couches atmosphériques qui nous protégaient du soleil. Les rayonnements sont de plus en plus agressifs et la température augmente dangereusement ! Comment y remédier ? `,
         choices: {
             "Développez des vêtements et des onguents qui permettent de se protéger et de soulager les brûlures": {
