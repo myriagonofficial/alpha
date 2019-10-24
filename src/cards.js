@@ -889,12 +889,302 @@ export const cards = {
                     changeScore("bonheur", +15);
                     changeScore("environnement", -15);
                 }
+            }
+        }
+    },
+
+    402: {
+        image: "labo3.png",
+        description: `Une mauvaise herbe toxique se répand dans nos villes à toute vitesse. Un gaz urticant en sort quand on la coupe. Comment lutter contre ?`,
+        choices: {
+            "Brûlez les plants": {
+                test() {
+                    return state.passives.includes("feu")
+                },
+                effect() {
+                    changeScore("bonheur", -10);
+                    changeScore("environnement", -5);
+                }
             },
-
-
+            "Arrosez-les d'eau de mer": {
+                test() {
+                    return state.passives.includes("ocean")
+                },
+                effect() {
+                    changeScore("bonheur", -10);
+                    changeScore("environnement", -1);
+                }
+            },
+            "Recouvrez-les de cendres volcaniques": {
+                test() {
+                    return state.passives.includes("volcan")
+                },
+                effect() {
+                    changeScore("bonheur", -10);
+                    changeScore("environnement", -1);
+                }
+            },
+            "Laissez-la se répandre": {
+                effect() {
+                    changeScore("bonheur", -20);
+                    changeScore("environnement", -10);
+                }
+            }
 
         }
     },
+
+    403: {
+        image: "labo3.png",
+        description: `Notre population se vieillit ! Les jeunes délaissent leurs aînés et les seniors n'ont plus la force de travailler. Qu'allons-nous faire d'eux ?`,
+        choices: {
+            "Faites plus d'enfants": {
+                test() {
+                    return state.passives.includes("bebes_faibles")
+                },
+                effect() {
+                    changeScore("environnement", -15);
+                }
+            },
+            "Ségrégez les seniors": {
+                test() {
+                    return state.passives.includes("exil")
+                },
+                effect() {
+                    changeScore("bonheur", -20);
+                }
+            },
+            "Légalisez l'euthanasie": {
+                test() {
+                    return state.passives.includes("peineMort")
+                },
+                effect() {
+                    changeScore("bonheur", -10);
+                }
+            },
+            "Stoppez le traitement des malades incurables": {
+                effect() {
+                    changeScore("bonheur", -20);
+                }
+            }
+        }
+    },
+
+    404: {
+        image: "labo3.png",
+        description: `Le rude hiver a fait grimper la consommation de chauffage en masse. Nous ne parvenons plus à suivre la demande, c'est la crise énergétique !`,
+        choices: {
+            "Percez plus profond pour trouver du gaz": {
+                test() {
+                    return state.passives.includes("gaz")
+                },
+                effect() {
+                    changeScore("environnement", -15);
+                }
+            },
+            "Construisez plus de fermes éoliennes": {
+                test() {
+                    return state.passives.includes("eolien")
+                },
+                effect() {
+                    changeScore("bonheur", -5);
+                    changeScore("environnement", -5);
+                }
+            },
+            "Creusez des puits de chaleur dans le sol": {
+                test() {
+                    return state.passives.includes("geothermique") || state.passives.includes("volcan")
+                },
+                effect() {
+                    changeScore("bonheur", -5);
+                    changeScore("environnement", -10);
+                }
+            },
+            "Construisez d'autres centrales nucléaires": {
+                test() {
+                    return state.passives.includes("nucléaire")
+                },
+                effect() {
+                    changeScore("environnement", -10);
+                }
+            },
+            "Prônez l'austérité énergétique": {
+                effect() {
+                    changeScore("bonheur", -20);
+                    changeScore("environnement", -5);
+                }
+            }
+        }
+    },
+
+    405: {
+        image: "labo3.png",
+        description: `Une foule de réfugiés climatiques s'est présentée à nos portes. Ils disent que le vent et les aux ont détruit leurs habitations.`,
+        choices: {
+            "Accueillez-les et intégrez-les": {
+                test() {
+                    return state.passives.includes("reinsertion")
+                },
+                effect() {
+                    changeScore("bonheur", +5);
+                    changeScore("environnement", -5);
+                }
+            },
+            "Chassez-les": {
+                effect() {
+                    changeScore("bonheur", -10);
+                    changeScore("environnement", -5);
+                }
+            },
+            "Qu'ils reconstruisent, mais loin de la tribu": {
+                test() {
+                    return state.passives.includes("tribus")
+                },
+                effect() {
+                    changeScore("bonheur", -5);
+                    changeScore("environnement", -10);
+                }
+            },
+            "Montrez-leur de nouvelles terres pour rebâtir": {
+                test() {
+                    return state.passives.includes("cartographie ")
+                },
+                effect() {
+                    changeScore("bonheur", +10);
+                    changeScore("environnement", -10);
+                }
+            },
+            "Accueillez-les, mais chassez les mendiants et les inutiles": {
+                effect() {
+                    changeScore("bonheur", -20);
+                    changeScore("environnement", -5);
+                }
+            }
+        }
+    },
+
+    406: {
+        image: "labo3.png",
+        description: `Il n'y a plus assez de travail pour tout le monde ! Le chômage, la petite délinquance et les inégalités de richesse augmentent sans cesse...`,
+        choices: {
+            "Concentrez-vous sur la jeunesse": {
+                test() {
+                    return state.passives.includes("bebes_forts")
+                },
+                effect() {
+                    changeScore("bonheur", +5);
+                    changeScore("environnement", -5);
+                }
+            },
+            "Déclarez la guerre à l'état voisin": {
+                test() {
+                    return state.passives.includes("tribus") || state.passives.includes("anarchie")
+                },
+                effect() {
+                    changeScore("bonheur", -15);
+                    changeScore("environnement", -10);
+                }
+            },
+            "Lancez un programme de conquête spatiale": {
+                test() {
+                    return state.passives.includes("voyageastral")
+                },
+                effect() {
+                    changeScore("bonheur", +5);
+                    changeScore("environnement", -10);
+                }
+            },
+            "Que les femmes restent à la maison et s'occupent des tâches domestiques": {
+                test() {
+                    return state.passives.includes("dominationMasculine")
+                },
+                effect() {
+                    changeScore("bonheur", -10);
+                }
+            },
+            "Prenez les postes des hommes. Ils s'occuperont du ménage et des enfants": {
+                test() {
+                    return state.passives.includes("dominationFéminine")
+                },
+                effect() {
+                    changeScore("bonheur", -10);
+                }
+            },
+            "Votez une réduction du temps de travail pour tous": {
+                test() {
+                    return state.passives.includes("democratie")
+                },
+                effect() {
+                    changeScore("bonheur", +5);
+                    changeScore("environnement", -5);
+                }
+            },
+            "Encouragez les loisirs": {
+                effect() {
+                    changeScore("bonheur", +5);
+                    changeScore("environnement", -10);
+                }
+            }
+        }
+    },
+
+    407: {
+        image: "labo3.png",
+        description: `A force de privilégier les plants les plus vigoureux, nous avons aussi tué la diversité des plantes, et nous en payons aujourd'hui le prix... Une épidémie ravage les champs ${state.passives.includes("carnivore") ? "destinés à l'alimentation du bétail " : ""} et va nous mener à la famine !`,
+        choices: {
+            "Variez votre alimentation. Vous avez essayé les insectes ?": {
+                test() {
+                    return state.passives.includes("omnivore")
+                },
+                effect() {
+                    changeScore("bonheur", -5);
+                    changeScore("environnement", -10);
+                }
+            },
+            "Cultivez des algues à la place": {
+                test() {
+                    return state.passives.includes("herbivore")
+                },
+                effect() {
+                    changeScore("bonheur", -5);
+                    changeScore("environnement", -10);
+                }
+            },
+            "Migrez vers des terres avec d'autres sources de nourriture": {
+                test() {
+                    return state.passives.includes("migre")
+                },
+                effect() {
+                    changeScore("bonheur", +5);
+                    changeScore("environnement", -20);
+                }
+            },
+            "Créez de nouveaux plants en laboratoire": {
+                test() {
+                    return state.passives.includes("bioingenieurie")
+                },
+                effect() {
+                    changeScore("environnement", -10);
+                }
+            },
+            "Brûlez les champs contaminés": {
+                test() {
+                    return state.passives.includes("feu")
+                },
+                effect() {
+                    changeScore("bonheur", -5);
+                    changeScore("environnement", -10);
+                }
+            },
+            "Récoltez immédiatement ce qui peut être sauvé": {
+                effect() {
+                    changeScore("environnement", -15);
+                }
+            }
+        }
+    }
+
+
 
 
 
