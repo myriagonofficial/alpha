@@ -571,7 +571,7 @@ export const cards = {
     },
 
     302: {
-        image: "chimie1.png",
+        image: "medicaments.png",
         description: `devant notre façon de lutter contre les maladies, nos systèmes immunitaires se sont affaiblis et les germes ont muté et sont devenus plus virulents. Comment endiguer ce problème qui semble être un cercle vicieux ?`,
         choices: {
             "Basez progressivement les remèdes sur l'effet placebo pour réhabituer vos corps à lutter": {
@@ -821,6 +821,36 @@ export const cards = {
             }
         }
     },
+    310: {
+        image: "dechets.png",
+        description: `le développement de l'industrie permet l'avènement d'une société d'abondance et de consommation. Cela entraîne la production de grandes quantités de déchets. Comment les traiter ?`,
+        choices: {
+            "Brûlez-les, tout simplement.": {
+                test() {
+                    return state.passives.includes("feu")
+                },
+                effect() {
+                    changeScore("bonheur", +5);
+                }
+            },
+            "Entassez-les dans des décharges.": {
+                effect() {
+                    changeScore("bonheur", -10);
+                    changeScore("Environnement", -10);
+                }
+            },
+            "Etudiez la matière dont ils sont faits pour les recycler.": {
+                test() {
+                    return state.passives.includes("chimie")
+                },
+                effect() {
+                    changeScore("bonheur", +10);
+                }
+            }
+        }
+    },
+
+    
 
 
     400: {
@@ -894,8 +924,8 @@ export const cards = {
     },
 
     402: {
-        image: "labo3.png",
-        description: `Une mauvaise herbe toxique se répand dans nos villes à toute vitesse. Un gaz urticant en sort quand on la coupe. Comment lutter contre ?`,
+        image: "algue_poison.png",
+        description: `une mauvaise herbe toxique se répand dans nos villes à toute vitesse. Un gaz urticant en sort quand on la coupe. Comment lutter contre ?`,
         choices: {
             "Brûlez les plants": {
                 test() {
@@ -935,8 +965,8 @@ export const cards = {
     },
 
     403: {
-        image: "labo3.png",
-        description: `Notre population se vieillit ! Les jeunes délaissent leurs aînés et les seniors n'ont plus la force de travailler. Qu'allons-nous faire d'eux ?`,
+        image: "politique1.png",
+        description: `notre population se vieillit ! Les jeunes délaissent leurs aînés et les seniors n'ont plus la force de travailler. Qu'allons-nous faire d'eux ?`,
         choices: {
             "Faites plus d'enfants": {
                 test() {
@@ -971,8 +1001,8 @@ export const cards = {
     },
 
     404: {
-        image: "labo3.png",
-        description: `Le rude hiver a fait grimper la consommation de chauffage en masse. Nous ne parvenons plus à suivre la demande, c'est la crise énergétique !`,
+        image: "hiver.png",
+        description: `le rude hiver a fait grimper la consommation de chauffage en masse. Nous ne parvenons plus à suivre la demande, c'est la crise énergétique !`,
         choices: {
             "Percez plus profond pour trouver du gaz": {
                 test() {
@@ -1018,8 +1048,8 @@ export const cards = {
     },
 
     405: {
-        image: "labo3.png",
-        description: `Une foule de réfugiés climatiques s'est présentée à nos portes. Ils disent que le vent et les eaux ont détruit leurs habitations.`,
+        image: "mer1.png",
+        description: `Nous ne savons plus que faire des réfugiés climatiques qui fuient leur territoire d'origine. Ils disent que le vent et les eaux ont détruit leurs habitations.`,
         choices: {
             "Accueillez-les et intégrez-les": {
                 test() {
@@ -1064,7 +1094,7 @@ export const cards = {
     },
 
     406: {
-        image: "labo3.png",
+        image: "politique2.png",
         description: `Il n'y a plus assez de travail pour tout le monde ! Le chômage, la petite délinquance et les inégalités de richesse augmentent sans cesse...`,
         choices: {
             "Concentrez-vous sur la jeunesse": {
@@ -1129,7 +1159,7 @@ export const cards = {
     },
 
     407: {
-        image: "labo3.png",
+        image: "champs3.png",
         description: () => `A force de privilégier les plants les plus vigoureux, nous avons aussi tué la diversité des plantes, et nous en payons aujourd'hui le prix... Une épidémie ravage les champs ${state.passives.includes("carnivore") ? "destinés à l'alimentation du bétail " : ""} et va nous mener à la famine !`,
         choices: {
             "Variez votre alimentation. Vous avez essayé les insectes ?": {
@@ -1183,13 +1213,4 @@ export const cards = {
             }
         }
     }
-
-
-
-
-
-
-
-
-
 }

@@ -62,7 +62,7 @@ export const SOUNDS = {
 }
 
 export const MUSICS = {
-    mus_menu: 'assets/sound/mus_menu_01.mp3',
+    mus_menu: 'assets/sound/mus_menu_01.ogg',
     mus_gardien_01: 'assets/sound/mus_gardien_01.mp3',
     mus_gardien_02: 'assets/sound/mus_gardien_02.mp3',
     mus_gardien_03: 'assets/sound/mus_gardien_03.mp3',

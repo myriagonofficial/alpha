@@ -11,7 +11,7 @@ export const achievements = {
     },
 
     medecine: {
-        image: "assets/cards/labo1.png",
+        image: "assets/cards/medicaments.png",
         title: "Prix nobel de médecine",
         description: `Vous avez développé une civilisation capable de comprendre et de soigner ses propres membres.`,
         bonus: {

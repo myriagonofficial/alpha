@@ -71,7 +71,8 @@ export const decks = [
       "gestation",
       "mutiles",
       "etoiles",
-      "feu2"
+      "feu2",
+      "dechets"
     ],
     onStart() {
       playMusic('mus_apex')
@@ -82,7 +83,13 @@ export const decks = [
     interlocuteur: `Prophète ${propheteAgony}`,
     stories: [
       "UV",
-      "fertilite"
+      "fertilite",
+      "plante_poison",
+      "vieux",
+      "hiver",
+      "refugies",
+      "chomage",
+      "champsravages"
     ],
     onStart() {
       playMusic('mus_agony')

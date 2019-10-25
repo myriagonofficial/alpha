@@ -140,9 +140,14 @@ export const stories = {
         cards: [309],
         priority: 1
     },
+    dechets: {
+        name: "Déchets",
+        cards: [310],
+        priority: 1
+    },
 
 
-    // APEX 
+    // AGONY
     UV: {
         name: "Rayonnements solaires",
         cards: [400],
@@ -152,7 +157,37 @@ export const stories = {
         name: "Fertilité",
         cards: [401],
         priority: 1
-    }
+    },
+    plante_poison: {
+        name: "Plantes mortelles",
+        cards: [402],
+        priority: 1
+    },
+    vieux: {
+        name: "Population vieillissante",
+        cards: [403],
+        priority: 1
+    },
+    hiver: {
+        name: "Hiver rude",
+        cards: [404],
+        priority: 1
+    },
+    refugies: {
+        name: "Réfugiés climatique",
+        cards: [405],
+        priority: 1
+    },
+    chomage: {
+        name: "Chômage",
+        cards: [406],
+        priority: 1
+    },
+    champsravages: {
+        name: "Champs ravagés",
+        cards: [407],
+        priority: 1
+    },
 }
 
 export function startStory(name) {
