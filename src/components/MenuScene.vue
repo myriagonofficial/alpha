@@ -6,7 +6,7 @@
     </p>
     <button
       @mouseover="onButtonMouseOver"
-      @click="showMenu"
+      @click="onClickPlayButton"
       :disabled="loadingPc < 100"
     >{{loadingPc >= 100 ? "Jouer": "Chargement "+loadingPc+"%"}}</button>
   </div>
@@ -44,7 +44,8 @@ export default {
     if (!state.loaded) {
       preloadGame(this.onProgress);
     } else {
-      this.showMenu();
+      playMusic("mus_menu");
+      this.showStartButton = true;
     }
   },
 
@@ -54,7 +55,7 @@ export default {
       playSound("gui_click_button", "gui");
       this.$emit("play");
     },
-    showMenu() {
+    onClickPlayButton() {
       if (this.loadingPc < 100) return;
       state.loaded = true;
       playSound("gui_click_button", "gui");
