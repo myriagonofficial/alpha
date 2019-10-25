@@ -94,5 +94,9 @@ footer {
     justify-self: end;
     text-align: right;
   }
+
+  .right button{
+    margin-bottom:0.2em;
+  }
 }
 </style>
