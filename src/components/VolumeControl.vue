@@ -54,15 +54,16 @@ export default {
 
   #mute {
     display: inline-block;
-    width: 28px;
-    height: 28px;
-    background: url("../assets/ui/sound_on.png");
+    width: 3vh;
+    height: 3vh;
+    background-image: url("../assets/ui/sound_on.png");
+    background-size: contain;
     margin: 8px;
   }
 
   &.muted {
     #mute {
-      background: url("../assets/ui/sound_off.png");
+      background-image: url("../assets/ui/sound_off.png");
     }
 
     #volume {
