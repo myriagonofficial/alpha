@@ -10,14 +10,14 @@ export const playSound = (key, channel) => {
         if (soundChannels[channel]) soundChannels[channel].stop() // stop previous sound in same channel
         soundChannels[channel] = sounds[key]
     }
-    sounds[key].volume(state.volume)
+    sounds[key].volume(state.volume / 100)
     sounds[key].play();
 }
 
 export const playMusic = (key) => {
     if (!(key in musics)) return console.error(`Music not found: ${key}`)
     stopMusic();
-    musics[key].volume(state.volume)
+    musics[key].volume(state.volume / 100)
     musics[key].mute(state.mute)
     musics[key].play();
     soundChannels.music = musics[key]
@@ -27,7 +27,11 @@ export const stopSound = channel => {
     if (soundChannels[channel]) soundChannels[channel].stop()
 }
 
-export const stopMusic = () => stopSound("music")
+export const stopMusic = () => {
+    if (soundChannels.music) {
+        soundChannels.music.fade(state.volume / 100, 0, 400);
+    }
+}
 
 export const updateVolume = () => {
     if (state.mute === true) {

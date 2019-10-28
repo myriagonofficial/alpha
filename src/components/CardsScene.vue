@@ -1,16 +1,24 @@
 <template>
   <div class="cards-scene">
-    <div class="background-overlay"></div>
-    <div class="card-zone">
-      <Card v-if="state.card" :card="card" />
-    </div>
-    <div class="card-info" v-if="card">
-      <div class="card-name">{{ card.name }}</div>
-      <div
-        class="card-description"
-        ref="description"
-      >{{state.deck.interlocuteur}} : {{ description }}</div>
-    </div>
+    <transition name="fade" mode="out-in">
+      <div v-if="changingEra" class="chapter" key="chapter">
+        <p class="number">Chapitre {{state.era}}</p>
+        <p class="title">{{state.deck.name}}</p>
+      </div>
+      <div v-else key="cardZone">
+        <div class="background-overlay"></div>
+        <div class="card-zone">
+          <Card v-if="state.card" :card="card" />
+        </div>
+        <div class="card-info" v-if="card">
+          <div class="card-name">{{ card.name }}</div>
+          <div
+            class="card-description"
+            ref="description"
+          >{{state.deck.interlocuteur}} : {{ description }}</div>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -19,27 +27,56 @@ import Card from "@/components/Card.vue";
 
 import { state } from "@/state.js";
 import { cards } from "@/cards.js";
+import { nextCard } from "@/game.js";
 
 export default {
   name: "CardsScene",
   components: { Card },
   data() {
     return {
-      state
+      state,
+      changingEra: false
     };
+  },
+  mounted() {
+    if (state.deck.onStart) state.deck.onStart();
+    nextCard();
   },
   computed: {
     card() {
       return cards[state.card];
     },
-    description(){
-      return typeof this.card.description === "function" ? this.card.description() : this.card.description
+    description() {
+      return typeof this.card.description === "function"
+        ? this.card.description()
+        : this.card.description;
     }
   },
   watch: {
     "state.card"() {
-      this.$refs.description.classList.add("appear");
-      setTimeout(() => this.$refs.description.classList.remove("appear"), 600);
+      if (this.$refs.description) {
+        this.$refs.description.classList.add("appear");
+      }
+      setTimeout(() => {
+        if (this.$refs.description) {
+          this.$refs.description.classList.remove("appear");
+        }
+      }, 600);
+    },
+    "state.era"() {
+      this.changeEra();
+    }
+  },
+  methods: {
+    changeEra() {
+      this.changingEra = true;
+      setTimeout(() => {
+        this.changingEra = false;
+        this.$nextTick(() => {
+          if (state.deck.onStart) state.deck.onStart();
+          nextCard();
+        });
+      }, 2000);
     }
   }
 };
@@ -121,8 +158,31 @@ $card_height: 720;
   }
 }
 
-.appear {
+.chapter {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .number {
+    font-size: 10vh;
+    margin: 0.5em auto;
+  }
+
+  .title {
+    font-size: 15vh;
+    letter-spacing: 0.5em;
+    margin: 0 auto 1em auto;
+    text-transform: uppercase;
+  }
+}
+
+.appear,
+.fade-enter-active {
   animation: appear 600ms linear;
+}
+.fade-leave-active {
+  animation: appear 600ms linear reverse;
 }
 
 @keyframes appear {

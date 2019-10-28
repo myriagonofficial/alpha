@@ -27,15 +27,12 @@ export const nextCard = () => {
 }
 
 export const nextDeck = () => {
+  stopMusic();
   if (state.era >= decks.length) return gameOver()
 
+  state.era++;
   state.deck = Object.assign({}, decks[state.era])
   state.deck.stories.forEach(s => s in stories || console.error(`Story not found: ${s}`))
-
-  state.era++;
-
-  if (state.deck.onStart) state.deck.onStart();
-  nextCard()
 }
 
 export const skipIntro = () => {

@@ -4,7 +4,7 @@ export const state = {
     volume: 100,
     loaded: false,
     deck: null,
-    era: 0,
+    era: -1,
     choice: 0,
     card: null,
     scores: {
@@ -22,7 +22,7 @@ export function resetStateToNewGame() {
     Object.assign(state, {
         scene: "game",
         deck: null,
-        era: 0,
+        era: -1,
         choice: 0,
         card: null,
         scores: {
