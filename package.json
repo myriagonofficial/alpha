@@ -1,11 +1,23 @@
 {
   "name": "alpha",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
+  "homepage": "http://www.myriagonmusic.com/ALPHA_Game/",
+  "authors": [
+    "Myriagon",
+    "Sylvain Pollet-Villard"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/myriagonofficial/alpha.git"
+  },
+  "main": "index.html",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "nw-build": "cpy package.json dist && build --tasks win-x64,linux-x64,mac-x64 --mirror https://dl.nwjs.io/ dist",
+    "start": "run --x64 --mirror https://dl.nwjs.io/ dist"
   },
   "dependencies": {
     "hammerjs": "2.0.8",
@@ -13,12 +25,15 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.0.0",
-    "@vue/cli-plugin-eslint": "^4.0.1",
-    "@vue/cli-service": "^4.0.0",
+    "@vue/cli-plugin-babel": "^4.0.5",
+    "@vue/cli-plugin-eslint": "^4.0.5",
+    "@vue/cli-service": "^4.0.5",
     "babel-eslint": "^10.0.3",
-    "eslint": "^6.5.1",
+    "cpy-cli": "^2.0.0",
+    "eslint": "^6.6.0",
     "eslint-plugin-vue": "^5.2.3",
+    "nw": "^0.42.0",
+    "nwjs-builder-phoenix": "^1.15.0",
     "postcss-nested": "^4.1.2",
     "postcss-simple-vars": "^5.0.2",
     "vue-template-compiler": "^2.6.10"
@@ -50,5 +65,17 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "build": {
+    "nwVersion": "0.42.0",
+    "output": "../binaries/",
+    "targets": [
+      "zip"
+    ]
+  },
+  "window": {
+    "width": 1280,
+    "height": 1024,
+    "fullscreen": true
+  }
 }
