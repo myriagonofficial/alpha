@@ -7,12 +7,11 @@
       <button
         v-if="state.scene !== 'game' && state.scene !== 'menu'"
         id="backbutton"
-        @mouseover="onButtonMouseOver"
         @click="backToMenu"
       >Retour au menu</button>
     </div>
     <div class="right">
-      <button v-if="isIntro" @click="skipIntro">Passer l'introduction</button>
+      <button v-if="isIntro" @click="skipIntro" @mouseover="onButtonMouseOver">Passer l'introduction</button>
       <button
         v-if="state.scene === 'menu' && state.achievements"
         class="bonus"
@@ -95,8 +94,8 @@ footer {
     text-align: right;
   }
 
-  .right button{
-    margin-bottom:0.2em;
+  .right button {
+    margin-bottom: 0.2em;
   }
 }
 </style>

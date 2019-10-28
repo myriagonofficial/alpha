@@ -17,8 +17,9 @@
           :class="['achievement', {unlocked: isUnlocked(key)}]"
           v-for="(achievement, key) in achievements"
           :key="key"
+          @mouseover="isUnlocked(key) && onAchievementMouseOver()"
         >
-          <img :src="achievement.image" @click="selectedAchievement = achievement" />
+          <img :src="achievement.image" @click="selectAchievement(achievement)" />
         </li>
       </ul>
     </main>
@@ -28,6 +29,7 @@
 <script>
 import { state } from "@/state.js";
 import { achievements } from "@/achievements.js";
+import { playSound } from "@/audio.js";
 
 import Achievement from "@/components/Achievement.vue";
 
@@ -51,6 +53,13 @@ export default {
   methods: {
     isUnlocked(name) {
       return state.achievements.includes(name);
+    },
+    onAchievementMouseOver() {
+      playSound("gui_hover_button");
+    },
+    selectAchievement(achievement) {
+      playSound("gui_click_button", "gui");
+      this.selectedAchievement = achievement;
     }
   }
 };
