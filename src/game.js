@@ -27,6 +27,7 @@ export const nextCard = () => {
 }
 
 export const nextDeck = () => {
+  stopSound("voice");
   stopMusic();
   if (state.era >= decks.length) return gameOver()
 
