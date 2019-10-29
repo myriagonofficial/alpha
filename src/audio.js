@@ -56,24 +56,24 @@ export const SOUNDS = {
     gui_click_choice: 'assets/sound/gui_cliqueSurChoix_01.ogg',
     gui_hover_button: 'assets/sound/gui_menuSurvolBoutonJouer_01.ogg',
     gui_hover_choice: 'assets/sound/gui_survolUnChoix_01.ogg',
-    vox_gardien_01: 'assets/sound/vox_gardien_01.ogg',
-    vox_gardien_02: 'assets/sound/vox_gardien_02.ogg',
-    vox_gardien_03: 'assets/sound/vox_gardien_03.ogg',
-    vox_gardien_04: 'assets/sound/vox_gardien_04.ogg',
-    vox_gardien_05: 'assets/sound/vox_gardien_05.ogg',
-    vox_gardien_06: 'assets/sound/vox_gardien_06.ogg',
-    vox_gardien_07: 'assets/sound/vox_gardien_07.ogg'
+    vox_gardien_01: 'assets/sound/vox_gardienDuTemps_01.ogg',
+    vox_gardien_02: 'assets/sound/vox_gardienDuTemps_02.ogg',
+    vox_gardien_03: 'assets/sound/vox_gardienDuTemps_03.ogg',
+    vox_gardien_04: 'assets/sound/vox_gardienDuTemps_04.ogg',
+    vox_gardien_05: 'assets/sound/vox_gardienDuTemps_05.ogg',
+    vox_gardien_06: 'assets/sound/vox_gardienDuTemps_06.ogg',
+    vox_gardien_07: 'assets/sound/vox_gardienDuTemps_07.ogg'
 }
 
 export const MUSICS = {
     mus_menu: 'assets/sound/mus_menu_01.ogg',
-    mus_gardien_01: 'assets/sound/mus_gardien_01.mp3',
-    mus_gardien_02: 'assets/sound/mus_gardien_02.mp3',
-    mus_gardien_03: 'assets/sound/mus_gardien_03.mp3',
+    mus_gardien_01: 'assets/sound/mus_gardienDuTemps_01.mp3',
+    mus_gardien_02: 'assets/sound/mus_gardienDuTemps_02.mp3',
+    mus_gardien_03: 'assets/sound/mus_gardienDuTemps_03.mp3',
     mus_agony: 'assets/sound/mus_agonyLoop_01.ogg',
     mus_apex: 'assets/sound/mus_apexLoop_01.ogg',
     mus_headway: 'assets/sound/mus_headwayLoop_01.ogg',
-    mus_lull: 'assets/sound/mus_lullMaster_01.ogg',
+    mus_lull: 'assets/sound/mus_lullLoop_01.ogg',
     mus_primal: 'assets/sound/mus_primalLoop_01.ogg',
 }
 
