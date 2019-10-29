@@ -30,7 +30,6 @@ const NB_ACCROCHES = 200;
 let accroches;
 const groups = {
   leaves: {
-    initialNumber: 100,
     list: [],
     types: ["FEUILLE01", "FEUILLE02", "FEUILLE03"],
     maxGrowth: 15,
@@ -38,7 +37,6 @@ const groups = {
     zIndex: 2
   },
   flowers: {
-    initialNumber: 50,
     list: [],
     types: ["fleur1", "fleur2"],
     maxGrowth: 15,
@@ -131,17 +129,17 @@ const detachFlowers = (n, group) => {
       attached[i].accroche.occupied = false;
     }, Math.round(i * 200 + Math.random() * 100));
   }
+
+  return new Promise(resolve => setTimeout(resolve, n * 200));
 };
 
-const addFlowers = () => {
-  accroches = shuffleArray(accroches);
+const attachFlowers = (n, group) => {
   let t = 0;
-  Object.values(groups).forEach(group => {
-    for (let i = 0; i < group.initialNumber; i++) {
-      t += 25;
-      setTimeout(() => attachFlower(group), t);
-    }
-  });
+  for (let i = 0; i < n; i++) {
+    t += 25;
+    setTimeout(() => attachFlower(group), t);
+  }
+  return new Promise(resolve => setTimeout(resolve, t));
 };
 
 const animateFlowers = () => {
@@ -203,6 +201,13 @@ export default {
           setTimeout(() => attachFlower(groups.flowers), i * 25);
         }
       }
+    },
+    "state.shouldShowIndicateurBonheur"(showDemo) {
+      if (showDemo === true) {
+        attachFlowers(50, groups.flowers).then(() => {
+          setTimeout(() => detachFlowers(50, groups.flowers), 1000);
+        });
+      }
     }
   },
 
@@ -215,7 +220,8 @@ export default {
         y: 0.2 * (Math.random() - 0.5),
         occupied: false
       }));
-      addFlowers();
+      accroches = shuffleArray(accroches);
+      attachFlowers(100, groups.leaves);
       animateFlowers();
     },
 
