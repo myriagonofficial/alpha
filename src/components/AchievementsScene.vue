@@ -15,11 +15,13 @@
       <ul class="grid" v-else>
         <li
           :class="['achievement', {unlocked: isUnlocked(key)}]"
+          tabindex="0"
           v-for="(achievement, key) in achievements"
           :key="key"
           @mouseover="isUnlocked(key) && onAchievementMouseOver()"
+          @click="selectAchievement(achievement)"
         >
-          <img :src="achievement.image" @click="selectAchievement(achievement)" />
+          <img :src="achievement.image" />
         </li>
       </ul>
     </main>
@@ -30,6 +32,7 @@
 import { state } from "@/state.js";
 import { achievements } from "@/achievements.js";
 import { playSound } from "@/audio.js";
+import { gamepad, BUTTONS, DIRECTIONS } from "@/gamepad.js";
 
 import Achievement from "@/components/Achievement.vue";
 
@@ -48,7 +51,20 @@ export default {
     };
   },
 
-  mounted() {},
+  mounted() {
+    gamepad.onButtonPress(BUTTONS.A, () => this.onButtonAPressed());
+    gamepad.onButtonPress(BUTTONS.B, () => this.onButtonBPressed());
+    gamepad.onDirection(dir => {
+      if (dir === DIRECTIONS.UP) this.selectButton(-1);
+      if (dir === DIRECTIONS.DOWN) this.selectButton(+1);
+    });
+  },
+
+  destroyed() {
+    gamepad.removeOnButtonPress(BUTTONS.A);
+    gamepad.removeOnButtonPress(BUTTONS.B);
+    gamepad.removeOnDirection();
+  },
 
   methods: {
     isUnlocked(name) {
@@ -60,6 +76,29 @@ export default {
     selectAchievement(achievement) {
       playSound("gui_click_button", "gui");
       this.selectedAchievement = achievement;
+    },
+    selectButton(step) {
+      const buttons = [
+        ...document.querySelectorAll("button, .achievement.unlocked")
+      ];
+      const selectedButtonIndex = buttons.findIndex(
+        button => button === document.activeElement
+      );
+      const nextIndex =
+        (selectedButtonIndex + step + buttons.length) % buttons.length;
+      buttons[nextIndex].focus();
+      playSound("gui_hover_button", "gui");
+      console.log(document.activeElement, selectedButtonIndex, nextIndex);
+    },
+    onButtonAPressed() {
+      if (document.activeElement.matches("button, .achievement.unlocked")) {
+        playSound("gui_click_button", "gui");
+        document.activeElement.click();
+      }
+    },
+    onButtonBPressed() {
+      if (this.selectedAchievement) this.selectedAchievement = null;
+      else this.state.scene = "menu";
     }
   }
 };
@@ -124,6 +163,10 @@ export default {
 
       &:hover {
         box-shadow: 0 0 25px 5px rgba(255, 255, 255, 0.75);
+      }
+
+      &:focus {
+        box-shadow: 0 0 25px 10px rgba(255, 220, 200, 0.75);
       }
     }
 

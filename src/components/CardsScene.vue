@@ -28,6 +28,8 @@ import Card from "@/components/Card.vue";
 import { state } from "@/state.js";
 import { cards } from "@/cards.js";
 import { nextCard } from "@/game.js";
+import { gamepad, BUTTONS, DIRECTIONS } from "@/gamepad.js";
+import { playSound } from "@/audio.js";
 
 export default {
   name: "CardsScene",
@@ -38,10 +40,22 @@ export default {
       changingEra: false
     };
   },
+
   mounted() {
     if (state.deck.onStart) state.deck.onStart();
     nextCard();
+
+    gamepad.onButtonPress(BUTTONS.A, () => this.onButtonAPressed());
+    gamepad.onDirection(dir => {
+      if (dir === DIRECTIONS.UP) this.selectButton(-1);
+      if (dir === DIRECTIONS.DOWN) this.selectButton(+1);
+    });
   },
+  destroyed() {
+    gamepad.removeOnButtonPress(BUTTONS.A);
+    gamepad.removeOnDirection();
+  },
+
   computed: {
     card() {
       return cards[state.card];
@@ -77,6 +91,22 @@ export default {
           nextCard();
         });
       }, 2000);
+    },
+    selectButton(step) {
+      const buttons = [...document.querySelectorAll("button, .choice")];
+      const selectedButtonIndex = buttons.findIndex(
+        button => button === document.activeElement
+      );
+      const nextIndex =
+        (selectedButtonIndex + step + buttons.length) % buttons.length;
+      buttons[nextIndex].focus();
+      playSound("gui_hover_button", "gui");
+    },
+    onButtonAPressed() {
+      if (document.activeElement.matches("button, .choice")) {
+        playSound("gui_click_button", "gui");
+        document.activeElement.click();
+      }
     }
   }
 };

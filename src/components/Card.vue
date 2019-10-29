@@ -9,6 +9,7 @@
     <ul class="choices">
       <li
         :class="['choice', choice.anim, { special: !!choice.test }]"
+        tabindex="0"
         v-for="(choice, i) in choices"
         :key="choice.label"
         :style="calcPositionChoice(i)"
@@ -225,7 +226,15 @@ img {
       animation-fill-mode: forwards;
     }
 
-    &.glow {
+    &:focus {
+      animation: none;
+      outline: 4px white;
+      box-shadow: 0 0 5px white, 0 0 25px rgba(0, 0, 0, 0.5);
+      color: black;
+      background: #d0cdc4;
+    }
+
+    &.glow:not(:focus) {
       animation: glow 500ms alternate ease-in-out infinite;
 
       &.special {
