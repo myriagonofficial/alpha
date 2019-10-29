@@ -29,9 +29,10 @@ export const nextCard = () => {
 export const nextDeck = () => {
   stopSound("voice");
   stopMusic();
-  if (state.era >= decks.length) return gameOver()
 
   state.era++;
+  if (state.era >= decks.length) return gameOver()
+
   state.deck = Object.assign({}, decks[state.era])
   state.deck.stories.forEach(s => s in stories || console.error(`Story not found: ${s}`))
 }
