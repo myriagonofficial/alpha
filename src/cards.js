@@ -59,28 +59,28 @@ export const cards = {
     },
     6: {
         image: "aube2.png",
-        description: `Il y a en chaque être de cette planète un peu de toi, ils sont ton paradis,
-         ta gratitude inconditionnelle. Ton premier objectif sera de veiller au bonheur de tous :
-         il sera représenté par cet indicateur.`,
-        choices: {
-            "C'est tout ?": {}
-        },
-        onStart() {
-            showIndicateurBonheur();
-            playSound('vox_gardien_06', 'voice')
-        }
-    },
-    7: {
-        image: "aube3.png",
         description: `Nous laisserons libre cours à ton imagination, mais garde bien à l'esprit que l'équilibre
         sera la clef du fleurissement de ton jardin. Il faudra t'assurer qu'il ne dépérisse pas : cet indicateur
         environnemental t'y aidera.`,
         choices: {
-            "On commence ?": {}
+            "C'est tout ?": {}
         },
         onStart() {
             showIndicateurEnvironnement();
             playSound('vox_gardien_07', 'voice')
+        }
+    },
+    7: {
+        image: "aube3.png",
+        description: `Il y a en chaque être de cette planète un peu de toi, ils sont ton paradis,
+         ta gratitude inconditionnelle. Ton premier objectif sera de veiller au bonheur de tous :
+         il sera représenté par cet indicateur.`,
+        choices: {
+            "On commence ?": {}
+        },
+        onStart() {
+            showIndicateurBonheur();
+            playSound('vox_gardien_06', 'voice')
         }
     },
 
@@ -850,7 +850,7 @@ export const cards = {
         }
     },
 
-    
+
 
 
     400: {

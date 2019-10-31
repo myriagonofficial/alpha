@@ -39,7 +39,6 @@ export const nextDeck = () => {
 
 export const skipIntro = () => {
   showIndicateurEnvironnement();
-  showIndicateurBonheur();
   stopSound("voice")
   nextDeck();
 }

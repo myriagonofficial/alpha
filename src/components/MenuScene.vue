@@ -29,6 +29,7 @@
 import { playMusic, stopMusic, playSound } from "@/audio.js";
 import { preloadGame } from "@/preloader.js";
 import { state } from "@/state.js";
+import { gamepad, BUTTONS, DIRECTIONS } from "@/gamepad.js";
 
 export default {
   name: "MenuScene",
@@ -47,6 +48,19 @@ export default {
       playMusic("mus_menu");
       this.showStartButton = true;
     }
+
+    gamepad.onButtonPress(BUTTONS.START, () => this.onButtonStartPressed());
+    gamepad.onButtonPress(BUTTONS.A, () => this.onButtonAPressed());
+    gamepad.onDirection(dir => {
+      if (dir === DIRECTIONS.UP) this.selectButton(-1);
+      if (dir === DIRECTIONS.DOWN) this.selectButton(+1);
+    });
+  },
+
+  destroyed() {
+    gamepad.removeOnButtonPress(BUTTONS.START);
+    gamepad.removeOnButtonPress(BUTTONS.A);
+    gamepad.removeOnDirection();
   },
 
   methods: {
@@ -69,6 +83,26 @@ export default {
     },
     onButtonMouseOver() {
       playSound("gui_hover_button", "gui");
+    },
+    selectButton(step) {
+      const buttons = [...document.querySelectorAll("button")];
+      const selectedButtonIndex = buttons.findIndex(
+        button => button === document.activeElement
+      );
+      const nextIndex =
+        (selectedButtonIndex + step + buttons.length) % buttons.length;
+      buttons[nextIndex].focus();
+      playSound("gui_hover_button", "gui");
+    },
+    onButtonAPressed() {
+      if (document.activeElement.matches("button")) {
+        playSound("gui_click_button", "gui");
+        document.activeElement.click();
+      }
+    },
+    onButtonStartPressed() {
+      if (state.loaded) this.startGame();
+      else this.onClickPlayButton();
     }
   }
 };
@@ -108,7 +142,6 @@ export default {
     transition: box-shadow 300ms;
     animation: blink 1s alternate ease-in-out infinite;
     cursor: pointer;
-    background: rgba(0, 0, 0, 0);
 
     &.hidden {
       animation: none;
@@ -153,16 +186,12 @@ export default {
 
   button {
     font-size: 3vmin;
-    background: rgba(128, 128, 128, 0.15);
 
     &:hover {
       &:disabled {
-        background: rgba(128, 128, 128, 0.15);
+        background-color: rgba(128, 128, 128, 0.15);
         box-shadow: none;
         cursor: wait;
-      }
-      &:not(:disabled) {
-        background: rgba(128, 128, 128, 0.25);
       }
     }
   }

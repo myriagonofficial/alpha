@@ -56,6 +56,7 @@ export const SOUNDS = {
     gui_click_choice: 'assets/sound/gui_cliqueSurChoix_01.ogg',
     gui_hover_button: 'assets/sound/gui_menuSurvolBoutonJouer_01.ogg',
     gui_hover_choice: 'assets/sound/gui_survolUnChoix_01.ogg',
+    gui_transition_eres: 'assets/sound/gui_transitionEntreEres_01.ogg',
     vox_gardien_01: 'assets/sound/vox_gardienDuTemps_01.ogg',
     vox_gardien_02: 'assets/sound/vox_gardienDuTemps_02.ogg',
     vox_gardien_03: 'assets/sound/vox_gardienDuTemps_03.ogg',

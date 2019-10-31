@@ -10,8 +10,10 @@
 </template>
 
 <script>
-import { playMusic } from "@/audio.js";
+import { playMusic, playSound } from "@/audio.js";
 import { state, saveProgress } from "@/state.js";
+import { gamepad, BUTTONS, DIRECTIONS } from "@/gamepad.js";
+
 import Achievement from "@/components/Achievement.vue";
 
 export default {
@@ -29,6 +31,36 @@ export default {
   mounted() {
     playMusic("mus_lull");
     saveProgress();
+    gamepad.onButtonPress(BUTTONS.START, () => this.onButtonPressed());
+    gamepad.onButtonPress(BUTTONS.A, () => this.onButtonPressed());
+    gamepad.onDirection(dir => {
+      if (dir === DIRECTIONS.UP) this.selectButton(-1);
+      if (dir === DIRECTIONS.DOWN) this.selectButton(+1);
+    });
+  },
+  destroyed() {
+    gamepad.removeOnButtonPress(BUTTONS.START);
+    gamepad.removeOnButtonPress(BUTTONS.A);
+    gamepad.removeOnDirection();
+  },
+
+  methods: {
+    selectButton(step) {
+      const buttons = [...document.querySelectorAll("button")];
+      const selectedButtonIndex = buttons.findIndex(
+        button => button === document.activeElement
+      );
+      const nextIndex =
+        (selectedButtonIndex + step + buttons.length) % buttons.length;
+      buttons[nextIndex].focus();
+      playSound("gui_hover_button", "gui");
+    },
+    onButtonPressed() {
+      if (document.activeElement.matches("button")) {
+        playSound("gui_click_button", "gui");
+        document.activeElement.click();
+      }
+    }
   }
 };
 </script>

@@ -128,6 +128,8 @@ a {
   &:focus {
     outline: 4px white;
     box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+    color: black;
+    background: #d0cdc4;
   }
 
   &:hover {
