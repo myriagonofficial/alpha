@@ -84,6 +84,7 @@ export default {
   methods: {
     changeEra() {
       this.changingEra = true;
+      playSound("gui_transition_eres", "gui");
       setTimeout(() => {
         this.changingEra = false;
         this.$nextTick(() => {
