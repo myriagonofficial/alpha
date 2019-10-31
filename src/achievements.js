@@ -12,7 +12,7 @@ export const achievements = {
 
     medecine: {
         image: "assets/cards/medicaments.png",
-        title: "Prix nobel de médecine",
+        title: "Médecine",
         description: `Vous avez développé une civilisation capable de comprendre et de soigner ses propres membres.`,
         bonus: {
             title: "Fond d'écran Lull",
@@ -34,7 +34,7 @@ export const achievements = {
 
     bienfaiteur: {
         image: "assets/cards/plantes_ciel.png",
-        title: "bienfaiteur",
+        title: "Bienfaiteur",
         description: `Vous avez eu coeur à favoriser toujours le bonheur de vos dévots, en dépit de toute bonne raison écologique.`,
         bonus: {
             title: "Fond d'écran Headway",
@@ -67,7 +67,7 @@ export const achievements = {
 
     cyborg: {
         image: "assets/cards/labo3.png",
-        title: "Bâtisseur",
+        title: "Cyborg",
         description: `Votre espèce a su dépasser sa condition corporelle par la mécanique.`,
         bonus: {
             title: "Fond d'écran Villes, Ruines et Végétations",
@@ -78,8 +78,8 @@ export const achievements = {
 
     explorateur: {
         image: "assets/cards/commerce.png",
-        title: "Bâtisseur",
-        description: `Votre espèce a construit des mégalopoles immenses, ruines sur lequelles se bâtiront les générations futures.`,
+        title: "Explorateur",
+        description: `Votre espèce est avide de découverte, quitte à prendre des risques.`,
         bonus: {
             title: "Fond d'écran Villes, Ruines et Végétations",
             preview: "assets/bonus/sound_picture.png",
@@ -89,8 +89,8 @@ export const achievements = {
 
     nourricier: {
         image: "assets/cards/commerce.png",
-        title: "Bâtisseur",
-        description: `Votre espèce a construit des mégalopoles immenses, ruines sur lequelles se bâtiront les générations futures.`,
+        title: "Nourricier",
+        description: `Votre espèce a su porter son attention sa gestion de la nourriture`,
         bonus: {
             title: "Fond d'écran Villes, Ruines et Végétations",
             preview: "assets/bonus/sound_picture.png",
