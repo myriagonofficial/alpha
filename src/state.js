@@ -44,7 +44,7 @@ export function saveSettings() {
 }
 
 export function loadSettings() {
-    return JSON.parse(localStorage.getItem("settings"))
+    Object.assign(state, JSON.parse(localStorage.getItem("settings")))
 }
 
 export function saveProgress() {
@@ -53,9 +53,17 @@ export function saveProgress() {
     }))
 }
 
-export function loadProgress() {
-    return JSON.parse(localStorage.getItem("achievements"))
+export function clearProgress() {
+    if (confirm(`La sauvegarde de votre avancement sera effacée. Êtes-vous sûr ?`)) {
+        localStorage.removeItem("achievements")
+        state.achievements = null;
+    }
 }
 
-Object.assign(state, loadSettings(), loadProgress())
+export function loadProgress() {
+    Object.assign(state, JSON.parse(localStorage.getItem("achievements")))
+}
+
+loadSettings()
+loadProgress()
 window.state = state;

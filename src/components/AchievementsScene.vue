@@ -68,7 +68,7 @@ export default {
 
   methods: {
     isUnlocked(name) {
-      return state.achievements.includes(name);
+      return state.achievements != null && state.achievements.includes(name);
     },
     onAchievementMouseOver() {
       playSound("gui_hover_button");
