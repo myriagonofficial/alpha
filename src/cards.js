@@ -109,7 +109,7 @@ export const cards = {
     },
 
     101: {
-        image: () => `${state.passives.includes("marine") ? "marine_primal.png" : (state.passives.includes("terrestre") ? "terrestre_primal.png" : "celeste_primal.png")}`,
+        image: () => state.passives.includes("marine") ? "marine_primal.png" : state.passives.includes("terrestre") ? "terrestre_primal.png" : "celeste_primal.png",
         description: `Bien des espèces désireraient t'avoir comme guide. Quel régime alimentaire
         crois-tu être raisonnable de favoriser pour celle qui dominera ce monde ?`,
         choices: {
@@ -1160,7 +1160,7 @@ export const cards = {
             }
         }
     },
-    
+
 
     407: {
         image: "champs3.png",

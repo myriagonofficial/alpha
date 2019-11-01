@@ -2,7 +2,7 @@
   <div class="card" v-if="card" :style="cardStyle">
     <div class="card-face card-face-front hidden" ref="front">
       <div class="card-image">
-        <img :src="'assets/cards/' + card.image" />
+        <img :src="'assets/cards/' + image" />
         <div class="card-effect" />
       </div>
     </div>
@@ -60,6 +60,14 @@ export default {
   watch: {
     card() {
       this.showChoices();
+    }
+  },
+
+  computed: {
+    image() {
+      return typeof this.card.image === "function"
+        ? this.card.image()
+        : this.card.image;
     }
   },
 
