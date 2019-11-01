@@ -56,6 +56,7 @@ export const SOUNDS = {
     gui_click_choice: 'assets/sound/gui_cliqueSurChoix_01.ogg',
     gui_hover_button: 'assets/sound/gui_menuSurvolBoutonJouer_01.ogg',
     gui_hover_choice: 'assets/sound/gui_survolUnChoix_01.ogg',
+    gui_transition_eres: 'assets/sound/gui_transitionEntreEres_01.ogg',
     vox_gardien_01: 'assets/sound/vox_gardienDuTemps_01.ogg',
     vox_gardien_02: 'assets/sound/vox_gardienDuTemps_02.ogg',
     vox_gardien_03: 'assets/sound/vox_gardienDuTemps_03.ogg',
@@ -68,9 +69,9 @@ export const SOUNDS = {
 
 export const MUSICS = {
     mus_menu: 'assets/sound/mus_menu_01.ogg',
-    mus_gardien_01: 'assets/sound/mus_gardienDuTemps_01.mp3',
-    mus_gardien_02: 'assets/sound/mus_gardienDuTemps_02.mp3',
-    mus_gardien_03: 'assets/sound/mus_gardienDuTemps_03.mp3',
+    mus_gardien_01: 'assets/sound/mus_gardienDuTemps_01.ogg',
+    mus_gardien_02: 'assets/sound/mus_gardienDuTemps_02.ogg',
+    mus_gardien_03: 'assets/sound/mus_gardienDuTemps_03.ogg',
     mus_agony: 'assets/sound/mus_agonyLoop_01.ogg',
     mus_apex: 'assets/sound/mus_apexLoop_01.ogg',
     mus_headway: 'assets/sound/mus_headwayLoop_01.ogg',

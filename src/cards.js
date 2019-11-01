@@ -86,7 +86,7 @@ export const cards = {
 
 
     100: {
-        image: "montagne.png",
+        image: "astres2.png",
         description: `Tu as peut-être une affinité élémentaire ... Préférerais-tu voir ton espèce évoluer
         parmi les mystérieux fonds marins, sur la terre meuble et fertile, ou bien dans les airs, surplombant toute
         la vie végétale ?`,
@@ -109,7 +109,7 @@ export const cards = {
     },
 
     101: {
-        image: "algue_saine.png",
+        image: `${state.passives.includes("marine") ? "marine_primal.png" : (state.passives.includes("terrestre") ? "terrestre_primal.png" : "celeste_primal.png")}`,
         description: `Bien des espèces désireraient t'avoir comme guide. Quel régime alimentaire
         crois-tu être raisonnable de favoriser pour celle qui dominera ce monde ?`,
         choices: {
@@ -161,7 +161,7 @@ export const cards = {
     },
 
     103: {
-        image: "montagne.png",
+        image: "terrestre.png",
         description: `Ton peuple doit se reproduire pour assurer son avenir. Que crois-tu être la meilleure stratégie reproductive à leur transmettre ?`,
         choices: {
             "Engendrer de nombreuses progénitures, mais faibles.": {
@@ -182,7 +182,7 @@ export const cards = {
     },
 
     104: {
-        image: "montagne.png",
+        image: "terrestre.png",
         description: `Les générations futures tireront le meilleur de leurs ancêtres, par un processus de sélection amoureuse. Quel critère devra être favorisé ?`,
         choices: {
             "La force par des combats": {
