@@ -1217,7 +1217,7 @@ export const cards = {
             }
         }
     },
-    407: {
+    408: {
         image: "terrestrenuit2.png",
         description: `De fines particules en suspension empêchent la plupart des espèces de respirer sans s'intoxiquer.`,
         choices: {
