@@ -62,7 +62,8 @@ export const SOUNDS = {
     vox_gardien_04: 'assets/sound/vox_gardienDuTemps_04.ogg',
     vox_gardien_05: 'assets/sound/vox_gardienDuTemps_05.ogg',
     vox_gardien_06: 'assets/sound/vox_gardienDuTemps_06.ogg',
-    vox_gardien_07: 'assets/sound/vox_gardienDuTemps_07.ogg'
+    vox_gardien_07: 'assets/sound/vox_gardienDuTemps_07.ogg',
+    vox_gardien_08: 'assets/sound/vox_gardienDuTemps_08.ogg'
 }
 
 export const MUSICS = {

@@ -250,6 +250,9 @@ export const cards = {
             "Merci": {
                 effect() { }
             }
+        },
+        onStart() {
+            playSound('vox_gardien_08', 'voice')
         }
     },
 
