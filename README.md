@@ -17,6 +17,11 @@ npm run serve
 npm run build
 ```
 
+### Generate executables for Windows, Mac, Linux
+```
+npm run nw-build
+```
+
 ### Lints and fixes files
 ```
 npm run lint
