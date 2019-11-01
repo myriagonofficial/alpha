@@ -64,6 +64,11 @@ export default {
       return typeof this.card.description === "function"
         ? this.card.description()
         : this.card.description;
+    },
+    image() {
+      return typeof this.card.image === "function"
+        ? this.card.image()
+        : this.card.image;
     }
   },
   watch: {

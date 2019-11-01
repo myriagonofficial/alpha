@@ -86,7 +86,7 @@ export const cards = {
 
 
     100: {
-        image: "astres2.png",
+        image: "esoterisme1.png",
         description: `Tu as peut-être une affinité élémentaire ... Préférerais-tu voir ton espèce évoluer
         parmi les mystérieux fonds marins, sur la terre meuble et fertile, ou bien dans les airs, surplombant toute
         la vie végétale ?`,
@@ -109,7 +109,7 @@ export const cards = {
     },
 
     101: {
-        image: `${state.passives.includes("marine") ? "marine_primal.png" : (state.passives.includes("terrestre") ? "terrestre_primal.png" : "celeste_primal.png")}`,
+        image: () => `${state.passives.includes("marine") ? "marine_primal.png" : (state.passives.includes("terrestre") ? "terrestre_primal.png" : "celeste_primal.png")}`,
         description: `Bien des espèces désireraient t'avoir comme guide. Quel régime alimentaire
         crois-tu être raisonnable de favoriser pour celle qui dominera ce monde ?`,
         choices: {
@@ -161,7 +161,7 @@ export const cards = {
     },
 
     103: {
-        image: "terrestre.png",
+        image: "esoterisme1.png",
         description: `Ton peuple doit se reproduire pour assurer son avenir. Que crois-tu être la meilleure stratégie reproductive à leur transmettre ?`,
         choices: {
             "Engendrer de nombreuses progénitures, mais faibles.": {
@@ -182,7 +182,7 @@ export const cards = {
     },
 
     104: {
-        image: "terrestre.png",
+        image: "esoterisme1.png",
         description: `Les générations futures tireront le meilleur de leurs ancêtres, par un processus de sélection amoureuse. Quel critère devra être favorisé ?`,
         choices: {
             "La force par des combats": {
@@ -202,7 +202,7 @@ export const cards = {
     },
 
     105: {
-        image: "colonisation_celeste.png",
+        image: "esoterisme1.png",
         description: `Le coeur de ce monde bat au rythme des saisons. Comment s'adapter aux périodes difficiles de grands froids et de vagues de chaleur ?`,
         choices: {
             "Hiberner": {
@@ -222,7 +222,7 @@ export const cards = {
     },
 
     106: {
-        image: "colonisation_celeste.png",
+        image: "esoterisme1.png",
         description: `La communication est la clé du progrès social. Comment les individus de ton espèce communiqueront ensemble ?`,
         choices: {
             "Par le biais de signes": {
@@ -244,7 +244,7 @@ export const cards = {
     },
 
     199: {
-        image: "colonisation_celeste.png",
+        image: "esoterisme1.png",
         description: `Je te laisse désormais t'adresser à ta création. Des individus appelés prophètes entendrons ta voix et sauront, je l'espère, lui donner réalité.`,
         choices: {
             "Merci": {
@@ -1160,6 +1160,7 @@ export const cards = {
             }
         }
     },
+    
 
     407: {
         image: "champs3.png",
@@ -1175,6 +1176,58 @@ export const cards = {
                 }
             },
             "Cultivez des algues à la place": {
+                test() {
+                    return state.passives.includes("herbivore")
+                },
+                effect() {
+                    changeScore("bonheur", -5);
+                    changeScore("environnement", -10);
+                }
+            },
+            "Migrez vers des terres avec d'autres sources de nourriture": {
+                test() {
+                    return state.passives.includes("migre")
+                },
+                effect() {
+                    changeScore("bonheur", +5);
+                    changeScore("environnement", -20);
+                }
+            },
+            "Créez de nouveaux plants en laboratoire": {
+                test() {
+                    return state.passives.includes("bioingenieurie")
+                },
+                effect() {
+                    changeScore("environnement", -10);
+                }
+            },
+            "Brûlez les champs contaminés": {
+                test() {
+                    return state.passives.includes("feu")
+                },
+                effect() {
+                    changeScore("bonheur", -5);
+                    changeScore("environnement", -10);
+                }
+            },
+            "Récoltez immédiatement ce qui peut être sauvé": {
+                effect() {
+                    changeScore("environnement", -15);
+                }
+            }
+        }
+    },
+    407: {
+        image: "terrestrenuit2.png",
+        description: `De fines particules en suspension empêchent la plupart des espèces de respirer sans s'intoxiquer.`,
+        choices: {
+            "Produisez des masques à gaz autant que possible.": {
+                effect() {
+                    changeScore("bonheur", -5);
+                    changeScore("environnement", -10);
+                }
+            },
+            "Déclarez une quarantaine génèrale au risque d'avoir des rébellions (bonheur--)": {
                 test() {
                     return state.passives.includes("herbivore")
                 },

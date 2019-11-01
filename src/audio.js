@@ -64,7 +64,11 @@ export const SOUNDS = {
     vox_gardien_05: 'assets/sound/vox_gardienDuTemps_05.ogg',
     vox_gardien_06: 'assets/sound/vox_gardienDuTemps_06.ogg',
     vox_gardien_07: 'assets/sound/vox_gardienDuTemps_07.ogg',
-    vox_gardien_08: 'assets/sound/vox_gardienDuTemps_08.ogg'
+    vox_gardien_08: 'assets/sound/vox_gardienDuTemps_08.ogg',
+    vox_prophete_01: 'assets/sound/vox_prophete_01.ogg',
+    vox_prophete_02: 'assets/sound/vox_prophete_02.ogg',
+    vox_prophete_03: 'assets/sound/vox_prophete_03.ogg',
+    vox_prophete_04: 'assets/sound/vox_prophete_04.ogg'
 }
 
 export const MUSICS = {
