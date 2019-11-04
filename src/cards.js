@@ -155,7 +155,7 @@ export const cards = {
                 effect() {
                     addPassive("jungle")
                 },
-                position: { top: "65%", left: "15%" }
+                position: { top: "65%", left: "17%" }
             }
         }
     },

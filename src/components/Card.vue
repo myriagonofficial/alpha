@@ -253,7 +253,8 @@ img {
     &:hover {
       animation: none;
       box-shadow: 0 0 25px white, 0 0 35px rgba(0, 0, 0, 0.5);
-      background: rgba(0, 0, 0, 0.8);
+      color: black;
+      background: #d0cdc4;
     }
   }
 }
