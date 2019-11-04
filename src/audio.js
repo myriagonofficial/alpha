@@ -101,8 +101,6 @@ export const MUSICS = {
     mus_headway_02: 'assets/sound/mus_headwayLoop_02.ogg',
     mus_headway_03: 'assets/sound/mus_headwayLoop_03.ogg',
     mus_lull_01: 'assets/sound/mus_lullLoop_01.ogg',
-    mus_lull_02: 'assets/sound/mus_lullLoop_02.ogg',
-    mus_lull_03: 'assets/sound/mus_lullLoop_03.ogg',
     mus_primal_01: 'assets/sound/mus_primalLoop_01.ogg',
     mus_primal_02: 'assets/sound/mus_primalLoop_02.ogg',
     mus_primal_03: 'assets/sound/mus_primalLoop_03.ogg',
