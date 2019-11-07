@@ -84,7 +84,9 @@ export default {
 
     showChoices() {
       this.choices = Object.entries(this.card.choices)
-        .map(([label, choice]) => ({ ...choice, label, anim: "hidden" }))
+        .map(([label, choice]) =>
+          Object.assign({}, choice, { label, anim: "hidden" })
+        )
         .filter(choice => !choice.test || choice.test() === true);
 
       this.choices.forEach((choice, i) => {

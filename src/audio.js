@@ -106,16 +106,18 @@ export const MUSICS = {
     mus_primal_03: 'assets/sound/mus_primalLoop_03.ogg',
 }
 
-export const sounds = Object.fromEntries(Object.entries(SOUNDS).map(([key, path]) => {
-    return [key, new Howl({
-        src: [path],
+export const sounds = {};
+for (let key in SOUNDS) {
+    sounds[key] = new Howl({
+        src: [SOUNDS[key]],
         volume: state.volume / 100
-    })];
-}))
+    });
+}
 
-export const musics = Object.fromEntries(Object.entries(MUSICS).map(([key, path]) => {
-    return [key, new Howl({
-        src: [path],
+export const musics = {};
+for (let key in MUSICS) {
+    musics[key] = new Howl({
+        src: [MUSICS[key]],
         volume: state.volume / 100
-    })];
-}))
+    });
+}

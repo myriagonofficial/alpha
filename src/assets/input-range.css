@@ -71,8 +71,8 @@ input[type=range]::-ms-thumb {
   margin-top: 1px;
   box-shadow: 1px 3px 3px rgba(0,0,0,0.5);
   border: 1px solid #8A8A8A;
-  height: 1.8vh;
-  width: 1.8vh;
+  height: 18px;
+  width: 18px;
   border-radius: 50%;
   background: #D0CDC4;
   cursor: pointer;

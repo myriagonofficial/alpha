@@ -55,6 +55,7 @@ const createFlower = ({ x, y, type, accroche, group }) => {
   let rotation = Math.floor(Math.random() * 60) - 30;
   const element = document.createElementNS(SVG_NS, "use");
   element.setAttribute("href", `assets/environment/${type}.svg#fleur`);
+  element.setAttribute("xlink:href", `assets/environment/${type}.svg#fleur`); // for Safari
   element.setAttribute("style", `z-index: ${group.zIndex}`);
 
   const flower = {
