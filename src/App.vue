@@ -63,29 +63,8 @@ export default {
 </script>
 
 <style lang="postcss">
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  user-select: none;
-}
-
-body {
-  font-family: "Montserrat", serif;
-  color: white;
-  background-color: black;
-  background-image: url("assets/ECRAN_INTRO.png");
-  background-size: cover;
-}
-
-ul,
-li {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+@import "./assets/fonts.pcss";
+@import "./assets/global.pcss";
 
 #app {
   position: fixed;
@@ -106,49 +85,6 @@ li {
     footer {
       background: none;
     }
-  }
-}
-
-button,
-a {
-  display: inline-block;
-  margin: auto;
-  padding: 0.5em 1em;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0.15);
-  border: none;
-  color: white;
-  font-family: "Montserrat", serif;
-  font-size: 2vh;
-
-  &.disabled {
-    background: rgba(32, 32, 32, 0.25);
-  }
-
-  &:focus {
-    outline: 4px white;
-    box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
-    color: black;
-    background: #d0cdc4;
-  }
-
-  &:hover {
-    animation: none;
-    opacity: 1;
-  }
-
-  &:not(.disabled):hover {
-    background: rgba(0, 0, 0, 0.25);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-  }
-}
-
-@keyframes blink {
-  0% {
-    opacity: 0.25;
-  }
-  100% {
-    opacity: 0.9;
   }
 }
 </style>

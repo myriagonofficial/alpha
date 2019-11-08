@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import "../assets/input-range.css";
+@import "../assets/input-range.pcss";
 
 .volume {
   justify-self: start;
