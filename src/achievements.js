@@ -5,8 +5,8 @@ export const achievements = {
         description: `Votre espèce a construit des mégalopoles immenses, ruines sur lequelles se bâtiront les générations futures.`,
         bonus: {
             title: "Fond d'écran Agony",
-            preview: "assets/bonus/agony_preview.png",
-            url: "assets/bonus/agony.png",
+            preview: "assets/bonus/01_AGONY_THUMB.png",
+            url: "assets/bonus/01_AGONY_WALLPAPER.jpg",
         }
     },
 
@@ -16,8 +16,8 @@ export const achievements = {
         description: `Vous avez développé une civilisation capable de comprendre et de soigner ses propres membres.`,
         bonus: {
             title: "Fond d'écran Lull",
-            preview: "assets/bonus/lull_preview.png",
-            url: "assets/bonus/lull.png",
+            preview: "assets/bonus/02_LULL_THUMB.png",
+            url: "assets/bonus/02_LULL_WALLPAPER.jpg",
         }
     },
 
@@ -27,8 +27,8 @@ export const achievements = {
         description: `Votre espèce a su construire une société basée sur l'agilité du déplacement.`,
         bonus: {
             title: "Fond d'écran Primal",
-            preview: "assets/bonus/primal_preview.png",
-            url: "assets/bonus/primal.png",
+            preview: "assets/bonus/03_PRIMAL_THUMB.png",
+            url: "assets/bonus/03_PRIMAL_WALLPAPER.jpg",
         }
     },
 
@@ -38,8 +38,8 @@ export const achievements = {
         description: `Vous avez eu coeur à favoriser toujours le bonheur de vos dévots, en dépit de toute bonne raison écologique.`,
         bonus: {
             title: "Fond d'écran Headway",
-            preview: "assets/bonus/headway_preview.png",
-            url: "assets/bonus/headway.png",
+            preview: "assets/bonus/04_HEADWAY_THUMB.png",
+            url: "assets/bonus/04_HEADWAY_WALLPAPER.jpg",
         }
     },
 
@@ -49,8 +49,8 @@ export const achievements = {
         description: `La fin justifierait les moyens et vous avez su oser des sacrifices difficiles pour sauver la mise à votre civilisation.`,
         bonus: {
             title: "Fond d'écran Apex",
-            preview: "assets/bonus/apex_preview.png",
-            url: "assets/bonus/apex.png",
+            preview: "assets/bonus/05_APEX_THUMB.png",
+            url: "assets/bonus/05_APEX_WALLPAPER.jpg",
         }
     },
 
@@ -60,7 +60,7 @@ export const achievements = {
         description: `Votre espèce a eu les moyens de s'épanouir et d'intellectualiser de nombreuses formes d'expression.`,
         bonus: {
             title: "Thème musical Agony",
-            preview: "assets/bonus/sound_picture.png",
+            preview: "assets/bonus/01_AGONY_AUDIO_THUMB.png",
             url: "assets/bonus/Myriagon_Agony.mp3",
         }
     },
@@ -70,8 +70,8 @@ export const achievements = {
         title: "Cyborg",
         description: `Votre espèce a su dépasser sa condition corporelle par la mécanique.`,
         bonus: {
-            title: "Fond d'écran Villes, Ruines et Végétations",
-            preview: "assets/bonus/sound_picture.png",
+            title: "Thème musical Primal",
+            preview: "assets/bonus/03_PRIMAL_AUDIO_THUMB.png",
             url: "assets/bonus/Myriagon_Primal.mp3",
         }
     },
@@ -81,8 +81,8 @@ export const achievements = {
         title: "Explorateur",
         description: `Votre espèce est avide de découverte, quitte à prendre des risques.`,
         bonus: {
-            title: "Fond d'écran Villes, Ruines et Végétations",
-            preview: "assets/bonus/sound_picture.png",
+            title: "Thème musical Headway",
+            preview: "assets/bonus/04_HEADWAY_AUDIO_THUMB.png",
             url: "assets/bonus/Myriagon_Headway.mp3",
         }
     },
@@ -92,9 +92,9 @@ export const achievements = {
         title: "Nourricier",
         description: `Votre espèce a su porter son attention sa gestion de la nourriture`,
         bonus: {
-            title: "Fond d'écran Villes, Ruines et Végétations",
-            preview: "assets/bonus/sound_picture.png",
-            url: "assets/bonus/Myriagon_Agony.mp3",
+            title: "Thème musical Apex",
+            preview: "assets/bonus/05_APEX_AUDIO_THUMB.png",
+            url: "assets/bonus/Myriagon_Apex.mp3",
         }
     }
 
