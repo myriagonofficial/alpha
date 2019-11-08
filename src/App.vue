@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="'scene-'+state.scene">
+  <div id="app" :class="['scene-'+state.scene, 'era-'+state.era]">
     <TopBar />
     <MenuScene v-if="state.scene==='menu'" @play="play()" />
     <CardsScene v-if="state.scene==='game'" />
@@ -72,12 +72,30 @@ export default {
   right: 0;
   top: 0;
   bottom: 0;
+  background-size: cover;
+  background-position: center center;
 
   &.scene-menu,
   &.scene-gameover {
     background-image: url("assets/ECRAN_INTRO.png");
-    background-size: cover;
-    background-position: center center;
+  }
+
+  &.scene-game {
+    &.era-0 {
+      background-image: url("assets/CHAP1_LULL.png");
+    }
+    &.era-1 {
+      background-image: url("assets/CHAP2_PRIMAL.png");
+    }
+    &.era-2 {
+      background-image: url("assets/CHAP3_HEADWAY.png");
+    }
+    &.era-3 {
+      background-image: url("assets/CHAP4_APEX.png");
+    }
+    &.era-4 {
+      background-image: url("assets/CHAP5_AGONY.png");
+    }
   }
 
   &.scene-menu {
