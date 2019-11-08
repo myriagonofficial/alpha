@@ -1,39 +1,64 @@
-import { Howl } from "howler"
+import { Howl, Howler } from "howler"
 import { state, saveSettings } from "@/state.js";
-import { shuffleArray } from "@/utils.js";
+import { pickRandomIn } from "@/utils.js";
 
 export const soundChannels = {}
 
 export const playSound = (key, channel) => {
     if (state.mute) return;
-    if (!(key in sounds)) return console.error(`Sound not found: ${key}`)
+    if (!(key in SOUNDS)) return console.error(`Sound not found: ${key}`)
+    const sound = new Howl({
+        src: [SOUNDS[key]],
+        volume: 1
+    });
+
     if (channel) {
         if (soundChannels[channel]) soundChannels[channel].stop() // stop previous sound in same channel
-        soundChannels[channel] = sounds[key]
+        soundChannels[channel] = sound
     }
-    sounds[key].volume(state.volume / 100)
-    sounds[key].play();
+
+    sound.play();
 }
 
 export const playMusic = (key, variations) => {
-    if (!(key in musics)) return console.error(`Music not found: ${key}`)
+    if (!(key in MUSICS)) return console.error(`Music not found: ${key}`)
     stopMusic();
-    musics[key].volume(state.volume / 100)
-    musics[key].mute(state.mute)
-    musics[key].play();
-    soundChannels.music = musics[key]
+
+    const music = new Howl({
+        src: [MUSICS[key]],
+        volume: 1,
+        mute: state.mute
+    });
+
+    music.play();
+    soundChannels.music = music;
 
     if (variations) {
-        let next = variations[(variations.indexOf(key) + 1) % variations.length]
-        musics[key].once("end", () => playMusic(next, variations))
+        const next = pickRandomIn(variations)
+        console.log(`Next music variation: ${next}`)
+
+        if (next !== key) {
+            const musicVariation = new Howl({
+                src: [MUSICS[next]],
+                volume: 0,
+                mute: state.mute
+            });
+
+            musicVariation.play();
+            soundChannels.musicVariation = musicVariation;
+
+            music.fade(1, 0, music.duration() * 1000)
+            musicVariation.fade(0, 1, music.duration() * 1000)
+        }
+
+        music.once("end", () => playMusic(next, variations))
     } else {
-        musics[key].loop(true);
+        music.loop(true);
     }
 }
 
-export const playMusicRandomSequence = (keys) => {
-    const variations = shuffleArray(keys);
-    playMusic(variations[0], variations);
+export const playMusicRandomSequence = (variations) => {
+    playMusic(pickRandomIn(variations), variations);
 }
 
 export const stopSound = channel => {
@@ -41,11 +66,12 @@ export const stopSound = channel => {
 }
 
 export const stopMusic = () => {
-    if (soundChannels.music) {
-        let musicToStop = soundChannels.music;
-        musicToStop.fade(state.volume / 100, 0, 400);
-        musicToStop.once('fade', () => musicToStop.stop())
-    }
+    [soundChannels.music, soundChannels.musicVariation].forEach((musicToStop) => {
+        if (musicToStop) {
+            musicToStop.fade(musicToStop.volume(), 0, 400);
+            musicToStop.once('fade', () => musicToStop.stop())
+        }
+    })
 }
 
 export const updateVolume = () => {
@@ -53,14 +79,14 @@ export const updateVolume = () => {
         state.mute = false;
         updateMute()
     }
-    soundChannels.voice && soundChannels.voice.volume(state.volume / 100)
-    soundChannels.music && soundChannels.music.volume(state.volume / 100)
+    Howler.volume(state.volume / 100)
     saveSettings();
 }
 
 export const updateMute = () => {
     soundChannels.voice && soundChannels.voice.mute(state.mute)
     soundChannels.music && soundChannels.music.mute(state.mute)
+    soundChannels.musicVariation && soundChannels.musicVariation.mute(state.mute)
     saveSettings();
 }
 
@@ -104,20 +130,4 @@ export const MUSICS = {
     mus_primal_01: 'assets/sound/mus_primalLoop_01.ogg',
     mus_primal_02: 'assets/sound/mus_primalLoop_02.ogg',
     mus_primal_03: 'assets/sound/mus_primalLoop_03.ogg',
-}
-
-export const sounds = {};
-for (let key in SOUNDS) {
-    sounds[key] = new Howl({
-        src: [SOUNDS[key]],
-        volume: state.volume / 100
-    });
-}
-
-export const musics = {};
-for (let key in MUSICS) {
-    musics[key] = new Howl({
-        src: [MUSICS[key]],
-        volume: state.volume / 100
-    });
 }
