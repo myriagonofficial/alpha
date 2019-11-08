@@ -19,7 +19,7 @@
           v-for="(achievement, key) in achievements"
           :key="key"
           @mouseover="isUnlocked(key) && onAchievementMouseOver()"
-          @click="selectAchievement(achievement)"
+          @click="isUnlocked(key) && selectAchievement(achievement)"
         >
           <img :src="achievement.image" />
         </li>
