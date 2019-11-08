@@ -1,7 +1,7 @@
 // deck = ère = ensemble de stories, mélangées
 
 import { pickRandomIn } from "./utils"
-import { playMusic } from "./audio";
+import { playMusicRandomSequence } from "./audio";
 
 export const prophetePrimal = pickRandomIn([
   "Isaac", "Jibril", "Śrījnāna", "Hönir", "Jacob", "Maryam", "Atīśa", "Ítreksjód", "Abel", "Aśoka"
@@ -37,7 +37,7 @@ export const decks = [
       "prophetes"
     ],
     onStart() {
-      playMusic('mus_primal')
+      playMusicRandomSequence(['mus_primal_01', 'mus_primal_02', 'mus_primal_03'])
     }
   },
   {
@@ -55,7 +55,7 @@ export const decks = [
       "feu1"
     ],
     onStart() {
-      playMusic('mus_headway')
+      playMusicRandomSequence(['mus_headway_01', 'mus_headway_02', 'mus_headway_03'])
     }
   },
   {
@@ -75,7 +75,7 @@ export const decks = [
       "dechets"
     ],
     onStart() {
-      playMusic('mus_apex')
+      playMusicRandomSequence(['mus_apex_01', 'mus_apex_02', 'mus_apex_03'])
     }
   },
   {
@@ -92,7 +92,7 @@ export const decks = [
       "champsravages"
     ],
     onStart() {
-      playMusic('mus_agony')
+      playMusicRandomSequence(['mus_agony_01', 'mus_agony_02', 'mus_agony_03'])
     }
   }
 ];

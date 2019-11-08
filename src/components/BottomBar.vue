@@ -17,12 +17,17 @@
         class="bonus"
         @click="state.scene='bonus'"
       >Bonus débloqués</button>
+      <button
+        v-if="state.scene === 'bonus' && state.achievements"
+        class="bonus"
+        @click="clearProgress"
+      >Réinitialiser sa progression</button>
     </div>
   </footer>
 </template>
 
 <script>
-import { state } from "@/state.js";
+import { state, clearProgress } from "@/state.js";
 import { cards } from "@/cards.js";
 import { skipIntro } from "@/game.js";
 import { playSound } from "@/audio.js";
@@ -51,6 +56,7 @@ export default {
   },
   methods: {
     skipIntro,
+    clearProgress,
     backToMenu() {
       state.scene = "menu";
     },

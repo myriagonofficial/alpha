@@ -29,7 +29,7 @@ export default {
   },
 
   mounted() {
-    playMusic("mus_lull");
+    playMusic("mus_lull_01");
     saveProgress();
     gamepad.onButtonPress(BUTTONS.START, () => this.onButtonPressed());
     gamepad.onButtonPress(BUTTONS.A, () => this.onButtonPressed());

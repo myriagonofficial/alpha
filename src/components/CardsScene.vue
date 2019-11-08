@@ -91,7 +91,7 @@ export default {
           if (state.deck.onStart) state.deck.onStart();
           nextCard();
         });
-      }, 2000);
+      }, 3000);
     },
     selectButton(step) {
       const buttons = [...document.querySelectorAll("button, .choice")];

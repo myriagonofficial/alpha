@@ -5,7 +5,14 @@ import { deduplicate } from "@/utils";
 const audioFiles = [...Object.values(SOUNDS), ...Object.values(MUSICS)]
 
 const imageFiles = [
-    ...deduplicate(Object.values(cards).map(card => `assets/cards/${card.image}`)),
+    ...deduplicate(
+        Object.values(cards)
+            .filter(card => typeof card.image !== "function")
+            .map(card => `assets/cards/${card.image}`)
+    ),
+    `assets/cards/marine_primal.png`,
+    `assets/cards/terrestre_primal.png`,
+    `assets/cards/celeste_primal.png`,
     `assets/ALPHA_TITRE.png`,
     `assets/MYRIAGON_LOGO.png`,
     require(`./assets/ECRAN_INTRO.png`),

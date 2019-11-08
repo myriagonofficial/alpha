@@ -2,7 +2,7 @@
   <div class="card" v-if="card" :style="cardStyle">
     <div class="card-face card-face-front hidden" ref="front">
       <div class="card-image">
-        <img :src="'assets/cards/' + card.image" />
+        <img :src="'assets/cards/' + image" />
         <div class="card-effect" />
       </div>
     </div>
@@ -63,6 +63,14 @@ export default {
     }
   },
 
+  computed: {
+    image() {
+      return typeof this.card.image === "function"
+        ? this.card.image()
+        : this.card.image;
+    }
+  },
+
   methods: {
     choose(choice) {
       playSound("gui_click_choice", "gui");
@@ -76,7 +84,9 @@ export default {
 
     showChoices() {
       this.choices = Object.entries(this.card.choices)
-        .map(([label, choice]) => ({ ...choice, label, anim: "hidden" }))
+        .map(([label, choice]) =>
+          Object.assign({}, choice, { label, anim: "hidden" })
+        )
         .filter(choice => !choice.test || choice.test() === true);
 
       this.choices.forEach((choice, i) => {
@@ -245,7 +255,8 @@ img {
     &:hover {
       animation: none;
       box-shadow: 0 0 25px white, 0 0 35px rgba(0, 0, 0, 0.5);
-      background: rgba(0, 0, 0, 0.8);
+      color: black;
+      background: #d0cdc4;
     }
   }
 }
