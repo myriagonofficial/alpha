@@ -33,7 +33,7 @@
     "cpy-cli": "^2.0.0",
     "eslint": "^6.6.0",
     "eslint-plugin-vue": "^6.0.0",
-    "nw": "^0.42.2",
+    "nw": "^0.42.3",
     "nwjs-builder-phoenix": "^1.15.0",
     "postcss-nested": "^4.2.1",
     "postcss-simple-vars": "^5.0.2",
@@ -69,7 +69,7 @@
     "not ie <= 8"
   ],
   "build": {
-    "nwVersion": "0.42.0",
+    "nwVersion": "0.42.3",
     "output": "../binaries/",
     "targets": [
       "zip"
