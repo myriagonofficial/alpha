@@ -68,7 +68,7 @@ export const stopSound = channel => {
 export const stopMusic = () => {
     [soundChannels.music, soundChannels.musicVariation].forEach((musicToStop) => {
         if (musicToStop) {
-            musicToStop.fade(musicToStop.volume(), 0, 400);
+            musicToStop.fade(musicToStop.volume(), 0, 1000);
             musicToStop.once('fade', () => musicToStop.stop())
         }
     })
