@@ -1,4 +1,4 @@
-import { playSound, playMusic } from "./audio.js"
+import { playSound, playMusic, stopMusic } from "./audio.js"
 import { showIndicateurBonheur, showIndicateurEnvironnement, addPassive, changeScore, setAchievement } from "./game.js"
 import { state } from "./state.js"
 //import { endStory, startStory } from "./stories.js";
@@ -252,7 +252,8 @@ export const cards = {
             }
         },
         onStart() {
-            playSound('vox_gardien_08', 'voice')
+            stopMusic();
+            setTimeout(() => playSound('vox_gardien_08', 'voice'), 500)
         }
     },
 
