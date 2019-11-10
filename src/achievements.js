@@ -1,6 +1,6 @@
 export const achievements = {
     batisseur: {
-        image: "assets/cards/commerce.png",
+        image: "assets/cards/ruines1.png",
         title: "Bâtisseur",
         description: `Votre espèce a construit des mégalopoles immenses, ruines sur lequelles se bâtiront les générations futures.`,
         bonus: {
@@ -33,7 +33,7 @@ export const achievements = {
     },
 
     bienfaiteur: {
-        image: "assets/cards/plantes_ciel.png",
+        image: "assets/cards/astres2.png",
         title: "Bienfaiteur",
         description: `Vous avez eu coeur à favoriser toujours le bonheur de vos dévots, en dépit de toute bonne raison écologique.`,
         bonus: {
@@ -54,10 +54,10 @@ export const achievements = {
         }
     },
 
-    artiste: {
-        image: "assets/cards/commerce.png",
-        title: "Artiste",
-        description: `Votre espèce a eu les moyens de s'épanouir et d'intellectualiser de nombreuses formes d'expression.`,
+    religion: {
+        image: "assets/cards/artreligion.png",
+        title: "Religion",
+        description: `Votre espèce s'est vue dirigée par votre volonté directe et selon vos préceptes religieux.`,
         bonus: {
             title: "Thème musical Agony",
             preview: "assets/bonus/01_AGONY_AUDIO_THUMB.png",
@@ -77,7 +77,7 @@ export const achievements = {
     },
 
     explorateur: {
-        image: "assets/cards/commerce.png",
+        image: "assets/cards/celeste_headway.png",
         title: "Explorateur",
         description: `Votre espèce est avide de découverte, quitte à prendre des risques.`,
         bonus: {
@@ -88,7 +88,7 @@ export const achievements = {
     },
 
     nourricier: {
-        image: "assets/cards/commerce.png",
+        image: "assets/cards/champ3.png",
         title: "Nourricier",
         description: `Votre espèce a su porter son attention sa gestion de la nourriture`,
         bonus: {

@@ -6,7 +6,7 @@ import { state } from "./state.js"
 export const cards = {
     1: {
         image: "aube1.png",
-        description: "L'incommensurable envergure de l’Univers s’offre à nous, enivrante et vertigineuse. La Vie - peuplant jadis galaxies, étoiles et planètes - décline secrètement ...",
+        description: "L'incommensurable envergure de l’Univers s’offre à nous, enivrante et vertigineuse. La Vie - peuplant jadis galaxies, étoiles et planètes - décline secrètement...",
         choices: {
             "Qui êtes-vous ?": {}
         },
@@ -89,7 +89,7 @@ export const cards = {
 
     100: {
         image: "esoterisme1.png",
-        description: `Tu as peut-être une affinité élémentaire ... Préférerais-tu voir ton espèce évoluer
+        description: `Tu as peut-être une affinité élémentaire... Préférerais-tu voir ton espèce évoluer
         parmi les mystérieux fonds marins, sur la terre meuble et fertile, ou bien dans les airs, surplombant toute
         la vie végétale ?`,
         choices: {
@@ -261,7 +261,7 @@ export const cards = {
 
 
     201: {
-        image: "colonisation_celeste.png",
+        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway.png" : "celeste_headway.png",
         description: `Pourrions-nous profiter d’une quelconque manière des individus des autres espèces ? Ce n’est pas la première fois que nous sommes confrontés à cette situation et il semblerait que nous ne soyons pas capables de nous mettre d’accord.`,
         choices: {
             "Vous feriez mieux de les faire fuir": {
@@ -293,7 +293,7 @@ export const cards = {
     },
 
     202: {
-        image: "colonisation_celeste.png",
+        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway.png" : "celeste_headway.png",
         description: `Alpha, notre peuple se querelle. Certains voudraient changer de région pour varier nos sources de nourriture, et d’autres s’implanter et exploiter au mieux le territoire proche. Que pensez-vous bon de faire ?`,
         choices: {
             "Vous devriez vous sédentariser.": {
@@ -301,8 +301,6 @@ export const cards = {
                     changeScore("bonheur", +10)
                     changeScore("environnement", -10)
                     addPassive("sedentaire");
-                    setAchievement("batisseur"); //TEMP
-
                 }
             },
             "N'ayez pas peur d'explorer.": {
@@ -317,8 +315,8 @@ export const cards = {
     },
 
     203: {
-        image: "aube3.png",
-        description: `Nous avons conquis un large territoire et continuons à l’explorer, cependant la taille de notre environnement connu commence à dépasser notre capacité d’orientation ...`,
+        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway.png" : "celeste_headway.png",
+        description: `Nous avons conquis un large territoire et continuons à l’explorer, cependant la taille de notre environnement connu commence à dépasser notre capacité d’orientation...`,
         choices: {
             "Cartographiez le territoire au sol.": {
                 effect() {
@@ -334,7 +332,6 @@ export const cards = {
             },
             "Balisez au sol.": {
                 effect() {
-                    addPassive("herboristerie");
                     changeScore("environnement", -5)
                 },
                 position: { top: "85%", left: "85%" }
@@ -344,7 +341,7 @@ export const cards = {
 
     204: {
         image: "algue_poison.png",
-        description: `Nombre de nos amis souffrent d'un mal mystérieux, d'aucuns s'imaginent que vous êtes la source de cette malédiction ...`,
+        description: `Nombre de nos amis souffrent d'un mal mystérieux, d'aucuns s'imaginent que vous êtes la source de cette malédiction...`,
         choices: {
             "Apprenez l'humilité, vous n'êtes que peu de choses à l'échelle de ce monde. ": {
                 effect() {
@@ -352,11 +349,11 @@ export const cards = {
                     changeScore("environnement", +10)
                 }
             },
-            "Vous devriez étudier les plantes qui vous entourent, elles recèlent de propriétés étonnantes.": {
+            "Vous devriez étudier les plantes qui vous entourent, certaines matières dont elles sont faites recèlent de propriétés étonnantes.": {
                 effect() {
                     changeScore("bonheur", +5)
                     changeScore("environnement", -5)
-                    addPassive("herboristerie")
+                    addPassive("chimie")
                 }
             },
             "Méfiez-vous des contagions, organisez une quarantaine.": {
@@ -376,7 +373,7 @@ export const cards = {
     },
 
     205: {
-        image: "colonisation_celeste.png",
+        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway.png" : "celeste_headway.png",
         description: `Parmi les différents groupes, on observe des luttes de pouvoir s'orienter sur la question de genre. Qui devrait dominer ?`,
         choices: {
             "Encouragez la domination masculine.": {
@@ -398,7 +395,7 @@ export const cards = {
         }
     },
     206: {
-        image: "colonisation_celeste.png",
+        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway.png" : "celeste_headway.png",
         description: `la population s'accroît et les artisans ne savent pas fournir suffisamment de ressources pour construire assez d'abris. Quelle solution préconiser ?`,
         choices: {
             "Former plus d'artisans.": {
@@ -486,15 +483,64 @@ export const cards = {
             }
         }
     },
-
-
-
-
+    209: {
+        image: "pont.png",
+        description: `Bien des lieux nous semblent inaccessibles, et il y a fort à parier que nous pourrions y découvrir de nouvelles perspectives, de nouvelles ressources, qu'en pensez-vous ?`,
+        choices: {
+            "Il serait plus raisonnable de terminer l'exploration de votre territoire proche.": {
+                effect() {
+                    changeScore("bonheur", +5);
+                    changeScore("environnement", -2);
+                    addPassive("feu");
+                }
+            },
+            "Construisez des passerelles vers de nouveaux mondes.": {
+                effect() {
+                    changeScore("bonheur", +20);
+                    changeScore("environnement", -5);
+                    addPassive("geniecivil");
+                }
+            },
+            "Ce qui n'est pas à votre portée ne doit pas être exploré.": {
+                effect() {
+                    changeScore("environnement", -2);
+                    changeScore("bonheur", -5);
+                    addPassive("restrictionterritoriale");
+                },
+                test() {
+                    return state.passives.includes("religion");
+                }
+            }
+        }
+    },
+    210: {
+        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway.png" : "celeste_headway.png",
+        description: `Nous avons remarqué une régularité dans le déroulement du temps, les variations de températures, de longueur de journées, s'organisent en cycle.`,
+        choices: {
+            "Notez toutes ces variations et constituez vous un calendrier.": {
+                effect() {
+                    changeScore("bonheur", +5);
+                    addPassive("calendrier");
+                }
+            },
+            "Appréhendez ces changements cycliques de la nature pour ": {
+                effect() {
+                    changeScore("bonheur", +10);
+                    addPassive("meteo");
+                }
+            },
+            "Organisez votre temps de travail afin de le prévoir sur les journées les plus longues": {
+                effect() {
+                    changeScore("bonheur", +3);
+                },
+            }
+        }
+    },
 
 
 
     300: {
-        image: "colonisation_celeste.png",
+        image: () => state.passives.includes("marine") ? "marine_apex.png" : state.passives.includes("terrestre") ? "terrestre_apex.png" : "celeste_apex.png",
         description: `Avec le développement de la société, le nombre d'individus qui nuisent à son bon fonctionnement prend également de l'ampleur. Comment pouvons-nous les punir et les décourager de continuer dans cette voie ?`,
         choices: {
             "Construisez des prisons et enfermez-les y.": {
@@ -527,7 +573,7 @@ export const cards = {
     },
 
     301: {
-        image: "volcan_terre.png",
+        image: "pollution1.png",
         description: `notre société est de plus en plus énergivore, nos chercheurs sont parvenus à découvrir plusieurs sources d'énergie, la question de se pose de savoir laquelle développer industriellement.`,
         choices: {
             "Vous devriez utiliser le gaz emprisonné sous terre.": {
@@ -588,7 +634,7 @@ export const cards = {
             },
             "Synthétisez des médicaments, plus efficaces contre les maladies.": {
                 test() {
-                    return state.passives.includes("herboristerie")
+                    return state.passives.includes("medecine")
                 },
                 effect() {
                     changeScore("bonheur", +10);
@@ -734,7 +780,7 @@ export const cards = {
         }
     },
     307: {
-        image: "labo3.png",
+        image: "stele.png",
         description: `suite à une grande guerre, une partie de la population est mutilée.`,
         choices: {
             "Abrégez leur souffrance": {
@@ -855,12 +901,48 @@ export const cards = {
             }
         }
     },
+    311: {
+        image: "recoltes1.png",
+        description: `nous ne savons pas anticiper la taille de nos récoltes.`,
+        choices: {
+            "Apprennez à anticiper les variations climatiques.": {
+                test() {
+                    return state.passives.includes("meteo")
+                },
+                effect() {
+                    changeScore("bonheur", +10);
+                    changeScore("environnement", -2);
+                }
+            },
+            "Développez des moyens de stockage et de conservation.": {
+                effect() {
+                    changeScore("bonheur", +8);
+                    changeScore("Environnement", -5);
+                }
+            },
+            "Instaurez des rites sociaux qui favorisent l'adaptation aux ressources disponibles.": {
+                effect() {
+                    changeScore("bonheur", +3);
+                    changeScore("environnement", -2);
+
+                }
+            },
+            "Ayez la foi, une danse rituelle favorisera probablement vos rendements.": {
+                effect(){
+                    changeScore("bonheur", +5);
+                }, 
+                test() {
+                    return state.passives.includes("religion")
+                },
+            }
+        }
+    },
 
 
 
 
     400: {
-        image: "TODO.png",
+        image: "rayonnements.png",
         description: `nos activités industrielles ont engendré une altération des couches atmosphériques qui nous protégaient du soleil. Les rayonnements sont de plus en plus agressifs et la température augmente dangereusement ! Comment y remédier ? `,
         choices: {
             "Développez des vêtements et des onguents qui permettent de se protéger et de soulager les brûlures": {
@@ -924,7 +1006,8 @@ export const cards = {
                 effect() {
                     changeScore("bonheur", +15);
                     changeScore("environnement", -15);
-                }
+                    addPassive("biomecanique");
+                },
             }
         }
     },
@@ -1049,7 +1132,16 @@ export const cards = {
                     changeScore("bonheur", -20);
                     changeScore("environnement", -5);
                 }
-            }
+            },
+            "Migrez vers des territoires plus chauds": {
+                test() {
+                    return state.passives.includes("nomade") && state.passives.includes("cartographie")
+                },
+                effect() {
+                    changeScore("environnement", -2);
+                    changeScore("bonheur", +5);
+                }
+            },
         }
     },
 
@@ -1166,7 +1258,7 @@ export const cards = {
 
 
     407: {
-        image: "champs3.png",
+        image: "vegetationmorte1.png",
         description: () => `A force de privilégier les plants les plus vigoureux, nous avons aussi tué la diversité des plantes, et nous en payons aujourd'hui le prix... Une épidémie ravage les champs ${state.passives.includes("carnivore") ? "destinés à l'alimentation du bétail " : ""} et va nous mener à la famine !`,
         choices: {
             "Variez votre alimentation. Vous avez essayé les insectes ?": {
@@ -1230,46 +1322,202 @@ export const cards = {
                     changeScore("environnement", -10);
                 }
             },
-            "Déclarez une quarantaine génèrale au risque d'avoir des rébellions (bonheur--)": {
-                test() {
-                    return state.passives.includes("herbivore")
-                },
+            "Déclarez une quarantaine génèrale au risque d'avoir des rébellions": {
                 effect() {
                     changeScore("bonheur", -5);
                     changeScore("environnement", -10);
                 }
             },
-            "Migrez vers des terres avec d'autres sources de nourriture": {
-                test() {
-                    return state.passives.includes("migre")
-                },
+            "Cherchez, sans trop d'espoir, des solutions pour filtrer l'atmosphère tout entier": {
                 effect() {
-                    changeScore("bonheur", +5);
+                    changeScore("bonheur", -5);
                     changeScore("environnement", -20);
                 }
-            },
-            "Créez de nouveaux plants en laboratoire": {
-                test() {
-                    return state.passives.includes("bioingenieurie")
-                },
+            }
+        }
+    },
+    409: {
+        image: "aube1.png",
+        description: `les experts sont formels, la planète ne pourra plus assurer les ressources nécessaires pour la survie de l'espèce, il nous faut trouver une solution pour éviter l'extinction.`,
+        choices: {
+            "Vous devriez tenter de vous enfuir sur une autre planète.": {
                 effect() {
-                    changeScore("environnement", -10);
+                    changeScore("bonheur", +15);
+                    changeScore("environnement", -15);
+                },
+                test() {
+                    return state.passives.includes("voyageastral")
+                },
+            },
+            "Bâtissez des refuges sous-terrains.": {
+                effect() {
+                    changeScore("bonheur", -7);
+                    changeScore("environnement", -5);
                 }
             },
-            "Brûlez les champs contaminés": {
+            "Regardez passivement le destin s'accomplir.": {
+                effect() {
+                    changeScore("bonheur", -15);
+                }
+            }
+        }
+    },
+    410:{
+        image: "aube1.png",
+        description: `Nombre de nos citadins semblent souffrir d'handicapantes pertes de mémoires. Il semblerait que l'eau de notre affluent soit viciée par nos rejets chimiques.`,
+        choices: {
+            "Brûlez des arbres pour la filtrer avec du charbon.": {
+                effect() {
+                    changeScore("bonheur", +5);
+                    changeScore("environnement", -15);
+                },
                 test() {
                     return state.passives.includes("feu")
                 },
+            },
+            "Construisez de nombreuses réserves d'eau artificielles, et remplissez-les d'eau pompée en profondeur.": {
                 effect() {
-                    changeScore("bonheur", -5);
-                    changeScore("environnement", -10);
+                    changeScore("bonheur", +5);
+                    changeScore("environnement", -15);
                 }
             },
-            "Récoltez immédiatement ce qui peut être sauvé": {
+            "Tentez de développer une chimie neutralisant ce phénomène.": {
+                effect() {
+                    changeScore("bonheur", +5);
+                    changeScore("environnement", -5);
+                },
+                test() {
+                    return state.passives.includes("chimie")
+                }
+            }
+        }
+    },
+    411:{
+        image: "celeste_apex3.png",
+        description: `nous traversons maintenant une période de chaleur extrême, les récoltes se font rares et notre économie tourne au ralenti.`,
+        choices: {
+            "Migrez vers une zone plus tempérée.": {
+                effect() {
+                    changeScore("bonheur", +5);
+                    changeScore("environnement", -2);
+
+                },
+                test() {
+                    return state.passives.includes("nomade") && state.passives.includes("cartographie")
+                },
+            },
+            "Régulez strictement l'accès aux rares sources de rafraichissement.": {
+                effect() {
+                    changeScore("bonheur", -15);
+                }
+            },
+            "Construisez de gigantesques miroirs pour réfléchir les rayons de votre étoile.": {
+                effect() {
+                    changeScore("bonheur", +2);
+                    changeScore("environnement", -15);
+                }
+            }
+        }
+    },
+    412:{
+        image: "politique1.png",
+        description: `nous avons perdu le contrôle de notre démographie, la population s'accroit rapidement et nos ressources ne nous permettront pas de subvenir aux besoins de tous.`,
+        choices: {
+            "Organisez une politique de l'enfant unique.": {
+                effect() {
+                    changeScore("bonheur", -15);
+                    addPassive("enfantunique");
+                }
+            },
+            "Tuez arbitrairement la moitié de la population afin que l'autre moitié ne meure pas de faim.": {
+                effect() {
+                    changeScore("bonheur", -25);
+                }
+            },
+            "Vous trouverez bien de nouvelles façon plus efficaces de drainer le nécessaire à votre planète.": {
                 effect() {
                     changeScore("environnement", -15);
                 }
             }
         }
+    },
+    413:{
+        image: "politique1.png",
+        description: `les mesures d'austérités suivies jusqu'ici ont laissé place au populisme et une forme d'anarchie violente engendre des guerres civiles meurtrières.`,
+        choices: {
+            "Laissez la situation se déréguler, vous n'avez plus la force de gérer ces crises": {
+                effect() {
+                    changeScore("bonheur", -10);
+                }
+            },
+            "Militarisez au maximum les nations et tuez tous les rebelles pour essayer de maintenir un minumum d'ordre": {
+                effect() {
+                    changeScore("bonheur", -5);
+                }
+            },
+            "Tentez une ultime campagne de propagande pour assagir le peuple, sans certitudes sur le résultat.": {
+                effect() {
+                    changeScore("bonheur", +5);
+                }
+            },
+        }
+    },
+    414:{
+        image: "robots.png",
+        description: `nous avons doté nos machines d'une intelligence artificielle, et elles ont organisé une attaque contre notre peuple pour qu'il cesse de détruire sa planète. Quelques survivants résident cachés des radars et risquent de bientôt être délogés par les machines.`,
+        choices: {
+            "Essayez des armes de destructions massives, en ciblant principalement les zones industrielles occupées par ces machines.": {
+                effect() {
+                    changeScore("bonheur", -15);
+                    changeScore("environnement", -15);
+                }
+            },
+            "Les machines sauront peut-être sauver ce qui peut l'être de la civilisation.": {
+                effect() {
+                    changeScore("bonheur", -15);
+                    addPassive("matrix");                }
+                },
+            "Créez une armée de soldats augmentés mécaniquement, elle devrait pouvoir lutter contre ce fléau robotique.": {
+                effect() {
+                    changeScore("bonheur", +2);
+                    changeScore("environnement", -5);
+                },
+                test() {
+                    return state.passives.includes("biomecanique")
+                },
+            },
+        }
+    },
+    415:{
+        image: "robots.png",
+        description: `nous avons doté nos machines d'une intelligence artificielle, et elles ont organisé une attaque contre notre peuple pour qu'il cesse de détruire sa planète. Quelques survivants résident cachés des radars et risquent de bientôt être délogés par les machines.`,
+        choices: {
+            "Essayez des armes de destructions massives, en ciblant principalement les zones industrielles occupées par ces machines.": {
+                effect() {
+                    changeScore("bonheur", -15);
+                    changeScore("environnement", -15);
+                }
+            },
+            "Les machines sauront peut-être sauver ce qui peut l'être de la civilisation.": {
+                effect() {
+                    changeScore("bonheur", -15);
+                    addPassive("matrix");                }
+                },
+            "Créez une armée de soldats augmentés mécaniquement, elle devrait pouvoir lutter contre ce fléau robotique.": {
+                effect() {
+                    changeScore("bonheur", +2);
+                    changeScore("environnement", -5);
+                },
+                test() {
+                    return state.passives.includes("biomecanique")
+                },
+            },
+        }
     }
+
+
+
+    
+
+
 }
