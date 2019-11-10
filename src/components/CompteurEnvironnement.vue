@@ -23,7 +23,6 @@ import { pickRandomIn, shuffleArray } from "@/utils.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
-const scaleIncrement = 0.2;
 const dropIncrement = 0.002;
 const rotateIncrement = Math.PI;
 const NB_ACCROCHES = 200;
@@ -32,14 +31,14 @@ const groups = {
   leaves: {
     list: [],
     types: ["FEUILLE01", "FEUILLE02", "FEUILLE03"],
-    maxGrowth: 15,
+    maxGrowth: 30,
     radius: 15,
     zIndex: 2
   },
   flowers: {
     list: [],
     types: ["fleur1", "fleur2"],
-    maxGrowth: 15,
+    maxGrowth: 30,
     radius: 10,
     zIndex: 3
   }
@@ -65,7 +64,7 @@ const createFlower = ({ x, y, type, accroche, group }) => {
 
     grow() {
       growthPhase += 1;
-      scale += scaleIncrement * Math.random();
+      scale += 0.05;
     },
 
     drop() {
@@ -218,7 +217,7 @@ export default {
       groups.leaves.svg = this.$refs.svgLeaves;
       accroches = new Array(NB_ACCROCHES).fill().map((_, i) => ({
         x: (i + 0.3 * (Math.random() - 0.5)) / NB_ACCROCHES,
-        y: 0.2 * (Math.random() - 0.5),
+        y: 0.1 + 0.2 * (Math.random() - 0.5),
         occupied: false
       }));
       accroches = shuffleArray(accroches);

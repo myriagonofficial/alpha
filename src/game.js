@@ -50,7 +50,19 @@ export const cleanupFinishedStories = () => {
 }
 
 export const changeScore = (scoreToUpdate, value) => {
-  state.scores[scoreToUpdate] = Math.round(state.scores[scoreToUpdate] * (100 + value) / 100);
+  if (scoreToUpdate === "environnement") {
+    // pourcentage
+    state.scores[scoreToUpdate] = Math.round(state.scores[scoreToUpdate] * (100 + value) / 100);
+  } else {
+    state.scores[scoreToUpdate] += value;
+    if (state.scores.bonheur > state.scores.bonheurMax) {
+      state.scores.bonheurMax = state.scores.bonheur;
+      state.scores.ageBonheurMax = decks[state.era].name;
+    }
+    if (state.scores.bonheur > state.bestScore) {
+      state.bestScore = state.scores.bonheur;
+    }
+  }
 }
 
 export const showIndicateurBonheur = () => {
