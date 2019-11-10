@@ -52,7 +52,10 @@ export const playMusic = (key, variations, fadeIn) => {
             musicVariation.fade(0, 1, music.duration() * 1000)
         }
 
-        music.once("end", () => playMusic(next, variations))
+        music.once("end", () => {
+            // si on a pas déjà changé de musique, jouer la variation suivante
+            if (soundChannels.music === music) playMusic(next, variations)
+        })
     } else {
         music.loop(true);
     }
