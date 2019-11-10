@@ -59,6 +59,9 @@ export const changeScore = (scoreToUpdate, value) => {
       state.scores.bonheurMax = state.scores.bonheur;
       state.scores.ageBonheurMax = decks[state.era].name;
     }
+    if (state.scores.bonheur > state.bestScore) {
+      state.bestScore = state.scores.bonheur;
+    }
   }
 }
 

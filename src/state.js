@@ -17,7 +17,8 @@ export const state = {
     shouldShowIndicateurEnvironnement: false,
     passives: [],
     achievements: null,
-    achievement: null
+    achievement: null,
+    bestScore: null
 };
 
 export function resetStateToNewGame() {
@@ -52,20 +53,22 @@ export function loadSettings() {
 }
 
 export function saveProgress() {
-    localStorage.setItem("achievements", JSON.stringify({
-        achievements: state.achievements
+    localStorage.setItem("progress", JSON.stringify({
+        achievements: state.achievements,
+        bestScore: state.bestScore
     }))
 }
 
 export function clearProgress() {
     if (confirm(`La sauvegarde de votre avancement sera effacée. Êtes-vous sûr ?`)) {
-        localStorage.removeItem("achievements")
+        localStorage.removeItem("progress")
         state.achievements = null;
+        state.bestScore = null;
     }
 }
 
 export function loadProgress() {
-    Object.assign(state, JSON.parse(localStorage.getItem("achievements")))
+    Object.assign(state, JSON.parse(localStorage.getItem("progress")))
 }
 
 loadSettings()

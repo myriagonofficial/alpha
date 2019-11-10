@@ -24,6 +24,11 @@
           <img :src="achievement.image" />
         </li>
       </ul>
+      <p v-if="state.bestScore">
+        Meilleure partie:
+        <strong>{{state.bestScore}}</strong>
+        <img src="../assets/ui/fleur.svg" alt="fleurs" />
+      </p>
     </main>
   </div>
 </template>
@@ -134,11 +139,18 @@ export default {
   main {
     height: 80vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
     & >>> .achievement-info {
       flex: 1;
+    }
+
+    p img {
+      width: 3vmin;
+      height: 3vmin;
+      vertical-align: middle;
     }
   }
 }
