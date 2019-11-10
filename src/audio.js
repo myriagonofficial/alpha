@@ -56,6 +56,8 @@ export const playMusic = (key, variations, fadeIn) => {
     } else {
         music.loop(true);
     }
+
+    Howler.volume(state.volume / 100);
 }
 
 export const playMusicRandomSequence = (variations) => {
