@@ -52,7 +52,9 @@ export const decks = [
       "epidemie",
       "abris",
       "politique",
-      "feu1"
+      "feu1",
+      "exploration2",
+      "saisons2"
     ],
     onStart() {
       playMusicRandomSequence(['mus_headway_01', 'mus_headway_02', 'mus_headway_03'])
@@ -72,7 +74,7 @@ export const decks = [
       "mutiles",
       "etoiles",
       "feu2",
-      "dechets"
+      "dechets",
     ],
     onStart() {
       playMusicRandomSequence(['mus_apex_01', 'mus_apex_02', 'mus_apex_03'])
@@ -89,7 +91,14 @@ export const decks = [
       "hiver",
       "refugies",
       "chomage",
-      "champsravages"
+      "champsravages",
+      "particules",
+      "ressources",
+      "eauviciee",
+      "chaleur",
+      "demo",
+      "guerrecivile",
+      "robots",
     ],
     onStart() {
       playMusicRandomSequence(['mus_agony_01', 'mus_agony_02', 'mus_agony_03'])

@@ -87,6 +87,18 @@ export const stories = {
         cards: [208],
         priority: 1
     },
+    exploration2:
+    {
+        name: "Vers l'inconnu",
+        cards: [209],
+        priority: 1
+    },
+    saisons2:
+    {
+        name: "saisons",
+        cards: [210],
+        priority: 1
+    },
 
 
     // APEX 
@@ -145,6 +157,11 @@ export const stories = {
         cards: [310],
         priority: 1
     },
+    recoltes: {
+        name: "Récoltes",
+        cards: [311],
+        priority: 1
+    },
 
 
     // AGONY
@@ -188,6 +205,42 @@ export const stories = {
         cards: [407],
         priority: 1
     },
+    particules: {
+        name: "Pollution",
+        cards: [408],
+        priority: 1
+    },
+    ressources: {
+        name: "Ressources rares",
+        cards: [409],
+        priority: 1
+    },
+    eauviciee: {
+        name: "Empoisonnement de l'eau",
+        cards: [410],
+        priority: 1
+    },
+    chaleur: {
+        name: "Chaleurs",
+        cards: [411],
+        priority: 1
+    },
+    demo: {
+        name: "Emballement démographique",
+        cards: [412],
+        priority: 1
+    },
+    guerrecivile: {
+        name: "Guerres civiles",
+        cards: [413],
+        priority: 1
+    },
+    robots: {
+        name: "Robots",
+        cards: [414],
+        priority: 1
+    },
+    
 }
 
 export function startStory(name) {

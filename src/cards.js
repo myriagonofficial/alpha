@@ -1481,6 +1481,7 @@ export const cards = {
                 effect() {
                     changeScore("bonheur", +2);
                     changeScore("environnement", -5);
+                    setAchievement("Cyborg");
                 },
                 test() {
                     return state.passives.includes("biomecanique")
