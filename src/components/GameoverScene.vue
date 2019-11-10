@@ -2,7 +2,16 @@
   <main class="gameover-scene">
     <header>
       <h2>Partie terminée</h2>
-      <p>Merci d'avoir joué !</p>
+      <p style="margin:0">
+        L'apogée de votre espèce a eu lieu au chapitre {{state.scores.ageBonheurMax}}
+        avec
+        <strong>{{state.scores.bonheurMax}}</strong>
+        <img src="../assets/ui/fleur.svg" alt="fleurs" />
+      </p>
+      <div v-if="!state.achievement">
+        <p>Votre espèce n'est pas parvenue à s'illustrer cette fois-ci...</p>
+        <p>Merci d'avoir joué !</p>
+      </div>
     </header>
 
     <Achievement v-if="state.achievement" v-bind="state.achievement"></Achievement>
@@ -88,7 +97,12 @@ export default {
     }
 
     p {
-      margin: 0;
+      img {
+        display: inline-block;
+        vertical-align: middle;
+        width: 3vmin;
+        height: 3vmin;
+      }
     }
   }
 }

@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="card-info">
-      <h3 v-if="!closable">Fin débloquée</h3>
+      <h3 v-if="!closable">Accomplissement de votre espèce:</h3>
       <div class="card-name">{{ title }}</div>
       <div class="card-description" ref="description">{{ description }}</div>
       <div class="bonus" v-if="bonus">

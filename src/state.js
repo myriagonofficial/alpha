@@ -9,7 +9,9 @@ export const state = {
     card: null,
     scores: {
         bonheur: 10,
-        environnement: 100
+        environnement: 100,
+        bonheurMax: 0,
+        ageBonheurMax: null
     },
     shouldShowIndicateurBonheur: false,
     shouldShowIndicateurEnvironnement: false,
@@ -27,7 +29,9 @@ export function resetStateToNewGame() {
         card: null,
         scores: {
             bonheur: 10,
-            environnement: 100
+            environnement: 100,
+            bonheurMax: 0,
+            ageBonheurMax: 1
         },
         shouldShowIndicateurBonheur: false,
         shouldShowIndicateurEnvironnement: false,
