@@ -32,13 +32,14 @@ export const cards = {
             "Pourquoi suis-je ici ?": {}
         },
         onStart() {
-            playMusic('mus_gardien_02')
+            stopMusic();
+            setTimeout(() => playMusic('mus_gardien_02', null, 1000), 500);
             playSound('vox_gardien_03', 'voice')
         }
     },
     4: {
         image: "aube2.png",
-        description: "Comme chaque témoin avant toi, tu as vécu une partie infinitésimale du champs des possibles, et maintenant la tâche t'incombe d'endosser à ton tour le lourd fardeau des Gardiens.",
+        description: "Comme chaque témoin avant toi, tu as vécu une partie infinitésimale du champ des possibles, et maintenant la tâche t'incombe d'endosser à ton tour le lourd fardeau des Gardiens.",
         choices: {
             "Que dois-je faire ?": {}
         },
@@ -53,7 +54,8 @@ export const cards = {
             "J'accepte": {}
         },
         onStart() {
-            playMusic('mus_gardien_03')
+            stopMusic();
+            setTimeout(() => playMusic('mus_gardien_03', null, 1000), 500);
             playSound('vox_gardien_05', 'voice')
         }
     },

@@ -20,17 +20,18 @@ export const playSound = (key, channel) => {
     sound.play();
 }
 
-export const playMusic = (key, variations) => {
+export const playMusic = (key, variations, fadeIn) => {
     if (!(key in MUSICS)) return console.error(`Music not found: ${key}`)
     stopMusic();
 
     const music = new Howl({
         src: [MUSICS[key]],
-        volume: 1,
+        volume: fadeIn > 0 ? 0 : 1,
         mute: state.mute
     });
 
     music.play();
+    if (fadeIn) music.fade(0, 1, fadeIn)
     soundChannels.music = music;
 
     if (variations) {
@@ -72,6 +73,8 @@ export const stopMusic = () => {
             musicToStop.once('fade', () => musicToStop.stop())
         }
     })
+    soundChannels.music = null;
+    soundChannels.musicVariation = null;
 }
 
 export const updateVolume = () => {
