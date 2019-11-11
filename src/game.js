@@ -1,6 +1,6 @@
 import { state, resetStateToNewGame } from "./state"
 import { decks } from "./decks";
-import { stories, endStory } from "./stories";
+import { endStory } from "./stories";
 import { cards } from "./cards";
 import { pickRandomIn } from "./utils"
 import { stopSound, stopMusic } from "./audio"
@@ -15,13 +15,13 @@ export const nextCard = () => {
   cleanupFinishedStories()
   if (state.deck.stories.length === 0) return nextDeck()
 
-  let highestPriority = state.deck.stories.reduce((highest, story) => Math.max(highest, stories[story].priority || 0), 0)
-  let priorityStories = state.deck.stories.filter(story => !highestPriority || stories[story].priority === highestPriority)
+  let highestPriority = state.deck.stories.reduce((highest, story) => Math.max(highest, state.stories[story].priority || 0), 0)
+  let priorityStories = state.deck.stories.filter(story => !highestPriority || state.stories[story].priority === highestPriority)
   state.story = pickRandomIn(priorityStories)
-  state.card = stories[state.story].cards.shift()
+  state.card = state.stories[state.story].cards.shift()
   let card = cards[state.card]
 
-  if (!card.name) card.name = stories[state.story].name
+  if (!card.name) card.name = state.stories[state.story].name
 
   if (card.onStart) card.onStart();
 }
@@ -34,7 +34,8 @@ export const nextDeck = () => {
   if (state.era >= decks.length) return gameOver()
 
   state.deck = Object.assign({}, decks[state.era])
-  state.deck.stories.forEach(s => s in stories || console.error(`Story not found: ${s}`))
+  state.deck.stories = [...state.deck.stories]; // clone to reuse on next game
+  state.deck.stories.forEach(s => s in state.stories || console.error(`Story not found: ${s}`))
 }
 
 export const skipIntro = () => {
@@ -45,7 +46,7 @@ export const skipIntro = () => {
 
 export const cleanupFinishedStories = () => {
   state.deck.stories
-    .filter(story => stories[story].cards.length === 0)
+    .filter(story => state.stories[story].cards.length === 0)
     .forEach(story => endStory(story))
 }
 

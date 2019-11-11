@@ -1,3 +1,5 @@
+import { initStories } from "./stories.js";
+
 export const state = {
     scene: "menu",
     mute: false,
@@ -7,6 +9,7 @@ export const state = {
     era: -1,
     choice: 0,
     card: null,
+    stories: [],
     scores: {
         bonheur: 10,
         environnement: 100,
@@ -28,6 +31,7 @@ export function resetStateToNewGame() {
         era: -1,
         choice: 0,
         card: null,
+        stories: initStories(),
         scores: {
             bonheur: 10,
             environnement: 100,

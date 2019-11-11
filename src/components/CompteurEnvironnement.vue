@@ -214,7 +214,9 @@ export default {
   methods: {
     init() {
       groups.flowers.svg = this.$refs.svgFlowers;
+      groups.flowers.list = [];
       groups.leaves.svg = this.$refs.svgLeaves;
+      groups.leaves.list = [];
       accroches = new Array(NB_ACCROCHES).fill().map((_, i) => ({
         x: (i + 0.3 * (Math.random() - 0.5)) / NB_ACCROCHES,
         y: 0.1 + 0.2 * (Math.random() - 0.5),

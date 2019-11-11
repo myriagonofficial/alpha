@@ -3,13 +3,13 @@ import { removeInArray } from "./utils.js"
 
 // story = scénario = ensemble de cartes sortant dans l'ordre
 
-export const stories = {
+const stories = {
     introduction: {
         name: "Gardiens du Temps",
         cards: [1, 2, 3, 4, 5, 6, 7],
         priority: 5
     },
-    
+
 
     // PRIMAL
     choix_espece: {
@@ -101,7 +101,7 @@ export const stories = {
     },
 
 
-    // APEX 
+    // APEX
     criminalite: {
         name: "Criminalité",
         cards: [300],
@@ -240,7 +240,11 @@ export const stories = {
         cards: [414],
         priority: 1
     },
-    
+
+}
+
+export function initStories() {
+    return JSON.parse(JSON.stringify(stories)); // deep clone
 }
 
 export function startStory(name) {
