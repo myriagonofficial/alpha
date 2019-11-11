@@ -54,10 +54,10 @@ export const achievements = {
         }
     },
 
-    religion: {
+    paradoxe: {
         image: "assets/cards/artreligion.png",
-        title: "Religion",
-        description: `Votre espèce s'est vue dirigée par votre volonté directe et selon vos préceptes religieux.`,
+        title: "Paradoxe Temporel",
+        description: `Il semblerait que votre espèce soit à l'origine des Gardiens du Temps ?`,
         bonus: {
             title: "Thème musical Agony",
             preview: "assets/bonus/01_AGONY_AUDIO_THUMB.png",

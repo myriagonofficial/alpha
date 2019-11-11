@@ -10,7 +10,7 @@ export const propheteHeadway = pickRandomIn([
   "Uriel", "Salomon", "Mounkar", "Thamûd", "Jetāri", "Candrakīrti", "Narfi", "Skjöld", "Hajar", "Loth", "Hermód"
 ]);
 export const propheteApex = pickRandomIn([
-  "Frigg", "Lazare", "Jonas", "Ya`qoub", "Zakariya", "Dao'an", "Dinnāga", "Sudri", "Austri", "Kalyānaśrī",
+  "Frigg", "Lazare", "Jonas", "Ya`qoub", "Zakariya", "Dao'an", "Dinnāga", "Sudri", "Austri", "Kalyanaarī",
 ]);
 export const propheteAgony = pickRandomIn([
   "Ezéchiel", "Isaiah", "Ariel", "Sarah", "Phir`awn", "Jâlût", "Dōgen", "Dōkyō", "Genshin", "Hyrrokkin", "Thrudgelmir", "Ægir"

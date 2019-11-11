@@ -162,6 +162,16 @@ const stories = {
         cards: [311],
         priority: 1
     },
+    temps1: {
+        name: "Temps",
+        cards: [312],
+        priority: 1
+    },
+    science: {
+        name: "Sciences",
+        cards: [313],
+        priority: 1
+    },
 
 
     // AGONY
@@ -238,6 +248,21 @@ const stories = {
     robots: {
         name: "Robots",
         cards: [414],
+        priority: 1
+    },
+    temps2: {
+        name: "Enceinte temporelle",
+        cards: [415],
+        priority: 1
+    },
+    IAForte: {
+        name: "Intelligence Artificielle Forte",
+        cards: [416],
+        priority: 1
+    },
+    IAForte2: {
+        name: "Intelligence Artificielle Forte ?",
+        cards: [417,418],
         priority: 1
     },
 

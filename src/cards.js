@@ -1,6 +1,7 @@
 import { playSound, playMusic, stopMusic } from "./audio.js"
 import { showIndicateurBonheur, showIndicateurEnvironnement, addPassive, changeScore, setAchievement } from "./game.js"
 import { state } from "./state.js"
+import { startStory } from "./stories.js";
 //import { endStory, startStory } from "./stories.js";
 
 export const cards = {
@@ -119,7 +120,7 @@ export const cards = {
                 effect() {
                     addPassive("carnivore");
                     changeScore("bonheur", +10);
-                    changeScore("environnement", -10);
+                    changeScore("environnement", -5);
                 }
             },
             "Herbivore": {
@@ -163,13 +164,13 @@ export const cards = {
     },
 
     103: {
-        image: "fecondation.jpg",
+        image: "fecondation.png",
         description: `Ton peuple doit se reproduire pour assurer son avenir. Que crois-tu être la meilleure stratégie reproductive à leur transmettre ?`,
         choices: {
             "Engendrer de nombreuses progénitures, mais faibles.": {
                 effect() {
                     changeScore("bonheur", +10);
-                    changeScore("environnement", -10);
+                    changeScore("environnement", -5);
                     addPassive("bebes_faibles");
                 },
                 position: { top: "60%", left: "25%" }
@@ -191,14 +192,14 @@ export const cards = {
         choices: {
             "La force par des combats": {
                 effect() {
-                    changeScore("bonheur", -10);
+                    changeScore("bonheur", -7);
                     addPassive("force");
                 }
             },
             "La beauté par l'apparât": {
                 effect() {
                     changeScore("bonheur", +5);
-                    changeScore("environnement", -5);
+                    changeScore("environnement", -2);
                     addPassive("beauté");
                 }
             }
@@ -211,14 +212,14 @@ export const cards = {
         choices: {
             "Hiberner": {
                 effect() {
-                    changeScore("bonheur", -10);
+                    changeScore("bonheur", -5);
                     addPassive("hiberne");
                 }
             },
             "Migrer": {
                 effect() {
                     changeScore("bonheur", +5);
-                    changeScore("environnement", -10);
+                    changeScore("environnement", -3);
                     addPassive("migre");
                 }
             }
@@ -268,13 +269,13 @@ export const cards = {
         choices: {
             "Vous feriez mieux de les faire fuir": {
                 effect() {
-                    changeScore("bonheur", -5)
+                    changeScore("bonheur", -3)
                 }
             },
             "Domestiquez-les.": {
                 effect() {
                     changeScore("bonheur", +10)
-                    changeScore("environnement", -10)
+                    changeScore("environnement", -5)
                 }
             },
             "Ils sont sacrés.": {
@@ -288,7 +289,7 @@ export const cards = {
                 },
                 effect() {
                     changeScore("bonheur", +15)
-                    changeScore("environnement", -15)
+                    changeScore("environnement", -7)
                 }
             }
         }
@@ -301,16 +302,15 @@ export const cards = {
             "Vous devriez vous sédentariser.": {
                 effect() {
                     changeScore("bonheur", +10)
-                    changeScore("environnement", -10)
+                    changeScore("environnement", -6)
                     addPassive("sedentaire");
                 }
             },
             "N'ayez pas peur d'explorer.": {
                 effect() {
                     changeScore("bonheur", +5)
-                    changeScore("environnement", -5)
+                    changeScore("environnement", -3)
                     addPassive("nomade");
-
                 }
             }
         }
@@ -347,14 +347,14 @@ export const cards = {
         choices: {
             "Apprenez l'humilité, vous n'êtes que peu de choses à l'échelle de ce monde. ": {
                 effect() {
-                    changeScore("bonheur", -10)
+                    changeScore("bonheur", -5)
                     changeScore("environnement", +10)
                 }
             },
             "Vous devriez étudier les plantes qui vous entourent, certaines matières dont elles sont faites recèlent de propriétés étonnantes.": {
                 effect() {
                     changeScore("bonheur", +5)
-                    changeScore("environnement", -5)
+                    changeScore("environnement", -3)
                     addPassive("chimie")
                 }
             },
@@ -365,7 +365,7 @@ export const cards = {
             },
             "Etudiez le corps des victimes.": {
                 effect() {
-                    changeScore("bonheur", -10)
+                    changeScore("bonheur", -7)
                     addPassive("medecine")
                 }
             },
@@ -403,13 +403,13 @@ export const cards = {
             "Former plus d'artisans.": {
                 effect() {
                     addPassive("artisanat");
-                    changeScore("environnement", -10);
+                    changeScore("environnement", -7);
                     changeScore("bonheur", +10);
                 }
             },
             "Encourager la mutualisation des abris.": {
                 effect() {
-                    changeScore("bonheur", -10);
+                    changeScore("bonheur", -5);
                 }
             },
             "Concevoir des machines qui permettent d'accélérer le travail des artisans.": {
@@ -434,6 +434,7 @@ export const cards = {
                 effect() {
                     changeScore("bonheur", +10);
                     addPassive("democratie");
+                    if(state.passives.includes("democratie") && state.passives.includes("EquiteGenre") && state.passives.includes("reinsertion")) {setAchievement("bienfaiteur")}
                 }
             },
             "Laissez vos éléments charismatiques fonder différentes tribus. ": {
@@ -474,13 +475,13 @@ export const cards = {
                 },
                 effect() {
                     changeScore("environnement", -5);
-                    changeScore("bonheur", -10);
+                    changeScore("bonheur", -7);
 
                 }
             },
             "Vous devriez clairement courir dans les flammes.": {
                 effect() {
-                    changeScore("bonheur", -10);
+                    changeScore("bonheur", -5);
                 }
             }
         }
@@ -541,7 +542,7 @@ export const cards = {
 
 
     300: {
-        image: () => state.passives.includes("marine") ? "marine_apex.png" : state.passives.includes("terrestre") ? "terrestre_apex1.png" : "celeste_apex1.png",
+        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_apex1.png" : "celeste_apex1.png",
         description: `Avec le développement de la société, le nombre d'individus qui nuisent à son bon fonctionnement prend également de l'ampleur. Comment pouvons-nous les punir et les décourager de continuer dans cette voie ?`,
         choices: {
             "Construisez des prisons et enfermez-les y.": {
@@ -562,6 +563,7 @@ export const cards = {
                     addPassive("peineMort");
                     changeScore("environnement", +5);
                     changeScore("bonheur", -10);
+                    if(state.passives.includes("peineMort") && state.passives.includes("handmaidstales") && state.passives.includes("terreur") && state.passive.includes("regulationmaladies")) {setAchievement("tyran")}
                 }
             },
             "Exilez-les de la société.": {
@@ -675,7 +677,7 @@ export const cards = {
             },
             "Continuez malgré tout, votre société a besoin de cette croissance.": {
                 effect() {
-                    changeScore("environnement", -15);
+                    changeScore("environnement", -10);
                     changeScore("bonheur", -5);
 
                 }
@@ -707,7 +709,7 @@ export const cards = {
                     return state.passives.includes("nomade")
                 },
                 effect() {
-                    changeScore("environnement", -10);
+                    changeScore("environnement", -7);
                     changeScore("bonheur", +5);
 
                 }
@@ -717,7 +719,7 @@ export const cards = {
                     return state.passives.includes("sedentaire")
                 },
                 effect() {
-                    changeScore("environnement", -15);
+                    changeScore("environnement", -10);
                     changeScore("bonheur", +5);
 
                 }
@@ -727,7 +729,7 @@ export const cards = {
                     return state.passives.includes("chimie")
                 },
                 effect() {
-                    changeScore("environnement", -20);
+                    changeScore("environnement", -15);
                     changeScore("bonheur", +10);
                 }
             }
@@ -753,6 +755,7 @@ export const cards = {
                 effect() {
                     changeScore("environnement", -5);
                     changeScore("bonheur", +5);
+                    setAchievement("medecine");
                 }
             }
         }
@@ -760,7 +763,7 @@ export const cards = {
 
     306: {
         image: "labo3.png",
-        description: `des chercheurs ont imaginé un traitement permettant d'accélérer le temps de gestation. Que faire ?`,
+        description: `des chercheurs ont imaginé un traitement permettant de diminuer le temps de gestation. Que faire ?`,
         choices: {
             "Commercialisez-le de façon accessible.": {
                 effect() {
@@ -801,6 +804,7 @@ export const cards = {
                 effect() {
                     changeScore("bonheur", +5);
                     changeScore("environnement", -5);
+                    addPassive("handicap");
                 }
             }
         }
@@ -925,7 +929,6 @@ export const cards = {
                 effect() {
                     changeScore("bonheur", +3);
                     changeScore("environnement", -2);
-
                 }
             },
             "Ayez la foi, une danse rituelle favorisera probablement vos rendements.": {
@@ -954,13 +957,13 @@ export const cards = {
                 effect() {
                     changeScore("bonheur", +5);
                     changeScore("Environnement", -1);
+                    addPassive("ecriture");
                 }
             },
             "Laissez votre peuple libre de s'exprimer par le biais de leur culture.": {
                 effect() {
                     changeScore("bonheur", +3);
                     changeScore("environnement", -2);
-
                 }
             },
             "Ce temps mériterait d'être consacré à leur foi.": {
@@ -973,13 +976,40 @@ export const cards = {
             }
         }
     },
+    313: {
+        image: "labo3.png",
+        description: `la science que nous développons nous permet d'investir plus efficacement dans plusieurs domaines, lequel privilégier ?`,
+        choices: {
+            "Articulez vos pièces mécaniques afin de constituer un calculateur automatique, cela simplifiera votre économie.": {
+                test() {
+                    return state.passives.includes("mecanique")
+                },
+                effect() {
+                    addPassive("ordinateur");
+                    changeScore("environnement", -5);
+                }
+            },
+            "Métissez les plantes et les êtres vivants qui vous entourent pour créer de meilleurs alliés domestiques dans vos tâches quotidiennes.": {
+                effect() {
+                    changeScore("bonheur", +5);
+                    changeScore("environnement", -10);
+                    addPassive("biointelligence");
+                }
+            },
+            "Amenez votre peuple à s'élever par la réflexion philosophique, la pensée est vertueuse.": {
+                effect() {
+                    changeScore("bonheur", +10);
+                }
+            }
+        }
+    },
 
 
 
 
 
     400: {
-        image: "rayons.jpg",
+        image: "rayons.png",
         description: `nos activités industrielles ont engendré une altération des couches atmosphériques qui nous protégaient du soleil. Les rayonnements sont de plus en plus agressifs et la température augmente dangereusement ! Comment y remédier ? `,
         choices: {
             "Développez des vêtements et des onguents qui permettent de se protéger et de soulager les brûlures": {
@@ -1010,6 +1040,8 @@ export const cards = {
                 effect() {
                     changeScore("bonheur", -20);
                     changeScore("environnement", -5);
+                    addPassive("handmaidstales");
+                    if(state.passives.includes("peineMort") && state.passives.includes("handmaidstales") && state.passives.includes("terreur") && state.passive.includes("regulationmaladies")) {setAchievement("tyran")}
                 }
             },
             "Encourager la reproduction par des biais culturels.": {
@@ -1121,6 +1153,8 @@ export const cards = {
             "Stoppez le traitement des malades incurables": {
                 effect() {
                     changeScore("bonheur", -20);
+                    addPassive("regulationmaladies")
+                    if(state.passives.includes("peineMort") && state.passives.includes("handmaidstales") && state.passives.includes("terreur") && state.passive.includes("regulationmaladies")) {setAchievement("tyran")}
                 }
             }
         }
@@ -1225,7 +1259,7 @@ export const cards = {
             },
             "Accueillez-les, mais chassez les mendiants et les inutiles": {
                 effect() {
-                    changeScore("bonheur", -20);
+                    changeScore("bonheur", -12)
                     changeScore("environnement", -5);
                 }
             }
@@ -1251,7 +1285,7 @@ export const cards = {
                 },
                 effect() {
                     changeScore("bonheur", -15);
-                    changeScore("environnement", -10);
+                    changeScore("environnement", -7);
                 }
             },
             "Lancez un programme de conquête spatiale": {
@@ -1260,7 +1294,8 @@ export const cards = {
                 },
                 effect() {
                     changeScore("bonheur", +5);
-                    changeScore("environnement", -10);
+                    changeScore("environnement", -7);
+                    setAchievement("explorateur");
                 }
             },
             "Que les femmes restent à la maison et s'occupent des tâches domestiques": {
@@ -1268,7 +1303,7 @@ export const cards = {
                     return state.passives.includes("dominationMasculine")
                 },
                 effect() {
-                    changeScore("bonheur", -10);
+                    changeScore("bonheur", -7);
                 }
             },
             "Prenez les postes des hommes. Ils s'occuperont du ménage et des enfants": {
@@ -1276,7 +1311,7 @@ export const cards = {
                     return state.passives.includes("dominationFéminine")
                 },
                 effect() {
-                    changeScore("bonheur", -10);
+                    changeScore("bonheur", -7);
                 }
             },
             "Votez une réduction du temps de travail pour tous": {
@@ -1307,8 +1342,8 @@ export const cards = {
                     return state.passives.includes("omnivore")
                 },
                 effect() {
-                    changeScore("bonheur", -5);
-                    changeScore("environnement", -10);
+                    changeScore("bonheur", -3);
+                    changeScore("environnement", -7);
                 }
             },
             "Cultivez des algues à la place": {
@@ -1326,7 +1361,7 @@ export const cards = {
                 },
                 effect() {
                     changeScore("bonheur", +5);
-                    changeScore("environnement", -20);
+                    changeScore("environnement", -15);
                     addPassive("migrationNourriture");
                 }
             },
@@ -1355,25 +1390,25 @@ export const cards = {
         }
     },
     408: {
-        image: "terrestrenuit2.png",
+        image: "particules2.png",
         description: `De fines particules en suspension empêchent la plupart des espèces de respirer sans s'intoxiquer.`,
         choices: {
             "Produisez des masques à gaz autant que possible.": {
                 effect() {
                     changeScore("bonheur", -5);
-                    changeScore("environnement", -10);
+                    changeScore("environnement", -7);
                 }
             },
             "Déclarez une quarantaine génèrale au risque d'avoir des rébellions": {
                 effect() {
                     changeScore("bonheur", -5);
-                    changeScore("environnement", -10);
+                    changeScore("environnement", -7);
                 }
             },
             "Cherchez, sans trop d'espoir, des solutions pour filtrer l'atmosphère tout entier": {
                 effect() {
                     changeScore("bonheur", -5);
-                    changeScore("environnement", -20);
+                    changeScore("environnement", -15);
                 }
             }
         }
@@ -1395,6 +1430,8 @@ export const cards = {
                 effect() {
                     changeScore("bonheur", -7);
                     changeScore("environnement", -5);
+                    addPassive("bunkers");
+                    if(state.passives.includes("bunkers") && state.passives.includes("bassinsEaux") && state.passives.includes("geniecivil")){setAchievement("batisseur")}
                 }
             },
             "Regardez passivement le destin s'accomplir.": {
@@ -1405,7 +1442,7 @@ export const cards = {
         }
     },
     410: {
-        image: "eauxusees.jpg",
+        image: "eauxusees.png",
         description: `Nombre de nos citadins semblent souffrir d'handicapantes pertes de mémoires. Il semblerait que l'eau de notre affluent soit viciée par nos rejets chimiques.`,
         choices: {
             "Brûlez des arbres pour la filtrer avec du charbon.": {
@@ -1421,6 +1458,8 @@ export const cards = {
                 effect() {
                     changeScore("bonheur", +5);
                     changeScore("environnement", -15);
+                    addPassive("bassinsEau");
+                    if(state.passives.includes("bunkers") && state.passives.includes("bassinsEaux") && state.passives.includes("geniecivil")){setAchievement("batisseur")}
                 }
             },
             "Tentez de développer une chimie neutralisant ce phénomène.": {
@@ -1477,6 +1516,8 @@ export const cards = {
             "Tuez arbitrairement la moitié de la population afin que l'autre moitié ne meure pas de faim.": {
                 effect() {
                     changeScore("bonheur", -25);
+                    addPassive("terreur");
+                    if(state.passives.includes("peineMort") && state.passives.includes("handmaidstales") && state.passives.includes("terreur") && state.passive.includes("regulationmaladies")) {setAchievement("tyran")}
                 }
             },
             "Vous trouverez bien de nouvelles façon plus efficaces de drainer le nécessaire à votre planète.": {
@@ -1527,7 +1568,7 @@ export const cards = {
                 effect() {
                     changeScore("bonheur", +2);
                     changeScore("environnement", -5);
-                    setAchievement("Cyborg");
+                    setAchievement("cyborg");
                 },
                 test() {
                     return state.passives.includes("biomecanique")
@@ -1536,32 +1577,68 @@ export const cards = {
         }
     },
     415: {
-        image: "robots.png",
-        description: `nous avons doté nos machines d'une intelligence artificielle, et elles ont organisé une attaque contre notre peuple pour qu'il cesse de détruire sa planète. Quelques survivants résident cachés des radars et risquent de bientôt être délogés par les machines.`,
+        image: "astres2.png",
+        description: `des chercheurs semblent avoir mis au point ce qui pourrait être la réponse à nombre de nos problèmes : une enceinte physique au sein de laquelle nous avons un total contrôle du Temps.`,
         choices: {
-            "Essayez des armes de destructions massives, en ciblant principalement les zones industrielles occupées par ces machines.": {
+            "Vous jouez avec le feu, nul n'est censé jouer avec le Temps sacré.": {
                 effect() {
-                    changeScore("bonheur", -15);
-                    changeScore("environnement", -15);
+                    changeScore("bonheur", -10);
                 }
             },
-            "Les machines sauront peut-être sauver ce qui peut l'être de la civilisation.": {
+            "Servez-vous en pour accélerer le travail de la nature.": {
                 effect() {
-                    changeScore("bonheur", -15);
-                    addPassive("matrix");
+                    changeScore("bonheur", +15);
                 }
             },
-            "Créez une armée de soldats augmentés mécaniquement, elle devrait pouvoir lutter contre ce fléau robotique.": {
+            "Placez-y une intelligence artificielle de laquelle émergera peut-être une solution miracle.": {
                 effect() {
                     changeScore("bonheur", +2);
-                    changeScore("environnement", -5);
+                    startStory("IAForte");
                 },
                 test() {
-                    return state.passives.includes("biomecanique")
+                    return state.passives.includes("ordinateur")
                 },
             },
         }
     },
+    416: {
+        image: "astres4.png",
+        description: `Je crois que nous avons créé une forme d'intelligence nouvelle, qui a profité d'un temps infini pour se contruire.`,
+        choices: {
+            "Méfiez-vous, confinez-la dans cette enceinte.": {
+            },
+            "Voyez ce qu'elle peut vous apporter.": {
+                effect() {
+                    startStory("IAForte2");
+                }
+            },
+            "Tentez-de stopper son évolution en baissant la température de l'enceinte jusqu'au zéro absolu": {
+                effect() {
+                    changeScore("environnement", -15);
+                }
+            },
+        }
+    },
+    417: {
+        image: "artreligion.png",
+        description: `Nous avons ouvert le sarcophage dans laquelle nous avions élevé cette intelligence artificielle forte, il semblerait qu'elle aie pris la forme d'un monolithe.`,
+        choices: {
+            "A L P H A ?": {
+            }
+        }
+    },
+    418: {
+        image: "artreligion.png",
+        description: `c'est paradoxal, mais je crois que nous avons donné forme physique dans notre monde à ce qui vous ressemble...`,
+        choices: {
+            "C'est impossible...": {
+                effect(){
+                    setAchievement("paradoxe");
+                }
+            }
+        }
+    },
+
 
     500: {
         image: "aube2.png",
