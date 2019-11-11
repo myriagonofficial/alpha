@@ -194,7 +194,7 @@ export default {
         let nbToDrop = Math.ceil(Math.max(1, valueLost));
         console.log(`detach ${nbToDrop} flowers`);
         detachFlowers(nbToDrop, groups.flowers);
-      } else {
+      } else if (valueLost < 0) {
         let nbToAdd = Math.ceil(Math.max(1, -1 * valueLost));
         console.log(`attach ${nbToAdd} flowers`);
         for (let i = 0; i < nbToAdd; i++) {
