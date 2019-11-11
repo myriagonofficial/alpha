@@ -61,6 +61,7 @@ export default {
 .achievement-info {
   position: relative;
   height: 80vh;
+  width: 100%;
   padding: 0;
   color: black;
   text-align: left;
