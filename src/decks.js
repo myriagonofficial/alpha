@@ -99,6 +99,7 @@ export const decks = [
       "demo",
       "guerrecivile",
       "robots",
+      "extinction"
     ],
     onStart() {
       playMusicRandomSequence(['mus_agony_01', 'mus_agony_02', 'mus_agony_03'])

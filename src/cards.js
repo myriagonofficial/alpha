@@ -929,9 +929,9 @@ export const cards = {
                 }
             },
             "Ayez la foi, une danse rituelle favorisera probablement vos rendements.": {
-                effect(){
+                effect() {
                     changeScore("bonheur", +5);
-                }, 
+                },
                 test() {
                     return state.passives.includes("religion")
                 },
@@ -964,16 +964,16 @@ export const cards = {
                 }
             },
             "Ce temps mériterait d'être consacré à leur foi.": {
-                effect(){
+                effect() {
                     changeScore("bonheur", +8);
-                }, 
+                },
                 test() {
                     return state.passives.includes("religion")
                 },
             }
         }
     },
-    
+
 
 
 
@@ -1178,7 +1178,7 @@ export const cards = {
                     changeScore("environnement", -2);
                     changeScore("bonheur", +5);
                     addPassive("migrationFroid");
-                    if(state.passives.includes("migrationChaud")) {
+                    if (state.passives.includes("migrationChaud")) {
                         setAchievement("nomade");
                     }
                 }
@@ -1404,7 +1404,7 @@ export const cards = {
             }
         }
     },
-    410:{
+    410: {
         image: "eauxusees.jpg",
         description: `Nombre de nos citadins semblent souffrir d'handicapantes pertes de mémoires. Il semblerait que l'eau de notre affluent soit viciée par nos rejets chimiques.`,
         choices: {
@@ -1434,7 +1434,7 @@ export const cards = {
             }
         }
     },
-    411:{
+    411: {
         image: "celeste_apex3.png",
         description: `nous traversons maintenant une période de chaleur extrême, les récoltes se font rares et notre économie tourne au ralenti.`,
         choices: {
@@ -1443,7 +1443,7 @@ export const cards = {
                     changeScore("bonheur", +5);
                     changeScore("environnement", -2);
                     addPassive("migrationChaud");
-                    if(state.passives.includes("migrationFroid")) {
+                    if (state.passives.includes("migrationFroid")) {
                         setAchievement("nomade");
                     }
                 },
@@ -1464,7 +1464,7 @@ export const cards = {
             }
         }
     },
-    412:{
+    412: {
         image: "politique1.png",
         description: `nous avons perdu le contrôle de notre démographie, la population s'accroit rapidement et nos ressources ne nous permettront pas de subvenir aux besoins de tous.`,
         choices: {
@@ -1486,7 +1486,7 @@ export const cards = {
             }
         }
     },
-    413:{
+    413: {
         image: "politique1.png",
         description: `les mesures d'austérités suivies jusqu'ici ont laissé place au populisme et une forme d'anarchie violente engendre des guerres civiles meurtrières.`,
         choices: {
@@ -1507,7 +1507,7 @@ export const cards = {
             },
         }
     },
-    414:{
+    414: {
         image: "robots.png",
         description: `nous avons doté nos machines d'une intelligence artificielle, et elles ont organisé une attaque contre notre peuple pour qu'il cesse de détruire sa planète. Quelques survivants résident cachés des radars et risquent de bientôt être délogés par les machines.`,
         choices: {
@@ -1520,8 +1520,9 @@ export const cards = {
             "Les machines sauront peut-être sauver ce qui peut l'être de la civilisation.": {
                 effect() {
                     changeScore("bonheur", -15);
-                    addPassive("matrix");                }
-                },
+                    addPassive("matrix");
+                }
+            },
             "Créez une armée de soldats augmentés mécaniquement, elle devrait pouvoir lutter contre ce fléau robotique.": {
                 effect() {
                     changeScore("bonheur", +2);
@@ -1534,7 +1535,7 @@ export const cards = {
             },
         }
     },
-    415:{
+    415: {
         image: "robots.png",
         description: `nous avons doté nos machines d'une intelligence artificielle, et elles ont organisé une attaque contre notre peuple pour qu'il cesse de détruire sa planète. Quelques survivants résident cachés des radars et risquent de bientôt être délogés par les machines.`,
         choices: {
@@ -1547,8 +1548,9 @@ export const cards = {
             "Les machines sauront peut-être sauver ce qui peut l'être de la civilisation.": {
                 effect() {
                     changeScore("bonheur", -15);
-                    addPassive("matrix");                }
-                },
+                    addPassive("matrix");
+                }
+            },
             "Créez une armée de soldats augmentés mécaniquement, elle devrait pouvoir lutter contre ce fléau robotique.": {
                 effect() {
                     changeScore("bonheur", +2);
@@ -1559,11 +1561,35 @@ export const cards = {
                 },
             },
         }
+    },
+
+    500: {
+        image: "aube2.png",
+        interlocuteur: `Gardien`,
+        description: `Et ainsi, malgré tous vos efforts, votre espèce est arrivée à son point d'extinction.`,
+        choices: {
+            "J'ai... échoué ?": {
+                effect() {
+                    state.scores.bonheur = 0;
+                    state.scores.environnement = 0;
+                    playMusic("mus_lull_01");
+                }
+            }
+        },
+        onStart() {
+            stopMusic();
+        }
+    },
+
+    501: {
+        image: "aube1.png",
+        interlocuteur: `Gardien`,
+        description: `Ne vous en faites pas... Toute flamme est vouée à s'éteindre. L'important est le chemin qu'elle éclaire le temps de son existence... Le temps vous donnera d'autres espèces à guider.`,
+        choices: {
+            "Je ferais alors d'autres choix.": {
+                effect() { }
+            }
+        }
     }
-
-
-
-    
-
 
 }

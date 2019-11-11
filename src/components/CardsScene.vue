@@ -15,7 +15,7 @@
           <div
             class="card-description"
             ref="description"
-          >{{state.deck.interlocuteur}} : {{ description }}</div>
+          >{{card.interlocuteur || state.deck.interlocuteur}} : {{ description }}</div>
         </div>
       </div>
     </transition>

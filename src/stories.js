@@ -241,6 +241,12 @@ const stories = {
         priority: 1
     },
 
+    extinction: {
+        name: "Extinction",
+        cards: [500, 501],
+        priority: 0
+    }
+
 }
 
 export function initStories() {

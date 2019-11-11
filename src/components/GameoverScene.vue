@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { playMusic, playSound } from "@/audio.js";
+import { playSound } from "@/audio.js";
 import { state, saveProgress } from "@/state.js";
 import { gamepad, BUTTONS, DIRECTIONS } from "@/gamepad.js";
 
@@ -38,7 +38,6 @@ export default {
   },
 
   mounted() {
-    playMusic("mus_lull_01");
     saveProgress();
     gamepad.onButtonPress(BUTTONS.START, () => this.onButtonPressed());
     gamepad.onButtonPress(BUTTONS.A, () => this.onButtonPressed());
