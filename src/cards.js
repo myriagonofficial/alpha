@@ -112,8 +112,8 @@ export const cards = {
 
     101: {
         image: () => state.passives.includes("marine") ? "marine_primal.png" : state.passives.includes("terrestre") ? "terrestre_primal.png" : "celeste_primal.png",
-        description: `Bien des espèces désireraient t'avoir comme guide. Quel régime alimentaire
-        crois-tu être raisonnable de favoriser pour celle qui dominera ce monde ?`,
+        description: `Cette région du monde semble follement grouiller de vie,  et un équilibre est né entre différents types d'espèces. Quel régime alimentaire
+        crois-tu être raisonnable de favoriser pour celle qui dominera ce monde par son adaptabilité ?`,
         choices: {
             "Carnivore": {
                 effect() {
@@ -139,21 +139,21 @@ export const cards = {
 
     102: {
         image: "litoral.png",
-        description: `Les contrées de cette planète sont très variées et je ne doute pas qu'un jour ton peuple les aura toutes explorées. Où voudrais-tu lui que ton peuple s'installe en premier lieu ?`,
+        description: `Admire les paysages de ta création à son commencement. Je ne doute pas qu'un jour les tiens auront exploré tous ces paysages. Où voudrais-tu voir émerger les premiers êtres dotés d'une conscience ?`,
         choices: {
-            "Proche des côtes océaniques": {
+            "Près des côtes océaniques": {
                 effect() {
                     addPassive("ocean");
                 },
                 position: { top: "55%", left: "85%" }
             },
-            "Au pied des volcans": {
+            "Au pied d'une chaîne de volcans": {
                 effect() {
                     addPassive("volcan");
                 },
                 position: { top: "85%", left: "50%" }
             },
-            "Dans la végétation luxuriante": {
+            "Dans une jungle luxuriante": {
                 effect() {
                     addPassive("jungle")
                 },
@@ -163,7 +163,7 @@ export const cards = {
     },
 
     103: {
-        image: "esoterisme1.png",
+        image: "fecondation.jpg",
         description: `Ton peuple doit se reproduire pour assurer son avenir. Que crois-tu être la meilleure stratégie reproductive à leur transmettre ?`,
         choices: {
             "Engendrer de nombreuses progénitures, mais faibles.": {
@@ -515,18 +515,17 @@ export const cards = {
     },
     210: {
         image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway.png" : "celeste_headway.png",
-        description: `Nous avons remarqué une régularité dans le déroulement du temps, les variations de températures, de longueur de journées, s'organisent en cycle.`,
+        description: `nous avons remarqué une régularité dans le déroulement du temps, les variations de températures, de longueur de journées, s'organisent en cycle.`,
         choices: {
-            "Notez toutes ces variations et constituez vous un calendrier.": {
+            "Notez toutes ces variations et constituez vous un calendrier prédictif.": {
                 effect() {
                     changeScore("bonheur", +5);
                     addPassive("calendrier");
                 }
             },
-            "Appréhendez ces changements cycliques de la nature pour ": {
+            "Cette notion de temps peut-être mesurée.": {
                 effect() {
-                    changeScore("bonheur", +10);
-                    addPassive("meteo");
+                    addPassive("chronos");
                 }
             },
             "Organisez votre temps de travail afin de le prévoir sur les journées les plus longues": {
@@ -907,7 +906,7 @@ export const cards = {
         choices: {
             "Apprennez à anticiper les variations climatiques.": {
                 test() {
-                    return state.passives.includes("meteo")
+                    return state.passives.includes("calendrier")
                 },
                 effect() {
                     changeScore("bonheur", +10);
@@ -937,12 +936,48 @@ export const cards = {
             }
         }
     },
+    312: {
+        image: "livres1.png",
+        description: `nous sommes de plus en plus efficaces dans notre manière de façonner notre monde et d'exploiter notre sol nourricier. Que faire de ce temps libre qui s'offre à nous ?`,
+        choices: {
+            "Si vous savez déjà l'estimer, pourquoi ne pas essayer de jouer avec ?": {
+                test() {
+                    return state.passives.includes("chronos")
+                },
+                effect() {
+                    addPassive("relativismeTemporel")
+                }
+            },
+            "Sachez péreniser par l'écriture ce qui constitue tous vos acquis techniques.": {
+                effect() {
+                    changeScore("bonheur", +5);
+                    changeScore("Environnement", -1);
+                }
+            },
+            "Laissez votre peuple libre de s'exprimer par le biais de leur culture.": {
+                effect() {
+                    changeScore("bonheur", +3);
+                    changeScore("environnement", -2);
+
+                }
+            },
+            "Ce temps mériterait d'être consacré à leur foi.": {
+                effect(){
+                    changeScore("bonheur", +8);
+                }, 
+                test() {
+                    return state.passives.includes("religion")
+                },
+            }
+        }
+    },
+    
 
 
 
 
     400: {
-        image: "rayonnements.png",
+        image: "rayons.jpg",
         description: `nos activités industrielles ont engendré une altération des couches atmosphériques qui nous protégaient du soleil. Les rayonnements sont de plus en plus agressifs et la température augmente dangereusement ! Comment y remédier ? `,
         choices: {
             "Développez des vêtements et des onguents qui permettent de se protéger et de soulager les brûlures": {
@@ -1363,7 +1398,7 @@ export const cards = {
         }
     },
     410:{
-        image: "aube1.png",
+        image: "eauxusees.jpg",
         description: `Nombre de nos citadins semblent souffrir d'handicapantes pertes de mémoires. Il semblerait que l'eau de notre affluent soit viciée par nos rejets chimiques.`,
         choices: {
             "Brûlez des arbres pour la filtrer avec du charbon.": {

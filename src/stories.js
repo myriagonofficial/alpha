@@ -20,7 +20,7 @@ export const stories = {
     region: {
         name: "Région",
         cards: [102],
-        priority: 1
+        priority: 2
     },
     reproduction: {
         name: "Reproduction",
