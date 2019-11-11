@@ -1,7 +1,7 @@
 <template>
   <div class="achievements-scene">
     <header>
-      <h2>Bonus débloqués</h2>
+      <h2>Fins débloquées</h2>
       <p>Quelles voies vous reste-t-il à découvrir ?</p>
     </header>
 

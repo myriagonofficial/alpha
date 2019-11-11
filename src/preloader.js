@@ -22,6 +22,11 @@ const imageFiles = [
     `assets/ALPHA_TITRE.png`,
     `assets/MYRIAGON_LOGO.png`,
     require(`./assets/ECRAN_INTRO.png`),
+    require(`./assets/CHAP1_LULL.png`),
+    require(`./assets/CHAP2_PRIMAL.png`),
+    require(`./assets/CHAP3_HEADWAY.png`),
+    require(`./assets/CHAP4_APEX.png`),
+    require(`./assets/CHAP5_AGONY.png`),
     require(`./assets/ui/interface_fond_total.png`),
     require(`./assets/ui/interface_barre_bas_fond.png`),
     require(`./assets/ui/interface_barre_haut_fond.png`)
