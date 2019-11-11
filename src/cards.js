@@ -171,14 +171,16 @@ export const cards = {
                     changeScore("bonheur", +10);
                     changeScore("environnement", -10);
                     addPassive("bebes_faibles");
-                }
+                },
+                position: { top: "60%", left: "25%" }
             },
             "Mettre au monde un petit nombre de progénitures robustes.": {
                 effect() {
                     changeScore("bonheur", +5);
                     changeScore("environnement", -5);
                     addPassive("bebes_forts");
-                }
+                },
+                position: { top: "70%", left: "75%" }
             }
         }
     },
@@ -204,7 +206,7 @@ export const cards = {
     },
 
     105: {
-        image: "esoterisme1.png",
+        image: "grotte.png",
         description: `Le coeur de ce monde bat au rythme des saisons. Comment s'adapter aux périodes difficiles de grands froids et de vagues de chaleur ?`,
         choices: {
             "Hiberner": {
@@ -266,7 +268,7 @@ export const cards = {
         choices: {
             "Vous feriez mieux de les faire fuir": {
                 effect() {
-                    changeScore("bonheur", -10)
+                    changeScore("bonheur", -5)
                 }
             },
             "Domestiquez-les.": {
@@ -539,7 +541,7 @@ export const cards = {
 
 
     300: {
-        image: () => state.passives.includes("marine") ? "marine_apex.png" : state.passives.includes("terrestre") ? "terrestre_apex.png" : "celeste_apex.png",
+        image: () => state.passives.includes("marine") ? "marine_apex.png" : state.passives.includes("terrestre") ? "terrestre_apex1.png" : "celeste_apex1.png",
         description: `Avec le développement de la société, le nombre d'individus qui nuisent à son bon fonctionnement prend également de l'ampleur. Comment pouvons-nous les punir et les décourager de continuer dans cette voie ?`,
         choices: {
             "Construisez des prisons et enfermez-les y.": {
@@ -687,7 +689,7 @@ export const cards = {
     },
 
     304: {
-        image: "champ2.png",
+        image: "recoltes2.png",
         description: `nos ressources de nourriture viennent parfois à manquer, quel comportement adopter ?`,
         choices: {
             "Rationner pour chacun.": {
@@ -1175,6 +1177,10 @@ export const cards = {
                 effect() {
                     changeScore("environnement", -2);
                     changeScore("bonheur", +5);
+                    addPassive("migrationFroid");
+                    if(state.passives.includes("migrationChaud")) {
+                        setAchievement("nomade");
+                    }
                 }
             },
         }
@@ -1227,7 +1233,7 @@ export const cards = {
     },
 
     406: {
-        image: "politique2.png",
+        image: "politique1.png",
         description: `Il n'y a plus assez de travail pour tout le monde ! Le chômage, la petite délinquance et les inégalités de richesse augmentent sans cesse...`,
         choices: {
             "Concentrez-vous sur la jeunesse": {
@@ -1321,6 +1327,7 @@ export const cards = {
                 effect() {
                     changeScore("bonheur", +5);
                     changeScore("environnement", -20);
+                    addPassive("migrationNourriture");
                 }
             },
             "Créez de nouveaux plants en laboratoire": {
@@ -1435,7 +1442,10 @@ export const cards = {
                 effect() {
                     changeScore("bonheur", +5);
                     changeScore("environnement", -2);
-
+                    addPassive("migrationChaud");
+                    if(state.passives.includes("migrationFroid")) {
+                        setAchievement("nomade");
+                    }
                 },
                 test() {
                     return state.passives.includes("nomade") && state.passives.includes("cartographie")
@@ -1480,12 +1490,12 @@ export const cards = {
         image: "politique1.png",
         description: `les mesures d'austérités suivies jusqu'ici ont laissé place au populisme et une forme d'anarchie violente engendre des guerres civiles meurtrières.`,
         choices: {
-            "Laissez la situation se déréguler, vous n'avez plus la force de gérer ces crises": {
+            "Laissez la situation se déréguler, vous n'avez plus la force de gérer ces crises.": {
                 effect() {
                     changeScore("bonheur", -10);
                 }
             },
-            "Militarisez au maximum les nations et tuez tous les rebelles pour essayer de maintenir un minumum d'ordre": {
+            "Militarisez au maximum les nations et tuez tous les rebelles pour essayer de maintenir l'ordre.": {
                 effect() {
                     changeScore("bonheur", -5);
                 }

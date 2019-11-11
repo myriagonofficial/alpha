@@ -3,14 +3,14 @@
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
-      viewBox="0 0 1400 200"
+      viewBox="0 0 1800 200"
       ref="svgFlowers"
       style="z-index:2"
     />
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
-      viewBox="0 0 1400 200"
+      viewBox="0 0 1800 200"
       ref="svgLeaves"
       style="z-index:1"
     />
@@ -68,14 +68,14 @@ const createFlower = ({ x, y, type, accroche, group }) => {
     },
 
     drop() {
-      y += dropIncrement * Math.random() * (1400 / 100);
+      y += dropIncrement * Math.random() * (1800 / 100);
       x += dropIncrement * (wind + Math.random() * 2);
       rotation += rotateIncrement * (1 + Math.random());
     },
 
     transform() {
       const radius = scale * group.radius;
-      let cx = Math.round(x * 1400 - radius);
+      let cx = Math.round(x * 1800 - radius);
       let cy = Math.round(100 + y * 100 - radius);
       if (cy > 250) flower.delete();
       element.setAttribute(

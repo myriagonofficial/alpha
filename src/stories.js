@@ -79,7 +79,7 @@ export const stories = {
     {
         name: "Jeu de pouvoirs",
         cards: [207],
-        priority: 1
+        priority: 2
     },
     feu1:
     {
