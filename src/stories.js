@@ -265,6 +265,12 @@ const stories = {
         cards: [417,418],
         priority: 1
     },
+    especesmenacees: {
+        name: "Espèces en voie d'extinction",
+        cards: [419],
+        priority: 1
+    },
+    
 
     extinction: {
         name: "Extinction",
