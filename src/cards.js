@@ -275,7 +275,7 @@ export const cards = {
 
 
     201: {
-        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway.png" : "celeste_headway.png",
+        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway2.png" : "celeste_headway.png",
         description: `Pourrions-nous profiter d’une quelconque manière des individus des autres espèces ? Ce n’est pas la première fois que nous sommes confrontés à cette situation et il semblerait que nous ne soyons pas capables de nous mettre d’accord.`,
         choices: {
             "Vous feriez mieux de les faire fuir": {
@@ -314,7 +314,7 @@ export const cards = {
     },
 
     202: {
-        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway.png" : "celeste_headway.png",
+        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway1.png" : "celeste_headway.png",
         description: `Nous hésitons entre deux stratégies : certains voudraient changer de région pour varier nos sources de nourriture, et d’autres s’implanter et exploiter au mieux le territoire proche. Que pensez-vous bon de faire ?`,
         choices: {
             "Vous devriez vous sédentariser.": {
@@ -335,7 +335,7 @@ export const cards = {
     },
 
     203: {
-        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway.png" : "celeste_headway.png",
+        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway1.png" : "celeste_headway.png",
         description: `Nous avons conquis un large territoire et continuons à l’explorer, cependant la taille de notre environnement connu commence à dépasser notre capacité d’orientation...`,
         choices: {
             "Cartographiez le territoire au sol.": {
@@ -393,7 +393,7 @@ export const cards = {
     },
 
     205: {
-        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway.png" : "celeste_headway.png",
+        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway2.png" : "celeste_headway.png",
         description: `Parmi les différents groupes, on observe des luttes de pouvoir s'orienter sur la question de genre. Qui devrait dominer ?`,
         choices: {
             "Encouragez la domination masculine.": {
@@ -415,7 +415,7 @@ export const cards = {
         }
     },
     206: {
-        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway.png" : "celeste_headway.png",
+        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway1.png" : "celeste_headway.png",
         description: `la population s'accroît et les artisans ne savent pas fournir suffisamment de ressources pour construire assez d'abris. Quelle solution préconiser ?`,
         choices: {
             "Formez plus d'artisans": {
@@ -435,12 +435,14 @@ export const cards = {
                     addPassive("mecanique");
                     changeScore("bonheur", +10);
                     changeScore("environnement", -5);
+                    addPassive("artisanat");
                 }
             },
             "Standardisez un modèle unique et optimisé": {
                 effect() {
                     changeScore("bonheur", +5);
                     addPassive("standardhabitation");
+                    addPassive("artisanat");
                 }
             }
         }
@@ -533,6 +535,9 @@ export const cards = {
                     changeScore("bonheur", +20);
                     changeScore("environnement", -5);
                     addPassive("geniecivil");
+                },
+                test() {
+                    return state.passives.includes("artisanat");
                 }
             },
             "Ce qui n'est pas à votre portée ne doit pas être exploré.": {
@@ -548,7 +553,7 @@ export const cards = {
         }
     },
     210: {
-        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway.png" : "celeste_headway.png",
+        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway1.png" : "celeste_headway.png",
         description: `nous avons remarqué une régularité dans le déroulement du temps, les variations de températures, de longueur de journées, s'organisent en cycle.`,
         choices: {
             "Notez toutes ces variations et constituez vous un calendrier prédictif.": {
@@ -580,6 +585,9 @@ export const cards = {
                 effect() {
                     addPassive("prisons");
                     changeScore("environnement", -10);
+                },
+                test() {
+                    return state.passives.includes("artisanat");
                 }
             },
             "Eduquez-les afin qu'ils retrouvent le droit chemin.": {
@@ -706,12 +714,16 @@ export const cards = {
             "Tentez de réguler vos besoins": {
                 effect() {
                     changeScore("environnement", +5);
-                    changeScore("bonheur", -10);
+                    changeScore("bonheur", -15);
                 }
             },
-            "Lancer des recherches pour trouver une alternative": {
+            "Synthétisez de l'eau pure par la chimie, au détriment d'une autre source d'énergie": {
                 effect() {
-                    changeScore("environnement", +5);
+                    changeScore("environnement", -5);
+                    changeScore("bonheur", +10);
+                },
+                test() {
+                    return state.passives.includes("chimie");
                 }
             },
             "Continuez malgré tout, votre société a besoin de cette croissance": {
@@ -721,9 +733,13 @@ export const cards = {
 
                 }
             },
-            "Développez de quoi assainir l'eau polluée": {
+            "Récoltez par des filets géants l'eau contenue dans la brume des hauteurs célestes": {
                 effect() {
-                    changeScore("environnement", +5);
+                    changeScore("environnement", -5);
+                    changeScore("bonheur", +10);
+                },
+                test() {
+                    return state.passives.includes("céleste") && state.passives.includes("artisanat");
                 }
             },
             "Réservez le peu d'eau pure aux classes importantes de votre société pour les prémunir de ce fléau": {
@@ -737,7 +753,17 @@ export const cards = {
                     changeScore("environnement", -1);
                     changeScore("bonheur", -3);
                 }
+            },
+            "Faites fondre les glaciers qui emprisonnent de l'eau saine, stockée depuis des temps anciens où il n'y avait aucune pollution":{
+                effect() {
+                    changeScore("bonheur", +18);
+                    changeScore("environnement", -15);
+                },
+                test() {
+                    return (state.passives.includes("marine") && state.passives.includes("feu"));
+                }
             }
+            
         }
     },
 
@@ -895,6 +921,9 @@ export const cards = {
                 effect() {
                     changeScore("bonheur", +2);
                     changeScore("environnement", -5);
+                },
+                test() {
+                    return state.passives.includes("artisanat");
                 }
             },
         }
@@ -1348,7 +1377,7 @@ export const cards = {
             },
             "Migrez vers des territoires plus chauds": {
                 test() {
-                    return state.passives.includes("nomade") && state.passives.includes("cartographie")
+                    return state.passives.includes("migre") && state.passives.includes("cartographie")
                 },
                 effect() {
                     changeScore("environnement", -2);
@@ -1357,6 +1386,15 @@ export const cards = {
                     if (state.passives.includes("migrationChaud")) {
                         setAchievement("nomade");
                     }
+                }
+            },
+            "Modifiez votre constitution biologique pour réduire votre temps d'hibernation et produire plus d'énergie": {
+                test() {
+                    return state.passives.includes("hiberne") && state.passives.includes("biointelligence")
+                },
+                effect() {
+                    changeScore("bonheur", +15);
+                    changeScore("environnement", -10);
                 }
             },
             "Développez une technologie pour influencer l'axe de l'orbite de votre planète afin d'uniformiser les saisons": {
@@ -1503,13 +1541,13 @@ export const cards = {
         image: "vegetationmorte1.png",
         description: () => `A force de privilégier les plants les plus vigoureux, nous avons aussi tué la diversité des plantes, et nous en payons aujourd'hui le prix... Une épidémie ravage les champs ${state.passives.includes("carnivore") ? "destinés à l'alimentation du bétail " : ""} et va nous mener à la famine !`,
         choices: {
-            "Variez votre alimentation. Vous avez essayé les insectes ?": {
+            "Modifiez votre génome afin de métaboliser des nutriments contenus dans la matière organique": {
                 test() {
-                    return state.passives.includes("omnivore")
+                    return state.passives.includes("biointelligence")
                 },
                 effect() {
-                    changeScore("bonheur", -3);
-                    changeScore("environnement", -7);
+                    changeScore("bonheur", +15);
+                    changeScore("environnement", -5);
                 }
             },
             "Cultivez des algues à la place": {
@@ -1595,7 +1633,16 @@ export const cards = {
                     changeScore("bonheur", -5);
                     changeScore("environnement", -15);
                 }
-            }
+            },
+            "Construisez des enceintes saines dont l'atmosphère sera filtrée": {
+                effect() {
+                    changeScore("bonheur", +15);
+                    changeScore("environnement", -7);
+                },
+                test() {
+                    return state.passives.includes("sedentaire") && state.passives.includes("artisanat")
+                },            
+            },
         }
     },
     409: {
@@ -1645,7 +1692,11 @@ export const cards = {
                     changeScore("environnement", -15);
                     addPassive("bassinsEau");
                     if(state.passives.includes("bunkers") && state.passives.includes("bassinsEaux") && state.passives.includes("geniecivil")){setAchievement("batisseur")}
-                }
+                },
+                test() {
+                    return state.passives.includes("artisanat")
+                },
+
             },
             "Tentez de développer une chimie neutralisant ce phénomène.": {
                 effect() {
@@ -1684,7 +1735,10 @@ export const cards = {
                 effect() {
                     changeScore("bonheur", +2);
                     changeScore("environnement", -15);
-                }
+                },
+                test() {
+                    return state.passives.includes("artisanat")
+                },
             },
             "Tentez d'éloigner votre planète de votre étoile afin de réguler le rayonnement reçu": {
                 effect() {
@@ -1853,6 +1907,54 @@ export const cards = {
             }
         }
     },
+    419: {
+        image: "labo2.png",
+        description: `ll semblerait que notre occupation du territoire porte préjudice à nombre d'espèces concurrentes, nous découvrons avec effroi que nombre d'entre elles viennent à disparaître.`,
+        choices: {
+            "Mettez sur orbite de votre une planète une arche habitée de chacun de ces êtres pour les préserver": {
+                effect(){
+                    changeScore("environnement", -10)
+                    changeScore("bonheur", +10)
+                },
+                test() {
+                    return state.passives.includes("voyageastral")
+                },
+            },
+            "Récupérez tous les fossiles, pollen, fragment de matières biologiques pour récuperer les gènes et les utiliser à la fabrication de copies d'anciennes espèces": {
+                test() {
+                    return state.passives.includes("biointelligence")
+                },
+                effect(){
+                    changeScore("environnement", -10)
+                    changeScore("bonheur", +10)
+                },
+            },
+            "Organisez massivement leur reproduction en formant des individus dont le rôle sera la préservation du vivant":
+            {
+                effect(){
+                    changeScore("environnement", +2)
+                    changeScore("bonheur", -5)
+                },
+            },
+            "Créez une banque mondiale des semences afin de préserver les espèces survivantes":
+            {
+                effect(){
+                    changeScore("environnement", +1)
+                },
+            },
+            "Allez cherchez des formes de vie extraplanètaires afin de repeupler la vôtre":
+            {
+                effect(){
+                    changeScore("environnement", +5)
+                    changeScore("bonheur", +5)
+                },
+                test() {
+                    return state.passives.includes("voyageastral")
+                },
+            }
+        }
+    },
+
 
 
     500: {
