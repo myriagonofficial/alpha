@@ -80,7 +80,7 @@ export const addPassive = passiveName => {
 
 export const setAchievement = achievementName => {
   state.achievement = achievements[achievementName];
-  state.achievements = (state.achievements || []).concat(achievementName);
+  state.achievement.name = achievementName;
 }
 
 export const gameOver = () => {
