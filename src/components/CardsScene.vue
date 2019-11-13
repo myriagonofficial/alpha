@@ -46,9 +46,13 @@ export default {
     nextCard();
 
     gamepad.onButtonPress(BUTTONS.A, () => this.onButtonAPressed());
+    gamepad.onButtonPress(BUTTONS.START, () => this.onButtonStartPressed());
+    gamepad.onButtonPress(BUTTONS.BACK, () => this.onButtonStartPressed());
     gamepad.onDirection(dir => {
-      if (dir === DIRECTIONS.UP) this.selectButton(-1);
-      if (dir === DIRECTIONS.DOWN) this.selectButton(+1);
+      if (dir === DIRECTIONS.UP || dir === DIRECTIONS.LEFT)
+        this.selectButton(-1);
+      if (dir === DIRECTIONS.DOWN || dir === DIRECTIONS.RIGHT)
+        this.selectButton(+1);
     });
   },
   destroyed() {
@@ -94,20 +98,25 @@ export default {
       }, 3000);
     },
     selectButton(step) {
-      const buttons = [...document.querySelectorAll("button, .choice")];
+      const buttons = [...document.querySelectorAll(".choice")];
       const selectedButtonIndex = buttons.findIndex(
         button => button === document.activeElement
       );
       const nextIndex =
         (selectedButtonIndex + step + buttons.length) % buttons.length;
-      buttons[nextIndex].focus();
-      playSound("gui_hover_button", "gui_hover");
+      if (buttons[nextIndex]) {
+        buttons[nextIndex].focus();
+        playSound("gui_hover_button", "gui_hover");
+      }
     },
     onButtonAPressed() {
       if (document.activeElement.matches("button, .choice")) {
         playSound("gui_click_button", "gui_click");
         document.activeElement.click();
       }
+    },
+    onButtonStartPressed() {
+      document.querySelector("button.gamepad_start").focus();
     }
   }
 };

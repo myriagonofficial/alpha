@@ -60,8 +60,10 @@ export default {
     gamepad.onButtonPress(BUTTONS.A, () => this.onButtonAPressed());
     gamepad.onButtonPress(BUTTONS.B, () => this.onButtonBPressed());
     gamepad.onDirection(dir => {
-      if (dir === DIRECTIONS.UP) this.selectButton(-1);
-      if (dir === DIRECTIONS.DOWN) this.selectButton(+1);
+      if (dir === DIRECTIONS.UP || dir === DIRECTIONS.LEFT)
+        this.selectButton(-1);
+      if (dir === DIRECTIONS.DOWN || dir === DIRECTIONS.RIGHT)
+        this.selectButton(+1);
     });
   },
 
@@ -93,7 +95,6 @@ export default {
         (selectedButtonIndex + step + buttons.length) % buttons.length;
       buttons[nextIndex].focus();
       playSound("gui_hover_button", "gui_hover");
-      console.log(document.activeElement, selectedButtonIndex, nextIndex);
     },
     onButtonAPressed() {
       if (document.activeElement.matches("button, .achievement.unlocked")) {

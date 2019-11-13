@@ -23,12 +23,14 @@
         v-if="isIntro"
         @click="skipIntro"
         @mouseenter="onButtonMouseOver"
+        class="gamepad_start"
       >Passer l'introduction</button>
       <button
         key="quitGameButton"
         v-else-if="state.scene === 'game'"
         @click="goToMenu"
         @mouseenter="onButtonMouseOver"
+        class="gamepad_start"
       >Quitter la partie</button>
       <button
         key="bonusButton"
