@@ -24,7 +24,7 @@
           <img :src="achievement.image" />
         </li>
       </ul>
-      <p v-if="state.bestScore">
+      <p v-if="state.bestScore && !selectAchievement">
         Meilleure partie:
         <strong>{{state.bestScore}}</strong>
         <img src="../assets/ui/fleur.svg" alt="fleurs" />

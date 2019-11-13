@@ -50,7 +50,7 @@ export default {
       playSound("gui_hover_button");
     },
     close() {
-      //playSound("gui_click_button", "gui");
+      playSound("gui_click_choice", "gui_click");
       this.$emit("close");
     }
   }
