@@ -101,10 +101,10 @@ export const updateMute = () => {
 export const SOUNDS = {
     /*gui_card_on: 'assets/sound/gui_card_on.mp3',
     gui_card_off: 'assets/sound/gui_card_off.mp3',*/
-    gui_click_button: 'assets/sound/gui_menuCliqueSurBoutonJouer_01.ogg',
-    gui_click_choice: 'assets/sound/gui_cliqueSurChoix_01.ogg',
-    gui_hover_button: 'assets/sound/gui_menuSurvolBoutonJouer_01.ogg',
-    gui_hover_choice: 'assets/sound/gui_survolUnChoix_01.ogg',
+    gui_click_button_play: 'assets/sound/gui_menuCliqueSurBoutonJouer_01.ogg',
+    gui_click_button: 'assets/sound/gui_cliqueSurChoix_01.ogg',
+    gui_hover_button_play: 'assets/sound/gui_menuSurvolBoutonJouer_01.ogg',
+    gui_hover_button: 'assets/sound/gui_survolUnChoix_01.ogg',
     gui_transition_eres: 'assets/sound/gui_transitionEntreEres_01.ogg',
     vox_gardien_01: 'assets/sound/vox_gardienDuTemps_01.ogg',
     vox_gardien_02: 'assets/sound/vox_gardienDuTemps_02.ogg',

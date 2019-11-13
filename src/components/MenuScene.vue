@@ -5,7 +5,7 @@
       L'expérience sonore est vivement conseillée
     </p>
     <button
-      @mouseover="onButtonMouseOver"
+      @mouseenter="onButtonMouseOver"
       @click="onClickPlayButton"
       :disabled="loadingPc < 100"
     >{{loadingPc >= 100 ? "Jouer": "Chargement "+loadingPc+"%"}}</button>
@@ -15,7 +15,7 @@
     <img class="logo-myriagon" src="assets/MYRIAGON_LOGO.png" alt="Myriagon" />
     <img class="logo-alpha" src="assets/ALPHA_TITRE.png" alt="Alpha" />
     <button
-      @mouseover="onButtonMouseOver"
+      @mouseenter="onButtonMouseOver"
       @click="startGame"
       :class="['start', { hidden: !showStartButton }]"
     >Commencer le jeu</button>
@@ -66,13 +66,13 @@ export default {
   methods: {
     startGame() {
       stopMusic();
-      playSound("gui_click_button", "gui");
+      playSound("gui_click_button_play", "gui_click");
       this.$emit("play");
     },
     onClickPlayButton() {
       if (this.loadingPc < 100) return;
       state.loaded = true;
-      playSound("gui_click_button", "gui");
+      playSound("gui_click_button_play", "gui_click");
       playMusic("mus_menu");
       setTimeout(() => {
         this.showStartButton = true;
@@ -82,7 +82,7 @@ export default {
       this.loadingPc = Math.round(pc);
     },
     onButtonMouseOver() {
-      playSound("gui_hover_button", "gui");
+      playSound("gui_hover_button_play", "gui_hover");
     },
     selectButton(step) {
       const buttons = [...document.querySelectorAll("button")];
@@ -92,11 +92,11 @@ export default {
       const nextIndex =
         (selectedButtonIndex + step + buttons.length) % buttons.length;
       buttons[nextIndex].focus();
-      playSound("gui_hover_button", "gui");
+      playSound("gui_hover_button", "gui_hover");
     },
     onButtonAPressed() {
       if (document.activeElement.matches("button")) {
-        playSound("gui_click_button", "gui");
+        playSound("gui_click_button", "gui_click");
         document.activeElement.click();
       }
     },

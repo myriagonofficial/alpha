@@ -9,12 +9,12 @@
         v-if="state.scene === 'bonus'"
         id="backbutton"
         @click="goToMenu"
-        @mouseover="onButtonMouseOver"
+        @mouseenter="onButtonMouseOver"
       >Retour au menu</button>
       <button
         v-if="state.scene === 'gameover'"
         @click="goToBonus"
-        @mouseover="onButtonMouseOver"
+        @mouseenter="onButtonMouseOver"
       >Continuer</button>
     </div>
     <div class="right">
@@ -22,27 +22,27 @@
         key="skipIntroButton"
         v-if="isIntro"
         @click="skipIntro"
-        @mouseover="onButtonMouseOver"
+        @mouseenter="onButtonMouseOver"
       >Passer l'introduction</button>
       <button
         key="quitGameButton"
         v-else-if="state.scene === 'game'"
         @click="goToMenu"
-        @mouseover="onButtonMouseOver"
+        @mouseenter="onButtonMouseOver"
       >Quitter la partie</button>
       <button
         key="bonusButton"
         v-if="state.scene === 'menu'"
         class="bonus"
         @click="goToBonus"
-        @mouseover="onButtonMouseOver"
+        @mouseenter="onButtonMouseOver"
       >Fins débloquées</button>
       <button
         key="clearProgressButton"
         v-if="state.scene === 'bonus' && state.achievements"
         class="bonus"
         @click="clearProgress"
-        @mouseover="onButtonMouseOver"
+        @mouseenter="onButtonMouseOver"
       >Réinitialiser sa progression</button>
     </div>
   </footer>
@@ -81,7 +81,7 @@ export default {
       playSound("gui_hover_button", "gui_hover");
     },
     clickSound() {
-      playSound("gui_click_choice", "gui_click");
+      playSound("gui_click_button", "gui_click");
     },
     skipIntro() {
       this.clickSound();

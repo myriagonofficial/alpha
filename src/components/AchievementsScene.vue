@@ -76,10 +76,10 @@ export default {
       return state.achievements != null && state.achievements.includes(name);
     },
     onAchievementMouseOver() {
-      playSound("gui_hover_button");
+      playSound("gui_hover_button", "gui_hover");
     },
     selectAchievement(achievement) {
-      playSound("gui_click_button", "gui");
+      playSound("gui_click_button", "gui_click");
       this.selectedAchievement = achievement;
     },
     selectButton(step) {
@@ -92,12 +92,12 @@ export default {
       const nextIndex =
         (selectedButtonIndex + step + buttons.length) % buttons.length;
       buttons[nextIndex].focus();
-      playSound("gui_hover_button", "gui");
+      playSound("gui_hover_button", "gui_hover");
       console.log(document.activeElement, selectedButtonIndex, nextIndex);
     },
     onButtonAPressed() {
       if (document.activeElement.matches("button, .achievement.unlocked")) {
-        playSound("gui_click_button", "gui");
+        playSound("gui_click_button", "gui_click");
         document.activeElement.click();
       }
     },

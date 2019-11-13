@@ -20,7 +20,7 @@
         </p>
         <a :href="bonus.url" download>Télécharger</a>
       </div>
-      <button class="close" v-if="closable" @click="close" @mouseover="onButtonMouseOver">
+      <button class="close" v-if="closable" @click="close" @mouseenter="onButtonMouseOver">
         <img src="../assets/ui/close.svg" alt="Retour" />
       </button>
     </div>
@@ -47,10 +47,10 @@ export default {
 
   methods: {
     onButtonMouseOver() {
-      playSound("gui_hover_button");
+      playSound("gui_hover_button", "gui_hover");
     },
     close() {
-      playSound("gui_click_choice", "gui_click");
+      playSound("gui_click_button", "gui_click");
       this.$emit("close");
     }
   }

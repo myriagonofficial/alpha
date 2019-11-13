@@ -73,7 +73,7 @@ export default {
 
   methods: {
     choose(choice) {
-      playSound("gui_click_choice", "gui");
+      playSound("gui_click_button", "gui_click");
       if (choice.effect) choice.effect(state);
       this.putCardAway();
       setTimeout(() => {
@@ -158,7 +158,7 @@ export default {
     },
 
     onMouseOverChoice() {
-      playSound("gui_hover_choice", "gui");
+      playSound("gui_hover_button", "gui_hover");
     }
   }
 };
@@ -250,7 +250,6 @@ img {
       &.special {
         animation-name: glow-special;
         box-shadow: 0 0 10px white, 0 0 25px rgba(0, 0, 0, 0.5);
-
       }
     }
 
