@@ -5,6 +5,7 @@
     </div>
     <div class="center">
       <button
+        key="backButton"
         v-if="state.scene === 'bonus'"
         id="backbutton"
         @click="state.scene='menu'"
@@ -12,13 +13,26 @@
       <button v-if="state.scene === 'gameover'" @click="state.scene='bonus'">Continuer</button>
     </div>
     <div class="right">
-      <button v-if="isIntro" @click="skipIntro" @mouseover="onButtonMouseOver">Passer l'introduction</button>
       <button
+        key="skipIntroButton"
+        v-if="isIntro"
+        @click="skipIntro"
+        @mouseover="onButtonMouseOver"
+      >Passer l'introduction</button>
+      <button
+        key="quitGameButton"
+        v-else-if="state.scene === 'game'"
+        @click="quitGame"
+        @mouseover="onButtonMouseOver"
+      >Quitter la partie</button>
+      <button
+        key="bonusButton"
         v-if="state.scene === 'menu'"
         class="bonus"
         @click="state.scene='bonus'"
       >Fins débloquées</button>
       <button
+        key="clearProgressButton"
         v-if="state.scene === 'bonus' && state.achievements"
         class="bonus"
         @click="clearProgress"
@@ -60,6 +74,9 @@ export default {
     clearProgress,
     onButtonMouseOver() {
       playSound("gui_hover_button", "gui");
+    },
+    quitGame() {
+      state.scene = "menu";
     }
   }
 };
