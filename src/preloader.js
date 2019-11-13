@@ -78,14 +78,22 @@ export const loadAssets = function (imageFiles, audioFiles, callback, onProgress
                 images[src].src = src;
                 break;
             case "sound":
-                sounds[src] = document.createElement('audio');
-                sounds[src].addEventListener('canplaythrough', () => onload(src), false);
-                sounds[src].addEventListener('load', () => onload(src), false);
-                sounds[src].addEventListener('error', () => onload(src), false);
-                //sounds[src]._loadingTimeout = setTimeout(onload, 5000); // too long to load, skip
-                sounds[src].src = src;
-                document.body.appendChild(sounds[src]);
-                sounds[src].load();
+                {
+                    const request = new XMLHttpRequest();
+                    request.open("GET", src, true);
+                    request.responseType = "blob";
+                    request.onload = function () {
+                        if (this.status == 200) {
+                            sounds[src] = document.createElement('audio');
+                            sounds[src].addEventListener('canplaythrough', () => onload(src), false);
+                            sounds[src].addEventListener('error', () => onload(src), false);
+                            document.body.appendChild(sounds[src]);
+                            sounds[src].load();
+                            sounds[src].src = URL.createObjectURL(this.response)
+                        }
+                    }
+                    request.send();
+                }
                 break;
         }
     }
