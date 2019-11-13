@@ -75,6 +75,9 @@ export const decks = [
       "etoiles",
       "feu2",
       "dechets",
+      "recoltes",
+      "temps1",
+      "science"
     ],
     onStart() {
       playMusicRandomSequence(['mus_apex_01', 'mus_apex_02', 'mus_apex_03'])
@@ -99,7 +102,9 @@ export const decks = [
       "demo",
       "guerrecivile",
       "robots",
-      "extinction"
+      "extinction",
+      "especesmenacees",
+      "temps2"
     ],
     onStart() {
       playMusicRandomSequence(['mus_agony_01', 'mus_agony_02', 'mus_agony_03'])
