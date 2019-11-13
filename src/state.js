@@ -19,7 +19,7 @@ export const state = {
     shouldShowIndicateurBonheur: false,
     shouldShowIndicateurEnvironnement: false,
     passives: [],
-    achievements: null,
+    achievements: [],
     achievement: null,
     bestScore: null
 };
@@ -57,6 +57,10 @@ export function loadSettings() {
 }
 
 export function saveProgress() {
+    if (state.achievement && !state.achievements.includes(state.achievement.name)) {
+        state.achievements.push(state.achievement.name);
+    }
+
     localStorage.setItem("progress", JSON.stringify({
         achievements: state.achievements,
         bestScore: state.bestScore
