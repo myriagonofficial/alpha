@@ -4,21 +4,23 @@ import { deduplicate } from "@/utils";
 
 const audioFiles = [...Object.values(SOUNDS), ...Object.values(MUSICS)]
 
-const imageFiles = [
-    ...deduplicate(
-        Object.values(cards)
-            .filter(card => typeof card.image !== "function")
-            .map(card => `assets/cards/${card.image}`)
-    ),
+const imageFiles = deduplicate([
+    ...Object.values(cards)
+        .filter(card => typeof card.image !== "function")
+        .map(card => `assets/cards/${card.image}`),
     `assets/cards/marine_primal.png`,
     `assets/cards/terrestre_primal.png`,
     `assets/cards/celeste_primal.png`,
     `assets/cards/marine_headway.png`,
-    `assets/cards/terrestre_headway.png`,
+    `assets/cards/terrestre_headway1.png`,
     `assets/cards/celeste_headway.png`,
-    `assets/cards/marine_apex.png`,
+    //`assets/cards/marine_apex.png`,
     `assets/cards/terrestre_apex1.png`,
+    `assets/cards/terrestre_apex2.png`,
+    `assets/cards/terrestre_apex3.png`,
     `assets/cards/celeste_apex1.png`,
+    `assets/cards/celeste_apex2.png`,
+    `assets/cards/celeste_apex3.png`,
     `assets/ALPHA_TITRE.png`,
     `assets/MYRIAGON_LOGO.png`,
     require(`./assets/ECRAN_INTRO.png`),
@@ -30,7 +32,7 @@ const imageFiles = [
     require(`./assets/ui/interface_fond_total.png`),
     require(`./assets/ui/interface_barre_bas_fond.png`),
     require(`./assets/ui/interface_barre_haut_fond.png`)
-]
+])
 
 export const preloadGame = (onProgress) => {
     return new Promise((resolve) => {

@@ -1900,7 +1900,8 @@ export const cards = {
         }
     },
     414: {
-        image: "robots.png",
+        // image: "robots.png", // NOT AVAILABLE YET
+        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_apex2.png" : "celeste_apex2.png",
         description: `nous avons doté nos machines d'une intelligence artificielle, et elles ont organisé une attaque contre notre peuple pour qu'il cesse de détruire sa planète. Quelques survivants résident cachés des radars et risquent de bientôt être délogés par les machines.`,
         choices: {
             "Essayez des armes de destructions massives, en ciblant principalement les zones industrielles occupées par ces machines.": {
