@@ -33,7 +33,7 @@ export const achievements = {
     },
 
     bienfaiteur: {
-        image: "assets/cards/astres2.png",
+        image: "assets/cards/basikyoutopiak.png",
         title: "Bienfaiteur",
         description: `Vous avez eu coeur à favoriser toujours le bonheur de vos dévots, en dépit de toute bonne raison écologique.`,
         bonus: {
@@ -77,7 +77,7 @@ export const achievements = {
     },
 
     explorateur: {
-        image: "assets/cards/celeste_headway.png",
+        image: "assets/cards/pont.png",
         title: "Explorateur",
         description: `Votre espèce est avide de découverte, quitte à prendre des risques.`,
         bonus: {

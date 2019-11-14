@@ -126,13 +126,15 @@ export const cards = {
             "Herbivore": {
                 effect() {
                     addPassive("herbivore");
-                    changeScore("bonheur", -10);
+                    changeScore("bonheur", +5);
                     changeScore("environnement", +10);
                 }
             },
             "Omnivore": {
                 effect() {
                     addPassive("omnivore")
+                    changeScore("bonheur", +10);
+                    changeScore("environnement", -2);
                 },
             }
         }
@@ -314,7 +316,7 @@ export const cards = {
     },
 
     202: {
-        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway1.png" : "celeste_headway.png",
+        image: "champ2.png",
         description: `Nous hésitons entre deux stratégies : certains voudraient changer de région pour varier nos sources de nourriture, et d’autres s’implanter et exploiter au mieux le territoire proche. Que pensez-vous bon de faire ?`,
         choices: {
             "Vous devriez vous sédentariser.": {
@@ -335,7 +337,7 @@ export const cards = {
     },
 
     203: {
-        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_headway1.png" : "celeste_headway.png",
+        image: "collines.png",
         description: `Nous avons conquis un large territoire et continuons à l’explorer, cependant la taille de notre environnement connu commence à dépasser notre capacité d’orientation...`,
         choices: {
             "Cartographiez le territoire au sol.": {
@@ -868,7 +870,7 @@ export const cards = {
     },
 
     306: {
-        image: "labo3.png",
+        image: "fecondation.png",
         description: `des chercheurs ont imaginé un traitement permettant de diminuer le temps de gestation. Que faire ?`,
         choices: {
             "Commercialisez-le de façon accessible.": {
@@ -936,7 +938,7 @@ export const cards = {
         }
     },
     308: {
-        image: "aube1.png",
+        image: "astres4.png",
         description: `les étoiles fascinent depuis toujours un grand nombre d’entre nous. Pouvons-nous aller les visiter ?`,
         choices: {
             "Votre progrès technique semble vous permettre d'aller explorer l'espace, lancez-vous !": {
@@ -1051,7 +1053,7 @@ export const cards = {
         }
     },
     311: {
-        image: "recoltes1.png",
+        image: "commerce.png",
         description: `nous ne savons pas anticiper astucieusement la taille de nos récoltes.`,
         choices: {
             "Apprennez à anticiper les variations climatiques": {
@@ -1121,7 +1123,7 @@ export const cards = {
         }
     },
     313: {
-        image: "labo3.png",
+        image: "chimie2.png",
         description: `la science que nous développons nous permet d'investir plus efficacement dans plusieurs domaines, lequel privilégier ?`,
         choices: {
             "Articulez vos pièces mécaniques afin de constituer un calculateur automatique, cela simplifiera votre économie": {
@@ -1156,6 +1158,52 @@ export const cards = {
             },
         }
     },
+    314:
+    {
+        image: "transport1.png",
+        description: `Le territoire sur lesquel nous sommes installés est maintenant vaste et il devient difficile de se déplacer efficacement de part et d'autre.`,
+        choices: {
+            "Inventez un dispositif mécanique permettant de démultiplier la force de vos corps": {
+                test() {
+                    return state.passives.includes("mecanique")
+                },
+                effect() {
+                    addPassive("velo");
+                    changeScore("bonheur", +10);
+                }
+            },
+            "Construisez des itinéraires optimisés au sein du paysage afin de simplifier les déplacements personnels et matériels": {
+                effect() {
+                    changeScore("bonheur", +5);
+                    changeScore("environnement", -10);
+                },
+                test() {
+                    return state.passives.includes("cartographie")
+                },
+            },
+            "Formez des individus spécifiquement au déplacement des ressources": {
+                effect() {
+                    changeScore("bonheur", -5);
+                }
+            },
+            "Etudiez les courants marins afin d'en tirer le meilleur parti": {
+                effect() {
+                    changeScore("bonheur", +10);
+                },
+                test() {
+                    return state.passives.includes("marine")
+                },
+            },
+            "Tentez de mettre à profit les courants d'air": {
+                effect() {
+                    changeScore("bonheur", +5);
+                },
+                test() {
+                    return state.passives.includes("celeste") && state.passives.includes("artisanat")
+                },
+            },
+        }
+    },
 
 
 
@@ -1186,7 +1234,7 @@ export const cards = {
     },
 
     401: {
-        image: "labo3.png",
+        image: "fecondation.png",
         description: `la fertilité est en berne. Comment s'assurer de la pérennisation de l'espèce ?`,
         choices: {
             "Les femmes fertiles doivent être identifiées afin d'assumer le rôle de mères porteuses.": {
@@ -1239,7 +1287,7 @@ export const cards = {
     },
 
     402: {
-        image: "algue_poison.png",
+        image: "plantes.png",
         description: `une mauvaise herbe toxique se répand dans nos villes à toute vitesse. Un gaz urticant en sort quand on la coupe. Comment lutter contre ?`,
         choices: {
             "Brûlez les plants": {
@@ -1421,7 +1469,7 @@ export const cards = {
     },
 
     405: {
-        image: "mer1.png",
+        image: "mer2.png",
         description: `Nous ne savons plus que faire des réfugiés climatiques qui fuient leur territoire d'origine. Ils disent que le vent et les eaux ont détruit leurs habitations.`,
         choices: {
             "Accueillez-les et intégrez-les": {
@@ -1661,7 +1709,7 @@ export const cards = {
         }
     },
     409: {
-        image: "aube1.png",
+        image: "desert.png",
         description: `les experts sont formels, la planète ne pourra plus assurer les ressources nécessaires pour la survie de l'espèce, il nous faut trouver une solution pour éviter l'extinction.`,
         choices: {
             "Vous devriez tenter de vous enfuir sur une autre planète.": {
@@ -1814,7 +1862,7 @@ export const cards = {
         }
     },
     413: {
-        image: "politique1.png",
+        image: "ruines1.png",
         description: `les mesures d'austérités suivies jusqu'ici ont laissé place au populisme et une forme d'anarchie violente engendre des guerres civiles meurtrières.`,
         choices: {
             "Laissez la situation se déréguler, vous n'avez plus la force de gérer ces crises.": {
@@ -1835,7 +1883,7 @@ export const cards = {
         }
     },
     414: {
-        image: "robots.png",
+        image: "labo1.png",
         description: `nous avons doté nos machines d'une intelligence artificielle, et elles ont organisé une attaque contre notre peuple pour qu'il cesse de détruire sa planète. Quelques survivants résident cachés des radars et risquent de bientôt être délogés par les machines.`,
         choices: {
             "Essayez des armes de destructions massives, en ciblant principalement les zones industrielles occupées par ces machines.": {
@@ -1925,7 +1973,7 @@ export const cards = {
         }
     },
     419: {
-        image: "labo2.png",
+        image: "volcan_terre.png",
         description: `ll semblerait que notre occupation du territoire porte préjudice à nombre d'espèces concurrentes, nous découvrons avec effroi que nombre d'entre elles viennent à disparaître.`,
         choices: {
             "Mettez sur orbite de votre une planète une arche habitée de chacun de ces êtres pour les préserver": {

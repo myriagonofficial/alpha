@@ -77,7 +77,8 @@ export const decks = [
       "dechets",
       "recoltes",
       "temps1",
-      "science"
+      "science",
+      "transport"
     ],
     onStart() {
       playMusicRandomSequence(['mus_apex_01', 'mus_apex_02', 'mus_apex_03'])
