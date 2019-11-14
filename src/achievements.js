@@ -7,7 +7,7 @@ export const achievements = {
             title: "Fond d'écran Agony",
             preview: "assets/bonus/01_AGONY_THUMB.png",
             url: "assets/bonus/01_AGONY_WALLPAPER.jpg",
-        }
+        },
     },
 
     medecine: {
