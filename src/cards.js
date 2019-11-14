@@ -203,7 +203,7 @@ export const cards = {
                     addPassive("beauté");
                 }
             },
-            "L'intelligence par la ruse":{
+            "L'intelligence par la ruse": {
                 effect() {
                     changeScore("bonheur", +2);
                     addPassive("intelligence");
@@ -250,12 +250,12 @@ export const cards = {
                 effect() {
                     addPassive("vocal")
                 }
-            }, 
+            },
             "Par télépathie": {
                 effect() {
                     addPassive("telepathes")
                 }
-            }, 
+            },
         }
     },
 
@@ -410,7 +410,11 @@ export const cards = {
                 effect() {
                     addPassive("EquiteGenre");
                     changeScore("bonheur", +10);
-                    if(['democratie', 'EquiteGenre', 'reinsertion', 'centresspecialises'].filter(passif => state.passives.includes(passif)).length > 2){setAchievement("bienfaiteur")}
+                    if (['democratie', 'EquiteGenre', 'reinsertion', 'centresspecialises']
+                        .filter(passif => state.passives.includes(passif)).length > 2
+                    ) {
+                        setAchievement("bienfaiteur")
+                    }
                 }
             }
         }
@@ -462,7 +466,11 @@ export const cards = {
                 effect() {
                     changeScore("bonheur", +10);
                     addPassive("democratie");
-                    if(['democratie', 'EquiteGenre', 'reinsertion', 'centresspecialises'].filter(passif => state.passives.includes(passif)).length > 2){setAchievement("bienfaiteur")}
+                    if (['democratie', 'EquiteGenre', 'reinsertion', 'centresspecialises']
+                        .filter(passif => state.passives.includes(passif)).length > 2
+                    ) {
+                        setAchievement("bienfaiteur")
+                    }
                 }
             },
             "Laissez vos éléments charismatiques fonder différentes tribus ": {
@@ -586,7 +594,11 @@ export const cards = {
                 effect() {
                     addPassive("prisons");
                     changeScore("environnement", -10);
-                    if(['bunkers', 'bassinsEau', 'prisons', 'geniecivil', 'centresspecialises', 'thedome'].filter(passif => state.passives.includes(passif)).length > 2){setAchievement("batisseur")}
+                    if (['bunkers', 'bassinsEau', 'prisons', 'geniecivil', 'centresspecialises', 'thedome']
+                        .filter(passif => state.passives.includes(passif)).length > 2
+                    ) {
+                        setAchievement("batisseur")
+                    }
                 },
                 test() {
                     return state.passives.includes("artisanat");
@@ -597,7 +609,11 @@ export const cards = {
                     addPassive("reinsertion");
                     changeScore("environnement", -5);
                     changeScore("bonheur", +10);
-                    if(['democratie', 'EquiteGenre', 'reinsertion', 'centresspecialises'].filter(passif => state.passives.includes(passif)).length > 2){setAchievement("bienfaiteur")}
+                    if (['democratie', 'EquiteGenre', 'reinsertion', 'centresspecialises']
+                        .filter(passif => state.passives.includes(passif)).length > 2
+                    ) {
+                        setAchievement("bienfaiteur")
+                    }
                 }
             },
             "Instaurez la peine de mort.": {
@@ -605,7 +621,11 @@ export const cards = {
                     addPassive("peineMort");
                     changeScore("environnement", +5);
                     changeScore("bonheur", -10);
-                    if(['peineMort', 'handmaidstales', 'terreur', 'regulationmaladies'].filter(passif => state.passives.includes(passif)).length > 2){setAchievement("tyran")}
+                    if (['peineMort', 'handmaidstales', 'terreur', 'regulationmaladies']
+                        .filter(passif => state.passives.includes(passif)).length > 2
+                    ) {
+                        setAchievement("tyran")
+                    }
                 }
             },
             "Exilez-les de la société.": {
@@ -757,7 +777,7 @@ export const cards = {
                     changeScore("bonheur", -3);
                 }
             },
-            "Faites fondre les glaciers qui emprisonnent de l'eau saine, stockée depuis des temps anciens où il n'y avait aucune pollution":{
+            "Faites fondre les glaciers qui emprisonnent de l'eau saine, stockée depuis des temps anciens où il n'y avait aucune pollution": {
                 effect() {
                     changeScore("bonheur", +18);
                     changeScore("environnement", -15);
@@ -766,7 +786,7 @@ export const cards = {
                     return (state.passives.includes("marine") && state.passives.includes("feu"));
                 }
             }
-            
+
         }
     },
 
@@ -814,7 +834,7 @@ export const cards = {
                     addPassive("rendementAgricole");
                 }
             },
-            "Interdisez le gaspillage et organisez des contrôles punitifs réguliers" : {
+            "Interdisez le gaspillage et organisez des contrôles punitifs réguliers": {
                 effect() {
                     changeScore("bonheur", -10);
                 },
@@ -822,7 +842,7 @@ export const cards = {
                     return state.passives.includes("dictature")
                 },
             },
-            "Modifiez le standard de vos habitations pour y cultiver sur chaque toit":{
+            "Modifiez le standard de vos habitations pour y cultiver sur chaque toit": {
                 effect() {
                     changeScore("bonheur", -10);
                 },
@@ -852,7 +872,11 @@ export const cards = {
                 effect() {
                     changeScore("environnement", -5);
                     changeScore("bonheur", +5);
-                    if(['ogm', 'medecine', 'esperancedevie'].filter(passif => state.passives.includes(passif)).length > 2){setAchievement("medecine")}
+                    if (['ogm', 'medecine', 'esperancedevie']
+                        .filter(passif => state.passives.includes(passif)).length > 2
+                    ) {
+                        setAchievement("medecine")
+                    }
                 }
             },
             "Surveillez les individus pour prévenir toute dérive sociétale": {
@@ -926,8 +950,15 @@ export const cards = {
                     changeScore("bonheur", +2);
                     changeScore("environnement", -5);
                     addPassive("centresspecialises");
-                    if(['bunkers', 'bassinsEau', 'prisons', 'geniecivil', 'centresspecialises', 'thedome'].filter(passif => state.passives.includes(passif)).length > 2){setAchievement("batisseur")}
-                    if(['democratie', 'EquiteGenre', 'reinsertion', 'centresspecialises'].filter(passif => state.passives.includes(passif)).length > 2){setAchievement("bienfaiteur")}
+                    if (['bunkers', 'bassinsEau', 'prisons', 'geniecivil', 'centresspecialises', 'thedome']
+                        .filter(passif => state.passives.includes(passif)).length > 2
+                    ) {
+                        setAchievement("batisseur")
+                    }
+                    if (['democratie', 'EquiteGenre', 'reinsertion', 'centresspecialises']
+                        .filter(passif => state.passives.includes(passif)).length > 2) {
+                        setAchievement("bienfaiteur")
+                    }
                 },
                 test() {
                     return state.passives.includes("artisanat");
@@ -1033,7 +1064,7 @@ export const cards = {
             "Enfouissez-les dans des galeries sous-terraines": {
                 test() {
                     return state.passives.includes("terrestre")
-                }, 
+                },
                 effect() {
                     changeScore("bonheur", +5);
                     changeScore("environnement", -10);
@@ -1042,7 +1073,7 @@ export const cards = {
             "Tentez de les expédier dans l'immensité de l'espace qui vous entoure": {
                 test() {
                     return state.passives.includes("astronomie")
-                }, 
+                },
                 effect() {
                     changeScore("bonheur", +10);
                     changeScore("environnement", -5);
@@ -1194,7 +1225,11 @@ export const cards = {
                     changeScore("bonheur", -20);
                     changeScore("environnement", -5);
                     addPassive("handmaidstales");
-                    if(['peineMort', 'handmaidstales', 'terreur', 'regulationmaladies'].filter(passif => state.passives.includes(passif)).length > 2){setAchievement("tyran")}
+                    if (['peineMort', 'handmaidstales', 'terreur', 'regulationmaladies']
+                        .filter(passif => state.passives.includes(passif)).length > 2
+                    ) {
+                        setAchievement("tyran")
+                    }
                 }
             },
             "Encouragez la reproduction par des biais culturels.": {
@@ -1222,7 +1257,11 @@ export const cards = {
                     changeScore("bonheur", +5);
                     changeScore("environnement", -5);
                     addPassive("esperancedevie");
-                    if(['ogm', 'medecine', 'esperancedevie'].filter(passif => state.passives.includes(passif)).length >= 2){setAchievement("medecine")}
+                    if (['ogm', 'medecine', 'esperancedevie']
+                        .filter(passif => state.passives.includes(passif)).length >= 2
+                    ) {
+                        setAchievement("medecine")
+                    }
                 }
             },
             "Maximisez l'espérance de vie des personnes déjà présentes par la mécanisation des corps.": {
@@ -1311,7 +1350,10 @@ export const cards = {
                 effect() {
                     changeScore("bonheur", -20);
                     addPassive("regulationmaladies")
-                    if(['peineMort', 'handmaidstales', 'terreur', 'regulationmaladies'].filter(passif => state.passives.includes(passif)).length > 2){setAchievement("tyran")}
+                    if (['peineMort', 'handmaidstales', 'terreur', 'regulationmaladies']
+                        .filter(passif => state.passives.includes(passif)).length > 2) {
+                        setAchievement("tyran")
+                    }
                 }
             },
             "Essayez de cloner vos nouveaux-nés pour maximiser le nombre de naissances": {
@@ -1431,7 +1473,10 @@ export const cards = {
                 effect() {
                     changeScore("bonheur", +5);
                     changeScore("environnement", -5);
-                    if(['democratie', 'EquiteGenre', 'reinsertion', 'centresspecialises'].filter(passif => state.passives.includes(passif)).length > 2){setAchievement("bienfaiteur")}
+                    if (['democratie', 'EquiteGenre', 'reinsertion', 'centresspecialises']
+                        .filter(passif => state.passives.includes(passif)).length > 2) {
+                        setAchievement("bienfaiteur")
+                    }
                 }
             },
             "Chassez-les": {
@@ -1587,7 +1632,9 @@ export const cards = {
                 },
                 effect() {
                     changeScore("environnement", -10);
-                    if(state.passives.includes("rendementAgricole")) {setAchievement("nourricier")}
+                    if (state.passives.includes("rendementAgricole")) {
+                        setAchievement("nourricier")
+                    }
                 }
             },
             "Brûlez les champs contaminés": {
@@ -1613,7 +1660,7 @@ export const cards = {
                     return state.passives.includes("chimie")
                 },
             },
-            "Votre maitrise de sa matière permettrait le clonage de la nourriture : dupliquez votre ressource principale par ce biais" :{
+            "Votre maitrise de sa matière permettrait le clonage de la nourriture : dupliquez votre ressource principale par ce biais": {
                 effect() {
                     changeScore("environnement", -5);
                     changeScore("bonheur", +20);
@@ -1622,7 +1669,7 @@ export const cards = {
                     return state.passives.includes("physique")
                 },
             },
-            
+
         }
     },
     408: {
@@ -1652,11 +1699,14 @@ export const cards = {
                     changeScore("bonheur", +15);
                     changeScore("environnement", -7);
                     addPassive("thedome");
-                    if(['bunkers', 'bassinsEau', 'prisons', 'geniecivil', 'centresspecialises', 'thedome'].filter(passif => state.passives.includes(passif)).length > 2){setAchievement("batisseur")}
+                    if (['bunkers', 'bassinsEau', 'prisons', 'geniecivil', 'centresspecialises', 'thedome']
+                        .filter(passif => state.passives.includes(passif)).length > 2) {
+                        setAchievement("batisseur")
+                    }
                 },
                 test() {
                     return state.passives.includes("sedentaire") && state.passives.includes("artisanat")
-                },            
+                },
             },
         }
     },
@@ -1678,7 +1728,11 @@ export const cards = {
                     changeScore("bonheur", -7);
                     changeScore("environnement", -5);
                     addPassive("bunkers");
-                    if(['bunkers', 'bassinsEau', 'prisons', 'geniecivil', 'centresspecialises', 'thedome'].filter(passif => state.passives.includes(passif)).length > 2){setAchievement("batisseur")}
+                    if (['bunkers', 'bassinsEau', 'prisons', 'geniecivil', 'centresspecialises', 'thedome']
+                        .filter(passif => state.passives.includes(passif)).length > 2
+                    ) {
+                        setAchievement("batisseur")
+                    }
                 }
             },
             "Regardez passivement le destin s'accomplir.": {
@@ -1706,7 +1760,11 @@ export const cards = {
                     changeScore("bonheur", +5);
                     changeScore("environnement", -15);
                     addPassive("bassinsEau");
-                    if(['bunkers', 'bassinsEau', 'prisons', 'geniecivil', 'centresspecialises', 'thedome'].filter(passif => state.passives.includes(passif)).length > 2){setAchievement("batisseur")}
+                    if (['bunkers', 'bassinsEau', 'prisons', 'geniecivil', 'centresspecialises', 'thedome']
+                        .filter(passif => state.passives.includes(passif)).length > 2
+                    ) {
+                        setAchievement("batisseur")
+                    }
                 },
                 test() {
                     return state.passives.includes("artisanat")
@@ -1769,7 +1827,11 @@ export const cards = {
                     changeScore("bonheur", +15);
                     changeScore("environnement", -10);
                     addPassive("ogm");
-                    if(['ogm', 'medecine', 'esperancedevie'].filter(passif => state.passives.includes(passif)).length > 2){setAchievement("medecine")}
+                    if (['ogm', 'medecine', 'esperancedevie']
+                        .filter(passif => state.passives.includes(passif)).length > 2
+                    ) {
+                        setAchievement("medecine")
+                    }
                 },
                 test() {
                     return state.passives.includes("biointelligence") && state.passives.includes("medecine")
@@ -1794,7 +1856,10 @@ export const cards = {
                 effect() {
                     changeScore("bonheur", -25);
                     addPassive("terreur");
-                    if(['peineMort', 'handmaidstales', 'terreur', 'regulationmaladies'].filter(passif => state.passives.includes(passif)).length > 2){setAchievement("tyran")}
+                    if (['peineMort', 'handmaidstales', 'terreur', 'regulationmaladies']
+                        .filter(passif => state.passives.includes(passif)).length > 2) {
+                        setAchievement("tyran")
+                    }
                 }
             },
             "Vous trouverez bien de nouvelles façon plus efficaces de drainer le nécessaire à votre planète": {
@@ -1918,7 +1983,7 @@ export const cards = {
         description: `c'est paradoxal, mais je crois que nous avons donné forme physique dans notre monde à ce qui vous ressemble...`,
         choices: {
             "C'est impossible...": {
-                effect(){
+                effect() {
                     setAchievement("paradoxe");
                 }
             }
@@ -1929,7 +1994,7 @@ export const cards = {
         description: `ll semblerait que notre occupation du territoire porte préjudice à nombre d'espèces concurrentes, nous découvrons avec effroi que nombre d'entre elles viennent à disparaître.`,
         choices: {
             "Mettez sur orbite de votre une planète une arche habitée de chacun de ces êtres pour les préserver": {
-                effect(){
+                effect() {
                     changeScore("environnement", -10)
                     changeScore("bonheur", +10)
                 },
@@ -1941,27 +2006,27 @@ export const cards = {
                 test() {
                     return state.passives.includes("biointelligence")
                 },
-                effect(){
+                effect() {
                     changeScore("environnement", -10)
                     changeScore("bonheur", +10)
                 },
             },
             "Organisez massivement leur reproduction en formant des individus dont le rôle sera la préservation du vivant":
             {
-                effect(){
+                effect() {
                     changeScore("environnement", +2)
                     changeScore("bonheur", -5)
                 },
             },
             "Créez une banque mondiale des semences afin de préserver les espèces survivantes":
             {
-                effect(){
+                effect() {
                     changeScore("environnement", +1)
                 },
             },
             "Allez cherchez des formes de vie extraplanètaires afin de repeupler la vôtre":
             {
-                effect(){
+                effect() {
                     changeScore("environnement", +5)
                     changeScore("bonheur", +5)
                 },
