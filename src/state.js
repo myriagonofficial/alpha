@@ -1,6 +1,9 @@
 import { initStories } from "./stories.js";
 
+const version = require("../package.json").version;
+
 export const state = {
+    version,
     scene: "menu",
     mute: false,
     volume: 100,
