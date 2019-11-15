@@ -33,7 +33,7 @@ export const achievements = {
     },
 
     bienfaiteur: {
-        image: "assets/cards/basikyoutopiak.png",
+        image: "assets/cards/bubulyoutopiak.png",
         title: "Bienfaiteur",
         description: `Vous avez eu coeur à favoriser toujours le bonheur de vos dévots, en dépit de toute bonne raison écologique.`,
         bonus: {

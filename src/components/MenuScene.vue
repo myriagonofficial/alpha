@@ -21,7 +21,7 @@
     >Commencer le jeu</button>
     <p
       class="credits"
-    >Visuels : Arthur Lemaître | Développement : Sylvain Pollet-Villard | Son et concept : Myriagon</p>
+    >Visuels : Arthur Lemaitre | Développement : Sylvain Pollet-Villard | Son et concept : Myriagon</p>
   </div>
 </template>
 

@@ -215,7 +215,7 @@ export const cards = {
     },
 
     105: {
-        image: "grotte.png",
+        image: "grottehiver.png",
         description: `Le coeur de ce monde bat au rythme des saisons. Comment s'adapter aux périodes difficiles de grands froids et de vagues de chaleur ?`,
         choices: {
             "Hiberner": {
@@ -589,7 +589,7 @@ export const cards = {
 
 
     300: {
-        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_apex1.png" : "celeste_apex1.png",
+        image: () => state.passives.includes("marine") ? "marine_headway.png" : state.passives.includes("terrestre") ? "terrestre_apex.png" : "celeste_apex1.png",
         description: `Avec le développement de la société, le nombre d'individus qui nuisent à son bon fonctionnement prend également de l'ampleur. Comment pouvons-nous les punir et les décourager de continuer dans cette voie ?`,
         choices: {
             "Construisez des prisons et enfermez-les y.": {
@@ -1831,7 +1831,7 @@ export const cards = {
         }
     },
     411: {
-        image: "celeste_apex3.png",
+        image: "celeste_apex1.png",
         description: `nous traversons maintenant une période de chaleur extrême, nos ouvriers s'en trouvent ralentis et notre économie somnolente.`,
         choices: {
             "Migrez vers une zone plus tempérée": {
