@@ -1831,7 +1831,7 @@ export const cards = {
         }
     },
     411: {
-        image: "celeste_apex1.png",
+        image: "foret_luxuriante3.png",
         description: `nous traversons maintenant une période de chaleur extrême, nos ouvriers s'en trouvent ralentis et notre économie somnolente.`,
         choices: {
             "Migrez vers une zone plus tempérée": {
