@@ -1827,7 +1827,12 @@ export const cards = {
                 test() {
                     return state.passives.includes("chimie")
                 }
-            }
+            },
+            "Fermez les yeux sur cette épidémie.": {
+                effect() {
+                    changeScore("bonheur", -15);
+                },
+            },
         }
     },
     411: {
@@ -2110,7 +2115,7 @@ export const cards = {
         interlocuteur: `Gardien`,
         description: `Ne vous en faites pas... Toute flamme est vouée à s'éteindre. L'important est le chemin qu'elle éclaire le temps de son existence... Le temps vous donnera d'autres espèces à guider.`,
         choices: {
-            "Je ferais alors d'autres choix.": {
+            "Je ferai alors d'autres choix.": {
                 effect() { }
             }
         }

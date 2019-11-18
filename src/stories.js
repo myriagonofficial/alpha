@@ -206,7 +206,7 @@ const stories = {
         priority: 1
     },
     refugies: {
-        name: "Réfugiés climatique",
+        name: "Réfugiés climatiques",
         cards: [405],
         priority: 1
     },
